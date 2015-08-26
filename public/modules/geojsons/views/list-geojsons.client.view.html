@@ -1,0 +1,20 @@
+<section data-ng-controller="GeojsonsController" data-ng-init="find()">
+    <div class="page-header">
+        <h1>Geojsons</h1>
+    </div>
+    <div class="list-group">
+        <a data-ng-repeat="geojson in geojsons" data-ng-href="#!/geojsons/{{geojson._id}}" class="list-group-item">
+			<small class="list-group-item-text">
+				Posted on
+				<span data-ng-bind="geojson.created | date:'medium'"></span>
+				by
+				<span data-ng-bind="geojson.user.displayName"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="geojson.name"></h4>
+            <p class="list-group-item-heading" data-ng-bind="geojson.description"></p>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-hide="!geojsons.$resolved || geojsons.length">
+    	No Geojsons yet, why don't you <a href="/#!/geojsons/create">create one</a>?
+    </div>
+</section>
