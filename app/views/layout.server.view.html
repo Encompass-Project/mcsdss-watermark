@@ -3,6 +3,7 @@
 
 <head>
 	<title>{{title}}</title>
+	<!-- <title>MCSDSS</title> -->
 
 	<!-- General META -->
 	<meta charset="utf-8">
@@ -44,6 +45,25 @@
 </head>
 
 <body class="ng-cloak">
+	<!-- FACEBOOK SDK -->
+	<!-- <script>
+	  window.fbAsyncInit = function() {
+	    FB.init({
+	      appId      : '1688133921418731',
+	      xfbml      : true,
+	      version    : 'v2.4'
+	    });
+	  };
+
+	  (function(d, s, id){
+	     var js, fjs = d.getElementsByTagName(s)[0];
+	     if (d.getElementById(id)) {return;}
+	     js = d.createElement(s); js.id = id;
+	     js.src = "//connect.facebook.net/en_US/sdk.js";
+	     fjs.parentNode.insertBefore(js, fjs);
+	   }(document, 'script', 'facebook-jssdk'));
+	</script> -->
+
 	<header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
 	<section class="content">
 		<section class="container">
@@ -57,7 +77,7 @@
 	</script>
 
 	<!--Application JavaScript Files-->
-	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %} 
+	{% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}
 
 	{% if process.env.NODE_ENV === 'development' %}
 	<!--Livereload script rendered -->

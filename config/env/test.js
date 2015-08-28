@@ -1,10 +1,12 @@
 'use strict';
 
+var credentials = require('../env/secrets.js');
+
 module.exports = {
 	db: 'mongodb://localhost/mcsdss-test',
 	port: 3001,
 	app: {
-		title: 'mcsdss - Test Environment'
+		title: 'MCSDSS - Test Environment'
 	},
 	facebook: {
 		clientID: process.env.FACEBOOK_ID || 'APP_ID',

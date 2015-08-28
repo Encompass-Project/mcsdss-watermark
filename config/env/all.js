@@ -2,16 +2,19 @@
 
 module.exports = {
 	app: {
-		title: 'mcsdss',
-		description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
-		keywords: 'MongoDB, Express, AngularJS, Node.js'
+		title: 'MCSDSS',
+		// description: 'Full-Stack JavaScript with MongoDB, Express, AngularJS, and Node.js',
+		description: 'A Multi-Criteria Spatial Decision Support System',
+		// keywords: 'MongoDB, Express, AngularJS, Node.js'
+		keywords: 'Decision Support System, Multi-criteria, Spatial, GIS, Decision Theory, Decision Analysis, AHP, Analytical Hierarchy Process'
 	},
-	port: process.env.PORT || 3000,
+	port: process.env.PORT || 8888, //3000,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',
 	assets: {
 		lib: {
+			// You can use CDN paths here in the production builds.
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
