@@ -6,8 +6,11 @@ module.exports = function(grunt) {
 		serverViews: ['app/views/**/*.*'],
 		serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
 		clientViews: ['public/modules/**/views/**/*.html'],
-		clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
-		clientCSS: ['public/modules/**/*.css'],
+		clientJS: ['public/js/*.js', 'public/modules/**/scripts/*.js'],
+		// UNRESOLVED ISSUE: sass build automation is working but styles are not expressed in view.
+		// CURRENT SOLUTION: using plain css for now.
+		sass: ['public/modules/**/scss/*.{scss,sass}'],
+		clientCSS: ['public/css/*.css', 'public/modules/**/css/*.css'],
 		mochaTests: ['app/tests/**/*.js']
 	};
 
@@ -45,6 +48,13 @@ module.exports = function(grunt) {
 				files: watchFiles.clientCSS,
 				tasks: ['csslint'],
 				options: {
+					livereload: true
+				}
+			},
+			sass: {
+			    files: watchFiles.sass,
+			    tasks: ['sass:dev'],
+			    options: {
 					livereload: true
 				}
 			}
@@ -105,6 +115,13 @@ module.exports = function(grunt) {
 				}
 			}
 		},
+		ngmin: {
+            production: {
+                files: {
+                    'public/dist/application.js': '<%= applicationJavaScriptFiles %>'
+                }
+            }
+        },
 		ngAnnotate: {
 			production: {
 				files: {
@@ -139,6 +156,25 @@ module.exports = function(grunt) {
 			unit: {
 				configFile: 'karma.conf.js'
 			}
+		},
+		sass: {
+			dev: {
+				files: {
+				'public/css/style.css': 'public/modules/**/scss/*.{scss,sass}',
+				//next line is not necessary if you include your bootstrap into the *.scss files
+				'public/css/bootstrap.css': 'public/lib/bootstrap-sass-official/assets/stylesheets/_bootstrap.scss'
+				}
+			},
+			dist: {
+				//you could use this as part of the build job (instead of using cssmin)
+				options: {
+					style: 'compressed',
+					compass: false
+				},
+				files: {
+					'public/dist/style.min.css': 'public/modules/**/scss/*.{scss,sass}'
+				}
+			}
 		}
 	});
 
@@ -158,7 +194,7 @@ module.exports = function(grunt) {
 	});
 
 	// Default task(s).
-	grunt.registerTask('default', ['lint', 'concurrent:default']);
+	grunt.registerTask('default', ['lint', 'sass:dev', 'concurrent:default']);
 
 	// Debug task.
 	grunt.registerTask('debug', ['lint', 'concurrent:debug']);
@@ -170,7 +206,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('lint', ['jshint', 'csslint']);
 
 	// Build task(s).
-	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'uglify', 'cssmin']);
+	grunt.registerTask('build', ['lint', 'loadConfig', 'ngAnnotate', 'uglify', 'sass:dist', 'cssmin']);
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);

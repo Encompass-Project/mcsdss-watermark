@@ -1,5 +1,50 @@
 {% extends 'layout.server.view.html' %}
 
+{*
+<!-- <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header> -->
+<!--
+<section class="content">
+    <section class="container">
+        {% block content %}{% endblock content %}
+    </section>
+</section>
+-->
+
+<!--
 {% block content %}
-	<section data-ui-view></section>
+    <section data-ui-view></section>
+{% endblock content %}
+-->
+
+<!--
+<section class="content">
+    <section class="container">
+        <section data-ui-view></section>
+    </section>
+</section>
+-->
+
+<!-- FACEBOOK SDK -->
+<!-- <script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '1688133921418731',
+      xfbml      : true,
+      version    : 'v2.4'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script> -->
+*}
+
+{% block content %}
+    <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+    <section data-ui-view></section>
 {% endblock %}

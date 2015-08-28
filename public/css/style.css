@@ -1,0 +1,15 @@
+/* Test scss build */
+/* Everything build correctly into /public/css/style.css but it does not render in the page. */
+/* FONT IMPORTS */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+@import url(https://fonts.googleapis.com/css?family=Pacifico);
+.testing {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 5rem;
+  background: #5cb85c;
+  color: #337ab7;
+  min-width: 20rem;
+  min-height: 5rem; }
+
+/*# sourceMappingURL=style.css.map */
