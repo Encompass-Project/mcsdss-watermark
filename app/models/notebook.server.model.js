@@ -7,13 +7,13 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Datum Schema
+ * Notebook Schema
  */
-var DatumSchema = new Schema({
+var NotebookSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Datum name',
+		required: 'Please fill Notebook name',
 		trim: true
 	},
 	created: {
@@ -26,4 +26,4 @@ var DatumSchema = new Schema({
 	}
 });
 
-mongoose.model('Datum', DatumSchema);
+mongoose.model('Notebook', NotebookSchema);

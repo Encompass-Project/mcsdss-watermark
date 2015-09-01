@@ -51,8 +51,8 @@
 				<p class="list-group-item-text" data-ng-bind="goal.models"></p>
 			</li>
 			<li class="list-group-item">
-				<h4 class="list-group-item-heading">Documents</h4>
-				<p class="list-group-item-text" data-ng-bind="goal.documents"></p>
+				<h4 class="list-group-item-heading">Notebooks</h4>
+				<p class="list-group-item-text" data-ng-bind="goal.notebooks"></p>
 			</li>
 			<li class="list-group-item">
 				<h4 class="list-group-item-heading">Publications</h4>
@@ -62,45 +62,10 @@
 				<h4 class="list-group-item-heading">Collaborators</h4>
 				<p class="list-group-item-text" data-ng-bind="goal.collaborators"></p>
 			</li>
-			<!-- <li class="list-group-item">
-				<h4 class="list-group-item-heading">Creation Date</h4>
-				<p class="list-group-item-text" data-ng-bind="goal.created | date:'mediumDate'"></p>
-			</li> -->
 			<li class="list-group-item">
 				<h4 class="list-group-item-heading">Last Updated</h4>
 				<p class="list-group-item-text" data-ng-bind="goal.updated | date:'mediumDate'"></p>
 			</li>
-
-
-			<!-- <li class="list-group-item">Created On: <span data-ng-bind="goal.created | date:'mediumDate'"></span></li> -->
-			<!-- <li class="list-group-item">Created By: <span data-ng-bind="goal.user.displayName"></span></li> -->
-			<!-- <li class="list-group-item">Description: <span data-ng-bind="goal.description"></span></li> -->
-			<!-- <li class="list-group-item">Assumptions: <span data-ng-bind="goal.assumptions"></span></li> -->
-			<!-- <li class="list-group-item">Objectives: <span data-ng-bind="goal.objectives"></span></li> -->
-			<!-- <li class="list-group-item">Constraints: <span data-ng-bind="goal.constraints"></span></li> -->
-			<!-- <li class="list-group-item">Measures: <span data-ng-bind="goal.measures"></span></li> -->
-			<!-- <li class="list-group-item">Datasets: <span data-ng-bind="goal.datasets"></span></li> -->
-			<!-- <li class="list-group-item">Models: <span data-ng-bind="goal.models"></span></li> -->
-			<!-- <li class="list-group-item">Documents: <span data-ng-bind="goal.documents"></span></li> -->
-			<!-- <li class="list-group-item">Publications: <span data-ng-bind="goal.publications"></span></li> -->
-			<!-- <li class="list-group-item">Collaborators: <span data-ng-bind="goal.collaborators"></span></li> -->
 		</ul>
 	</div>
-	<!-- <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == goal.user._id))">
-		<a class="btn btn-primary" href="/#!/goals/{{goal._id}}/edit">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-primary" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
-	</div> -->
-	<!--
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="goal.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="goal.user.displayName"></span>
-		</em>
-	</small> -->
 </section>

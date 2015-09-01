@@ -34,7 +34,7 @@ var GoalSchema = new Schema({
 	measures: [],
 	datasets: [],
 	models: [],
-	documents: [],
+	notebooks: [],
 	publications: [],
 	collaborators: [],
 	updated: {

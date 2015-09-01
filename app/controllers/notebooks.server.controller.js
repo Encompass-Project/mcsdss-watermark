@@ -5,102 +5,102 @@
  */
 var mongoose = require('mongoose'),
 	errorHandler = require('./errors.server.controller'),
-	Datum = mongoose.model('Datum'),
+	Notebook = mongoose.model('Notebook'),
 	_ = require('lodash');
 
 /**
- * Create a Datum
+ * Create a Notebook
  */
 exports.create = function(req, res) {
-	var datum = new Datum(req.body);
-	datum.user = req.user;
+	var notebook = new Notebook(req.body);
+	notebook.user = req.user;
 
-	datum.save(function(err) {
+	notebook.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(datum);
+			res.jsonp(notebook);
 		}
 	});
 };
 
 /**
- * Show the current Datum
+ * Show the current Notebook
  */
 exports.read = function(req, res) {
-	res.jsonp(req.datum);
+	res.jsonp(req.notebook);
 };
 
 /**
- * Update a Datum
+ * Update a Notebook
  */
 exports.update = function(req, res) {
-	var datum = req.datum ;
+	var notebook = req.notebook ;
 
-	datum = _.extend(datum , req.body);
+	notebook = _.extend(notebook , req.body);
 
-	datum.save(function(err) {
+	notebook.save(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(datum);
+			res.jsonp(notebook);
 		}
 	});
 };
 
 /**
- * Delete an Datum
+ * Delete an Notebook
  */
 exports.delete = function(req, res) {
-	var datum = req.datum ;
+	var notebook = req.notebook ;
 
-	datum.remove(function(err) {
+	notebook.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(datum);
+			res.jsonp(notebook);
 		}
 	});
 };
 
 /**
- * List of Data
+ * List of Notebooks
  */
 exports.list = function(req, res) { 
-	Datum.find().sort('-created').populate('user', 'displayName').exec(function(err, data) {
+	Notebook.find().sort('-created').populate('user', 'displayName').exec(function(err, notebooks) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
 			});
 		} else {
-			res.jsonp(data);
+			res.jsonp(notebooks);
 		}
 	});
 };
 
 /**
- * Datum middleware
+ * Notebook middleware
  */
-exports.datumByID = function(req, res, next, id) { 
-	Datum.findById(id).populate('user', 'displayName').exec(function(err, datum) {
+exports.notebookByID = function(req, res, next, id) { 
+	Notebook.findById(id).populate('user', 'displayName').exec(function(err, notebook) {
 		if (err) return next(err);
-		if (! datum) return next(new Error('Failed to load Datum ' + id));
-		req.datum = datum ;
+		if (! notebook) return next(new Error('Failed to load Notebook ' + id));
+		req.notebook = notebook ;
 		next();
 	});
 };
 
 /**
- * Datum authorization middleware
+ * Notebook authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.datum.user.id !== req.user.id) {
+	if (req.notebook.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
 	next();

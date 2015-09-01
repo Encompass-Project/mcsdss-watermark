@@ -18,13 +18,13 @@ angular.module('goals').controller('GoalsController', ['$scope', '$stateParams',
 				measures: this.measures,
 				datasets: this.datasets,
 				models: this.models,
-				documents: this.documents,
+				notebooks: this.notebooks,
 				publications: this.publications,
 				collaborators: this.collaborators,
 				updated: this.updated
 			});
 
-			console.log(goal);
+			// console.log(goal);
 
 			// Redirect after save
 			goal.$save(function(response) {
@@ -32,7 +32,17 @@ angular.module('goals').controller('GoalsController', ['$scope', '$stateParams',
 
 				// Clear form fields
 				$scope.name = '';
-				// TBD rest of fields.
+				$scope.description = '';
+				$scope.assumptions = '';
+				$scope.objectives = '';
+				$scope.constraints = '';
+				$scope.measures = '';
+				$scope.datasets = '';
+				$scope.models = '';
+				$scope.notebooks = '';
+				$scope.publications = '';
+				$scope.collaborators = '';
+
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
