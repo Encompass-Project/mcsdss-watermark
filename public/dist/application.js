@@ -44,131 +44,27 @@ angular.element(document).ready(function() {
 'use strict';
 
 // Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('articles');
-'use strict';
-
-// Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('core');
-'use strict';
-
-// Use applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('decisions');
-'use strict';
-
-// Use applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('geojsons');
 'use strict';
 
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('users');
 'use strict';
 
-// Configuring the Articles module
-angular.module('articles').run(['Menus',
-	function(Menus) {
-		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Articles', 'articles', 'dropdown', '/articles(/create)?');
-		Menus.addSubMenuItem('topbar', 'articles', 'List Articles', 'articles');
-		Menus.addSubMenuItem('topbar', 'articles', 'New Article', 'articles/create');
-	}
-]);
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('data');
 'use strict';
 
-// Setting up route
-angular.module('articles').config(['$stateProvider',
-	function($stateProvider) {
-		// Articles state routing
-		$stateProvider.
-		state('listArticles', {
-			url: '/articles',
-			templateUrl: 'modules/articles/views/list-articles.client.view.html'
-		}).
-		state('createArticle', {
-			url: '/articles/create',
-			templateUrl: 'modules/articles/views/create-article.client.view.html'
-		}).
-		state('viewArticle', {
-			url: '/articles/:articleId',
-			templateUrl: 'modules/articles/views/view-article.client.view.html'
-		}).
-		state('editArticle', {
-			url: '/articles/:articleId/edit',
-			templateUrl: 'modules/articles/views/edit-article.client.view.html'
-		});
-	}
-]);
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('models');
 'use strict';
 
-angular.module('articles').controller('ArticlesController', ['$scope', '$stateParams', '$location', 'Authentication', 'Articles',
-	function($scope, $stateParams, $location, Authentication, Articles) {
-		$scope.authentication = Authentication;
-
-		$scope.create = function() {
-			var article = new Articles({
-				title: this.title,
-				content: this.content
-			});
-			article.$save(function(response) {
-				$location.path('articles/' + response._id);
-
-				$scope.title = '';
-				$scope.content = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		$scope.remove = function(article) {
-			if (article) {
-				article.$remove();
-
-				for (var i in $scope.articles) {
-					if ($scope.articles[i] === article) {
-						$scope.articles.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.article.$remove(function() {
-					$location.path('articles');
-				});
-			}
-		};
-
-		$scope.update = function() {
-			var article = $scope.article;
-
-			article.$update(function() {
-				$location.path('articles/' + article._id);
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		$scope.find = function() {
-			$scope.articles = Articles.query();
-		};
-
-		$scope.findOne = function() {
-			$scope.article = Articles.get({
-				articleId: $stateParams.articleId
-			});
-		};
-	}
-]);
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('goals');
 'use strict';
 
-//Articles service used for communicating with the articles REST endpoints
-angular.module('articles').factory('Articles', ['$resource',
-	function($resource) {
-		return $resource('articles/:articleId', {
-			articleId: '@_id'
-		}, {
-			update: {
-				method: 'PUT'
-			}
-		});
-	}
-]);
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('decisions');
 'use strict';
 
 // Setting up route
@@ -224,7 +120,7 @@ angular.module('core').service('Menus', [
 		// Define the menus object
 		this.menus = {};
 
-		// A private function for rendering decision 
+		// A private function for rendering decision
 		var shouldRender = function(user) {
 			if (user) {
 				if (!!~this.roles.indexOf('*')) {
@@ -380,250 +276,6 @@ angular.module('core').service('Menus', [
 ]);
 'use strict';
 
-// Configuring the Articles module
-angular.module('decisions').run(['Menus',
-	function(Menus) {
-		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Decisions', 'decisions', 'dropdown', '/decisions(/create)?');
-		Menus.addSubMenuItem('topbar', 'decisions', 'List Decisions', 'decisions');
-		Menus.addSubMenuItem('topbar', 'decisions', 'New Decision', 'decisions/create');
-	}
-]);
-'use strict';
-
-//Setting up route
-angular.module('decisions').config(['$stateProvider',
-	function($stateProvider) {
-		// Decisions state routing
-		$stateProvider.
-		state('listDecisions', {
-			url: '/decisions',
-			templateUrl: 'modules/decisions/views/list-decisions.client.view.html'
-		}).
-		state('createDecision', {
-			url: '/decisions/create',
-			templateUrl: 'modules/decisions/views/create-decision.client.view.html'
-		}).
-		state('viewDecision', {
-			url: '/decisions/:decisionId',
-			templateUrl: 'modules/decisions/views/view-decision.client.view.html'
-		}).
-		state('editDecision', {
-			url: '/decisions/:decisionId/edit',
-			templateUrl: 'modules/decisions/views/edit-decision.client.view.html'
-		});
-	}
-]);
-'use strict';
-
-// Decisions controller
-angular.module('decisions').controller('DecisionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Decisions',
-	function($scope, $stateParams, $location, Authentication, Decisions) {
-		$scope.authentication = Authentication;
-
-		// Create new Decision
-		$scope.create = function() {
-			// Create new Decision object
-			var decision = new Decisions ({
-				name: this.name
-			});
-
-			// Redirect after save
-			decision.$save(function(response) {
-				$location.path('decisions/' + response._id);
-
-				// Clear form fields
-				$scope.name = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		// Remove existing Decision
-		$scope.remove = function(decision) {
-			if ( decision ) { 
-				decision.$remove();
-
-				for (var i in $scope.decisions) {
-					if ($scope.decisions [i] === decision) {
-						$scope.decisions.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.decision.$remove(function() {
-					$location.path('decisions');
-				});
-			}
-		};
-
-		// Update existing Decision
-		$scope.update = function() {
-			var decision = $scope.decision;
-
-			decision.$update(function() {
-				$location.path('decisions/' + decision._id);
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		// Find a list of Decisions
-		$scope.find = function() {
-			$scope.decisions = Decisions.query();
-		};
-
-		// Find existing Decision
-		$scope.findOne = function() {
-			$scope.decision = Decisions.get({ 
-				decisionId: $stateParams.decisionId
-			});
-		};
-	}
-]);
-'use strict';
-
-//Decisions service used to communicate Decisions REST endpoints
-angular.module('decisions').factory('Decisions', ['$resource',
-	function($resource) {
-		return $resource('decisions/:decisionId', { decisionId: '@_id'
-		}, {
-			update: {
-				method: 'PUT'
-			}
-		});
-	}
-]);
-'use strict';
-
-// Configuring the Articles module
-angular.module('geojsons').run(['Menus',
-	function(Menus) {
-		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Geojsons', 'geojsons', 'dropdown', '/geojsons(/create)?');
-		Menus.addSubMenuItem('topbar', 'geojsons', 'List Geojsons', 'geojsons');
-		Menus.addSubMenuItem('topbar', 'geojsons', 'New Geojson', 'geojsons/create');
-	}
-]);
-'use strict';
-
-//Setting up route
-angular.module('geojsons').config(['$stateProvider',
-	function($stateProvider) {
-		// Geojsons state routing
-		$stateProvider.
-		state('case', {
-			url: '/case',
-			templateUrl: 'modules/geojsons/views/case.client.view.html'
-		}).
-		state('listGeojsons', {
-			url: '/geojsons',
-			templateUrl: 'modules/geojsons/views/list-geojsons.client.view.html'
-		}).
-		state('createGeojson', {
-			url: '/geojsons/create',
-			templateUrl: 'modules/geojsons/views/create-geojson.client.view.html'
-		}).
-		state('viewGeojson', {
-			url: '/geojsons/:geojsonId',
-			templateUrl: 'modules/geojsons/views/view-geojson.client.view.html'
-		}).
-		state('editGeojson', {
-			url: '/geojsons/:geojsonId/edit',
-			templateUrl: 'modules/geojsons/views/edit-geojson.client.view.html'
-		});
-	}
-]);
-'use strict';
-
-angular.module('geojsons').controller('CaseController', ['$scope',
-	function($scope) {
-		// Case controller logic
-		// ...
-	}
-]);
-'use strict';
-
-// Geojsons controller
-angular.module('geojsons').controller('GeojsonsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Geojsons',
-	function($scope, $stateParams, $location, Authentication, Geojsons) {
-		$scope.authentication = Authentication;
-
-		// Create new Geojson
-		$scope.create = function() {
-			// Create new Geojson object
-			var geojson = new Geojsons ({
-				name: this.name,
-				description: this.description
-			});
-
-			// Redirect after save
-			geojson.$save(function(response) {
-				$location.path('geojsons/' + response._id);
-
-				// Clear form fields
-				$scope.name = '';
-				$scope.description = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		// Remove existing Geojson
-		$scope.remove = function(geojson) {
-			if ( geojson ) {
-				geojson.$remove();
-
-				for (var i in $scope.geojsons) {
-					if ($scope.geojsons [i] === geojson) {
-						$scope.geojsons.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.geojson.$remove(function() {
-					$location.path('geojsons');
-				});
-			}
-		};
-
-		// Update existing Geojson
-		$scope.update = function() {
-			var geojson = $scope.geojson;
-
-			geojson.$update(function() {
-				$location.path('geojsons/' + geojson._id);
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		// Find a list of Geojsons
-		$scope.find = function() {
-			$scope.geojsons = Geojsons.query();
-		};
-
-		// Find existing Geojson
-		$scope.findOne = function() {
-			$scope.geojson = Geojsons.get({
-				geojsonId: $stateParams.geojsonId
-			});
-		};
-	}
-]);
-'use strict';
-
-//Geojsons service used to communicate Geojsons REST endpoints
-angular.module('geojsons').factory('Geojsons', ['$resource',
-	function($resource) {
-		return $resource('geojsons/:geojsonId', { geojsonId: '@_id'
-		}, {
-			update: {
-				method: 'PUT'
-			}
-		});
-	}
-]);
-'use strict';
-
 // Config HTTP Error Handling
 angular.module('users').config(['$httpProvider',
 	function($httpProvider) {
@@ -641,7 +293,7 @@ angular.module('users').config(['$httpProvider',
 								$location.path('signin');
 								break;
 							case 403:
-								// Add unauthorized behaviour 
+								// Add unauthorized behaviour
 								break;
 						}
 
@@ -784,7 +436,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');
 
-		// Check if there are additional accounts 
+		// Check if there are additional accounts
 		$scope.hasConnectedAdditionalSocialAccounts = function(provider) {
 			for (var i in $scope.user.additionalProvidersData) {
 				return true;
@@ -872,3 +524,118 @@ angular.module('users').factory('Users', ['$resource',
 		});
 	}
 ]);
+
+// Configuring the Decisions module
+angular.module('decisions').run(['Menus',
+	function(Menus) {
+		// Set top bar menu items
+		Menus.addMenuItem('topbar', 'Decisions', 'decisions', 'dropdown', '/decisions(/create)?');
+		Menus.addSubMenuItem('topbar', 'decisions', 'List Decisions', 'decisions');
+		Menus.addSubMenuItem('topbar', 'decisions', 'New Decision', 'decisions/create');
+	}
+]);
+'use strict';
+
+//Setting up route
+angular.module('decisions').config(['$stateProvider',
+	function($stateProvider) {
+		// Decisions state routing
+		$stateProvider.
+		state('listDecisions', {
+			url: '/decisions',
+			templateUrl: 'modules/decisions/views/list-decisions.client.view.html'
+		}).
+		state('createDecision', {
+			url: '/decisions/create',
+			templateUrl: 'modules/decisions/views/create-decision.client.view.html'
+		}).
+		state('viewDecision', {
+			url: '/decisions/:decisionId',
+			templateUrl: 'modules/decisions/views/view-decision.client.view.html'
+		}).
+		state('editDecision', {
+			url: '/decisions/:decisionId/edit',
+			templateUrl: 'modules/decisions/views/edit-decision.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Decisions controller
+angular.module('decisions').controller('DecisionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Decisions',
+	function($scope, $stateParams, $location, Authentication, Decisions) {
+		$scope.authentication = Authentication;
+
+		// Create new Decision
+		$scope.create = function() {
+			// Create new Decision object
+			var decision = new Decisions ({
+				name: this.name
+			});
+
+			// Redirect after save
+			decision.$save(function(response) {
+				$location.path('decisions/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Decision
+		$scope.remove = function(decision) {
+			if ( decision ) {
+				decision.$remove();
+
+				for (var i in $scope.decisions) {
+					if ($scope.decisions [i] === decision) {
+						$scope.decisions.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.decision.$remove(function() {
+					$location.path('decisions');
+				});
+			}
+		};
+
+		// Update existing Decision
+		$scope.update = function() {
+			var decision = $scope.decision;
+
+			decision.$update(function() {
+				$location.path('decisions/' + decision._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Decisions
+		$scope.find = function() {
+			$scope.decisions = Decisions.query();
+		};
+
+		// Find existing Decision
+		$scope.findOne = function() {
+			$scope.decision = Decisions.get({
+				decisionId: $stateParams.decisionId
+			});
+		};
+	}
+]);
+'use strict';
+
+//Decisions service used to communicate Decisions REST endpoints
+angular.module('decisions').factory('Decisions', ['$resource',
+	function($resource) {
+		return $resource('decisions/:decisionId', { decisionId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+'use strict';

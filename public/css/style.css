@@ -1,15 +1,18 @@
 /* Test scss build */
 /* Everything build correctly into /public/css/style.css but it does not render in the page. */
 /* FONT IMPORTS */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
-@import url(https://fonts.googleapis.com/css?family=Indie+Flower);
-@import url(https://fonts.googleapis.com/css?family=Pacifico);
-.testing {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 5rem;
-  background: #5cb85c;
-  color: #337ab7;
-  min-width: 20rem;
-  min-height: 5rem; }
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans);*/
+/*@import url(https://fonts.googleapis.com/css?family=Indie+Flower);*/
+/*@import url(https://fonts.googleapis.com/css?family=Pacifico);*/
+/*$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7*/
+/*$brand-success:         #5cb85c !default;*/
+/*.testing {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 5rem;
+    background: $brand-success;
+    color: $brand-primary;
+    min-width: 20rem;
+    min-height: 5rem;
+}*/
 
 /*# sourceMappingURL=style.css.map */

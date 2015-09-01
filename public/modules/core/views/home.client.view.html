@@ -1,14 +1,26 @@
 <section class="partial-home" data-ng-controller="HomeController">
+    <!-- <h1>home client view</h1> -->
+    <div class="content" data-ng-show="authentication.user">
+        <h2>Welcome back, {{ displayName }}</h2>
+    </div>
+    <div class="content" data-ng-hide="authentication.user">
+        <h2>What is MCSDSS?</h2>
+    </div>
 
-	<h1>index view</h1>
-
-    <!-- Facebook OAUth Integration -->
-	<!-- <h2>Facebook integration testing</h2>
-	<div
-	  class="fb-like"
-	  data-share="true"
-	  data-width="450"
-	  data-show-faces="true">
-	</div> -->
-
+    <div class="hover-menu">
+        <!-- <div class="context-menu">
+            <h2>hover menu element</h2>
+        </div> -->
+    </div>
+    <div>
+        <!-- Facebook OAUth Integration -->
+        <!-- <h2>Facebook integration testing</h2>
+        <div
+          class="fb-like"
+          data-share="true"
+          data-width="450"
+          data-show-faces="true">
+        </div> -->
+    </div>
+    <!-- <leaflet center="center"></leaflet> -->
 </section>

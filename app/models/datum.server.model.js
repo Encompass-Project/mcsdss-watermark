@@ -7,13 +7,13 @@ var mongoose = require('mongoose'),
 	Schema = mongoose.Schema;
 
 /**
- * Decision Schema
+ * Datum Schema
  */
-var DecisionSchema = new Schema({
+var DatumSchema = new Schema({
 	name: {
 		type: String,
 		default: '',
-		required: 'Please fill Decision name',
+		required: 'Please fill Datum name',
 		trim: true
 	},
 	created: {
@@ -24,12 +24,6 @@ var DecisionSchema = new Schema({
 		type: Schema.ObjectId,
 		ref: 'User'
 	}
-	/*,
-	// description: {
-	// 	type: Text,
-	// 	default: ''
-	// },
-	*/
 });
 
-mongoose.model('Decision', DecisionSchema);
+mongoose.model('Datum', DatumSchema);

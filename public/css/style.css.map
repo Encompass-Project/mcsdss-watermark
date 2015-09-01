@@ -1,7 +1,7 @@
 {
 "version": 3,
-"mappings": ";;;AAIQ,8DAAsD;AACtD,iEAAyD;AACzD,6DAAqD;AAK7D,QAAS;EACL,WAAW,EAAE,uBAAuB;EACpC,SAAS,EAAE,IAAI;EACf,UAAU,EALU,OAAO;EAM3B,KAAK,EAPe,OAAqB;EAQzC,SAAS,EAAE,KAAK;EAChB,UAAU,EAAE,IAAI",
-"sources": ["../modules/core/scss/style.scss"],
+"mappings": "",
+"sources": [],
 "names": [],
 "file": "style.css"
 }
