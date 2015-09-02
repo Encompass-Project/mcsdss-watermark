@@ -51,9 +51,42 @@ li.dropdown.open > a.dropdown-toggle:hover, li.dropdown.open > a.dropdown-menu:h
 }
 */
 
+/* Index View */
+.landing-page {
+    padding: 1rem 5rem;
+}
+/* User Dashboard */
+.dashboard-topbar {
+    padding: 1rem 5rem;
+}
+.dashboard-sidemenu {
+    background: rgba(32,32,32,0.2);
+    height: 100%;
+    /*left: -2rem;*/
+    left: 0;
+    padding-top: 1rem;
+    text-align: center;
+}
+.dashboard-sidemenu-item {
+    /*background: rgba(32,32,32,0.2);*/
+    margin: 2rem 1rem;
+    padding: 2rem;
+    text-align: center;
+    /*vertical-align: center;*/
+    width: auto;
+    height: 9rem;
+    border: 1px solid rgba(232,248,255,0.2);
+    /*border-radius: 1rem;*/
+}
+.dashboard-userinfo {
+    background: rgba(32,32,32,0.5);
+    /*width: auto;*/
+    min-height: 20rem;
+}
+
 /* Custom CSS for Home View Partial */
 .partial-home {
-    height: 200rem;
+    /*height: 200rem;*/
     /*background: rgba(100,150,200,0.5);*/
 }
 .hover-menu {

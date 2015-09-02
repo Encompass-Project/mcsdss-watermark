@@ -1,26 +1,58 @@
 <section class="partial-home" data-ng-controller="HomeController">
     <!-- <h1>home client view</h1> -->
-    <div class="content" data-ng-show="authentication.user">
-        <h2>Welcome back, {{ displayName }}</h2>
-    </div>
     <div class="content" data-ng-hide="authentication.user">
-        <h2>What is MCSDSS?</h2>
+        <div class="row">
+            <div class="landing-page">
+                <h2>Welcome to MCSDSS!</h2>
+                <div>
+                    <p>What is MCSDSS?</p>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="hover-menu">
-        <!-- <div class="context-menu">
-            <h2>hover menu element</h2>
-        </div> -->
+    <div class="content" data-ng-show="authentication.user">
+        <div class="row">
+            <div class="col-sm-4 dashboard-topbar">
+                <!-- <h2>Welcome back, {{ displayName }}</h2> -->
+            </div>
+        </div>
+        <div class="row">
+            <div class="hidden-xs col-sm-2 dashboard-sidemenu">
+                <h4>Menu</h4>
+                <a href="#"><div class="dashboard-sidemenu-item"><span class="fa fa-2x fa-database" aria-hidden="true"></span><p>My Data</p></div></a>
+                <a href="#"><div class="dashboard-sidemenu-item"><span class="fa fa-2x fa-database" aria-hidden="true"></span><p>My Models</p></div></a>
+                <a href="#"><div class="dashboard-sidemenu-item"><span class="fa fa-2x fa-sticky-note" aria-hidden="true"></span><p>My Notes</p></div></a>
+                <a href="#"><div class="dashboard-sidemenu-item"><span class="fa fa-2x fa-bullseye" aria-hidden="true"></span><p>My Goals</p></div></a>
+                <a href="#"><div class="dashboard-sidemenu-item"><span class="fa fa-2x fa-balance-scale" aria-hidden="true"></span><p>My Decisions</p></div></a>
+                <a href="#"><div class="dashboard-sidemenu-item"><span class="fa fa-2x fa-database" aria-hidden="true"></span><p>My Pubs</p></div></a>
+            </div>
+            <div class="col-sm-3 dashboard-userinfo">
+                <h3>{{ displayName }}</h3>
+                <!-- <img src="" /> -->
+            </div>
+            <div class="col-sm-7">
+                <p>Details</p>
+            </div>
+        </div>
     </div>
-    <div>
-        <!-- Facebook OAUth Integration -->
-        <!-- <h2>Facebook integration testing</h2>
+
+    <!-- <div class="hover-menu">
+        <div class="context-menu">
+            <h2>hover menu element</h2>
+        </div>
+    </div> -->
+
+    <!-- Facebook OAUth Integration -->
+    <!-- <div>
+        <h2>Facebook integration testing</h2>
         <div
           class="fb-like"
           data-share="true"
           data-width="450"
           data-show-faces="true">
-        </div> -->
-    </div>
+        </div>
+    </div> -->
+
     <!-- <leaflet center="center"></leaflet> -->
 </section>
