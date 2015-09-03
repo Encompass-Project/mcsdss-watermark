@@ -9,3 +9,12 @@
 @import url('goals-view.css');
 @import url('decisions-view.css');
 @import url('publications-view.css');
+
+/* Third party themes */
+@import url('vendor/superhero.bootstrap.css');
+/*@import url('vendor/yeti.bootstrap.css');*/
+/*@import url('vendor/flatly.bootstrap.css');*/
+/*@import url('vendor/slate.bootstrap.css');*/
+/*@import url('vendor/flat-ui.css');*/
+/*@import url('vendor/darkly.bootstrap.css');*/
+/*@import url('vendor/sandstone.bootstrap.css');*/

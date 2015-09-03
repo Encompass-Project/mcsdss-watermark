@@ -1,0 +1,6 @@
+* { font-family: 'Ubuntu', sans-serif; -webkit-font-smoothing:antialiased !important; -moz-osx-font-smoothing: grayscale !important; }
+html { font-size: 100%; text-rendering: optimizeLegibility; }
+html .touch * { text-rendering: optimizeSpeed; }
+body { min-width: 480px; margin: 0; padding: 0; font-size: 1rem; background: #245 !important; color: #FFF !important; cursor: default !important; }
+section:first-of-type  > section:nth-of-type(1) { width: 100%; padding: 50px 0 0; }
+a { text-decoration: none !important; }

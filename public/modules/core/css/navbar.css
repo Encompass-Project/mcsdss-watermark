@@ -11,15 +11,20 @@
     background: rgba(0,0,0,0.5);
 }
 .navbar-brand {
-    font-family: 'Open Sans', sans-serif;
     font-size: 3rem;
     font-weight: 700;
 }
+.search-box {
+    min-width: 30rem;
+    width: auto;
+}
+
+/* UNUSED */
+/*
 a.navbar-brand, ul.nav > li > a {
     color: #FFFFFF;
     color: rgba(255,255,255,1) !important;
 }
-/*
 a.navbar-brand:hover, ul.nav > li > a:hover {
     color: rgba(255,255,255,1) !important;
 }
@@ -35,6 +40,3 @@ li.dropdown.open > a.dropdown-toggle:hover, li.dropdown.open > a.dropdown-menu:h
     color: rgba(255,255,255,1) !important;
 }
 */
-.search-box {
-    min-width: 30rem;
-}

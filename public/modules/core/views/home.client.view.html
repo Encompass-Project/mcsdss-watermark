@@ -1,14 +1,10 @@
 <section data-ng-controller="HomeController">
     <!-- Default Landing View -->
     <div class="content" data-ng-hide="authentication.user">
-        <div class="row">
-            <div data-ng-include="defaultTemplate.path"></div>
-        </div>
+        <div data-ng-include="defaultTemplate.path"></div>
     </div>
     <!-- User Specific Dashboard -->
     <div class="content" data-ng-show="authentication.user">
-        <div class="row">
-            <div data-ng-include="userTemplate.path"></div>
-        </div>
+        <div data-ng-include="userTemplate.path"></div>
     </div>
 </section>
