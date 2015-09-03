@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mcsdss';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils'];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils']; // 'leaflet-directive'
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {
@@ -47,16 +47,12 @@ angular.element(document).ready(function() {
 ApplicationConfiguration.registerModule('core');
 'use strict';
 
-// Use Applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('users');
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('datasets');
 'use strict';
 
 // Use applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('data');
-'use strict';
-
-// Use applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('models');
+ApplicationConfiguration.registerModule('decisions');
 'use strict';
 
 // Use applicaion configuration module to register a new module
@@ -64,12 +60,21 @@ ApplicationConfiguration.registerModule('goals');
 'use strict';
 
 // Use applicaion configuration module to register a new module
-ApplicationConfiguration.registerModule('decisions');
+ApplicationConfiguration.registerModule('models');
+'use strict';
+
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('notebooks');
+'use strict';
+
+// Use Applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('users');
 'use strict';
 
 // Setting up route
 angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
+
 		// Redirect to home view when route not found
 		$urlRouterProvider.otherwise('/');
 
@@ -80,6 +85,70 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 			templateUrl: 'modules/core/views/home.client.view.html'
 		});
 	}
+]);
+'use strict';
+
+angular.module('core').controller('DashboardSidebarController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.displayName = $scope.authentication.user.displayName;
+
+        $scope.selectedTemplate = {
+            'path':'modules/core/views/client.dashboard.view.html'
+        };
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DashboardViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'client.dashboard.view.html';
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DatasetsViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'client.datasets.view.html';
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DecisionsViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'client.decisions.view.html';
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DefaultViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'client.default.view.html';
+    }
+]);
+'use strict';
+
+angular.module('core').controller('GoalsViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'client.goals.view.html';
+    }
 ]);
 'use strict';
 
@@ -97,16 +166,59 @@ angular.module('core').controller('HeaderController', ['$scope', 'Authentication
 		$scope.$on('$stateChangeSuccess', function() {
 			$scope.isCollapsed = false;
 		});
+
+		// $scope.filter('customNavbarOrder', function() {
+		// 	function navbarOrder(subitem) {
+		// 		// tbd.
+		// 	}
+		// });
 	}
 ]);
 'use strict';
-
 
 angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	function($scope, Authentication) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
+
+        $scope.defaultTemplate = {
+            'path':'modules/core/views/client.default.view.html'
+        };
+
+        $scope.userTemplate = {
+            'path':'modules/core/views/client.user.view.html'
+        };
 	}
+]);
+'use strict';
+
+angular.module('core').controller('ModelsViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'client.models.view.html';
+    }
+]);
+'use strict';
+
+angular.module('core').controller('NotebooksViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'client.notebooks.view.html';
+    }
+]);
+'use strict';
+
+angular.module('core').controller('PublicationsViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'client.publications.view.html';
+    }
 ]);
 'use strict';
 
@@ -120,7 +232,7 @@ angular.module('core').service('Menus', [
 		// Define the menus object
 		this.menus = {};
 
-		// A private function for rendering decision
+		// A private function for rendering decision 
 		var shouldRender = function(user) {
 			if (user) {
 				if (!!~this.roles.indexOf('*')) {
@@ -276,6 +388,621 @@ angular.module('core').service('Menus', [
 ]);
 'use strict';
 
+// Configuring the Articles module
+// Uncomment to include in topbar navigation.
+/*
+angular.module('datasets').run(['Menus',
+	function(Menus) {
+		// Set top bar menu items
+		Menus.addMenuItem('topbar', 'Datasets', 'datasets', 'dropdown', '/datasets(/create)?');
+		Menus.addSubMenuItem('topbar', 'datasets', 'List Datasets', 'datasets');
+		Menus.addSubMenuItem('topbar', 'datasets', 'New Dataset', 'datasets/create');
+	}
+]);
+*/
+'use strict';
+
+//Setting up route
+angular.module('datasets').config(['$stateProvider',
+	function($stateProvider) {
+		// Datasets state routing
+		$stateProvider.
+		state('listDatasets', {
+			url: '/datasets',
+			templateUrl: 'modules/datasets/views/list-datasets.client.view.html'
+		}).
+		state('createDataset', {
+			url: '/datasets/create',
+			templateUrl: 'modules/datasets/views/create-dataset.client.view.html'
+		}).
+		state('viewDataset', {
+			url: '/datasets/:datasetId',
+			templateUrl: 'modules/datasets/views/view-dataset.client.view.html'
+		}).
+		state('editDataset', {
+			url: '/datasets/:datasetId/edit',
+			templateUrl: 'modules/datasets/views/edit-dataset.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Datasets controller
+angular.module('datasets').controller('DatasetsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Datasets',
+	function($scope, $stateParams, $location, Authentication, Datasets) {
+		$scope.authentication = Authentication;
+
+		// Create new Dataset
+		$scope.create = function() {
+			// Create new Dataset object
+			var dataset = new Datasets ({
+				name: this.name
+			});
+
+			// Redirect after save
+			dataset.$save(function(response) {
+				$location.path('datasets/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Dataset
+		$scope.remove = function(dataset) {
+			if ( dataset ) { 
+				dataset.$remove();
+
+				for (var i in $scope.datasets) {
+					if ($scope.datasets [i] === dataset) {
+						$scope.datasets.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.dataset.$remove(function() {
+					$location.path('datasets');
+				});
+			}
+		};
+
+		// Update existing Dataset
+		$scope.update = function() {
+			var dataset = $scope.dataset;
+
+			dataset.$update(function() {
+				$location.path('datasets/' + dataset._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Datasets
+		$scope.find = function() {
+			$scope.datasets = Datasets.query();
+		};
+
+		// Find existing Dataset
+		$scope.findOne = function() {
+			$scope.dataset = Datasets.get({ 
+				datasetId: $stateParams.datasetId
+			});
+		};
+	}
+]);
+'use strict';
+
+//Datasets service used to communicate Datasets REST endpoints
+angular.module('datasets').factory('Datasets', ['$resource',
+	function($resource) {
+		return $resource('datasets/:datasetId', { datasetId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+'use strict';
+
+// Configuring the Articles module
+// Uncomment to include in topbar navigation.
+/*
+angular.module('decisions').run(['Menus',
+	function(Menus) {
+		// Set top bar menu items
+		Menus.addMenuItem('topbar', 'Decisions', 'decisions', 'dropdown', '/decisions(/create)?');
+		Menus.addSubMenuItem('topbar', 'decisions', 'List Decisions', 'decisions');
+		Menus.addSubMenuItem('topbar', 'decisions', 'New Decision', 'decisions/create');
+	}
+]);
+*/
+'use strict';
+
+//Setting up route
+angular.module('decisions').config(['$stateProvider',
+	function($stateProvider) {
+		// Decisions state routing
+		$stateProvider.
+		state('listDecisions', {
+			url: '/decisions',
+			templateUrl: 'modules/decisions/views/list-decisions.client.view.html'
+		}).
+		state('createDecision', {
+			url: '/decisions/create',
+			templateUrl: 'modules/decisions/views/create-decision.client.view.html'
+		}).
+		state('viewDecision', {
+			url: '/decisions/:decisionId',
+			templateUrl: 'modules/decisions/views/view-decision.client.view.html'
+		}).
+		state('editDecision', {
+			url: '/decisions/:decisionId/edit',
+			templateUrl: 'modules/decisions/views/edit-decision.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Decisions controller
+angular.module('decisions').controller('DecisionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Decisions',
+	function($scope, $stateParams, $location, Authentication, Decisions) {
+		$scope.authentication = Authentication;
+
+		// Create new Decision
+		$scope.create = function() {
+			// Create new Decision object
+			var decision = new Decisions ({
+				name: this.name
+			});
+
+			// Redirect after save
+			decision.$save(function(response) {
+				$location.path('decisions/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Decision
+		$scope.remove = function(decision) {
+			if ( decision ) { 
+				decision.$remove();
+
+				for (var i in $scope.decisions) {
+					if ($scope.decisions [i] === decision) {
+						$scope.decisions.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.decision.$remove(function() {
+					$location.path('decisions');
+				});
+			}
+		};
+
+		// Update existing Decision
+		$scope.update = function() {
+			var decision = $scope.decision;
+
+			decision.$update(function() {
+				$location.path('decisions/' + decision._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Decisions
+		$scope.find = function() {
+			$scope.decisions = Decisions.query();
+		};
+
+		// Find existing Decision
+		$scope.findOne = function() {
+			$scope.decision = Decisions.get({ 
+				decisionId: $stateParams.decisionId
+			});
+		};
+	}
+]);
+'use strict';
+
+//Decisions service used to communicate Decisions REST endpoints
+angular.module('decisions').factory('Decisions', ['$resource',
+	function($resource) {
+		return $resource('decisions/:decisionId', { decisionId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+'use strict';
+
+// Configuring the Articles module
+// Uncomment to include in topbar navigation.
+/*
+angular.module('goals').run(['Menus',
+	function(Menus) {
+		// Set top bar menu items
+		Menus.addMenuItem('topbar', 'Goals', 'goals', 'dropdown', '/goals(/create)?');
+		Menus.addSubMenuItem('topbar', 'goals', 'List Goals', 'goals');
+		Menus.addSubMenuItem('topbar', 'goals', 'New Goal', 'goals/create');
+	}
+]);
+*/
+'use strict';
+
+//Setting up route
+angular.module('goals').config(['$stateProvider',
+	function($stateProvider) {
+		// Goals state routing
+		$stateProvider.
+		state('listGoals', {
+			url: '/goals',
+			templateUrl: 'modules/goals/views/list-goals.client.view.html'
+		}).
+		state('createGoal', {
+			url: '/goals/create',
+			templateUrl: 'modules/goals/views/create-goal.client.view.html'
+		}).
+		state('viewGoal', {
+			url: '/goals/:goalId',
+			templateUrl: 'modules/goals/views/view-goal.client.view.html'
+		}).
+		state('editGoal', {
+			url: '/goals/:goalId/edit',
+			templateUrl: 'modules/goals/views/edit-goal.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Goals controller
+angular.module('goals').controller('GoalsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Goals',
+	function($scope, $stateParams, $location, Authentication, Goals) {
+		$scope.authentication = Authentication;
+		$scope.textLimitListView = 140;
+
+		// Create new Goal
+		$scope.create = function() {
+			// Create new Goal object
+			var goal = new Goals ({
+				name: this.name,
+				description: this.description,
+				assumptions: this.assumptions,
+				objectives: this.objectives,
+				constraints: this.constraints,
+				measures: this.measures,
+				datasets: this.datasets,
+				models: this.models,
+				notebooks: this.notebooks,
+				publications: this.publications,
+				collaborators: this.collaborators,
+				updated: this.updated
+			});
+
+			// console.log(goal);
+
+			// Redirect after save
+			goal.$save(function(response) {
+				$location.path('goals/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+				$scope.description = '';
+				$scope.assumptions = '';
+				$scope.objectives = '';
+				$scope.constraints = '';
+				$scope.measures = '';
+				$scope.datasets = '';
+				$scope.models = '';
+				$scope.notebooks = '';
+				$scope.publications = '';
+				$scope.collaborators = '';
+
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Goal
+		$scope.remove = function(goal) {
+			if ( goal ) {
+				goal.$remove();
+
+				for (var i in $scope.goals) {
+					if ($scope.goals [i] === goal) {
+						$scope.goals.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.goal.$remove(function() {
+					$location.path('goals');
+				});
+			}
+		};
+
+		// Update existing Goal
+		$scope.update = function() {
+			var goal = $scope.goal;
+
+			goal.$update(function() {
+				$location.path('goals/' + goal._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Goals
+		$scope.find = function() {
+			$scope.goals = Goals.query();
+		};
+
+		// Find existing Goal
+		$scope.findOne = function() {
+			$scope.goal = Goals.get({
+				goalId: $stateParams.goalId
+			});
+		};
+	}
+]);
+'use strict';
+
+//Goals service used to communicate Goals REST endpoints
+angular.module('goals').factory('Goals', ['$resource',
+	function($resource) {
+		return $resource('goals/:goalId', { goalId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+'use strict';
+
+// Configuring the Articles module
+// Uncomment to include in topbar navigation.
+/*
+angular.module('models').run(['Menus',
+	function(Menus) {
+		// Set top bar menu items
+		Menus.addMenuItem('topbar', 'Models', 'models', 'dropdown', '/models(/create)?');
+		Menus.addSubMenuItem('topbar', 'models', 'List Models', 'models');
+		Menus.addSubMenuItem('topbar', 'models', 'New Model', 'models/create');
+	}
+]);
+*/
+'use strict';
+
+//Setting up route
+angular.module('models').config(['$stateProvider',
+	function($stateProvider) {
+		// Models state routing
+		$stateProvider.
+		state('listModels', {
+			url: '/models',
+			templateUrl: 'modules/models/views/list-models.client.view.html'
+		}).
+		state('createModel', {
+			url: '/models/create',
+			templateUrl: 'modules/models/views/create-model.client.view.html'
+		}).
+		state('viewModel', {
+			url: '/models/:modelId',
+			templateUrl: 'modules/models/views/view-model.client.view.html'
+		}).
+		state('editModel', {
+			url: '/models/:modelId/edit',
+			templateUrl: 'modules/models/views/edit-model.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Models controller
+angular.module('models').controller('ModelsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Models',
+	function($scope, $stateParams, $location, Authentication, Models) {
+		$scope.authentication = Authentication;
+
+		// Create new Model
+		$scope.create = function() {
+			// Create new Model object
+			var model = new Models ({
+				name: this.name
+			});
+
+			// Redirect after save
+			model.$save(function(response) {
+				$location.path('models/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Model
+		$scope.remove = function(model) {
+			if ( model ) { 
+				model.$remove();
+
+				for (var i in $scope.models) {
+					if ($scope.models [i] === model) {
+						$scope.models.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.model.$remove(function() {
+					$location.path('models');
+				});
+			}
+		};
+
+		// Update existing Model
+		$scope.update = function() {
+			var model = $scope.model;
+
+			model.$update(function() {
+				$location.path('models/' + model._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Models
+		$scope.find = function() {
+			$scope.models = Models.query();
+		};
+
+		// Find existing Model
+		$scope.findOne = function() {
+			$scope.model = Models.get({ 
+				modelId: $stateParams.modelId
+			});
+		};
+	}
+]);
+'use strict';
+
+//Models service used to communicate Models REST endpoints
+angular.module('models').factory('Models', ['$resource',
+	function($resource) {
+		return $resource('models/:modelId', { modelId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+'use strict';
+
+// Configuring the Articles module
+// Uncomment to include in topbar navigation.
+/*
+angular.module('notebooks').run(['Menus',
+    function(Menus) {
+        // Set top bar menu items
+        Menus.addMenuItem('topbar', 'Notebooks', 'notebooks', 'dropdown', '/notebooks(/create)?');
+        Menus.addSubMenuItem('topbar', 'notebooks', 'List Notebooks', 'notebooks');
+        Menus.addSubMenuItem('topbar', 'notebooks', 'New Notebooks', 'notebooks/create');
+    }
+]);
+*/
+'use strict';
+
+//Setting up route
+angular.module('notebooks').config(['$stateProvider',
+	function($stateProvider) {
+		// Notebooks state routing
+		$stateProvider.
+		state('listNotebooks', {
+			url: '/notebooks',
+			templateUrl: 'modules/notebooks/views/list-notebooks.client.view.html'
+		}).
+		state('createNotebook', {
+			url: '/notebooks/create',
+			templateUrl: 'modules/notebooks/views/create-notebook.client.view.html'
+		}).
+		state('viewNotebook', {
+			url: '/notebooks/:notebookId',
+			templateUrl: 'modules/notebooks/views/view-notebook.client.view.html'
+		}).
+		state('editNotebook', {
+			url: '/notebooks/:notebookId/edit',
+			templateUrl: 'modules/notebooks/views/edit-notebook.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Notebooks controller
+angular.module('notebooks').controller('NotebooksController', ['$scope', '$stateParams', '$location', 'Authentication', 'Notebooks',
+	function($scope, $stateParams, $location, Authentication, Notebooks) {
+		$scope.authentication = Authentication;
+
+		// Create new Notebook
+		$scope.create = function() {
+			// Create new Notebook object
+			var notebook = new Notebooks ({
+				name: this.name
+			});
+
+			// Redirect after save
+			notebook.$save(function(response) {
+				$location.path('notebooks/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Notebook
+		$scope.remove = function(notebook) {
+			if ( notebook ) { 
+				notebook.$remove();
+
+				for (var i in $scope.notebooks) {
+					if ($scope.notebooks [i] === notebook) {
+						$scope.notebooks.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.notebook.$remove(function() {
+					$location.path('notebooks');
+				});
+			}
+		};
+
+		// Update existing Notebook
+		$scope.update = function() {
+			var notebook = $scope.notebook;
+
+			notebook.$update(function() {
+				$location.path('notebooks/' + notebook._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Notebooks
+		$scope.find = function() {
+			$scope.notebooks = Notebooks.query();
+		};
+
+		// Find existing Notebook
+		$scope.findOne = function() {
+			$scope.notebook = Notebooks.get({ 
+				notebookId: $stateParams.notebookId
+			});
+		};
+	}
+]);
+'use strict';
+
+//Notebooks service used to communicate Notebooks REST endpoints
+angular.module('notebooks').factory('Notebooks', ['$resource',
+	function($resource) {
+		return $resource('notebooks/:notebookId', { notebookId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+'use strict';
+
 // Config HTTP Error Handling
 angular.module('users').config(['$httpProvider',
 	function($httpProvider) {
@@ -293,7 +1020,7 @@ angular.module('users').config(['$httpProvider',
 								$location.path('signin');
 								break;
 							case 403:
-								// Add unauthorized behaviour
+								// Add unauthorized behaviour 
 								break;
 						}
 
@@ -436,7 +1163,7 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 		// If user is not signed in then redirect back home
 		if (!$scope.user) $location.path('/');
 
-		// Check if there are additional accounts
+		// Check if there are additional accounts 
 		$scope.hasConnectedAdditionalSocialAccounts = function(provider) {
 			for (var i in $scope.user.additionalProvidersData) {
 				return true;
@@ -524,118 +1251,3 @@ angular.module('users').factory('Users', ['$resource',
 		});
 	}
 ]);
-
-// Configuring the Decisions module
-angular.module('decisions').run(['Menus',
-	function(Menus) {
-		// Set top bar menu items
-		Menus.addMenuItem('topbar', 'Decisions', 'decisions', 'dropdown', '/decisions(/create)?');
-		Menus.addSubMenuItem('topbar', 'decisions', 'List Decisions', 'decisions');
-		Menus.addSubMenuItem('topbar', 'decisions', 'New Decision', 'decisions/create');
-	}
-]);
-'use strict';
-
-//Setting up route
-angular.module('decisions').config(['$stateProvider',
-	function($stateProvider) {
-		// Decisions state routing
-		$stateProvider.
-		state('listDecisions', {
-			url: '/decisions',
-			templateUrl: 'modules/decisions/views/list-decisions.client.view.html'
-		}).
-		state('createDecision', {
-			url: '/decisions/create',
-			templateUrl: 'modules/decisions/views/create-decision.client.view.html'
-		}).
-		state('viewDecision', {
-			url: '/decisions/:decisionId',
-			templateUrl: 'modules/decisions/views/view-decision.client.view.html'
-		}).
-		state('editDecision', {
-			url: '/decisions/:decisionId/edit',
-			templateUrl: 'modules/decisions/views/edit-decision.client.view.html'
-		});
-	}
-]);
-'use strict';
-
-// Decisions controller
-angular.module('decisions').controller('DecisionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Decisions',
-	function($scope, $stateParams, $location, Authentication, Decisions) {
-		$scope.authentication = Authentication;
-
-		// Create new Decision
-		$scope.create = function() {
-			// Create new Decision object
-			var decision = new Decisions ({
-				name: this.name
-			});
-
-			// Redirect after save
-			decision.$save(function(response) {
-				$location.path('decisions/' + response._id);
-
-				// Clear form fields
-				$scope.name = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		// Remove existing Decision
-		$scope.remove = function(decision) {
-			if ( decision ) {
-				decision.$remove();
-
-				for (var i in $scope.decisions) {
-					if ($scope.decisions [i] === decision) {
-						$scope.decisions.splice(i, 1);
-					}
-				}
-			} else {
-				$scope.decision.$remove(function() {
-					$location.path('decisions');
-				});
-			}
-		};
-
-		// Update existing Decision
-		$scope.update = function() {
-			var decision = $scope.decision;
-
-			decision.$update(function() {
-				$location.path('decisions/' + decision._id);
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
-		};
-
-		// Find a list of Decisions
-		$scope.find = function() {
-			$scope.decisions = Decisions.query();
-		};
-
-		// Find existing Decision
-		$scope.findOne = function() {
-			$scope.decision = Decisions.get({
-				decisionId: $stateParams.decisionId
-			});
-		};
-	}
-]);
-'use strict';
-
-//Decisions service used to communicate Decisions REST endpoints
-angular.module('decisions').factory('Decisions', ['$resource',
-	function($resource) {
-		return $resource('decisions/:decisionId', { decisionId: '@_id'
-		}, {
-			update: {
-				method: 'PUT'
-			}
-		});
-	}
-]);
-'use strict';

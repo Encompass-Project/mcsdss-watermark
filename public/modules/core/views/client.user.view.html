@@ -1,0 +1,24 @@
+<div data-ng-controller="DashboardSidebarController">
+    <div class="col-xs-4 col-sm-3 col-md-2 dashboard-sidebar">
+        <div>
+            <a href="" ng-click="selectedTemplate.path = 'modules/core/views/client.dashboard.view.html'"><div class="row dashboard-sidebar-userinfo">
+                <div class="col-xs-4">
+                    <div><span class="user-avatar fa fa-3x fa-user"></span></div>
+                </div>
+                <div class="col-xs-8">
+                    <div>Welcome</div>
+                    <div>{{ displayName }}</div>
+                </div>
+            </div></a>
+            <a href="" ng-click="selectedTemplate.path = 'modules/core/views/client.datasets.view.html'"><div class="dashboard-sidemenu-item"><span class="dashboard-sidemenu-item-icon fa fa-2x fa-database" aria-hidden="true"></span><span class="dashboard-sidemenu-item-label">Data Sets</span></div></a>
+            <a href="" ng-click="selectedTemplate.path = 'modules/core/views/client.models.view.html'"><div class="dashboard-sidemenu-item"><span class="dashboard-sidemenu-item-icon fa fa-2x fa-database" aria-hidden="true"></span><span class="dashboard-sidemenu-item-label">Models</span></div></a>
+            <a href="" ng-click="selectedTemplate.path = 'modules/core/views/client.notebooks.view.html'"><div class="dashboard-sidemenu-item"><span class="dashboard-sidemenu-item-icon fa fa-2x fa-sticky-note" aria-hidden="true"></span><span class="dashboard-sidemenu-item-label">Notebooks</span></div></a>
+            <a href="" ng-click="selectedTemplate.path = 'modules/core/views/client.goals.view.html'"><div class="dashboard-sidemenu-item"><span class="dashboard-sidemenu-item-icon fa fa-2x fa-bullseye" aria-hidden="true"></span><span class="dashboard-sidemenu-item-label">Goals</span></div></a>
+            <a href="" ng-click="selectedTemplate.path = 'modules/core/views/client.decisions.view.html'"><div class="dashboard-sidemenu-item"><span class="dashboard-sidemenu-item-icon fa fa-2x fa-balance-scale" aria-hidden="true"></span><span class="dashboard-sidemenu-item-label">Decisions</span></div></a>
+            <a href="" ng-click="selectedTemplate.path = 'modules/core/views/client.publications.view.html'"><div class="dashboard-sidemenu-item"><span class="dashboard-sidemenu-item-icon fa fa-2x fa-database" aria-hidden="true"></span><span class="dashboard-sidemenu-item-label">Publications</span></div></a>
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <div data-ng-include="selectedTemplate.path"></div>
+    </div>
+</div>

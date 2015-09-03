@@ -1,18 +1,22 @@
-/* Test scss build */
-/* Everything build correctly into /public/css/style.css but it does not render in the page. */
+/* Sitewide SCSS */
 /* FONT IMPORTS */
-/*@import url(https://fonts.googleapis.com/css?family=Open+Sans);*/
-/*@import url(https://fonts.googleapis.com/css?family=Indie+Flower);*/
-/*@import url(https://fonts.googleapis.com/css?family=Pacifico);*/
-/*$brand-primary:         darken(#428bca, 6.5%) !default; // #337ab7*/
-/*$brand-success:         #5cb85c !default;*/
-/*.testing {
+/*@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,400,700);*/
+/*@import url(https://fonts.googleapis.com/css?family=Ubuntu+Condensed);*/
+/*@import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono);*/
+/*
     font-family: 'Open Sans', sans-serif;
-    font-size: 5rem;
-    background: $brand-success;
-    color: $brand-primary;
-    min-width: 20rem;
-    min-height: 5rem;
-}*/
+    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-family: 'Ubuntu Mono', ;
+*/
+/*
+* { font-family: 'Ubuntu', sans-serif; -webkit-font-smoothing:antialiased !important; -moz-osx-font-smoothing: grayscale !important; }
+html { font-size: 100%; text-rendering: optimizeLegibility; }
+html .touch * { text-rendering: optimizeSpeed; }
+body { min-width: 480px; margin: 0; padding: 0; font-size: 1rem; background: #245 !important; color: #FFF !important; cursor: default !important; }
+section:first-of-type  > section:nth-of-type(1) { width: 100%; padding: 50px 0 0; }
+a { text-decoration: none !important; }
+*/
 
 /*# sourceMappingURL=style.css.map */

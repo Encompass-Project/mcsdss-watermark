@@ -1,6 +1,8 @@
 'use strict';
 
 // Configuring the Articles module
+// Uncomment to include in topbar navigation.
+/*
 angular.module('goals').run(['Menus',
 	function(Menus) {
 		// Set top bar menu items
@@ -9,3 +11,4 @@ angular.module('goals').run(['Menus',
 		Menus.addSubMenuItem('topbar', 'goals', 'New Goal', 'goals/create');
 	}
 ]);
+*/

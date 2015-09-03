@@ -1,51 +1,34 @@
 {% extends 'layout.server.view.html' %}
 
-{*
-<!-- <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header> -->
-<!--
-<section class="content">
-    <section class="container">
-        {% block content %}{% endblock content %}
-    </section>
-</section>
--->
+{% block static-additions %}
+    <!-- Web Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu:300,400,700' rel='stylesheet' type='text/css'>
+    <!-- <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'> -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'> -->
+    <!--
+        font-family: 'Open Sans', sans-serif;
+        font-family: 'Ubuntu', sans-serif;
+        font-family: 'Ubuntu Condensed', sans-serif;
+        font-family: 'Ubuntu Mono', ;
+    -->
 
-<!--
-{% block content %}
-    <section data-ui-view></section>
-{% endblock content %}
--->
+    <!-- Iconography -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
-<!--
-<section class="content">
-    <section class="container">
-        <section data-ui-view></section>
-    </section>
-</section>
--->
-
-<!-- FACEBOOK SDK -->
-<!-- <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1688133921418731',
-      xfbml      : true,
-      version    : 'v2.4'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script> -->
-*}
+    <!-- Global styles -->
+    <!-- NOTE: Need to relocate these out of this layout file eventually. -->
+    <style>
+        * { font-family: 'Ubuntu', sans-serif; -webkit-font-smoothing:antialiased !important; -moz-osx-font-smoothing: grayscale !important; }
+        html { font-size: 100%; text-rendering: optimizeLegibility; }
+        html .touch * { text-rendering: optimizeSpeed; }
+        body { min-width: 480px; margin: 0; padding: 0; font-size: 1rem; background: #245 !important; color: #FFF !important; cursor: default !important; }
+        section:first-of-type  > section:nth-of-type(1) { width: 100%; padding: 50px 0 0; }
+        a { text-decoration: none !important; }
+    </style>
+{% endblock static-additions %}
 
 {% block content %}
     <header data-ng-include="'/modules/core/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
-    <!-- <div class="hover-menu"></div> -->
     <section data-ui-view></section>
-{% endblock %}
+{% endblock content %}

@@ -1,12 +1,16 @@
 'use strict';
 
-
 angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 	function($scope, Authentication) {
 		// This provides Authentication context.
 		$scope.authentication = Authentication;
-        // console.log($scope);
 
-        $scope.displayName = $scope.authentication.user.displayName;
+        $scope.defaultTemplate = {
+            'path':'modules/core/views/client.default.view.html'
+        };
+
+        $scope.userTemplate = {
+            'path':'modules/core/views/client.user.view.html'
+        };
 	}
 ]);

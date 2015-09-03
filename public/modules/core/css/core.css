@@ -1,108 +1,11 @@
-/* From MEAN.js codebase */
-.undecorated-link:hover {
-    text-decoration: none;
-}
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-    display: none !important;
-}
-.ng-invalid.ng-dirty {
-    border-color: #FA787E;
-}
-.ng-valid.ng-dirty {
-    border-color: #78FA89;
-}
-
-
-/* Custom CSS for NavBar */
-/*.lt-ie9 .navbar {
-    background: #000000;
-}*/
-.navbar {
-    background: #000000;
-    background: rgba(0,0,0,0);
-    border: none;
-}
-/*.lt-ie9 .navbar:hover {
-    background: #111111;
-}*/
-.navbar:hover {
-    background: #111111;
-    background: rgba(0,0,0,0.3);
-}
-
-a.navbar-brand, ul.nav > li > a {
-    color: #FFFFFF;
-    color: rgba(255,255,255,1) !important;
-}
-/*
-a.navbar-brand:hover, ul.nav > li > a:hover {
-    color: rgba(255,255,255,1) !important;
-}
-li.dropdown > a.dropdown-toggle, li.dropdown > a.dropdown-menu {
-    background: rgba(0,0,0,0.0);
-}
-li.dropdown.open > a.dropdown-toggle, li.dropdown.open > a.dropdown-menu {
-    background: rgba(32,32,32,0.7);
-    color: rgba(255,255,255,1) !important;
-}
-li.dropdown.open > a.dropdown-toggle:hover, li.dropdown.open > a.dropdown-menu:hover {
-    background: rgba(32,32,32,0.7);
-    color: rgba(255,255,255,1) !important;
-}
-*/
-
-/* Index View */
-.landing-page {
-    padding: 1rem 5rem;
-}
-/* User Dashboard */
-.dashboard-topbar {
-    padding: 1rem 5rem;
-}
-.dashboard-sidemenu {
-    background: rgba(32,32,32,0.2);
-    height: 100%;
-    /*left: -2rem;*/
-    left: 0;
-    padding-top: 1rem;
-    text-align: center;
-}
-.dashboard-sidemenu-item {
-    /*background: rgba(32,32,32,0.2);*/
-    margin: 2rem 1rem;
-    padding: 2rem;
-    text-align: center;
-    /*vertical-align: center;*/
-    width: auto;
-    height: 9rem;
-    border: 1px solid rgba(232,248,255,0.2);
-    /*border-radius: 1rem;*/
-}
-.dashboard-userinfo {
-    background: rgba(32,32,32,0.5);
-    /*width: auto;*/
-    min-height: 20rem;
-}
-
-/* Custom CSS for Home View Partial */
-.partial-home {
-    /*height: 200rem;*/
-    /*background: rgba(100,150,200,0.5);*/
-}
-.hover-menu {
-    position: absolute;
-    left: 1rem;
-    top: 12rem;
-}
-.context-menu {
-    margin-left: 2rem;
-    padding: 0.1rem 2rem 0.5rem;
-    /*width: 60rem;*/
-    /*height: 15rem;*/
-    background: #FF9900;
-    color: #FFFFFF;
-}
-.angular-leaflet-map {
-    width: 640px;
-    height: 480px;
-}
+@import url('mean-defaults.css');
+@import url('navbar.css');
+@import url('default-view.css');
+@import url('dashboard-sidebar.css');
+@import url('dashboard-view.css');
+@import url('datasets-view.css');
+@import url('models-view.css');
+@import url('notebooks-view.css');
+@import url('goals-view.css');
+@import url('decisions-view.css');
+@import url('publications-view.css');
