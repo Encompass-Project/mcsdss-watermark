@@ -2,13 +2,13 @@
 .navbar {
     min-width: 480px;
     background: #000000;
-    background: rgba(0,0,0,0.3);
+    background: #234;
     border: none;
     padding: 0 1rem;
 }
 .navbar:hover {
     background: #111111;
-    background: rgba(0,0,0,0.5);
+    background: #123;
 }
 .navbar-brand {
     font-size: 3rem;
@@ -18,7 +18,9 @@
     min-width: 30rem;
     width: auto;
 }
-
+ul.dropdown-menu > li > a:hover {
+    color: #000000;
+}
 /* UNUSED */
 /*
 a.navbar-brand, ul.nav > li > a {
