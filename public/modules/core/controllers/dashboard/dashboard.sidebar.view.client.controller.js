@@ -8,7 +8,7 @@ angular.module('core').controller('DashboardSidebarController', ['$scope', 'Auth
         $scope.displayName = $scope.authentication.user.displayName;
 
         $scope.selectedTemplate = {
-            'path':'modules/core/views/client.dashboard.view.html'
+            'path':'modules/core/views/dashboard/client.dashboard.view.html'
         };
     }
 ]);

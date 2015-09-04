@@ -6,5 +6,9 @@ angular.module('core').controller('DashboardViewController', ['$scope', 'Authent
         $scope.authentication = Authentication;
 
         $scope.whoami = 'client.dashboard.view.html';
+
+        $scope.dashboardTemplate = {
+            'path':'modules/core/views/dashboard/client.dashboard.default.view.html'
+        };
     }
 ]);

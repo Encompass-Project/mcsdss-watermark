@@ -38,6 +38,7 @@ module.exports = {
 			'public/config.js',
 			'public/application.js',
 			'public/modules/*/*.js',
+			'public/modules/**/*.js', // Picks up nested controllers within modules.
 			'public/modules/*/*[!tests]*/*.js'
 		],
 		tests: [

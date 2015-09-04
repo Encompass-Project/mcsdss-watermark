@@ -6,5 +6,9 @@ angular.module('core').controller('DatasetsViewController', ['$scope', 'Authenti
         $scope.authentication = Authentication;
 
         $scope.whoami = 'client.datasets.view.html';
+
+        $scope.datasetsTemplate = {
+            'path':'modules/core/views/datasets/client.datasets.default.view.html'
+        };
     }
 ]);

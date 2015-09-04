@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('core').controller('NotebooksViewController', ['$scope', 'Authentication',
+angular.module('core').controller('DecisionsDefaultViewController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.notebooks.view.html';
+        $scope.whoami = 'client.decisions.default.view.html';
+
     }
 ]);

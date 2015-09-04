@@ -1,10 +1,11 @@
 'use strict';
 
-angular.module('core').controller('PublicationsViewController', ['$scope', 'Authentication',
+angular.module('core').controller('DashboardDefaultViewController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.publications.view.html';
+        $scope.whoami = 'client.dashboard.default.view.html';
+
     }
 ]);

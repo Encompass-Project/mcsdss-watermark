@@ -6,5 +6,9 @@ angular.module('core').controller('ModelsViewController', ['$scope', 'Authentica
         $scope.authentication = Authentication;
 
         $scope.whoami = 'client.models.view.html';
+
+        $scope.modelsTemplate = {
+            'path':'modules/core/views/models/client.models.default.view.html'
+        };
     }
 ]);

@@ -1,6 +1,14 @@
+.template-panels {
+    padding: 1rem 2rem 1rem 1rem;
+}
+.dashboard-panels {
+
+}
 .dashboard-nav {
-    /*padding: 2rem 2rem;*/
+    margin: 1rem 1rem 2rem 2rem;
+    text-align: center;
 }
 .dashboard-nav > button {
-    /*margin: 0 1rem;*/
+    margin-left: 2rem;
+    min-width: 10rem;
 }
