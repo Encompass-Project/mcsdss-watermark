@@ -1,0 +1,15 @@
+<div data-ng-controller="NotebooksViewController">
+    <!-- <h1>{{ whoami }}</h1> -->
+    <div class="row">
+        <div class="notebooks-nav">
+            <button class="btn btn-default" type="button" ng-click="notebooksTemplate.path = 'modules/core/views/notebooks/notebooks.default.client.view.html'">Default</button>
+            <button class="btn btn-primary" type="button" ng-click="notebooksTemplate.path = 'modules/core/views/notebooks/notebooks.default.client.view.html'">Default</button>
+            <button class="btn btn-success" type="button" ng-click="notebooksTemplate.path = 'modules/core/views/notebooks/notebooks.default.client.view.html'">Default</button>
+            <button class="btn btn-info" type="button" ng-click="notebooksTemplate.path = 'modules/core/views/notebooks/notebooks.default.client.view.html'">Default</button>
+            <button class="btn btn-warning" type="button" ng-click="notebooksTemplate.path = 'modules/core/views/notebooks/notebooks.default.client.view.html'">Default</button>
+            <button class="btn btn-danger" type="button" ng-click="notebooksTemplate.path = 'modules/core/views/notebooks/notebooks.default.client.view.html'">Default</button>
+            <!-- <button class="btn btn-link" type="button" ng-click="notebooksTemplate.path = 'modules/core/views/notebooks/notebooks.default.client.view.html'">Default</button> -->
+        </div>
+    </div>
+    <div class="notebooks-panels" data-ng-include="notebooksTemplate.path"></div>
+</div>

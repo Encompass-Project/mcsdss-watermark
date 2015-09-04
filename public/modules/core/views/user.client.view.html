@@ -1,0 +1,60 @@
+<div data-ng-controller="DashboardSidebarController">
+    <div class="row">
+        <div class="col-xs-4 col-sm-3 col-lg-2 dashboard-sidebar">
+            <div class="row dashboard-sidebar-userinfo">
+                <div class="col-xs-3">
+                    <div><span class="dashboard-avatar fa fa-3x fa-circle"></span></div>
+                </div>
+                <div class="col-xs-9 username-greeting">
+                    <div>Welcome</div>
+                    <div class="dashboard-username">{{ displayName }}</div>
+                </div>
+            </div>
+            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/dashboard/dashboard.client.view.html'">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-home" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Dashboard</span>
+                </div>
+            </a>
+            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-database" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Data Sets</span>
+                </div>
+            </a>
+            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/models/models.client.view.html'">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Models</span>
+                </div>
+            </a>
+            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/goals/goals.client.view.html'">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-bullseye" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Goals</span>
+                </div>
+            </a>
+            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/decisions/decisions.client.view.html'">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-balance-scale" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Decisions</span>
+                </div>
+            </a>
+            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/notebooks/notebooks.client.view.html'">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-sticky-note" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Notebooks</span>
+                </div>
+            </a>
+            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/publications/publications.client.view.html'">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-book" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Publications</span>
+                </div>
+            </a>
+        </div>
+        <div class="col-xs-8 col-sm-7 col-lg-10">
+            <div class="template-panels" data-ng-include="selectedTemplate.path"></div>
+        </div>
+    </div>
+</div>
