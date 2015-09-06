@@ -1,84 +1,95 @@
 <div data-ng-controller="DashboardDefaultViewController">
-  <!-- <h1>{{ whoami }}</h1> -->
-  <!-- <h1><span class="dashboard-sidemenu-item-icon fa fa-5x fa-home" aria-hidden="true"></span></h1> -->
   <div class="row">
     <div class="col-xs-4">
         <div id="activity-panel" class="row">
             <div class="well well-sm activity-list">
                 <h3>Recent Activity</h3>
                 <ul>
-                    <li ng-repeat="action in recentActivity.actions track by $index">{{ action }}</li>
+                    <li ng-repeat="action in currentActivity.actions track by $index">{{ action }}</li>
                 </ul>
                 <button class="btn btn-link pull-right" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.sixth.client.view.html'">More</button>
             </div>
         </div>
     </div>
     <div class="col-xs-4">
+        <!-- Well view approach - panels are cleaner. -->
+        <!-- <div class="well well-sm">
+            <h3>My Goals</h3>
+            <div class="list-group">
+              <a href="#" class="list-group-item" ng-repeat="goal in currentGoals.goals track by $index">{{ goal }}<span class="badge">#</span></a>
+            </div>
+        </div> -->
         <div id="goals-panel" class="row">
-            <!-- <h3>My Goals</h3> -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Goals</h3>
                 </div>
                 <div class="panel-body">
-                    Goals...
+                    <div class="list-group">
+                      <a href="#" class="list-group-item" ng-repeat="goal in currentGoals.goals track by $index">{{ goal }}<span class="badge">#</span></a>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="datasets-panel" class="row">
-            <!-- <h3>My Datasets</h3> -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Datasets</h3>
                 </div>
                 <div class="panel-body">
-                    Datasets...
+                    <div class="list-group">
+                      <a href="#" class="list-group-item" ng-repeat="dataset in currentDatasets.datasets track by $index">{{ dataset }}<span class="badge">#</span></a>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="notebooks-panel" class="row">
-            <!-- <h3>My Notebooks</h3> -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Notebooks</h3>
                 </div>
                 <div class="panel-body">
-                    Notebooks...
+                    <div class="list-group">
+                      <a href="#" class="list-group-item" ng-repeat="notebook in currentNotebooks.notebooks track by $index">{{ notebook }}<span class="badge">#</span></a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-xs-4">
         <div id="decisions-panel" class="row">
-            <!-- <h3>My Decisions</h3> -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Decisions</h3>
                 </div>
                 <div class="panel-body">
-                    Decisions...
+                    <div class="list-group">
+                      <a href="#" class="list-group-item" ng-repeat="decision in currentDecisions.decisions track by $index">{{ decision }}<span class="badge">#</span></a>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="models-panel" class="row">
-            <!-- <h3>My Models</h3> -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Models</h3>
                 </div>
                 <div class="panel-body">
-                    Models...
+                    <div class="list-group">
+                      <a href="#" class="list-group-item" ng-repeat="model in currentModels.models track by $index">{{ model }}<span class="badge">#</span></a>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="publications-panel" class="row">
-            <!-- <h3>My Publications</h3> -->
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h3 class="panel-title">My Publications</h3>
                 </div>
                 <div class="panel-body">
-                    Publications...
+                    <div class="list-group">
+                      <a href="#" class="list-group-item" ng-repeat="publication in currentPublications.publications track by $index">{{ publication }}<span class="badge">#</span></a>
+                    </div>
                 </div>
             </div>
         </div>

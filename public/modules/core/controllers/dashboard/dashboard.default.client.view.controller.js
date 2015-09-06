@@ -7,7 +7,7 @@ angular.module('core').controller('DashboardDefaultViewController', ['$scope', '
 
         $scope.whoami = 'dashboard.default.client.view.html';
 
-        $scope.recentActivity = {
+        $scope.currentActivity = {
             actions: [
                 'Things are happening around here',
                 'Things are happening all about',
@@ -24,7 +24,53 @@ angular.module('core').controller('DashboardDefaultViewController', ['$scope', '
             ]
         };
 
-        // $scope.recentActivity = recentActivity;
+        $scope.currentDatasets = {
+            datasets: [
+                'Dataset 1',
+                'Dataset 2',
+                'Dataset 3'
+            ]
+        };
+
+        $scope.currentModels = {
+            models: [
+                'Model 1',
+                'Model 2',
+                'Model 3'
+            ]
+        };
+
+        $scope.currentGoals = {
+            goals: [
+                'Goal 1',
+                'Goal 2',
+                'Goal 3'
+            ]
+        };
+
+        $scope.currentDecisions = {
+            decisions: [
+                'Decision 1',
+                'Decision 2',
+                'Decision 3'
+            ]
+        };
+
+        $scope.currentNotebooks = {
+            notebooks: [
+                'Notebook 1',
+                'Notebook 2',
+                'Notebook 3'
+            ]
+        };
+
+        $scope.currentPublications = {
+            publications: [
+                'Publication 1',
+                'Publication 2',
+                'Publication 3'
+            ]
+        };
 
     }
 ]);
