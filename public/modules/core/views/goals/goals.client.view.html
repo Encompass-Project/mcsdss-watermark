@@ -1,14 +1,41 @@
 <div data-ng-controller="GoalsViewController">
     <!-- <h1>{{ whoami }}</h1> -->
-    <div class="row">
-        <div class="goals-nav">
-            <button class="btn btn-default" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
-            <button class="btn btn-primary" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
-            <button class="btn btn-success" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
-            <button class="btn btn-info" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
-            <button class="btn btn-warning" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
-            <button class="btn btn-danger" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
-            <!-- <button class="btn btn-link" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button> -->
+    <div class="row subnavbar">
+        <div class="visible-xs visible-lg">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-success" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-info" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-warning" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+            </div>
+        </div>
+        <div class="visible-md">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-success" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-info" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-warning" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+            </div>
+        </div>
+        <div class="visible-sm">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-success" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-info" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-warning" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.default.client.view.html'">Default</button>
+            </div>
         </div>
     </div>
     <div class="goals-panels" data-ng-include="goalsTemplate.path"></div>

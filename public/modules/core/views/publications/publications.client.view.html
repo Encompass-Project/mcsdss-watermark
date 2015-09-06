@@ -1,14 +1,41 @@
 <div data-ng-controller="PublicationsViewController">
     <!-- <h1>{{ whoami }}</h1> -->
-    <div class="row">
-        <div class="publications-nav">
-            <button class="btn btn-default" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
-            <button class="btn btn-primary" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
-            <button class="btn btn-success" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
-            <button class="btn btn-info" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
-            <button class="btn btn-warning" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
-            <button class="btn btn-danger" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
-            <!-- <button class="btn btn-link" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button> -->
+    <div class="row subnavbar">
+        <div class="visible-xs visible-lg">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-success" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-info" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-warning" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+            </div>
+        </div>
+        <div class="visible-md">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-success" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-info" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-warning" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+            </div>
+        </div>
+        <div class="visible-sm">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-success" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-info" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-warning" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'">Default</button>
+            </div>
         </div>
     </div>
     <div class="publications-panels" data-ng-include="publicationsTemplate.path"></div>

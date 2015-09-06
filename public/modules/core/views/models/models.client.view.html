@@ -1,14 +1,41 @@
 <div data-ng-controller="ModelsViewController">
     <!-- <h1>{{ whoami }}</h1> -->
-    <div class="row">
-        <div class="models-nav">
-            <button class="btn btn-default" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
-            <button class="btn btn-primary" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
-            <button class="btn btn-success" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
-            <button class="btn btn-info" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
-            <button class="btn btn-warning" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
-            <button class="btn btn-danger" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
-            <!-- <button class="btn btn-link" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button> -->
+    <div class="row subnavbar">
+        <div class="visible-xs visible-lg">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-success" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-info" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-warning" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+            </div>
+        </div>
+        <div class="visible-md">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-success" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-info" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-warning" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+            </div>
+        </div>
+        <div class="visible-sm">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-primary" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-success" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-info" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-warning" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+                <button class="btn btn-danger" type="button" ng-click="modelsTemplate.path = 'modules/core/views/models/models.default.client.view.html'">Default</button>
+            </div>
         </div>
     </div>
     <div class="models-panels" data-ng-include="modelsTemplate.path"></div>
