@@ -1,40 +1,86 @@
 <div data-ng-controller="DashboardDefaultViewController">
-  <div class="row">
-    <div class="col-xs-6">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            {{ whoami }}
-          </div>
-        </div>
-    </div>
-    <div class="col-xs-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel example
-          </div>
-        </div>
-    </div>
-    <div class="col-xs-3">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel example
-          </div>
-        </div>
-    </div>
-  </div>
+  <!-- <h1>{{ whoami }}</h1> -->
+  <!-- <h1><span class="dashboard-sidemenu-item-icon fa fa-5x fa-home" aria-hidden="true"></span></h1> -->
   <div class="row">
     <div class="col-xs-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel example
-          </div>
+        <div id="activity-panel" class="row">
+            <div class="well well-sm activity-list">
+                <h3>Recent Activity</h3>
+                <ul>
+                    <li ng-repeat="action in recentActivity.actions track by $index">{{ action }}</li>
+                </ul>
+                <button class="btn btn-link pull-right" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.sixth.client.view.html'">More</button>
+            </div>
         </div>
     </div>
-    <div class="col-xs-8">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel example
-          </div>
+    <div class="col-xs-4">
+        <div id="goals-panel" class="row">
+            <!-- <h3>My Goals</h3> -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Goals</h3>
+                </div>
+                <div class="panel-body">
+                    Goals...
+                </div>
+            </div>
+        </div>
+        <div id="datasets-panel" class="row">
+            <!-- <h3>My Datasets</h3> -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Datasets</h3>
+                </div>
+                <div class="panel-body">
+                    Datasets...
+                </div>
+            </div>
+        </div>
+        <div id="notebooks-panel" class="row">
+            <!-- <h3>My Notebooks</h3> -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Notebooks</h3>
+                </div>
+                <div class="panel-body">
+                    Notebooks...
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-4">
+        <div id="decisions-panel" class="row">
+            <!-- <h3>My Decisions</h3> -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Decisions</h3>
+                </div>
+                <div class="panel-body">
+                    Decisions...
+                </div>
+            </div>
+        </div>
+        <div id="models-panel" class="row">
+            <!-- <h3>My Models</h3> -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Models</h3>
+                </div>
+                <div class="panel-body">
+                    Models...
+                </div>
+            </div>
+        </div>
+        <div id="publications-panel" class="row">
+            <!-- <h3>My Publications</h3> -->
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">My Publications</h3>
+                </div>
+                <div class="panel-body">
+                    Publications...
+                </div>
+            </div>
         </div>
     </div>
   </div>

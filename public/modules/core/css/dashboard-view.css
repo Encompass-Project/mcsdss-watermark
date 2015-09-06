@@ -12,6 +12,23 @@
 .subnavbar-nav > button {
     margin: 1rem;
 }
+#activity-panel,
+#goals-panel,
+#datasets-panel,
+#notebooks-panel,
+#decisions-panel,
+#models-panel,
+#publications-panel
+ {
+  margin: 0 0 1rem 0;
+  /*border: 1px solid #fff;*/
+}
+.goals-panel {
+  margin: 0.25rem;
+}
+.activity-list, .panel-title {
+  color: #111111;
+}
 
 /* Media Queries */
 /* -xs */
