@@ -13,100 +13,199 @@
             </div>
         </div> -->
         <div class="col-xs-6">
-            <div id="datasets-panel" class="row">
-                <div class="panel panel-info">
+            <div id="datasets-panel" class="row" data-ng-controller="DatasetsController" data-ng-init="find()">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'"><h3 class="panel-title">My Datasets</h3></a>
+                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-database" aria-hidden="true"></span> My Datasets</h3>
+                        </a>
                         <!-- Get routed params working for the new button to work. -->
                         <!-- <h3 class="panel-title pull-left"><a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'">My Datasets</a></h3>
                         <button class="btn btn-default pull-right" type="button" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'">New</button>
                         <div class="clearfix"></div> -->
                     </div>
                     <div class="panel-body">
-                        <div class="list-group">
+                        <!-- <div class="list-group">
                           <a href="#" class="list-group-item" ng-repeat="dataset in currentDatasets.datasets track by $index">{{ dataset }}<span class="badge">#</span></a>
+                        </div> -->
+                        <div class="list-group">
+                            <a data-ng-repeat="dataset in datasets | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/datasets/{{dataset._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="dataset.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="dataset.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="dataset.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!datasets.$resolved || datasets.length">
+                            No Datasets yet, why don't you <a href="/#!/datasets/create">create one</a>?
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="goals-panel" class="row">
-                <div class="panel panel-info">
+            <div id="goals-panel" class="row" data-ng-controller="GoalsController" data-ng-init="find()">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/goals/goals.client.view.html'"><h3 class="panel-title">My Goals</h3></a>
+                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/goals/goals.client.view.html'">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-bullseye" aria-hidden="true"></span> My Goals</h3>
+                        </a>
                         <!-- Get routed params working for the new button to work. -->
                         <!-- <h3 class="panel-title pull-left"><a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/goals/goals.client.view.html'">My Goals</a></h3>
                         <button class="btn btn-default pull-right" type="button" ng-click="selectedTemplate.path = 'modules/goals/views/create-goal.client.view.html'">New</button>
                         <div class="clearfix"></div> -->
                     </div>
                     <div class="panel-body">
-                        <div class="list-group">
+                        <!-- <div class="list-group">
                           <a href="#" class="list-group-item" ng-repeat="goal in currentGoals.goals track by $index">{{ goal }}<span class="badge">#</span></a>
+                        </div> -->
+                        <div class="list-group">
+                            <a data-ng-repeat="goal in goals | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/goals/{{goal._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="goal.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="goal.user.displayName"></span>
+                                    , Updated on
+                                    <span data-ng-bind="goal.updated | date:'medium'"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="goal.name"></h4>
+                                <!-- <p ng-model="textLimitListView" data-ng-bind="goal.description | limitTo:textLimitListView"></p> -->
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!goals.$resolved || goals.length">
+                            No Goals yet, why don't you <a href="/#!/goals/create">create one</a>?
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="notebooks-panel" class="row">
-                <div class="panel panel-info">
+            <div id="notebooks-panel" class="row" data-ng-controller="NotebooksController" data-ng-init="find()">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/notebooks/notebooks.client.view.html'"><h3 class="panel-title">My Notebooks</h3></a>
+                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/notebooks/notebooks.client.view.html'">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-sticky-note" aria-hidden="true"></span> My Notebooks</h3>
+                        </a>
                         <!-- Get routed params working for the new button to work. -->
                         <!-- <h3 class="panel-title pull-left"><a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/notebooks/notebooks.client.view.html'">My Notebooks</a></h3>
                         <button class="btn btn-default pull-right" type="button" ng-click="selectedTemplate.path = 'modules/notebooks/views/create-notebook.client.view.html'">New</button>
                         <div class="clearfix"></div> -->
                     </div>
                     <div class="panel-body">
-                        <div class="list-group">
+                        <!-- <div class="list-group">
                           <a href="#" class="list-group-item" ng-repeat="notebook in currentNotebooks.notebooks track by $index">{{ notebook }}<span class="badge">#</span></a>
+                        </div> -->
+                        <div class="list-group">
+                            <a data-ng-repeat="notebook in notebooks | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/notebooks/{{notebook._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="notebook.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="notebook.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="notebook.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!notebooks.$resolved || notebooks.length">
+                            No Notebooks yet, why don't you <a href="/#!/notebooks/create">create one</a>?
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-xs-6">
-            <div id="models-panel" class="row">
-                <div class="panel panel-info">
+            <div id="models-panel" class="row" data-ng-controller="ModelsController" data-ng-init="find()">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/models/models.client.view.html'"><h3 class="panel-title">My Models</h3></a>
+                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/models/models.client.view.html'">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span> My Models</h3>
+                        </a>
                         <!-- Get routed params working for the new button to work. -->
                         <!-- <h3 class="panel-title pull-left"><a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/models/models.client.view.html'">My Models</a></h3>
                         <button class="btn btn-default pull-right" type="button" ng-click="selectedTemplate.path = 'modules/models/views/create-model.client.view.html'">New</button>
                         <div class="clearfix"></div> -->
                     </div>
                     <div class="panel-body">
-                        <div class="list-group">
+                        <!-- <div class="list-group">
                           <a href="#" class="list-group-item" ng-repeat="model in currentModels.models track by $index">{{ model }}<span class="badge">#</span></a>
+                        </div> -->
+                        <div class="list-group">
+                            <a data-ng-repeat="model in models | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/models/{{model._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="model.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="model.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="model.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!models.$resolved || models.length">
+                            No Models yet, why don't you <a href="/#!/models/create">create one</a>?
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="decisions-panel" class="row">
-                <div class="panel panel-info">
+            <div id="decisions-panel" class="row" data-ng-controller="DecisionsController" data-ng-init="find()">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/decisions/decisions.client.view.html'"><h3 class="panel-title">My Decisions</h3></a>
+                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/decisions/decisions.client.view.html'">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-balance-scale" aria-hidden="true"></span> My Decisions</h3>
+                        </a>
                         <!-- Get routed params working for the new button to work. -->
                         <!-- <h3 class="panel-title pull-left"><a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/decisions/decisions.client.view.html'">My Decisions</a></h3>
                         <button class="btn btn-default pull-right" type="button" ng-click="selectedTemplate.path = 'modules/decisions/views/create-decision.client.view.html'">New</button>
                         <div class="clearfix"></div> -->
                     </div>
                     <div class="panel-body">
-                        <div class="list-group">
+                        <!-- <div class="list-group">
                           <a href="#" class="list-group-item" ng-repeat="decision in currentDecisions.decisions track by $index">{{ decision }}<span class="badge">#</span></a>
+                        </div> -->
+                        <div class="list-group">
+                            <a data-ng-repeat="decision in decisions | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/decisions/{{decision._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="decision.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="decision.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="decision.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!decisions.$resolved || decisions.length">
+                            No Decisions yet, why don't you <a href="/#!/decisions/create">create one</a>?
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="publications-panel" class="row">
-                <div class="panel panel-info">
+            <div id="publications-panel" class="row" data-ng-controller="PublicationsController" data-ng-init="find()">
+                <div class="panel panel-default">
                     <div class="panel-heading">
-                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/publications/publications.client.view.html'"><h3 class="panel-title">My Publications</h3></a>
+                        <a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/publications/publications.client.view.html'">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-book" aria-hidden="true"></span> My Publications</h3>
+                        </a>
                         <!-- Get routed params working for the new button to work. -->
                         <!-- <h3 class="panel-title pull-left"><a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/publications/publications.client.view.html'">My Publications</a></h3>
                         <button class="btn btn-default pull-right" type="button" ng-click="selectedTemplate.path = 'modules/publications/views/create-publication.client.view.html'">New</button>
                         <div class="clearfix"></div> -->
                     </div>
                     <div class="panel-body">
-                        <div class="list-group">
+                        <!-- <div class="list-group">
                           <a href="#" class="list-group-item" ng-repeat="publication in currentPublications.publications track by $index">{{ publication }}<span class="badge">#</span></a>
+                        </div> -->
+                        <div class="list-group">
+                            <a data-ng-repeat="publication in publications | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/publications/{{publication._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="publication.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="publication.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="publication.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!publications.$resolved || publications.length">
+                            No Publications yet, why don't you <a href="/#!/publications/create">create one</a>?
                         </div>
                     </div>
                 </div>

@@ -23,6 +23,10 @@
 .clickable {
   cursor: pointer;
 }
+.dashboard-paneltitle-item-icon {
+  padding-right: 1rem;
+  color: #112233 !important;
+}
 #activity-panel,
 #goals-panel,
 #datasets-panel,
@@ -39,6 +43,12 @@
 }
 .activity-list, .panel-title {
   color: #111111;
+}
+.odd {
+  /*background: #112233; color: #EBEBEB !important;*/
+}
+.even {
+  /*background: #EBEBEB; color: #112233 !important;*/
 }
 
 /* Media Queries */
