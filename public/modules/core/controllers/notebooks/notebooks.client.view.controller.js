@@ -8,7 +8,8 @@ angular.module('core').controller('NotebooksViewController', ['$scope', 'Authent
         $scope.whoami = 'notebooks.client.view.html';
 
         $scope.notebooksTemplate = {
-            'path':'modules/core/views/notebooks/notebooks.default.client.view.html'
+            // 'path':'modules/core/views/notebooks/notebooks.default.client.view.html'
+            'path':'modules/notebooks/views/list-notebooks.client.view.html'
         };
     }
 ]);

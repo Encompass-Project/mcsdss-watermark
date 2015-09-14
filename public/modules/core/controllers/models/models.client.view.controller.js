@@ -8,7 +8,8 @@ angular.module('core').controller('ModelsViewController', ['$scope', 'Authentica
         $scope.whoami = 'models.client.view.html';
 
         $scope.modelsTemplate = {
-            'path':'modules/core/views/models/models.default.client.view.html'
+            // 'path':'modules/core/views/models/models.default.client.view.html'
+            'path':'modules/models/views/list-models.client.view.html'
         };
     }
 ]);

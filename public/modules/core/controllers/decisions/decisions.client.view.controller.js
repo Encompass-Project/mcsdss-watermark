@@ -8,7 +8,8 @@ angular.module('core').controller('DecisionsViewController', ['$scope', 'Authent
         $scope.whoami = 'decisions.client.view.html';
 
         $scope.decisionsTemplate = {
-            'path':'modules/core/views/decisions/decisions.default.client.view.html'
+            // 'path':'modules/core/views/decisions/decisions.default.client.view.html'
+            'path':'modules/decisions/views/list-decisions.client.view.html'
         };
     }
 ]);

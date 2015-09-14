@@ -8,7 +8,8 @@ angular.module('core').controller('DatasetsViewController', ['$scope', 'Authenti
         $scope.whoami = 'datasets.client.view.html';
 
         $scope.datasetsTemplate = {
-            'path':'modules/core/views/datasets/datasets.list.client.view.html'
+            // 'path':'modules/core/views/datasets/datasets.list.client.view.html'
+            'path':'modules/datasets/views/list-datasets.client.view.html'
         };
     }
 ]);

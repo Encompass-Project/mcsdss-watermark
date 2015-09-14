@@ -8,7 +8,8 @@ angular.module('core').controller('GoalsViewController', ['$scope', 'Authenticat
         $scope.whoami = 'goals.client.view.html';
 
         $scope.goalsTemplate = {
-            'path':'modules/core/views/goals/goals.default.client.view.html'
+            // 'path':'modules/core/views/goals/goals.default.client.view.html'
+            'path':'modules/goals/views/list-goals.client.view.html'
         };
     }
 ]);
