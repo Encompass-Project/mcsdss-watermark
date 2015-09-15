@@ -15,7 +15,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider', function(
 			})
 			.state('default', {
 				url: '/default',
-				templateUrl: 'modules/core/views/home.client.view.html',
+				templateUrl: 'modules/core/views/default.client.view.html',
 				controller: 'DefaultViewController'
 			});
 	}
