@@ -1,11 +1,12 @@
 .template-panels {
-    padding: 1rem 1.5rem 1rem 1rem;
+  padding: 1rem 1.5rem 1rem 1rem;
 }
 .subnavbar {
-    margin: 0 2rem 1rem 0;
+  margin: 0 2rem 1rem 0;
 }
-/*.dashboard-panels {
-}*/
+.dashboard-panel {
+  margin: 0 0 1rem 0;
+}
 .subnavbar-nav {
     text-align: center;
 }
@@ -27,17 +28,6 @@
   padding-right: 1rem;
   color: #112233 !important;
 }
-#activity-panel,
-#goals-panel,
-#datasets-panel,
-#notebooks-panel,
-#decisions-panel,
-#models-panel,
-#publications-panel
- {
-  margin: 0 0 1rem 0;
-  /*border: 1px solid #fff;*/
-}
 .goals-panel {
   margin: 0.25rem;
 }
@@ -45,10 +35,10 @@
   color: #111111;
 }
 .odd {
-  /*background: #112233; color: #EBEBEB !important;*/
+  background: #112233; color: #EBEBEB !important;
 }
 .even {
-  /*background: #EBEBEB; color: #112233 !important;*/
+  background: #223344; color: #EBEBEB !important;
 }
 
 /* Media Queries */

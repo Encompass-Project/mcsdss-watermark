@@ -67,6 +67,10 @@ ApplicationConfiguration.registerModule('models');
 ApplicationConfiguration.registerModule('notebooks');
 'use strict';
 
+// Use applicaion configuration module to register a new module
+ApplicationConfiguration.registerModule('publications');
+'use strict';
+
 // Use Applicaion configuration module to register a new module
 ApplicationConfiguration.registerModule('users');
 'use strict';
@@ -88,6 +92,129 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
 ]);
 'use strict';
 
+angular.module('core').controller('DashboardViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'dashboard.client.view.html';
+
+        $scope.dashboardTemplate = {
+            'path':'modules/core/views/dashboard/dashboard.default.client.view.html'
+        };
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DashboardDefaultViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'dashboard.default.client.view.html';
+
+        $scope.currentActivity = {
+            actions: [
+                'Things are happening around here',
+                'Things are happening all about',
+                'Things are happening sometimes',
+                'Things are happening I think',
+                'Things are happening right?',
+                'Things are happening somewhere',
+                'Things are happening probably',
+                'Things are happening presumably',
+                'Things are happening to someone',
+                'Things are happening someplace',
+                'Things are happening someplace',
+                'Things are happening someplace'
+            ]
+        };
+
+        $scope.currentDatasets = {
+            datasets: [
+                'Dataset 1',
+                'Dataset 2',
+                'Dataset 3'
+            ]
+        };
+
+        $scope.currentModels = {
+            models: [
+                'Model 1',
+                'Model 2',
+                'Model 3'
+            ]
+        };
+
+        $scope.currentGoals = {
+            goals: [
+                'Goal 1',
+                'Goal 2',
+                'Goal 3'
+            ]
+        };
+
+        $scope.currentDecisions = {
+            decisions: [
+                'Decision 1',
+                'Decision 2',
+                'Decision 3'
+            ]
+        };
+
+        $scope.currentNotebooks = {
+            notebooks: [
+                'Notebook 1',
+                'Notebook 2',
+                'Notebook 3'
+            ]
+        };
+
+        $scope.currentPublications = {
+            publications: [
+                'Publication 1',
+                'Publication 2',
+                'Publication 3'
+            ]
+        };
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DashboardFifthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'dashboard.fifth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DashboardFourthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'dashboard.fourth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DashboardSecondViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'dashboard.second.client.view.html';
+
+    }
+]);
+'use strict';
+
 angular.module('core').controller('DashboardSidebarController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
@@ -96,18 +223,30 @@ angular.module('core').controller('DashboardSidebarController', ['$scope', 'Auth
         $scope.displayName = $scope.authentication.user.displayName;
 
         $scope.selectedTemplate = {
-            'path':'modules/core/views/client.dashboard.view.html'
+            'path':'modules/core/views/dashboard/dashboard.client.view.html'
         };
     }
 ]);
 'use strict';
 
-angular.module('core').controller('DashboardViewController', ['$scope', 'Authentication',
+angular.module('core').controller('DashboardSixthViewController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.dashboard.view.html';
+        $scope.whoami = 'dashboard.sixth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DashboardThirdViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'dashboard.third.client.view.html';
+
     }
 ]);
 'use strict';
@@ -117,7 +256,78 @@ angular.module('core').controller('DatasetsViewController', ['$scope', 'Authenti
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.datasets.view.html';
+        $scope.whoami = 'datasets.client.view.html';
+
+        $scope.datasetsTemplate = {
+            // 'path':'modules/core/views/datasets/datasets.list.client.view.html'
+            'path':'modules/datasets/views/list-datasets.client.view.html'
+        };
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DatasetsCurateViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'datasets.curate.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DatasetsListViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'datasets.list.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DatasetsLoadViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'datasets.load.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DatasetsPublishViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'datasets.publish.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DatasetsTransformViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'datasets.transform.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DatasetsVisualizeViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'datasets.visualize.client.view.html';
+
     }
 ]);
 'use strict';
@@ -127,7 +337,78 @@ angular.module('core').controller('DecisionsViewController', ['$scope', 'Authent
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.decisions.view.html';
+        $scope.whoami = 'decisions.client.view.html';
+
+        $scope.decisionsTemplate = {
+            // 'path':'modules/core/views/decisions/decisions.default.client.view.html'
+            'path':'modules/decisions/views/list-decisions.client.view.html'
+        };
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DecisionsDefaultViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'decisions.default.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DecisionsFifthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'decisions.fifth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DecisionsFourthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'decisions.fourth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DecisionsSecondViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'decisions.second.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DecisionsSixthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'decisions.sixth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('DecisionsThirdViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'decisions.third.client.view.html';
+
     }
 ]);
 'use strict';
@@ -137,7 +418,7 @@ angular.module('core').controller('DefaultViewController', ['$scope', 'Authentic
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.default.view.html';
+        $scope.whoami = 'default.client.view.html';
     }
 ]);
 'use strict';
@@ -147,7 +428,78 @@ angular.module('core').controller('GoalsViewController', ['$scope', 'Authenticat
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.goals.view.html';
+        $scope.whoami = 'goals.client.view.html';
+
+        $scope.goalsTemplate = {
+            // 'path':'modules/core/views/goals/goals.default.client.view.html'
+            'path':'modules/goals/views/list-goals.client.view.html'
+        };
+    }
+]);
+'use strict';
+
+angular.module('core').controller('GoalsDefaultViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'goals.default.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('GoalsFifthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'goals.fifth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('GoalsFourthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'goals.fourth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('GoalsSecondViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'goals.second.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('GoalsSixthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'goals.sixth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('GoalsThirdViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'goals.third.client.view.html';
+
     }
 ]);
 'use strict';
@@ -182,11 +534,11 @@ angular.module('core').controller('HomeController', ['$scope', 'Authentication',
 		$scope.authentication = Authentication;
 
         $scope.defaultTemplate = {
-            'path':'modules/core/views/client.default.view.html'
+            'path':'modules/core/views/default.client.view.html'
         };
 
         $scope.userTemplate = {
-            'path':'modules/core/views/client.user.view.html'
+            'path':'modules/core/views/user.client.view.html'
         };
 	}
 ]);
@@ -197,7 +549,78 @@ angular.module('core').controller('ModelsViewController', ['$scope', 'Authentica
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.models.view.html';
+        $scope.whoami = 'models.client.view.html';
+
+        $scope.modelsTemplate = {
+            // 'path':'modules/core/views/models/models.default.client.view.html'
+            'path':'modules/models/views/list-models.client.view.html'
+        };
+    }
+]);
+'use strict';
+
+angular.module('core').controller('ModelsDefaultViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'models.default.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('ModelsFifthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'models.fifth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('ModelsFourthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'models.fourth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('ModelsSecondViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'models.second.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('ModelsSixthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'models.sixth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('ModelsThirdViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'models.third.client.view.html';
+
     }
 ]);
 'use strict';
@@ -207,7 +630,78 @@ angular.module('core').controller('NotebooksViewController', ['$scope', 'Authent
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.notebooks.view.html';
+        $scope.whoami = 'notebooks.client.view.html';
+
+        $scope.notebooksTemplate = {
+            // 'path':'modules/core/views/notebooks/notebooks.default.client.view.html'
+            'path':'modules/notebooks/views/list-notebooks.client.view.html'
+        };
+    }
+]);
+'use strict';
+
+angular.module('core').controller('NotebooksDefaultViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'notebooks.default.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('NotebooksFifthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'notebooks.fifth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('NotebooksFourthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'notebooks.fourth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('NotebooksSecondViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'notebooks.second.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('NotebooksSixthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'notebooks.sixth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('NotebooksThirdViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'notebooks.third.client.view.html';
+
     }
 ]);
 'use strict';
@@ -217,7 +711,78 @@ angular.module('core').controller('PublicationsViewController', ['$scope', 'Auth
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'client.publications.view.html';
+        $scope.whoami = 'publications.client.view.html';
+
+        $scope.publicationsTemplate = {
+            // 'path':'modules/core/views/publications/publications.default.client.view.html'
+            'path':'modules/publications/views/list-publications.client.view.html'
+        };
+    }
+]);
+'use strict';
+
+angular.module('core').controller('PublicationsDefaultViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'publications.default.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('PublicationsFifthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'publications.fifth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('PublicationsFourthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'publications.fourth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('PublicationsSecondViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'publications.second.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('PublicationsSixthViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'publications.sixth.client.view.html';
+
+    }
+]);
+'use strict';
+
+angular.module('core').controller('PublicationsThirdViewController', ['$scope', 'Authentication',
+    function($scope, Authentication) {
+        // This provides Authentication context.
+        $scope.authentication = Authentication;
+
+        $scope.whoami = 'publications.third.client.view.html';
+
     }
 ]);
 'use strict';
@@ -388,6 +953,54 @@ angular.module('core').service('Menus', [
 ]);
 'use strict';
 
+(function() {
+	describe('HeaderController', function() {
+		//Initialize global variables
+		var scope,
+			HeaderController;
+
+		// Load the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		beforeEach(inject(function($controller, $rootScope) {
+			scope = $rootScope.$new();
+
+			HeaderController = $controller('HeaderController', {
+				$scope: scope
+			});
+		}));
+
+		it('should expose the authentication service', function() {
+			expect(scope.authentication).toBeTruthy();
+		});
+	});
+})();
+'use strict';
+
+(function() {
+	describe('HomeController', function() {
+		//Initialize global variables
+		var scope,
+			HomeController;
+
+		// Load the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		beforeEach(inject(function($controller, $rootScope) {
+			scope = $rootScope.$new();
+
+			HomeController = $controller('HomeController', {
+				$scope: scope
+			});
+		}));
+
+		it('should expose the authentication service', function() {
+			expect(scope.authentication).toBeTruthy();
+		});
+	});
+})();
+'use strict';
+
 // Configuring the Articles module
 // Uncomment to include in topbar navigation.
 /*
@@ -506,6 +1119,169 @@ angular.module('datasets').factory('Datasets', ['$resource',
 ]);
 'use strict';
 
+(function() {
+	// Datasets Controller Spec
+	describe('Datasets Controller Tests', function() {
+		// Initialize global variables
+		var DatasetsController,
+		scope,
+		$httpBackend,
+		$stateParams,
+		$location;
+
+		// The $resource service augments the response object with methods for updating and deleting the resource.
+		// If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
+		// the responses exactly. To solve the problem, we define a new toEqualData Jasmine matcher.
+		// When the toEqualData matcher compares two objects, it takes only object properties into
+		// account and ignores methods.
+		beforeEach(function() {
+			jasmine.addMatchers({
+				toEqualData: function(util, customEqualityTesters) {
+					return {
+						compare: function(actual, expected) {
+							return {
+								pass: angular.equals(actual, expected)
+							};
+						}
+					};
+				}
+			});
+		});
+
+		// Then we can start by loading the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
+		// This allows us to inject a service but then attach it to a variable
+		// with the same name as the service.
+		beforeEach(inject(function($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_) {
+			// Set a new global scope
+			scope = $rootScope.$new();
+
+			// Point global variables to injected services
+			$stateParams = _$stateParams_;
+			$httpBackend = _$httpBackend_;
+			$location = _$location_;
+
+			// Initialize the Datasets controller.
+			DatasetsController = $controller('DatasetsController', {
+				$scope: scope
+			});
+		}));
+
+		it('$scope.find() should create an array with at least one Dataset object fetched from XHR', inject(function(Datasets) {
+			// Create sample Dataset using the Datasets service
+			var sampleDataset = new Datasets({
+				name: 'New Dataset'
+			});
+
+			// Create a sample Datasets array that includes the new Dataset
+			var sampleDatasets = [sampleDataset];
+
+			// Set GET response
+			$httpBackend.expectGET('datasets').respond(sampleDatasets);
+
+			// Run controller functionality
+			scope.find();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.datasets).toEqualData(sampleDatasets);
+		}));
+
+		it('$scope.findOne() should create an array with one Dataset object fetched from XHR using a datasetId URL parameter', inject(function(Datasets) {
+			// Define a sample Dataset object
+			var sampleDataset = new Datasets({
+				name: 'New Dataset'
+			});
+
+			// Set the URL parameter
+			$stateParams.datasetId = '525a8422f6d0f87f0e407a33';
+
+			// Set GET response
+			$httpBackend.expectGET(/datasets\/([0-9a-fA-F]{24})$/).respond(sampleDataset);
+
+			// Run controller functionality
+			scope.findOne();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.dataset).toEqualData(sampleDataset);
+		}));
+
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Datasets) {
+			// Create a sample Dataset object
+			var sampleDatasetPostData = new Datasets({
+				name: 'New Dataset'
+			});
+
+			// Create a sample Dataset response
+			var sampleDatasetResponse = new Datasets({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Dataset'
+			});
+
+			// Fixture mock form input values
+			scope.name = 'New Dataset';
+
+			// Set POST response
+			$httpBackend.expectPOST('datasets', sampleDatasetPostData).respond(sampleDatasetResponse);
+
+			// Run controller functionality
+			scope.create();
+			$httpBackend.flush();
+
+			// Test form inputs are reset
+			expect(scope.name).toEqual('');
+
+			// Test URL redirection after the Dataset was created
+			expect($location.path()).toBe('/datasets/' + sampleDatasetResponse._id);
+		}));
+
+		it('$scope.update() should update a valid Dataset', inject(function(Datasets) {
+			// Define a sample Dataset put data
+			var sampleDatasetPutData = new Datasets({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Dataset'
+			});
+
+			// Mock Dataset in scope
+			scope.dataset = sampleDatasetPutData;
+
+			// Set PUT response
+			$httpBackend.expectPUT(/datasets\/([0-9a-fA-F]{24})$/).respond();
+
+			// Run controller functionality
+			scope.update();
+			$httpBackend.flush();
+
+			// Test URL location to new object
+			expect($location.path()).toBe('/datasets/' + sampleDatasetPutData._id);
+		}));
+
+		it('$scope.remove() should send a DELETE request with a valid datasetId and remove the Dataset from the scope', inject(function(Datasets) {
+			// Create new Dataset object
+			var sampleDataset = new Datasets({
+				_id: '525a8422f6d0f87f0e407a33'
+			});
+
+			// Create new Datasets array and include the Dataset
+			scope.datasets = [sampleDataset];
+
+			// Set expected DELETE response
+			$httpBackend.expectDELETE(/datasets\/([0-9a-fA-F]{24})$/).respond(204);
+
+			// Run controller functionality
+			scope.remove(sampleDataset);
+			$httpBackend.flush();
+
+			// Test array after successful delete
+			expect(scope.datasets.length).toBe(0);
+		}));
+	});
+}());
+'use strict';
+
 // Configuring the Articles module
 // Uncomment to include in topbar navigation.
 /*
@@ -622,6 +1398,169 @@ angular.module('decisions').factory('Decisions', ['$resource',
 		});
 	}
 ]);
+'use strict';
+
+(function() {
+	// Decisions Controller Spec
+	describe('Decisions Controller Tests', function() {
+		// Initialize global variables
+		var DecisionsController,
+		scope,
+		$httpBackend,
+		$stateParams,
+		$location;
+
+		// The $resource service augments the response object with methods for updating and deleting the resource.
+		// If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
+		// the responses exactly. To solve the problem, we define a new toEqualData Jasmine matcher.
+		// When the toEqualData matcher compares two objects, it takes only object properties into
+		// account and ignores methods.
+		beforeEach(function() {
+			jasmine.addMatchers({
+				toEqualData: function(util, customEqualityTesters) {
+					return {
+						compare: function(actual, expected) {
+							return {
+								pass: angular.equals(actual, expected)
+							};
+						}
+					};
+				}
+			});
+		});
+
+		// Then we can start by loading the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
+		// This allows us to inject a service but then attach it to a variable
+		// with the same name as the service.
+		beforeEach(inject(function($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_) {
+			// Set a new global scope
+			scope = $rootScope.$new();
+
+			// Point global variables to injected services
+			$stateParams = _$stateParams_;
+			$httpBackend = _$httpBackend_;
+			$location = _$location_;
+
+			// Initialize the Decisions controller.
+			DecisionsController = $controller('DecisionsController', {
+				$scope: scope
+			});
+		}));
+
+		it('$scope.find() should create an array with at least one Decision object fetched from XHR', inject(function(Decisions) {
+			// Create sample Decision using the Decisions service
+			var sampleDecision = new Decisions({
+				name: 'New Decision'
+			});
+
+			// Create a sample Decisions array that includes the new Decision
+			var sampleDecisions = [sampleDecision];
+
+			// Set GET response
+			$httpBackend.expectGET('decisions').respond(sampleDecisions);
+
+			// Run controller functionality
+			scope.find();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.decisions).toEqualData(sampleDecisions);
+		}));
+
+		it('$scope.findOne() should create an array with one Decision object fetched from XHR using a decisionId URL parameter', inject(function(Decisions) {
+			// Define a sample Decision object
+			var sampleDecision = new Decisions({
+				name: 'New Decision'
+			});
+
+			// Set the URL parameter
+			$stateParams.decisionId = '525a8422f6d0f87f0e407a33';
+
+			// Set GET response
+			$httpBackend.expectGET(/decisions\/([0-9a-fA-F]{24})$/).respond(sampleDecision);
+
+			// Run controller functionality
+			scope.findOne();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.decision).toEqualData(sampleDecision);
+		}));
+
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Decisions) {
+			// Create a sample Decision object
+			var sampleDecisionPostData = new Decisions({
+				name: 'New Decision'
+			});
+
+			// Create a sample Decision response
+			var sampleDecisionResponse = new Decisions({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Decision'
+			});
+
+			// Fixture mock form input values
+			scope.name = 'New Decision';
+
+			// Set POST response
+			$httpBackend.expectPOST('decisions', sampleDecisionPostData).respond(sampleDecisionResponse);
+
+			// Run controller functionality
+			scope.create();
+			$httpBackend.flush();
+
+			// Test form inputs are reset
+			expect(scope.name).toEqual('');
+
+			// Test URL redirection after the Decision was created
+			expect($location.path()).toBe('/decisions/' + sampleDecisionResponse._id);
+		}));
+
+		it('$scope.update() should update a valid Decision', inject(function(Decisions) {
+			// Define a sample Decision put data
+			var sampleDecisionPutData = new Decisions({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Decision'
+			});
+
+			// Mock Decision in scope
+			scope.decision = sampleDecisionPutData;
+
+			// Set PUT response
+			$httpBackend.expectPUT(/decisions\/([0-9a-fA-F]{24})$/).respond();
+
+			// Run controller functionality
+			scope.update();
+			$httpBackend.flush();
+
+			// Test URL location to new object
+			expect($location.path()).toBe('/decisions/' + sampleDecisionPutData._id);
+		}));
+
+		it('$scope.remove() should send a DELETE request with a valid decisionId and remove the Decision from the scope', inject(function(Decisions) {
+			// Create new Decision object
+			var sampleDecision = new Decisions({
+				_id: '525a8422f6d0f87f0e407a33'
+			});
+
+			// Create new Decisions array and include the Decision
+			scope.decisions = [sampleDecision];
+
+			// Set expected DELETE response
+			$httpBackend.expectDELETE(/decisions\/([0-9a-fA-F]{24})$/).respond(204);
+
+			// Run controller functionality
+			scope.remove(sampleDecision);
+			$httpBackend.flush();
+
+			// Test array after successful delete
+			expect(scope.decisions.length).toBe(0);
+		}));
+	});
+}());
 'use strict';
 
 // Configuring the Articles module
@@ -767,6 +1706,169 @@ angular.module('goals').factory('Goals', ['$resource',
 ]);
 'use strict';
 
+(function() {
+	// Goals Controller Spec
+	describe('Goals Controller Tests', function() {
+		// Initialize global variables
+		var GoalsController,
+		scope,
+		$httpBackend,
+		$stateParams,
+		$location;
+
+		// The $resource service augments the response object with methods for updating and deleting the resource.
+		// If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
+		// the responses exactly. To solve the problem, we define a new toEqualData Jasmine matcher.
+		// When the toEqualData matcher compares two objects, it takes only object properties into
+		// account and ignores methods.
+		beforeEach(function() {
+			jasmine.addMatchers({
+				toEqualData: function(util, customEqualityTesters) {
+					return {
+						compare: function(actual, expected) {
+							return {
+								pass: angular.equals(actual, expected)
+							};
+						}
+					};
+				}
+			});
+		});
+
+		// Then we can start by loading the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
+		// This allows us to inject a service but then attach it to a variable
+		// with the same name as the service.
+		beforeEach(inject(function($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_) {
+			// Set a new global scope
+			scope = $rootScope.$new();
+
+			// Point global variables to injected services
+			$stateParams = _$stateParams_;
+			$httpBackend = _$httpBackend_;
+			$location = _$location_;
+
+			// Initialize the Goals controller.
+			GoalsController = $controller('GoalsController', {
+				$scope: scope
+			});
+		}));
+
+		it('$scope.find() should create an array with at least one Goal object fetched from XHR', inject(function(Goals) {
+			// Create sample Goal using the Goals service
+			var sampleGoal = new Goals({
+				name: 'New Goal'
+			});
+
+			// Create a sample Goals array that includes the new Goal
+			var sampleGoals = [sampleGoal];
+
+			// Set GET response
+			$httpBackend.expectGET('goals').respond(sampleGoals);
+
+			// Run controller functionality
+			scope.find();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.goals).toEqualData(sampleGoals);
+		}));
+
+		it('$scope.findOne() should create an array with one Goal object fetched from XHR using a goalId URL parameter', inject(function(Goals) {
+			// Define a sample Goal object
+			var sampleGoal = new Goals({
+				name: 'New Goal'
+			});
+
+			// Set the URL parameter
+			$stateParams.goalId = '525a8422f6d0f87f0e407a33';
+
+			// Set GET response
+			$httpBackend.expectGET(/goals\/([0-9a-fA-F]{24})$/).respond(sampleGoal);
+
+			// Run controller functionality
+			scope.findOne();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.goal).toEqualData(sampleGoal);
+		}));
+
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Goals) {
+			// Create a sample Goal object
+			var sampleGoalPostData = new Goals({
+				name: 'New Goal'
+			});
+
+			// Create a sample Goal response
+			var sampleGoalResponse = new Goals({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Goal'
+			});
+
+			// Fixture mock form input values
+			scope.name = 'New Goal';
+
+			// Set POST response
+			$httpBackend.expectPOST('goals', sampleGoalPostData).respond(sampleGoalResponse);
+
+			// Run controller functionality
+			scope.create();
+			$httpBackend.flush();
+
+			// Test form inputs are reset
+			expect(scope.name).toEqual('');
+
+			// Test URL redirection after the Goal was created
+			expect($location.path()).toBe('/goals/' + sampleGoalResponse._id);
+		}));
+
+		it('$scope.update() should update a valid Goal', inject(function(Goals) {
+			// Define a sample Goal put data
+			var sampleGoalPutData = new Goals({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Goal'
+			});
+
+			// Mock Goal in scope
+			scope.goal = sampleGoalPutData;
+
+			// Set PUT response
+			$httpBackend.expectPUT(/goals\/([0-9a-fA-F]{24})$/).respond();
+
+			// Run controller functionality
+			scope.update();
+			$httpBackend.flush();
+
+			// Test URL location to new object
+			expect($location.path()).toBe('/goals/' + sampleGoalPutData._id);
+		}));
+
+		it('$scope.remove() should send a DELETE request with a valid goalId and remove the Goal from the scope', inject(function(Goals) {
+			// Create new Goal object
+			var sampleGoal = new Goals({
+				_id: '525a8422f6d0f87f0e407a33'
+			});
+
+			// Create new Goals array and include the Goal
+			scope.goals = [sampleGoal];
+
+			// Set expected DELETE response
+			$httpBackend.expectDELETE(/goals\/([0-9a-fA-F]{24})$/).respond(204);
+
+			// Run controller functionality
+			scope.remove(sampleGoal);
+			$httpBackend.flush();
+
+			// Test array after successful delete
+			expect(scope.goals.length).toBe(0);
+		}));
+	});
+}());
+'use strict';
+
 // Configuring the Articles module
 // Uncomment to include in topbar navigation.
 /*
@@ -885,6 +1987,169 @@ angular.module('models').factory('Models', ['$resource',
 ]);
 'use strict';
 
+(function() {
+	// Models Controller Spec
+	describe('Models Controller Tests', function() {
+		// Initialize global variables
+		var ModelsController,
+		scope,
+		$httpBackend,
+		$stateParams,
+		$location;
+
+		// The $resource service augments the response object with methods for updating and deleting the resource.
+		// If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
+		// the responses exactly. To solve the problem, we define a new toEqualData Jasmine matcher.
+		// When the toEqualData matcher compares two objects, it takes only object properties into
+		// account and ignores methods.
+		beforeEach(function() {
+			jasmine.addMatchers({
+				toEqualData: function(util, customEqualityTesters) {
+					return {
+						compare: function(actual, expected) {
+							return {
+								pass: angular.equals(actual, expected)
+							};
+						}
+					};
+				}
+			});
+		});
+
+		// Then we can start by loading the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
+		// This allows us to inject a service but then attach it to a variable
+		// with the same name as the service.
+		beforeEach(inject(function($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_) {
+			// Set a new global scope
+			scope = $rootScope.$new();
+
+			// Point global variables to injected services
+			$stateParams = _$stateParams_;
+			$httpBackend = _$httpBackend_;
+			$location = _$location_;
+
+			// Initialize the Models controller.
+			ModelsController = $controller('ModelsController', {
+				$scope: scope
+			});
+		}));
+
+		it('$scope.find() should create an array with at least one Model object fetched from XHR', inject(function(Models) {
+			// Create sample Model using the Models service
+			var sampleModel = new Models({
+				name: 'New Model'
+			});
+
+			// Create a sample Models array that includes the new Model
+			var sampleModels = [sampleModel];
+
+			// Set GET response
+			$httpBackend.expectGET('models').respond(sampleModels);
+
+			// Run controller functionality
+			scope.find();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.models).toEqualData(sampleModels);
+		}));
+
+		it('$scope.findOne() should create an array with one Model object fetched from XHR using a modelId URL parameter', inject(function(Models) {
+			// Define a sample Model object
+			var sampleModel = new Models({
+				name: 'New Model'
+			});
+
+			// Set the URL parameter
+			$stateParams.modelId = '525a8422f6d0f87f0e407a33';
+
+			// Set GET response
+			$httpBackend.expectGET(/models\/([0-9a-fA-F]{24})$/).respond(sampleModel);
+
+			// Run controller functionality
+			scope.findOne();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.model).toEqualData(sampleModel);
+		}));
+
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Models) {
+			// Create a sample Model object
+			var sampleModelPostData = new Models({
+				name: 'New Model'
+			});
+
+			// Create a sample Model response
+			var sampleModelResponse = new Models({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Model'
+			});
+
+			// Fixture mock form input values
+			scope.name = 'New Model';
+
+			// Set POST response
+			$httpBackend.expectPOST('models', sampleModelPostData).respond(sampleModelResponse);
+
+			// Run controller functionality
+			scope.create();
+			$httpBackend.flush();
+
+			// Test form inputs are reset
+			expect(scope.name).toEqual('');
+
+			// Test URL redirection after the Model was created
+			expect($location.path()).toBe('/models/' + sampleModelResponse._id);
+		}));
+
+		it('$scope.update() should update a valid Model', inject(function(Models) {
+			// Define a sample Model put data
+			var sampleModelPutData = new Models({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Model'
+			});
+
+			// Mock Model in scope
+			scope.model = sampleModelPutData;
+
+			// Set PUT response
+			$httpBackend.expectPUT(/models\/([0-9a-fA-F]{24})$/).respond();
+
+			// Run controller functionality
+			scope.update();
+			$httpBackend.flush();
+
+			// Test URL location to new object
+			expect($location.path()).toBe('/models/' + sampleModelPutData._id);
+		}));
+
+		it('$scope.remove() should send a DELETE request with a valid modelId and remove the Model from the scope', inject(function(Models) {
+			// Create new Model object
+			var sampleModel = new Models({
+				_id: '525a8422f6d0f87f0e407a33'
+			});
+
+			// Create new Models array and include the Model
+			scope.models = [sampleModel];
+
+			// Set expected DELETE response
+			$httpBackend.expectDELETE(/models\/([0-9a-fA-F]{24})$/).respond(204);
+
+			// Run controller functionality
+			scope.remove(sampleModel);
+			$httpBackend.flush();
+
+			// Test array after successful delete
+			expect(scope.models.length).toBe(0);
+		}));
+	});
+}());
+'use strict';
+
 // Configuring the Articles module
 // Uncomment to include in topbar navigation.
 /*
@@ -1001,6 +2266,436 @@ angular.module('notebooks').factory('Notebooks', ['$resource',
 		});
 	}
 ]);
+'use strict';
+
+(function() {
+	// Notebooks Controller Spec
+	describe('Notebooks Controller Tests', function() {
+		// Initialize global variables
+		var NotebooksController,
+		scope,
+		$httpBackend,
+		$stateParams,
+		$location;
+
+		// The $resource service augments the response object with methods for updating and deleting the resource.
+		// If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
+		// the responses exactly. To solve the problem, we define a new toEqualData Jasmine matcher.
+		// When the toEqualData matcher compares two objects, it takes only object properties into
+		// account and ignores methods.
+		beforeEach(function() {
+			jasmine.addMatchers({
+				toEqualData: function(util, customEqualityTesters) {
+					return {
+						compare: function(actual, expected) {
+							return {
+								pass: angular.equals(actual, expected)
+							};
+						}
+					};
+				}
+			});
+		});
+
+		// Then we can start by loading the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
+		// This allows us to inject a service but then attach it to a variable
+		// with the same name as the service.
+		beforeEach(inject(function($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_) {
+			// Set a new global scope
+			scope = $rootScope.$new();
+
+			// Point global variables to injected services
+			$stateParams = _$stateParams_;
+			$httpBackend = _$httpBackend_;
+			$location = _$location_;
+
+			// Initialize the Notebooks controller.
+			NotebooksController = $controller('NotebooksController', {
+				$scope: scope
+			});
+		}));
+
+		it('$scope.find() should create an array with at least one Notebook object fetched from XHR', inject(function(Notebooks) {
+			// Create sample Notebook using the Notebooks service
+			var sampleNotebook = new Notebooks({
+				name: 'New Notebook'
+			});
+
+			// Create a sample Notebooks array that includes the new Notebook
+			var sampleNotebooks = [sampleNotebook];
+
+			// Set GET response
+			$httpBackend.expectGET('notebooks').respond(sampleNotebooks);
+
+			// Run controller functionality
+			scope.find();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.notebooks).toEqualData(sampleNotebooks);
+		}));
+
+		it('$scope.findOne() should create an array with one Notebook object fetched from XHR using a notebookId URL parameter', inject(function(Notebooks) {
+			// Define a sample Notebook object
+			var sampleNotebook = new Notebooks({
+				name: 'New Notebook'
+			});
+
+			// Set the URL parameter
+			$stateParams.notebookId = '525a8422f6d0f87f0e407a33';
+
+			// Set GET response
+			$httpBackend.expectGET(/notebooks\/([0-9a-fA-F]{24})$/).respond(sampleNotebook);
+
+			// Run controller functionality
+			scope.findOne();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.notebook).toEqualData(sampleNotebook);
+		}));
+
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Notebooks) {
+			// Create a sample Notebook object
+			var sampleNotebookPostData = new Notebooks({
+				name: 'New Notebook'
+			});
+
+			// Create a sample Notebook response
+			var sampleNotebookResponse = new Notebooks({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Notebook'
+			});
+
+			// Fixture mock form input values
+			scope.name = 'New Notebook';
+
+			// Set POST response
+			$httpBackend.expectPOST('notebooks', sampleNotebookPostData).respond(sampleNotebookResponse);
+
+			// Run controller functionality
+			scope.create();
+			$httpBackend.flush();
+
+			// Test form inputs are reset
+			expect(scope.name).toEqual('');
+
+			// Test URL redirection after the Notebook was created
+			expect($location.path()).toBe('/notebooks/' + sampleNotebookResponse._id);
+		}));
+
+		it('$scope.update() should update a valid Notebook', inject(function(Notebooks) {
+			// Define a sample Notebook put data
+			var sampleNotebookPutData = new Notebooks({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Notebook'
+			});
+
+			// Mock Notebook in scope
+			scope.notebook = sampleNotebookPutData;
+
+			// Set PUT response
+			$httpBackend.expectPUT(/notebooks\/([0-9a-fA-F]{24})$/).respond();
+
+			// Run controller functionality
+			scope.update();
+			$httpBackend.flush();
+
+			// Test URL location to new object
+			expect($location.path()).toBe('/notebooks/' + sampleNotebookPutData._id);
+		}));
+
+		it('$scope.remove() should send a DELETE request with a valid notebookId and remove the Notebook from the scope', inject(function(Notebooks) {
+			// Create new Notebook object
+			var sampleNotebook = new Notebooks({
+				_id: '525a8422f6d0f87f0e407a33'
+			});
+
+			// Create new Notebooks array and include the Notebook
+			scope.notebooks = [sampleNotebook];
+
+			// Set expected DELETE response
+			$httpBackend.expectDELETE(/notebooks\/([0-9a-fA-F]{24})$/).respond(204);
+
+			// Run controller functionality
+			scope.remove(sampleNotebook);
+			$httpBackend.flush();
+
+			// Test array after successful delete
+			expect(scope.notebooks.length).toBe(0);
+		}));
+	});
+}());
+'use strict';
+
+//Setting up route
+angular.module('publications').config(['$stateProvider',
+	function($stateProvider) {
+		// Publications state routing
+		$stateProvider.
+		state('listPublications', {
+			url: '/publications',
+			templateUrl: 'modules/publications/views/list-publications.client.view.html'
+		}).
+		state('createPublication', {
+			url: '/publications/create',
+			templateUrl: 'modules/publications/views/create-publication.client.view.html'
+		}).
+		state('viewPublication', {
+			url: '/publications/:publicationId',
+			templateUrl: 'modules/publications/views/view-publication.client.view.html'
+		}).
+		state('editPublication', {
+			url: '/publications/:publicationId/edit',
+			templateUrl: 'modules/publications/views/edit-publication.client.view.html'
+		});
+	}
+]);
+'use strict';
+
+// Publications controller
+angular.module('publications').controller('PublicationsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Publications',
+	function($scope, $stateParams, $location, Authentication, Publications) {
+		$scope.authentication = Authentication;
+
+		// Create new Publication
+		$scope.create = function() {
+			// Create new Publication object
+			var publication = new Publications ({
+				name: this.name
+			});
+
+			// Redirect after save
+			publication.$save(function(response) {
+				$location.path('publications/' + response._id);
+
+				// Clear form fields
+				$scope.name = '';
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Remove existing Publication
+		$scope.remove = function(publication) {
+			if ( publication ) { 
+				publication.$remove();
+
+				for (var i in $scope.publications) {
+					if ($scope.publications [i] === publication) {
+						$scope.publications.splice(i, 1);
+					}
+				}
+			} else {
+				$scope.publication.$remove(function() {
+					$location.path('publications');
+				});
+			}
+		};
+
+		// Update existing Publication
+		$scope.update = function() {
+			var publication = $scope.publication;
+
+			publication.$update(function() {
+				$location.path('publications/' + publication._id);
+			}, function(errorResponse) {
+				$scope.error = errorResponse.data.message;
+			});
+		};
+
+		// Find a list of Publications
+		$scope.find = function() {
+			$scope.publications = Publications.query();
+		};
+
+		// Find existing Publication
+		$scope.findOne = function() {
+			$scope.publication = Publications.get({ 
+				publicationId: $stateParams.publicationId
+			});
+		};
+	}
+]);
+'use strict';
+
+//Publications service used to communicate Publications REST endpoints
+angular.module('publications').factory('Publications', ['$resource',
+	function($resource) {
+		return $resource('publications/:publicationId', { publicationId: '@_id'
+		}, {
+			update: {
+				method: 'PUT'
+			}
+		});
+	}
+]);
+'use strict';
+
+(function() {
+	// Publications Controller Spec
+	describe('Publications Controller Tests', function() {
+		// Initialize global variables
+		var PublicationsController,
+		scope,
+		$httpBackend,
+		$stateParams,
+		$location;
+
+		// The $resource service augments the response object with methods for updating and deleting the resource.
+		// If we were to use the standard toEqual matcher, our tests would fail because the test values would not match
+		// the responses exactly. To solve the problem, we define a new toEqualData Jasmine matcher.
+		// When the toEqualData matcher compares two objects, it takes only object properties into
+		// account and ignores methods.
+		beforeEach(function() {
+			jasmine.addMatchers({
+				toEqualData: function(util, customEqualityTesters) {
+					return {
+						compare: function(actual, expected) {
+							return {
+								pass: angular.equals(actual, expected)
+							};
+						}
+					};
+				}
+			});
+		});
+
+		// Then we can start by loading the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
+		// This allows us to inject a service but then attach it to a variable
+		// with the same name as the service.
+		beforeEach(inject(function($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_) {
+			// Set a new global scope
+			scope = $rootScope.$new();
+
+			// Point global variables to injected services
+			$stateParams = _$stateParams_;
+			$httpBackend = _$httpBackend_;
+			$location = _$location_;
+
+			// Initialize the Publications controller.
+			PublicationsController = $controller('PublicationsController', {
+				$scope: scope
+			});
+		}));
+
+		it('$scope.find() should create an array with at least one Publication object fetched from XHR', inject(function(Publications) {
+			// Create sample Publication using the Publications service
+			var samplePublication = new Publications({
+				name: 'New Publication'
+			});
+
+			// Create a sample Publications array that includes the new Publication
+			var samplePublications = [samplePublication];
+
+			// Set GET response
+			$httpBackend.expectGET('publications').respond(samplePublications);
+
+			// Run controller functionality
+			scope.find();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.publications).toEqualData(samplePublications);
+		}));
+
+		it('$scope.findOne() should create an array with one Publication object fetched from XHR using a publicationId URL parameter', inject(function(Publications) {
+			// Define a sample Publication object
+			var samplePublication = new Publications({
+				name: 'New Publication'
+			});
+
+			// Set the URL parameter
+			$stateParams.publicationId = '525a8422f6d0f87f0e407a33';
+
+			// Set GET response
+			$httpBackend.expectGET(/publications\/([0-9a-fA-F]{24})$/).respond(samplePublication);
+
+			// Run controller functionality
+			scope.findOne();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.publication).toEqualData(samplePublication);
+		}));
+
+		it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', inject(function(Publications) {
+			// Create a sample Publication object
+			var samplePublicationPostData = new Publications({
+				name: 'New Publication'
+			});
+
+			// Create a sample Publication response
+			var samplePublicationResponse = new Publications({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Publication'
+			});
+
+			// Fixture mock form input values
+			scope.name = 'New Publication';
+
+			// Set POST response
+			$httpBackend.expectPOST('publications', samplePublicationPostData).respond(samplePublicationResponse);
+
+			// Run controller functionality
+			scope.create();
+			$httpBackend.flush();
+
+			// Test form inputs are reset
+			expect(scope.name).toEqual('');
+
+			// Test URL redirection after the Publication was created
+			expect($location.path()).toBe('/publications/' + samplePublicationResponse._id);
+		}));
+
+		it('$scope.update() should update a valid Publication', inject(function(Publications) {
+			// Define a sample Publication put data
+			var samplePublicationPutData = new Publications({
+				_id: '525cf20451979dea2c000001',
+				name: 'New Publication'
+			});
+
+			// Mock Publication in scope
+			scope.publication = samplePublicationPutData;
+
+			// Set PUT response
+			$httpBackend.expectPUT(/publications\/([0-9a-fA-F]{24})$/).respond();
+
+			// Run controller functionality
+			scope.update();
+			$httpBackend.flush();
+
+			// Test URL location to new object
+			expect($location.path()).toBe('/publications/' + samplePublicationPutData._id);
+		}));
+
+		it('$scope.remove() should send a DELETE request with a valid publicationId and remove the Publication from the scope', inject(function(Publications) {
+			// Create new Publication object
+			var samplePublication = new Publications({
+				_id: '525a8422f6d0f87f0e407a33'
+			});
+
+			// Create new Publications array and include the Publication
+			scope.publications = [samplePublication];
+
+			// Set expected DELETE response
+			$httpBackend.expectDELETE(/publications\/([0-9a-fA-F]{24})$/).respond(204);
+
+			// Run controller functionality
+			scope.remove(samplePublication);
+			$httpBackend.flush();
+
+			// Test array after successful delete
+			expect(scope.publications.length).toBe(0);
+		}));
+	});
+}());
 'use strict';
 
 // Config HTTP Error Handling
@@ -1251,3 +2946,121 @@ angular.module('users').factory('Users', ['$resource',
 		});
 	}
 ]);
+'use strict';
+
+(function() {
+	// Authentication controller Spec
+	describe('AuthenticationController', function() {
+		// Initialize global variables
+		var AuthenticationController,
+			scope,
+			$httpBackend,
+			$stateParams,
+			$location;
+
+		beforeEach(function() {
+			jasmine.addMatchers({
+				toEqualData: function(util, customEqualityTesters) {
+					return {
+						compare: function(actual, expected) {
+							return {
+								pass: angular.equals(actual, expected)
+							};
+						}
+					};
+				}
+			});
+		});
+
+		// Load the main application module
+		beforeEach(module(ApplicationConfiguration.applicationModuleName));
+
+		// The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
+		// This allows us to inject a service but then attach it to a variable
+		// with the same name as the service.
+		beforeEach(inject(function($controller, $rootScope, _$location_, _$stateParams_, _$httpBackend_) {
+			// Set a new global scope
+			scope = $rootScope.$new();
+
+			// Point global variables to injected services
+			$stateParams = _$stateParams_;
+			$httpBackend = _$httpBackend_;
+			$location = _$location_;
+
+			// Initialize the Authentication controller
+			AuthenticationController = $controller('AuthenticationController', {
+				$scope: scope
+			});
+		}));
+
+
+		it('$scope.signin() should login with a correct user and password', function() {
+			// Test expected GET request
+			$httpBackend.when('POST', '/auth/signin').respond(200, 'Fred');
+
+			scope.signin();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.authentication.user).toEqual('Fred');
+			expect($location.url()).toEqual('/');
+		});
+
+		it('$scope.signin() should fail to log in with nothing', function() {
+			// Test expected POST request
+			$httpBackend.expectPOST('/auth/signin').respond(400, {
+				'message': 'Missing credentials'
+			});
+
+			scope.signin();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.error).toEqual('Missing credentials');
+		});
+
+		it('$scope.signin() should fail to log in with wrong credentials', function() {
+			// Foo/Bar combo assumed to not exist
+			scope.authentication.user = 'Foo';
+			scope.credentials = 'Bar';
+
+			// Test expected POST request
+			$httpBackend.expectPOST('/auth/signin').respond(400, {
+				'message': 'Unknown user'
+			});
+
+			scope.signin();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.error).toEqual('Unknown user');
+		});
+
+		it('$scope.signup() should register with correct data', function() {
+			// Test expected GET request
+			scope.authentication.user = 'Fred';
+			$httpBackend.when('POST', '/auth/signup').respond(200, 'Fred');
+
+			scope.signup();
+			$httpBackend.flush();
+
+			// test scope value
+			expect(scope.authentication.user).toBe('Fred');
+			expect(scope.error).toEqual(undefined);
+			expect($location.url()).toBe('/');
+		});
+
+		it('$scope.signup() should fail to register with duplicate Username', function() {
+			// Test expected POST request
+			$httpBackend.when('POST', '/auth/signup').respond(400, {
+				'message': 'Username already exists'
+			});
+
+			scope.signup();
+			$httpBackend.flush();
+
+			// Test scope value
+			expect(scope.error).toBe('Username already exists');
+		});
+	});
+}());
