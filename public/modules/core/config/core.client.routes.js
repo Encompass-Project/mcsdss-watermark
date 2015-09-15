@@ -1,17 +1,22 @@
 'use strict';
 
 // Setting up route
-angular.module('core').config(['$stateProvider', '$urlRouterProvider',
-	function($stateProvider, $urlRouterProvider) {
+angular.module('core').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
 		// Redirect to home view when route not found
-		$urlRouterProvider.otherwise('/');
+		$urlRouterProvider.otherwise('/home');
 
 		// Home state routing
-		$stateProvider.
-		state('home', {
-			url: '/',
-			templateUrl: 'modules/core/views/home.client.view.html'
-		});
+		$stateProvider
+			.state('home', {
+				url: '/home',
+				templateUrl: 'modules/core/views/home.client.view.html',
+				controller: 'HomeController'
+			})
+			.state('default', {
+				url: '/default',
+				templateUrl: 'modules/core/views/home.client.view.html',
+				controller: 'DefaultViewController'
+			});
 	}
 ]);

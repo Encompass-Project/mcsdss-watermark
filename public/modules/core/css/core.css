@@ -1,4 +1,5 @@
 @import url('mean-defaults.css');
+@import url('global.css');
 @import url('navbar.css');
 @import url('default-view.css');
 @import url('dashboard-sidebar.css');
@@ -18,3 +19,4 @@
 /*@import url('vendor/flat-ui.css');*/
 /*@import url('vendor/darkly.bootstrap.css');*/
 /*@import url('vendor/sandstone.bootstrap.css');*/
+
