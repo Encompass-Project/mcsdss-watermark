@@ -4,19 +4,19 @@
 angular.module('core').config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
 
 		// Redirect to home view when route not found
-		$urlRouterProvider.otherwise('/home');
+		$urlRouterProvider.otherwise('/');
 
 		// Home state routing
 		$stateProvider
-			.state('home', {
-				url: '/home',
+			// .state('public', {
+			// 	url: '/',
+			// 	templateUrl: 'modules/core/views/default.client.view.html',
+			// 	controller: 'DefaultViewController'
+			// })
+			.state('dashboard', {
+				url: '/',
 				templateUrl: 'modules/core/views/home.client.view.html',
 				controller: 'HomeController'
-			})
-			.state('default', {
-				url: '/default',
-				templateUrl: 'modules/core/views/default.client.view.html',
-				controller: 'DefaultViewController'
 			});
 	}
 ]);
