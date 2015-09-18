@@ -10,6 +10,13 @@
     background: #111111;
     background: #123;
 }
+.header-nav-dropdown-toggle {
+    min-width: 18rem;
+}
+a.dropdown-toggle, ul.dropdown-menu > li * {
+    min-width: 18rem;
+    text-align: center;
+}
 .navbar-brand {
     font-size: 3rem;
     font-weight: 700;
@@ -19,7 +26,8 @@
     width: auto;
 }
 ul.dropdown-menu > li > a:hover {
-    color: #000000;
+    background: #C85E17;
+    /*color: #000000;*/
 }
 /* UNUSED */
 /*

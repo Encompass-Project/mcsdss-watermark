@@ -1,12 +1,14 @@
 .template-panels {
-  padding: 1rem 1.5rem 1rem 1rem;
+  padding: 0 1.5rem 0 0;
 }
 .subnavbar {
   margin: 0 2rem 1rem 0;
 }
 .dashboard-panel {
-  /*margin: 0 0 1rem 0;*/
   margin: 0;
+}
+.dashboard-header {
+  margin: 0 1.5rem 0 1.5rem;
 }
 .subnavbar-nav {
     text-align: center;

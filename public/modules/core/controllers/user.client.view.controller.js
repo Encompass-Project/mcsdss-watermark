@@ -6,8 +6,6 @@ angular.module('core').controller('UserViewController', ['$scope', 'Authenticati
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.displayName = $scope.authentication.user.displayName;
-
         $scope.clicked = function(target) {
             console.log(target);
         };

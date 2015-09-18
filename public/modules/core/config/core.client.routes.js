@@ -20,6 +20,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/core/views/user.client.view.html',
         controller: 'UserViewController'
       })
+      .state('dashboard.profile-view', {
+        abstract: false,
+        url: '/profile',
+        templateUrl: 'modules/users/views/settings/view-profile.client.view.html',
+        controller: 'SettingsController'
+      })
       .state('dashboard.main', {
         abstract: false,
         url: '/dashboard',
