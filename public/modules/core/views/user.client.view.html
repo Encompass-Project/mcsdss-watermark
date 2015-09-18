@@ -1,54 +1,61 @@
 <div data-ng-controller="UserViewController">
     <div class="row">
         <div class="col-xs-5 col-sm-4 col-md-3 col-lg-2 dashboard-sidebar">
-            <div class="row dashboard-sidebar-userinfo">
-                <div class="col-xs-3">
-                    <div><span class="dashboard-avatar fa fa-3x fa-circle"></span></div>
+            <a class="dashboard-sidebar-link" ui-sref="profile-view" ng-click="clicked('user')">
+                <div class="row dashboard-sidebar-userinfo">
+                    <div class="col-xs-3">
+                        <div><span class="dashboard-avatar fa fa-3x fa-circle"></span></div>
+                    </div>
+                    <div class="col-xs-9 username-greeting">
+                        <div>Welcome</div>
+                        <div class="dashboard-username">{{ displayName }}</div>
+                    </div>
                 </div>
-                <div class="col-xs-9 username-greeting">
-                    <div>Welcome</div>
-                    <div class="dashboard-username">{{ displayName }}</div>
-                </div>
-            </div>
-            <!-- Add ui-sref links instead and see iof we can get stateful routing to work for each module instead of simple template insertion. -->
-            <!-- Failing this, try and get ui-router to work within the templates themselves. Perhaps it can work at that depth? -->
-            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/dashboard/dashboard.client.view.html'">
+            </a>
+            <!-- <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/dashboard/dashboard.client.view.html'"> -->
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.main" ng-click="clicked('dashboard')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-home" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Dashboard</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'">
+            <!-- <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'"> -->
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.datasets" ng-click="clicked('datasets')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-database" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Data Sets</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/models/models.client.view.html'">
+            <!-- <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/models/models.client.view.html'"> -->
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.models" ng-click="clicked('models')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Models</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/goals/goals.client.view.html'">
+            <!-- <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/goals/goals.client.view.html'"> -->
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.goals" ng-click="clicked('goals')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-bullseye" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Goals</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/decisions/decisions.client.view.html'">
+            <!-- <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/decisions/decisions.client.view.html'"> -->
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.decisions" ng-click="clicked('decisions')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-balance-scale" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Decisions</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/notebooks/notebooks.client.view.html'">
+            <!-- <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/notebooks/notebooks.client.view.html'"> -->
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.notebooks" ng-click="clicked('notebooks')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-sticky-note" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Notebooks</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/publications/publications.client.view.html'">
+            <!-- <a class="dashboard-sidebar-link" href="" ng-click="selectedTemplate.path = 'modules/core/views/publications/publications.client.view.html'"> -->
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.publications" ng-click="clicked('publications')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-book" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Publications</span>
@@ -56,9 +63,9 @@
             </a>
         </div>
         <div class="col-xs-7 col-sm-8 col-md-9 col-lg-10">
-            <div class="template-panels" data-ng-include="selectedTemplate.path"></div>
+            <!-- <div class="template-panels" data-ng-include="selectedTemplate.path"></div> -->
             <!-- Hook into ui-router here with stateful view navigation for each module. -->
-            <!-- <div class="template-panels" data-ui-view="selectedModuleTemplate"></div> -->
+            <div class="template-panels" data-ui-view=""></div>
         </div>
     </div>
 </div>

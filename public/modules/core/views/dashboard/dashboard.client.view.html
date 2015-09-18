@@ -1,43 +1,176 @@
 <div data-ng-controller="DashboardViewController">
-    <!-- <h1>{{ whoami }}</h1> -->
-    <div class="row subnavbar">
-        <!-- <div class="visible-xs visible-lg">
-            <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.default.client.view.html'">Dashboard 1</button>
-                <button class="btn btn-primary" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.second.client.view.html'">Dashboard 2</button>
-                <button class="btn btn-success" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.third.client.view.html'">Dashboard 3</button>
-                <button class="btn btn-info" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.fourth.client.view.html'">Dashboard 4</button>
-                <button class="btn btn-warning" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.fifth.client.view.html'">Dashboard 5</button>
-                <button class="btn btn-danger" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.sixth.client.view.html'">Dashboard 6</button>
-            </div>
-        </div>
-        <div class="visible-md">
-            <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.default.client.view.html'">Dashboard 1</button>
-                <button class="btn btn-primary" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.second.client.view.html'">Dashboard 2</button>
-                <button class="btn btn-success" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.third.client.view.html'">Dashboard 3</button>
-            </div>
-            <div class="row subnavbar-nav">
-                <button class="btn btn-info" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.fourth.client.view.html'">Dashboard 4</button>
-                <button class="btn btn-warning" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.fifth.client.view.html'">Dashboard 5</button>
-                <button class="btn btn-danger" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.sixth.client.view.html'">Dashboard 6</button>
-            </div>
-        </div>
-        <div class="visible-sm">
-            <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.default.client.view.html'">Dashboard 1</button>
-                <button class="btn btn-primary" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.second.client.view.html'">Dashboard 2</button>
-            </div>
-            <div class="row subnavbar-nav">
-                <button class="btn btn-success" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.third.client.view.html'">Dashboard 3</button>
-                <button class="btn btn-info" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.fourth.client.view.html'">Dashboard 4</button>
-            </div>
-            <div class="row subnavbar-nav">
-                <button class="btn btn-warning" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.fifth.client.view.html'">Dashboard 5</button>
-                <button class="btn btn-danger" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.sixth.client.view.html'">Dashboard 6</button>
+    <div class="row">
+        <!-- Relocate these logs to somewhere less prominent -->
+        <!-- <div class="col-xs-4">
+            <div id="activity-panel" class="row">
+                <div class="well well-sm activity-list">
+                    <h3>Recent Activity</h3>
+                    <ul>
+                        <li ng-repeat="action in currentActivity.actions track by $index">{{ action }}</li>
+                    </ul>
+                    <button class="btn btn-link pull-right" type="button" ng-click="dashboardTemplate.path = 'modules/core/views/dashboard/dashboard.sixth.client.view.html'">More</button>
+                </div>
             </div>
         </div> -->
-        <h3>User specific info... TBD</h3>
+        <div class="col-xs-6">
+            <div class="row dashboard-panel" data-ng-controller="DatasetsController" data-ng-init="find()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable" data-ui-sref="dashboard.datasets">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-database" aria-hidden="true"></span> My Datasets</h3>
+                        </a>
+                        <!-- Get routed params working for the new button to work. -->
+                        <!-- <h3 class="panel-title pull-left"><a class="clickable" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'">My Datasets</a></h3>
+                        <button class="btn btn-default pull-right" type="button" ng-click="selectedTemplate.path = 'modules/core/views/datasets/datasets.client.view.html'">New</button>
+                        <div class="clearfix"></div> -->
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="dataset in datasets | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/datasets/{{dataset._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="dataset.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="dataset.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="dataset.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!datasets.$resolved || datasets.length">
+                            No Datasets yet, why don't you <a href="/#!/datasets/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard-panel" data-ng-controller="GoalsController" data-ng-init="find()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable" data-ui-sref="dashboard.goals">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-bullseye" aria-hidden="true"></span> My Goals</h3>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="goal in goals | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/goals/{{goal._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="goal.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="goal.user.displayName"></span>
+                                    , Updated on
+                                    <span data-ng-bind="goal.updated | date:'medium'"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="goal.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!goals.$resolved || goals.length">
+                            No Goals yet, why don't you <a href="/#!/goals/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard-panel" data-ng-controller="NotebooksController" data-ng-init="find()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable" data-ui-sref="dashboard.notebooks">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-sticky-note" aria-hidden="true"></span> My Notebooks</h3>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="notebook in notebooks | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/notebooks/{{notebook._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="notebook.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="notebook.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="notebook.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!notebooks.$resolved || notebooks.length">
+                            No Notebooks yet, why don't you <a href="/#!/notebooks/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="row dashboard-panel" data-ng-controller="ModelsController" data-ng-init="find()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable" data-ui-sref="dashboard.models">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span> My Models</h3>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="model in models | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/models/{{model._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="model.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="model.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="model.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!models.$resolved || models.length">
+                            No Models yet, why don't you <a href="/#!/models/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard-panel" data-ng-controller="DecisionsController" data-ng-init="find()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable" data-ui-sref="dashboard.decisions">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-balance-scale" aria-hidden="true"></span> My Decisions</h3>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="decision in decisions | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/decisions/{{decision._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="decision.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="decision.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="decision.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!decisions.$resolved || decisions.length">
+                            No Decisions yet, why don't you <a href="/#!/decisions/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row dashboard-panel" data-ng-controller="PublicationsController" data-ng-init="find()">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable" data-ui-sref="dashboard.publications">
+                            <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-book" aria-hidden="true"></span> My Publications</h3>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="publication in publications | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/publications/{{publication._id}}" class="list-group-item">
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="publication.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="publication.user.displayName"></span>
+                                </small>
+                                <h4 class="list-group-item-heading" data-ng-bind="publication.name"></h4>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!publications.$resolved || publications.length">
+                            No Publications yet, why don't you <a href="/#!/publications/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="dashboard-panels" data-ng-include="dashboardTemplate.path"></div>
 </div>

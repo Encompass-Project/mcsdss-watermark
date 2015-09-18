@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('core').controller('DashboardThirdViewController', ['$scope', 'Authentication',
+angular.module('core').controller('DashboardActivityViewController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'dashboard.third.client.view.html';
+        $scope.whoami = 'dashboard.sixth.client.view.html';
 
     }
 ]);

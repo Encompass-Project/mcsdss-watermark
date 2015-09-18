@@ -15,8 +15,13 @@ angular.module('core').controller('UserViewController', ['$scope', 'Authenticati
 
         $scope.displayName = $scope.authentication.user.displayName;
 
-        $scope.selectedTemplate = {
-            'path':'modules/core/views/dashboard/dashboard.client.view.html'
+        // $scope.selectedTemplate = {
+        //     'path':'modules/core/views/dashboard/dashboard.client.view.html'
+        // };
+
+        $scope.clicked = function(target) {
+            // var this = target;
+            console.log(target);
         };
     }
 ]);
