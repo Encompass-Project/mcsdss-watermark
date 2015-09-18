@@ -2,40 +2,40 @@
     <div class="row subnavbar">
         <div class="visible-xs visible-lg">
             <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="decisionsTemplate.path = 'modules/decisions/views/list-decisions.client.view.html'">List</button>
-                <button class="btn btn-primary" type="button" ng-click="decisionsTemplate.path = 'modules/decisions/views/create-decision.client.view.html'">New Decision</button>
-                <button class="btn btn-success" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.third.client.view.html'">Decisions 3</button>
-                <button class="btn btn-info" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.fourth.client.view.html'">Decisions 4</button>
-                <button class="btn btn-warning" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.fifth.client.view.html'">Decisions 5</button>
-                <button class="btn btn-danger" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.sixth.client.view.html'">Decisions 6</button>
+                <button class="btn btn-default" type="button" data-ui-sref="dashboard.decisions.list" ng-click="clicked('dashboard.decisions.list')">List</button>
+                <button class="btn btn-primary" type="button" data-ui-sref="dashboard.decisions.load" ng-click="clicked('dashboard.decisions.load')">Load</button>
+                <button class="btn btn-success" type="button" data-ui-sref="dashboard.decisions.transform" ng-click="clicked('dashboard.decisions.transform')">Transform</button>
+                <button class="btn btn-info" type="button" data-ui-sref="dashboard.decisions.visualize" ng-click="clicked('dashboard.decisions.visualize')">Visualize</button>
+                <button class="btn btn-warning" type="button" data-ui-sref="dashboard.decisions.curate" ng-click="clicked('dashboard.decisions.curate')">Curate</button>
+                <button class="btn btn-danger" type="button" data-ui-sref="dashboard.decisions.publish" ng-click="clicked('dashboard.decisions.publish')">Publish</button>
             </div>
         </div>
         <div class="visible-md">
             <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="decisionsTemplate.path = 'modules/decisions/views/list-decisions.client.view.html'">List</button>
-                <button class="btn btn-primary" type="button" ng-click="decisionsTemplate.path = 'modules/decisions/views/create-decision.client.view.html'">New Decision</button>
-                <button class="btn btn-success" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.third.client.view.html'">Decisions 3</button>
+                <button class="btn btn-default" type="button" data-ui-sref="dashboard.decisions.list" ng-click="clicked('dashboard.decisions.list')">List</button>
+                <button class="btn btn-primary" type="button" data-ui-sref="dashboard.decisions.load" ng-click="clicked('dashboard.decisions.load')">Load</button>
+                <button class="btn btn-success" type="button" data-ui-sref="dashboard.decisions.transform" ng-click="clicked('dashboard.decisions.transform')">Transform</button>
             </div>
             <div class="row subnavbar-nav">
-                <button class="btn btn-info" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.fourth.client.view.html'">Decisions 4</button>
-                <button class="btn btn-warning" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.fifth.client.view.html'">Decisions 5</button>
-                <button class="btn btn-danger" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.sixth.client.view.html'">Decisions 6</button>
+                <button class="btn btn-info" type="button" data-ui-sref="dashboard.decisions.visualize" ng-click="clicked('dashboard.decisions.visualize')">Visualize</button>
+                <button class="btn btn-warning" type="button" data-ui-sref="dashboard.decisions.curate" ng-click="clicked('dashboard.decisions.curate')">Curate</button>
+                <button class="btn btn-danger" type="button" data-ui-sref="dashboard.decisions.publish" ng-click="clicked('dashboard.decisions.publish')">Publish</button>
             </div>
         </div>
         <div class="visible-sm">
             <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="decisionsTemplate.path = 'modules/decisions/views/list-decisions.client.view.html'">List</button>
-                <button class="btn btn-primary" type="button" ng-click="decisionsTemplate.path = 'modules/decisions/views/create-decision.client.view.html'">New Decision</button>
+                <button class="btn btn-default" type="button" data-ui-sref="dashboard.decisions.list" ng-click="clicked('dashboard.decisions.list')">List</button>
+                <button class="btn btn-primary" type="button" data-ui-sref="dashboard.decisions.load" ng-click="clicked('dashboard.decisions.load')">Load</button>
             </div>
             <div class="row subnavbar-nav">
-                <button class="btn btn-success" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.third.client.view.html'">Decisions 3</button>
-                <button class="btn btn-info" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.fourth.client.view.html'">Decisions 4</button>
+                <button class="btn btn-success" type="button" data-ui-sref="dashboard.decisions.transform" ng-click="clicked('dashboard.decisions.transform')">Transform</button>
+                <button class="btn btn-info" type="button" data-ui-sref="dashboard.decisions.visualize" ng-click="clicked('dashboard.decisions.visualize')">Visualize</button>
             </div>
             <div class="row subnavbar-nav">
-                <button class="btn btn-warning" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.fifth.client.view.html'">Decisions 5</button>
-                <button class="btn btn-danger" type="button" ng-click="decisionsTemplate.path = 'modules/core/views/decisions/decisions.sixth.client.view.html'">Decisions 6</button>
+                <button class="btn btn-warning" type="button" data-ui-sref="dashboard.decisions.curate" ng-click="clicked('dashboard.decisions.curate')">Curate</button>
+                <button class="btn btn-danger" type="button" data-ui-sref="dashboard.decisions.publish" ng-click="clicked('dashboard.decisions.publish')">Publish</button>
             </div>
         </div>
     </div>
-    <div class="decisions-panels" data-ng-include="decisionsTemplate.path"></div>
+    <div data-ui-view=""></div><!-- class="decisions-panels" -->
 </div>

@@ -2,40 +2,40 @@
     <div class="row subnavbar">
         <div class="visible-xs visible-lg">
             <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="goalsTemplate.path = 'modules/goals/views/list-goals.client.view.html'">List</button>
-                <button class="btn btn-primary" type="button" ng-click="goalsTemplate.path = 'modules/goals/views/create-goal.client.view.html'">New Goal</button>
-                <button class="btn btn-success" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.third.client.view.html'">Goals 3</button>
-                <button class="btn btn-info" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.fourth.client.view.html'">Goals 4</button>
-                <button class="btn btn-warning" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.fifth.client.view.html'">Goals 5</button>
-                <button class="btn btn-danger" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.sixth.client.view.html'">Goals 6</button>
+                <button class="btn btn-default" type="button" data-ui-sref="dashboard.goals.list" ng-click="clicked('dashboard.goals.list')">List</button>
+                <button class="btn btn-primary" type="button" data-ui-sref="dashboard.goals.load" ng-click="clicked('dashboard.goals.load')">Load</button>
+                <button class="btn btn-success" type="button" data-ui-sref="dashboard.goals.transform" ng-click="clicked('dashboard.goals.transform')">Transform</button>
+                <button class="btn btn-info" type="button" data-ui-sref="dashboard.goals.visualize" ng-click="clicked('dashboard.goals.visualize')">Visualize</button>
+                <button class="btn btn-warning" type="button" data-ui-sref="dashboard.goals.curate" ng-click="clicked('dashboard.goals.curate')">Curate</button>
+                <button class="btn btn-danger" type="button" data-ui-sref="dashboard.goals.publish" ng-click="clicked('dashboard.goals.publish')">Publish</button>
             </div>
         </div>
         <div class="visible-md">
             <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="goalsTemplate.path = 'modules/goals/views/list-goals.client.view.html'">List</button>
-                <button class="btn btn-primary" type="button" ng-click="goalsTemplate.path = 'modules/goals/views/create-goal.client.view.html'">New Goal</button>
-                <button class="btn btn-success" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.third.client.view.html'">Goals 3</button>
+                <button class="btn btn-default" type="button" data-ui-sref="dashboard.goals.list" ng-click="clicked('dashboard.goals.list')">List</button>
+                <button class="btn btn-primary" type="button" data-ui-sref="dashboard.goals.load" ng-click="clicked('dashboard.goals.load')">Load</button>
+                <button class="btn btn-success" type="button" data-ui-sref="dashboard.goals.transform" ng-click="clicked('dashboard.goals.transform')">Transform</button>
             </div>
             <div class="row subnavbar-nav">
-                <button class="btn btn-info" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.fourth.client.view.html'">Goals 4</button>
-                <button class="btn btn-warning" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.fifth.client.view.html'">Goals 5</button>
-                <button class="btn btn-danger" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.sixth.client.view.html'">Goals 6</button>
+                <button class="btn btn-info" type="button" data-ui-sref="dashboard.goals.visualize" ng-click="clicked('dashboard.goals.visualize')">Visualize</button>
+                <button class="btn btn-warning" type="button" data-ui-sref="dashboard.goals.curate" ng-click="clicked('dashboard.goals.curate')">Curate</button>
+                <button class="btn btn-danger" type="button" data-ui-sref="dashboard.goals.publish" ng-click="clicked('dashboard.goals.publish')">Publish</button>
             </div>
         </div>
         <div class="visible-sm">
             <div class="row subnavbar-nav">
-                <button class="btn btn-default" type="button" ng-click="goalsTemplate.path = 'modules/goals/views/list-goals.client.view.html'">List</button>
-                <button class="btn btn-primary" type="button" ng-click="goalsTemplate.path = 'modules/goals/views/create-goal.client.view.html'">New Goal</button>
+                <button class="btn btn-default" type="button" data-ui-sref="dashboard.goals.list" ng-click="clicked('dashboard.goals.list')">List</button>
+                <button class="btn btn-primary" type="button" data-ui-sref="dashboard.goals.load" ng-click="clicked('dashboard.goals.load')">Load</button>
             </div>
             <div class="row subnavbar-nav">
-                <button class="btn btn-success" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.third.client.view.html'">Goals 3</button>
-                <button class="btn btn-info" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.fourth.client.view.html'">Goals 4</button>
+                <button class="btn btn-success" type="button" data-ui-sref="dashboard.goals.transform" ng-click="clicked('dashboard.goals.transform')">Transform</button>
+                <button class="btn btn-info" type="button" data-ui-sref="dashboard.goals.visualize" ng-click="clicked('dashboard.goals.visualize')">Visualize</button>
             </div>
             <div class="row subnavbar-nav">
-                <button class="btn btn-warning" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.fifth.client.view.html'">Goals 5</button>
-                <button class="btn btn-danger" type="button" ng-click="goalsTemplate.path = 'modules/core/views/goals/goals.sixth.client.view.html'">Goals 6</button>
+                <button class="btn btn-warning" type="button" data-ui-sref="dashboard.goals.curate" ng-click="clicked('dashboard.goals.curate')">Curate</button>
+                <button class="btn btn-danger" type="button" data-ui-sref="dashboard.goals.publish" ng-click="clicked('dashboard.goals.publish')">Publish</button>
             </div>
         </div>
     </div>
-    <div class="goals-panels" data-ng-include="goalsTemplate.path"></div>
+    <div data-ui-view=""></div><!-- class="goals-panels" -->
 </div>
