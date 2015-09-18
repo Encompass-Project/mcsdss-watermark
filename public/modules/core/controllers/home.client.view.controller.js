@@ -12,14 +12,5 @@ angular.module('core').controller('HomeViewController', ['$scope', 'Authenticati
             // console.log('WELCOME');
             $state.go('dashboard.main');
         }
-
-        // $scope.defaultTemplate = {
-        //     'path':'modules/core/views/default.client.view.html'
-        // };
-
-        // $scope.userTemplate = {
-        //     'path':'modules/core/views/user.client.view.html'
-        // };
-
 	}
 ]);
