@@ -2,6 +2,9 @@
 // Setting up routes.
 angular.module('core').config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
+    // Fall back on url-based routing for catch-alls and redirects.
+    $urlRouterProvider.when('/dashboard/datasets', '/dashboard/datasets/list'); // redirects are not working properly.
+    $urlRouterProvider.otherwise('/');
     // Use state routing primarilly.
     $stateProvider
       .state('home', {
@@ -41,7 +44,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.datasets.list', {
         abstract: false,
-        // url: '/list',
+        url: '/',
         templateUrl: 'modules/datasets/views/list-datasets.client.view.html',
         controller: 'DatasetsController'
       })
@@ -84,7 +87,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.models.list', {
         abstract: false,
-        // url: '/list',
+        url: '/',
         templateUrl: 'modules/models/views/list-models.client.view.html',
         controller: 'ModelsController'
       })
@@ -127,7 +130,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.goals.list', {
         abstract: false,
-        // url: '/list',
+        url: '/',
         templateUrl: 'modules/goals/views/list-goals.client.view.html',
         controller: 'GoalsController'
       })
@@ -170,7 +173,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.decisions.list', {
         abstract: false,
-        // url: '/list',
+        url: '/',
         templateUrl: 'modules/decisions/views/list-decisions.client.view.html',
         controller: 'DecisionsController'
       })
@@ -213,7 +216,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.notebooks.list', {
         abstract: false,
-        // url: '/list',
+        url: '/',
         templateUrl: 'modules/notebooks/views/list-notebooks.client.view.html',
         controller: 'NotebooksController'
       })
@@ -256,7 +259,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.publications.list', {
         abstract: false,
-        // url: '/list',
+        url: '/',
         templateUrl: 'modules/publications/views/list-publications.client.view.html',
         controller: 'PublicationsController'
       })
@@ -299,12 +302,27 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.profile.view', {
         abstract: false,
-        // url: '/list',
+        url: '/',
         templateUrl: 'modules/users/views/settings/view-profile.client.view.html',
-        controller: 'DatasetsController'
+        controller: 'SettingsController'
+      })
+      .state('dashboard.profile.edit', {
+        abstract: false,
+        url: '/edit',
+        templateUrl: 'modules/users/views/settings/edit-profile.client.view.html',
+        controller: 'SettingsController'
+      })
+      .state('dashboard.profile.accounts', {
+        abstract: false,
+        url: '/accounts',
+        templateUrl: 'modules/users/views/settings/social-accounts.client.view.html',
+        controller: 'SettingsController'
+      })
+      .state('dashboard.profile.password', {
+        abstract: false,
+        url: '/password',
+        templateUrl: 'modules/users/views/settings/change-password.client.view.html',
+        controller: 'SettingsController'
       });
-    // Fall back on url-based routing for catch-alls and redirects.
-    // $urlRouterProvider.when('/dashboard/datasets', '/dashboard/datasets/list');	// redirects are not working properly.
-    $urlRouterProvider.otherwise('/');
   }
 ]);
