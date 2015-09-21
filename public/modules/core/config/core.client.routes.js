@@ -289,6 +289,19 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         url: '/publish',
         templateUrl: 'modules/core/views/publications/publications.sixth.client.view.html',
         controller: 'PublicationsSixthViewController'
+      })
+      // PROFILE
+      .state('dashboard.profile', {
+        abstract: false,
+        url: '/profile',
+        templateUrl: 'modules/core/views/profile/profile.client.view.html',
+        controller: 'ProfileViewController'
+      })
+      .state('dashboard.profile.view', {
+        abstract: false,
+        // url: '/list',
+        templateUrl: 'modules/users/views/settings/view-profile.client.view.html',
+        controller: 'DatasetsController'
       });
     // Fall back on url-based routing for catch-alls and redirects.
     // $urlRouterProvider.when('/dashboard/datasets', '/dashboard/datasets/list');	// redirects are not working properly.
