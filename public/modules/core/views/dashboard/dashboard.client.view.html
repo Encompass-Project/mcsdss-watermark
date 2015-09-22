@@ -31,7 +31,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a data-ng-repeat="dataset in datasets | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/datasets/{{dataset._id}}" class="list-group-item">
+                        <a data-ng-repeat="dataset in datasets | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.datasets.list.details({datasetId: dataset._id})" class="list-group-item"><!-- data-ng-href="#!/datasets/{{dataset._id}}" -->
                             <small class="list-group-item-text">
                                 Posted on <span data-ng-bind="dataset.created | date:'medium'"></span> by <span data-ng-bind="dataset.user.displayName"></span> ( ID: <span data-ng-bind="dataset._id"></span> )
                             </small>
@@ -53,7 +53,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a data-ng-repeat="goal in goals | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/goals/{{goal._id}}" class="list-group-item">
+                        <a data-ng-repeat="goal in goals | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.goals.list.details({goalId: goal._id})" class="list-group-item"><!-- data-ng-href="#!/goals/{{goal._id}}" -->
                             <small class="list-group-item-text">
                                 Posted on
                                 <span data-ng-bind="goal.created | date:'medium'"></span>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a data-ng-repeat="notebook in notebooks | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/notebooks/{{notebook._id}}" class="list-group-item">
+                        <a data-ng-repeat="notebook in notebooks | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.notebooks.list.details({notebookId: notebook._id})" class="list-group-item"><!-- data-ng-href="#!/notebooks/{{notebook._id}}" -->
                             <small class="list-group-item-text">
                                 Posted on
                                 <span data-ng-bind="notebook.created | date:'medium'"></span>
@@ -107,7 +107,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a data-ng-repeat="model in models | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/models/{{model._id}}" class="list-group-item">
+                        <a data-ng-repeat="model in models | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.models.list.details({modelId: model._id})" class="list-group-item"><!-- data-ng-href="#!/models/{{model._id}}" -->
                             <small class="list-group-item-text">
                                 Posted on
                                 <span data-ng-bind="model.created | date:'medium'"></span>
@@ -132,7 +132,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a data-ng-repeat="decision in decisions | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/decisions/{{decision._id}}" class="list-group-item">
+                        <a data-ng-repeat="decision in decisions | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.decisions.list.details({decisionId: decision._id})" class="list-group-item"><!-- data-ng-href="#!/decisions/{{decision._id}}" -->
                             <small class="list-group-item-text">
                                 Posted on
                                 <span data-ng-bind="decision.created | date:'medium'"></span>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a data-ng-repeat="publication in publications | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-href="#!/publications/{{publication._id}}" class="list-group-item">
+                        <a data-ng-repeat="publication in publications | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.publications.list.details({publicationId: publication._id})" class="list-group-item"><!-- data-ng-href="#!/publications/{{publication._id}}" -->
                             <small class="list-group-item-text">
                                 Posted on
                                 <span data-ng-bind="publication.created | date:'medium'"></span>

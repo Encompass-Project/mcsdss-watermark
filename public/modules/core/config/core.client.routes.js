@@ -44,8 +44,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.datasets.list', {
         abstract: false,
-        url: '/',
+        url: '/list', // can also use- url: '/',
         templateUrl: 'modules/datasets/views/list-datasets.client.view.html',
+        controller: 'DatasetsController'
+      })
+      .state('dashboard.datasets.list.details', {
+        abstract: false,
+        url: '/details/:datasetId',
+        templateUrl: 'modules/datasets/views/view-dataset.client.view.html',
         controller: 'DatasetsController'
       })
       .state('dashboard.datasets.load', {
@@ -87,8 +93,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.models.list', {
         abstract: false,
-        url: '/',
+        url: '/list', // can also use- url: '/',
         templateUrl: 'modules/models/views/list-models.client.view.html',
+        controller: 'ModelsController'
+      })
+      .state('dashboard.models.list.details', {
+        abstract: false,
+        url: '/details/:modelId',
+        templateUrl: 'modules/models/views/view-model.client.view.html',
         controller: 'ModelsController'
       })
       .state('dashboard.models.load', {
@@ -130,8 +142,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.goals.list', {
         abstract: false,
-        url: '/',
+        url: '/list', // can also use- url: '/',
         templateUrl: 'modules/goals/views/list-goals.client.view.html',
+        controller: 'GoalsController'
+      })
+      .state('dashboard.goals.list.details', {
+        abstract: false,
+        url: '/details/:goalId',
+        templateUrl: 'modules/goals/views/view-goal.client.view.html',
         controller: 'GoalsController'
       })
       .state('dashboard.goals.load', {
@@ -173,8 +191,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.decisions.list', {
         abstract: false,
-        url: '/',
+        url: '/list', // can also use- url: '/',
         templateUrl: 'modules/decisions/views/list-decisions.client.view.html',
+        controller: 'DecisionsController'
+      })
+      .state('dashboard.decisions.list.details', {
+        abstract: false,
+        url: '/details/:decisionId',
+        templateUrl: 'modules/decisions/views/view-decision.client.view.html',
         controller: 'DecisionsController'
       })
       .state('dashboard.decisions.load', {
@@ -216,8 +240,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.notebooks.list', {
         abstract: false,
-        url: '/',
+        url: '/list', // can also use- url: '/',
         templateUrl: 'modules/notebooks/views/list-notebooks.client.view.html',
+        controller: 'NotebooksController'
+      })
+      .state('dashboard.notebooks.list.details', {
+        abstract: false,
+        url: '/details/:notebookId',
+        templateUrl: 'modules/notebooks/views/view-notebook.client.view.html',
         controller: 'NotebooksController'
       })
       .state('dashboard.notebooks.load', {
@@ -259,8 +289,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.publications.list', {
         abstract: false,
-        url: '/',
+        url: '/list', // can also use- url: '/',
         templateUrl: 'modules/publications/views/list-publications.client.view.html',
+        controller: 'PublicationsController'
+      })
+      .state('dashboard.publications.list.details', {
+        abstract: false,
+        url: '/details/:publicationId',
+        templateUrl: 'modules/publications/views/view-publication.client.view.html',
         controller: 'PublicationsController'
       })
       .state('dashboard.publications.load', {
@@ -302,7 +338,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.profile.view', {
         abstract: false,
-        url: '/',
+        url: '/view', // can also use- url: '/',
         templateUrl: 'modules/users/views/settings/view-profile.client.view.html',
         controller: 'SettingsController'
       })

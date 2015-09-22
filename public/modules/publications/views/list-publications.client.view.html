@@ -2,18 +2,23 @@
     <div class="page-header">
         <h1>Publications</h1>
     </div>
-    <div class="list-group">
-        <a data-ng-repeat="publication in publications" data-ng-href="#!/publications/{{publication._id}}" class="list-group-item">
-			<small class="list-group-item-text">
-				Posted on
-				<span data-ng-bind="publication.created | date:'medium'"></span>
-				by
-				<span data-ng-bind="publication.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="publication.name"></h4>
-        </a>
+    <div class="col-xs-4">
+        <div class="list-group">
+            <a data-ng-repeat="publication in publications" data-ui-sref="dashboard.publications.list.details({publicationId: publication._id})" class="list-group-item"><!-- data-ng-href="#!/publications/{{publication._id}}" -->
+    			<small class="list-group-item-text">
+    				Posted on
+    				<span data-ng-bind="publication.created | date:'medium'"></span>
+    				by
+    				<span data-ng-bind="publication.user.displayName"></span>
+    			</small>
+    			<h4 class="list-group-item-heading" data-ng-bind="publication.name"></h4>
+            </a>
+        </div>
+        <div class="alert alert-warning text-center" data-ng-hide="!publications.$resolved || publications.length">
+        	No Publications yet, why don't you <a href="/#!/publications/create">create one</a>?
+        </div>
     </div>
-    <div class="alert alert-warning text-center" data-ng-hide="!publications.$resolved || publications.length">
-    	No Publications yet, why don't you <a href="/#!/publications/create">create one</a>?
+    <div class="col-xs-8">
+        <div data-ui-view=""></div>
     </div>
 </section>
