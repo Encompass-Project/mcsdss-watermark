@@ -1,35 +1,29 @@
 <div>
 	<div class="page-header">
-		<h1>Profile</h1>
+		<h1 class="row text-center">Profile</h1>
 	</div>
-	<div class="col-xs-6">
-		<div class="row">
-            <div class="col-xs-6 col-md-3">
-                <a href="#" class="thumbnail">
-                    <img src="" alt="">
-                    <span class="fa fa-5x fa-user"></span>
-                </a>
-            </div>
-        </div>
-        <div class="row">
-    		<ul>
-    			<li>{{ user.displayName }}</li>
-    			<li>First Name: {{ user.firstName }}</li>
-    			<li>Last Name: {{ user.lastName }}</li>
-    			<li>Email: {{ user.email }}</li>
-    			<li>Username: {{ user.displayName }}</li>
-    		</ul>
-        </div>
-		<!-- <ul class="">
-			<li>
-				<a href="/#!/settings/profile">Edit Profile</a>
-			</li>
-			<li>
-				<a href="/#!/settings/accounts">Manage Social Accounts</a>
-			</li>
-			<li data-ng-show="authentication.user.provider === 'local'">
-				<a href="/#!/settings/password">Change Password</a>
-			</li>
-		</ul> -->
-	</div>
+    <div class="row">
+    	<div class="col-xs-12 text-center">
+            <a href="#" class="thumbnail">
+                <img src="" alt="">
+                <span class="fa fa-5x fa-user"></span>
+            </a>
+    		<p>{{ user.displayName }}</p>
+    		<p>First Name: {{ user.firstName }}</p>
+    		<p>Last Name: {{ user.lastName }}</p>
+    		<p>Email: {{ user.email }}</p>
+    		<p>Username: {{ user.displayName }}</p>
+    		<!-- <ul class="">
+    			<li>
+    				<a href="/#!/settings/profile">Edit Profile</a>
+    			</li>
+    			<li>
+    				<a href="/#!/settings/accounts">Manage Social Accounts</a>
+    			</li>
+    			<li data-ng-show="authentication.user.provider === 'local'">
+    				<a href="/#!/settings/password">Change Password</a>
+    			</li>
+    		</ul> -->
+    	</div>
+    </div>
 </div>

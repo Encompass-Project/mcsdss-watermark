@@ -2,7 +2,7 @@
 // Setting up routes.
 angular.module('core').config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
-    // Fall back on url-based routing for catch-alls and redirects.
+    // Fall back on url-based routing for redirects and bad url catch-all.
     $urlRouterProvider
       .when('/datasets', '/datasets/list')
       .when('/models', '/models/list')
@@ -11,7 +11,8 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       .when('/notebooks', '/notebooks/list')
       .when('/publications', '/publications/list')
       .when('/profile', '/profile/view')
-      .otherwise('/'); // $urlRouterProvider.otherwise('/'); // catch all.
+      .otherwise('/');
+
     // Use state routing primarilly.
     $stateProvider
       .state('home', {
@@ -60,6 +61,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         abstract: false,
         url: '/details/:datasetId',
         templateUrl: 'modules/datasets/views/view-dataset.client.view.html',
+        controller: 'DatasetsController'
+      })
+      .state('dashboard.datasets.list.edit', {
+        abstract: false,
+        url: '/edit/:datasetId',
+        templateUrl: 'modules/datasets/views/edit-dataset.client.view.html',
         controller: 'DatasetsController'
       })
       .state('dashboard.datasets.load', {
@@ -111,6 +118,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/models/views/view-model.client.view.html',
         controller: 'ModelsController'
       })
+      .state('dashboard.models.list.edit', {
+        abstract: false,
+        url: '/edit/:modelId',
+        templateUrl: 'modules/models/views/edit-model.client.view.html',
+        controller: 'ModelsController'
+      })
       .state('dashboard.models.load', {
         abstract: false,
         url: '/load',
@@ -158,6 +171,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         abstract: false,
         url: '/details/:goalId',
         templateUrl: 'modules/goals/views/view-goal.client.view.html',
+        controller: 'GoalsController'
+      })
+      .state('dashboard.goals.list.edit', {
+        abstract: false,
+        url: '/edit/:goalId',
+        templateUrl: 'modules/goals/views/edit-goal.client.view.html',
         controller: 'GoalsController'
       })
       .state('dashboard.goals.load', {
@@ -209,6 +228,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/decisions/views/view-decision.client.view.html',
         controller: 'DecisionsController'
       })
+      .state('dashboard.decisions.list.edit', {
+        abstract: false,
+        url: '/edit/:decisionId',
+        templateUrl: 'modules/decisions/views/edit-decision.client.view.html',
+        controller: 'DecisionsController'
+      })
       .state('dashboard.decisions.load', {
         abstract: false,
         url: '/load',
@@ -258,6 +283,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/notebooks/views/view-notebook.client.view.html',
         controller: 'NotebooksController'
       })
+      .state('dashboard.notebooks.list.edit', {
+        abstract: false,
+        url: '/edit/:notebookId',
+        templateUrl: 'modules/notebooks/views/edit-notebook.client.view.html',
+        controller: 'NotebooksController'
+      })
       .state('dashboard.notebooks.load', {
         abstract: false,
         url: '/load',
@@ -305,6 +336,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         abstract: false,
         url: '/details/:publicationId',
         templateUrl: 'modules/publications/views/view-publication.client.view.html',
+        controller: 'PublicationsController'
+      })
+      .state('dashboard.publications.list.edit', {
+        abstract: false,
+        url: '/edit/:publicationId',
+        templateUrl: 'modules/publications/views/edit-publication.client.view.html',
         controller: 'PublicationsController'
       })
       .state('dashboard.publications.load', {

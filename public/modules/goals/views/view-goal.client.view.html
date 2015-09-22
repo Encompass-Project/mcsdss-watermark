@@ -2,7 +2,7 @@
 	<div class="page-header">
 		<h1 data-ng-bind="goal.name"></h1>
 		<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == goal.user._id))">
-			<a class="btn btn-primary" href="/#!/goals/{{goal._id}}/edit">
+			<a class="btn btn-primary" data-ui-sref="dashboard.goals.list.edit({goalId: goal._id})"><!-- href="/#!/goals/{{goal._id}}/edit" -->
 				<i class="glyphicon glyphicon-edit"></i>
 			</a>
 			<a class="btn btn-danger" data-ng-click="remove();">
