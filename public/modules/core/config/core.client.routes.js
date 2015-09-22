@@ -3,8 +3,15 @@
 angular.module('core').config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
     // Fall back on url-based routing for catch-alls and redirects.
-    $urlRouterProvider.when('/dashboard/datasets', '/dashboard/datasets/list'); // redirects are not working properly.
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider
+      .when('/datasets', '/datasets/list')
+      .when('/models', '/models/list')
+      .when('/goals', '/goals/list')
+      .when('/decisions', '/decisions/list')
+      .when('/notebooks', '/notebooks/list')
+      .when('/publications', '/publications/list')
+      .when('/profile', '/profile/view')
+      .otherwise('/'); // $urlRouterProvider.otherwise('/'); // catch all.
     // Use state routing primarilly.
     $stateProvider
       .state('home', {
@@ -20,6 +27,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard', {
         abstract: false,
+        // url: '/',
         templateUrl: 'modules/core/views/user.client.view.html',
         controller: 'UserViewController'
       })
