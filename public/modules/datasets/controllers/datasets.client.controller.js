@@ -1,8 +1,8 @@
 'use strict';
 
 // Datasets controller
-angular.module('datasets').controller('DatasetsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Datasets',
-	function($scope, $stateParams, $location, Authentication, Datasets) {
+angular.module('datasets').controller('DatasetsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Datasets',
+	function($scope, $state, $stateParams, $location, Authentication, Datasets) {
 		$scope.authentication = Authentication;
 
 		// Create new Dataset
@@ -14,7 +14,8 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$statePa
 
 			// Redirect after save
 			dataset.$save(function(response) {
-				$location.path('datasets/' + response._id);
+				// $location.path('datasets/' + response._id);
+				$location.path('datasets');
 
 				// Clear form fields
 				$scope.name = '';
@@ -25,7 +26,7 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$statePa
 
 		// Remove existing Dataset
 		$scope.remove = function(dataset) {
-			if ( dataset ) { 
+			if ( dataset ) {
 				dataset.$remove();
 
 				for (var i in $scope.datasets) {
@@ -35,7 +36,8 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$statePa
 				}
 			} else {
 				$scope.dataset.$remove(function() {
-					$location.path('datasets');
+					// $location.path('datasets');							// works but does not update list view.
+					$state.go('dashboard.datasets', {}, {reload: true}); 	// $state needs tobe injected nto the controller..
 				});
 			}
 		};
@@ -58,7 +60,7 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$statePa
 
 		// Find existing Dataset
 		$scope.findOne = function() {
-			$scope.dataset = Datasets.get({ 
+			$scope.dataset = Datasets.get({
 				datasetId: $stateParams.datasetId
 			});
 		};

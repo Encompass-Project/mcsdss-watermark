@@ -1,8 +1,8 @@
 'use strict';
 
 // Notebooks controller
-angular.module('notebooks').controller('NotebooksController', ['$scope', '$stateParams', '$location', 'Authentication', 'Notebooks',
-	function($scope, $stateParams, $location, Authentication, Notebooks) {
+angular.module('notebooks').controller('NotebooksController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Notebooks',
+	function($scope, $state, $stateParams, $location, Authentication, Notebooks) {
 		$scope.authentication = Authentication;
 
 		// Create new Notebook
@@ -25,7 +25,7 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 
 		// Remove existing Notebook
 		$scope.remove = function(notebook) {
-			if ( notebook ) { 
+			if ( notebook ) {
 				notebook.$remove();
 
 				for (var i in $scope.notebooks) {
@@ -35,7 +35,8 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 				}
 			} else {
 				$scope.notebook.$remove(function() {
-					$location.path('notebooks');
+					// $location.path('notebooks');
+					$state.go('dashboard.notebooks', {}, {reload: true});
 				});
 			}
 		};
@@ -58,7 +59,7 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 
 		// Find existing Notebook
 		$scope.findOne = function() {
-			$scope.notebook = Notebooks.get({ 
+			$scope.notebook = Notebooks.get({
 				notebookId: $stateParams.notebookId
 			});
 		};

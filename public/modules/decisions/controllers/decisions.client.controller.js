@@ -1,8 +1,8 @@
 'use strict';
 
 // Decisions controller
-angular.module('decisions').controller('DecisionsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Decisions',
-	function($scope, $stateParams, $location, Authentication, Decisions) {
+angular.module('decisions').controller('DecisionsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Decisions',
+	function($scope, $state, $stateParams, $location, Authentication, Decisions) {
 		$scope.authentication = Authentication;
 
 		// Create new Decision
@@ -25,7 +25,7 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 
 		// Remove existing Decision
 		$scope.remove = function(decision) {
-			if ( decision ) { 
+			if ( decision ) {
 				decision.$remove();
 
 				for (var i in $scope.decisions) {
@@ -35,7 +35,8 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 				}
 			} else {
 				$scope.decision.$remove(function() {
-					$location.path('decisions');
+					// $location.path('decisions');
+					$state.go('dashboard.decisions', {}, {reload: true});
 				});
 			}
 		};
@@ -58,7 +59,7 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 
 		// Find existing Decision
 		$scope.findOne = function() {
-			$scope.decision = Decisions.get({ 
+			$scope.decision = Decisions.get({
 				decisionId: $stateParams.decisionId
 			});
 		};

@@ -1,8 +1,8 @@
 'use strict';
 
 // Models controller
-angular.module('models').controller('ModelsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Models',
-	function($scope, $stateParams, $location, Authentication, Models) {
+angular.module('models').controller('ModelsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Models',
+	function($scope, $state, $stateParams, $location, Authentication, Models) {
 		$scope.authentication = Authentication;
 
 		// Create new Model
@@ -25,7 +25,7 @@ angular.module('models').controller('ModelsController', ['$scope', '$stateParams
 
 		// Remove existing Model
 		$scope.remove = function(model) {
-			if ( model ) { 
+			if ( model ) {
 				model.$remove();
 
 				for (var i in $scope.models) {
@@ -35,7 +35,8 @@ angular.module('models').controller('ModelsController', ['$scope', '$stateParams
 				}
 			} else {
 				$scope.model.$remove(function() {
-					$location.path('models');
+					// $location.path('models');
+					$state.go('dashboard.models', {}, {reload: true});
 				});
 			}
 		};
@@ -58,7 +59,7 @@ angular.module('models').controller('ModelsController', ['$scope', '$stateParams
 
 		// Find existing Model
 		$scope.findOne = function() {
-			$scope.model = Models.get({ 
+			$scope.model = Models.get({
 				modelId: $stateParams.modelId
 			});
 		};

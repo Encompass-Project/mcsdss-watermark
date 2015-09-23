@@ -1,8 +1,8 @@
 'use strict';
 
 // Goals controller
-angular.module('goals').controller('GoalsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Goals',
-	function($scope, $stateParams, $location, Authentication, Goals) {
+angular.module('goals').controller('GoalsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Goals',
+	function($scope, $state, $stateParams, $location, Authentication, Goals) {
 		$scope.authentication = Authentication;
 		$scope.textLimitListView = 140;
 
@@ -60,7 +60,8 @@ angular.module('goals').controller('GoalsController', ['$scope', '$stateParams',
 				}
 			} else {
 				$scope.goal.$remove(function() {
-					$location.path('goals');
+					// $location.path('goals');
+					$state.go('dashboard.goals', {}, {reload: true});
 				});
 			}
 		};
