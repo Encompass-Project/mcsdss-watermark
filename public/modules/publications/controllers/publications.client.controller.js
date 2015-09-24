@@ -1,8 +1,8 @@
 'use strict';
 
 // Publications controller
-angular.module('publications').controller('PublicationsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Publications',
-	function($scope, $stateParams, $location, Authentication, Publications) {
+angular.module('publications').controller('PublicationsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Publications',
+	function($scope, $state, $stateParams, $location, Authentication, Publications) {
 		$scope.authentication = Authentication;
 
 		// Create new Publication
@@ -15,6 +15,7 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 			// Redirect after save
 			publication.$save(function(response) {
 				$location.path('publications/' + response._id);
+				// $state.go('dashboard.publications.list', {}, reload:true);
 
 				// Clear form fields
 				$scope.name = '';
@@ -25,7 +26,7 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 
 		// Remove existing Publication
 		$scope.remove = function(publication) {
-			if ( publication ) { 
+			if ( publication ) {
 				publication.$remove();
 
 				for (var i in $scope.publications) {
@@ -36,6 +37,7 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 			} else {
 				$scope.publication.$remove(function() {
 					$location.path('publications');
+					// $state.go('dashboard.publications.list', {}, reload:true);
 				});
 			}
 		};
@@ -46,6 +48,7 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 
 			publication.$update(function() {
 				$location.path('publications/' + publication._id);
+				// $state.go('dashboard.publications.list', {}, reload:true);
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
@@ -58,7 +61,7 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 
 		// Find existing Publication
 		$scope.findOne = function() {
-			$scope.publication = Publications.get({ 
+			$scope.publication = Publications.get({
 				publicationId: $stateParams.publicationId
 			});
 		};
