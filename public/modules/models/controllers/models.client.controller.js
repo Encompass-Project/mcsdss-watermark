@@ -14,7 +14,8 @@ angular.module('models').controller('ModelsController', ['$scope', '$state', '$s
 
 			// Redirect after save
 			model.$save(function(response) {
-				$location.path('models/' + response._id);
+				// $location.path('models/' + response._id);
+				$state.go('dashboard.models', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -46,7 +47,8 @@ angular.module('models').controller('ModelsController', ['$scope', '$state', '$s
 			var model = $scope.model;
 
 			model.$update(function() {
-				$location.path('models/' + model._id);
+				// $location.path('models/' + model._id);
+				$state.go('dashboard.models.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

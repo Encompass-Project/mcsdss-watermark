@@ -14,7 +14,8 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 
 			// Redirect after save
 			notebook.$save(function(response) {
-				$location.path('notebooks/' + response._id);
+				// $location.path('notebooks/' + response._id);
+				$state.go('dashboard.notebooks', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -46,7 +47,8 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 			var notebook = $scope.notebook;
 
 			notebook.$update(function() {
-				$location.path('notebooks/' + notebook._id);
+				// $location.path('notebooks/' + notebook._id);
+				$state.go('dashboard.notebooks.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

@@ -14,7 +14,8 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 
 			// Redirect after save
 			decision.$save(function(response) {
-				$location.path('decisions/' + response._id);
+				// $location.path('decisions/' + response._id);
+				$state.go('dashboard.decisions', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -46,7 +47,8 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 			var decision = $scope.decision;
 
 			decision.$update(function() {
-				$location.path('decisions/' + decision._id);
+				// $location.path('decisions/' + decision._id);
+				$state.go('dashboard.decisions.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

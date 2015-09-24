@@ -15,7 +15,8 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 			// Redirect after save
 			dataset.$save(function(response) {
 				// $location.path('datasets/' + response._id);
-				$location.path('datasets');
+				// $location.path('datasets');
+				$state.go('dashboard.datasets', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -36,8 +37,8 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 				}
 			} else {
 				$scope.dataset.$remove(function() {
-					// $location.path('datasets');							// works but does not update list view.
-					$state.go('dashboard.datasets', {}, {reload: true}); 	// $state needs tobe injected nto the controller..
+					// $location.path('datasets');
+					$state.go('dashboard.datasets', {}, {reload: true});
 				});
 			}
 		};
@@ -47,7 +48,8 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 			var dataset = $scope.dataset;
 
 			dataset.$update(function() {
-				$location.path('datasets/' + dataset._id);
+				// $location.path('datasets/' + dataset._id);
+				$state.go('dashboard.datasets.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

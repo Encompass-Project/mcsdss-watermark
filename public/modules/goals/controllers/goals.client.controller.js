@@ -28,7 +28,8 @@ angular.module('goals').controller('GoalsController', ['$scope', '$state', '$sta
 
 			// Redirect after save
 			goal.$save(function(response) {
-				$location.path('goals/' + response._id);
+				// $location.path('goals/' + response._id);
+				$state.go('dashboard.goals', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -71,7 +72,8 @@ angular.module('goals').controller('GoalsController', ['$scope', '$state', '$sta
 			var goal = $scope.goal;
 
 			goal.$update(function() {
-				$location.path('goals/' + goal._id);
+				// $location.path('goals/' + goal._id);
+				$state.go('dashboard.goals.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

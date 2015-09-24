@@ -14,7 +14,8 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 
 			// Redirect after save
 			publication.$save(function(response) {
-				$location.path('publications/' + response._id);
+				// $location.path('publications/' + response._id);
+				$state.go('dashboard.publications', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -46,7 +47,8 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 			var publication = $scope.publication;
 
 			publication.$update(function() {
-				$location.path('publications/' + publication._id);
+				// $location.path('publications/' + publication._id);
+				$state.go('dashboard.publications.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
