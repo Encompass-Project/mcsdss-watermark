@@ -6,7 +6,8 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
     $urlRouterProvider
       .when('/datasets', '/datasets/list')
       .when('/models', '/models/list')
-      .when('/goals', '/goals/list')
+      // .when('/goals', '/goals/list')
+      .when('/formulations', '/formulations/list')
       .when('/decisions', '/decisions/list')
       .when('/notebooks', '/notebooks/list')
       .when('/publications', '/publications/list')
@@ -155,61 +156,115 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         controller: 'ModelsSixthViewController'
       })
       // GOALS
-      .state('dashboard.goals', {
+      // .state('dashboard.goals', {
+      //   abstract: false,
+      //   url: '/goals',
+      //   templateUrl: 'modules/core/views/goals/goals.client.view.html',
+      //   controller: 'GoalsViewController'
+      // })
+      // .state('dashboard.goals.list', {
+      //   abstract: false,
+      //   url: '/list', // can also use- url: '/',
+      //   templateUrl: 'modules/goals/views/list-goals.client.view.html',
+      //   controller: 'GoalsController'
+      // })
+      // .state('dashboard.goals.list.details', {
+      //   abstract: false,
+      //   url: '/details/:goalId',
+      //   templateUrl: 'modules/goals/views/view-goal.client.view.html',
+      //   controller: 'GoalsController'
+      // })
+      // .state('dashboard.goals.list.edit', {
+      //   abstract: false,
+      //   url: '/edit/:goalId',
+      //   templateUrl: 'modules/goals/views/edit-goal.client.view.html',
+      //   controller: 'GoalsController'
+      // })
+      // .state('dashboard.goals.load', {
+      //   abstract: false,
+      //   url: '/load',
+      //   templateUrl: 'modules/goals/views/create-goal.client.view.html',
+      //   controller: 'GoalsController'
+      // })
+      // .state('dashboard.goals.transform', {
+      //   abstract: false,
+      //   url: '/transform',
+      //   templateUrl: 'modules/core/views/goals/goals.third.client.view.html',
+      //   controller: 'GoalsThirdViewController'
+      // })
+      // .state('dashboard.goals.visualize', {
+      //   abstract: false,
+      //   url: '/visualize',
+      //   templateUrl: 'modules/core/views/goals/goals.fourth.client.view.html',
+      //   controller: 'GoalsFourthViewController'
+      // })
+      // .state('dashboard.goals.curate', {
+      //   abstract: false,
+      //   url: '/curate',
+      //   templateUrl: 'modules/core/views/goals/goals.fifth.client.view.html',
+      //   controller: 'GoalsFifthViewController'
+      // })
+      // .state('dashboard.goals.publish', {
+      //   abstract: false,
+      //   url: '/publish',
+      //   templateUrl: 'modules/core/views/goals/goals.sixth.client.view.html',
+      //   controller: 'GoalsSixthViewController'
+      // })
+      // FORMULATIONS
+      .state('dashboard.formulations', {
         abstract: false,
-        url: '/goals',
-        templateUrl: 'modules/core/views/goals/goals.client.view.html',
-        controller: 'GoalsViewController'
+        url: '/formulations',
+        templateUrl: 'modules/core/views/formulations/formulations.client.view.html',
+        controller: 'FormulationsViewController'
       })
-      .state('dashboard.goals.list', {
+      .state('dashboard.formulations.list', {
         abstract: false,
         url: '/list', // can also use- url: '/',
-        templateUrl: 'modules/goals/views/list-goals.client.view.html',
-        controller: 'GoalsController'
+        templateUrl: 'modules/formulations/views/list-formulations.client.view.html',
+        controller: 'FormulationsController'
       })
-      .state('dashboard.goals.list.details', {
+      .state('dashboard.formulations.list.details', {
         abstract: false,
-        url: '/details/:goalId',
-        templateUrl: 'modules/goals/views/view-goal.client.view.html',
-        controller: 'GoalsController'
+        url: '/details/:formulationId',
+        templateUrl: 'modules/formulations/views/view-formulation.client.view.html',
+        controller: 'FormulationsController'
       })
-      .state('dashboard.goals.list.edit', {
+      .state('dashboard.formulations.list.edit', {
         abstract: false,
-        url: '/edit/:goalId',
-        templateUrl: 'modules/goals/views/edit-goal.client.view.html',
-        controller: 'GoalsController'
+        url: '/edit/:formulationId',
+        templateUrl: 'modules/formulations/views/edit-formulation.client.view.html',
+        controller: 'FormulationsController'
       })
-      .state('dashboard.goals.load', {
+      .state('dashboard.formulations.load', {
         abstract: false,
         url: '/load',
-        templateUrl: 'modules/goals/views/create-goal.client.view.html',
-        controller: 'GoalsController'
+        templateUrl: 'modules/formulations/views/create-formulation.client.view.html',
+        controller: 'FormulationsController'
       })
-      .state('dashboard.goals.transform', {
+      .state('dashboard.formulations.transform', {
         abstract: false,
         url: '/transform',
-        templateUrl: 'modules/core/views/goals/goals.third.client.view.html',
-        controller: 'GoalsThirdViewController'
+        templateUrl: 'modules/core/views/formulations/formulations.third.client.view.html',
+        controller: 'FormulationsThirdViewController'
       })
-      .state('dashboard.goals.visualize', {
+      .state('dashboard.formulations.visualize', {
         abstract: false,
         url: '/visualize',
-        templateUrl: 'modules/core/views/goals/goals.fourth.client.view.html',
-        controller: 'GoalsFourthViewController'
+        templateUrl: 'modules/core/views/formulations/formulations.fourth.client.view.html',
+        controller: 'FormulationsFourthViewController'
       })
-      .state('dashboard.goals.curate', {
+      .state('dashboard.formulations.curate', {
         abstract: false,
         url: '/curate',
-        templateUrl: 'modules/core/views/goals/goals.fifth.client.view.html',
-        controller: 'GoalsFifthViewController'
+        templateUrl: 'modules/core/views/formulations/formulations.fifth.client.view.html',
+        controller: 'FormulationsFifthViewController'
       })
-      .state('dashboard.goals.publish', {
+      .state('dashboard.formulations.publish', {
         abstract: false,
         url: '/publish',
-        templateUrl: 'modules/core/views/goals/goals.sixth.client.view.html',
-        controller: 'GoalsSixthViewController'
+        templateUrl: 'modules/core/views/formulations/formulations.sixth.client.view.html',
+        controller: 'FormulationsSixthViewController'
       })
-      // CASES
       // ANALYZE
       .state('dashboard.analyze', {
         abstract: false,
