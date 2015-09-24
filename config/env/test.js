@@ -1,6 +1,6 @@
 'use strict';
 
-var credentials = require('../env/secrets.js');
+var credentials = require('./secrets');
 
 module.exports = {
 	db: 'mongodb://localhost/mcsdss-test',
