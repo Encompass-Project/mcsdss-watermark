@@ -1,6 +1,6 @@
 'use strict';
 
-var credentials = require('../env/secrets.js');
+// var credentials = require('../env/secrets.js');
 // console.log(credentials);
 
 module.exports = {
@@ -9,8 +9,8 @@ module.exports = {
 		title: 'MCSDSS - Development Environment'
 	},
 	facebook: {
-		clientID: process.env.FACEBOOK_ID || credentials.facebook.APP_ID, //'APP_ID',
-		clientSecret: process.env.FACEBOOK_SECRET || credentials.facebook.APP_SECRET, //'APP_SECRET',
+		clientID: process.env.FACEBOOK_ID || 'APP_ID', //credentials.facebook.APP_ID, // secrets.js
+		clientSecret: process.env.FACEBOOK_SECRET || 'APP_SECRET', //credentials.facebook.APP_SECRET, // secrets.js
 		callbackURL: '/auth/facebook/callback'
 	},
 	twitter: {

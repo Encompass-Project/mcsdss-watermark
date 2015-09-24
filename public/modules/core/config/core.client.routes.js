@@ -209,6 +209,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/core/views/goals/goals.sixth.client.view.html',
         controller: 'GoalsSixthViewController'
       })
+      // CASES
+      // ANALYZE
+      .state('dashboard.analyze', {
+        abstract: false,
+        url: '/analyze',
+        templateUrl: 'modules/core/views/analyze/analyze.client.view.html',
+        controller: 'AnalyzeViewController'
+      })
       // DECISIONS
       .state('dashboard.decisions', {
         abstract: false,

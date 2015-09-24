@@ -28,10 +28,22 @@
                     <span class="dashboard-sidemenu-item-label">Models</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" ui-sref="dashboard.goals.list" ng-click="clicked('goals')">
+            <!-- <a class="dashboard-sidebar-link" ui-sref="dashboard.goals.list" ng-click="clicked('goals')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-bullseye" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Goals</span>
+                </div>
+            </a> -->
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.goals.list" ng-click="clicked('cases')">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-briefcase" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Cases</span>
+                </div>
+            </a>
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.analyze" ng-click="clicked('analyze')">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-bar-chart" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Analyze</span>
                 </div>
             </a>
             <a class="dashboard-sidebar-link" ui-sref="dashboard.decisions.list" ng-click="clicked('decisions')">
