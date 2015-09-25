@@ -1,12 +1,33 @@
+/* Position */
+.div-fixed { position: fixed; }
+.div-relative { position: relative; }
+.div-absolute { position: absolute; }
+/*.div-static { position: static; }*/
+
+/* Depth */
+.z-0 {
+  /* requires position */
+  z-index: 0;
+}
+.z-50 {
+  /* requires position */
+  z-index: 50;
+}
+.z-100 {
+  /* requires position */
+  z-index: 100;
+}
+
 /* MAP */
 
 #map {
-  width: 30rem; /*100%;*/
-  height: 10rem; /*100%;*/
+  width: 50%; /*30rem; 100%;*/
+  height: 100%; /*10rem; 100%;*/
   top: 0;  /* 5%; */
-  right: 0;
-  bottom: 0;
+  /*right: 0;*/
+  /*bottom: 0;*/
   left: 0;
+  border-right: 2px solid #4e5d6c; /* #2b3e50; */
 }
 
 #map-nav {

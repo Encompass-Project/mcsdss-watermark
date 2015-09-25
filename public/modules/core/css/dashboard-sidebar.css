@@ -1,5 +1,6 @@
 /* User Dashboard Sidebar */
 .dashboard-sidebar {
+    z-index: 500;
     background: #234;
     height: 100%;
     left: 0;
