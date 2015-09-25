@@ -160,10 +160,10 @@ angular.module('core')
             // TESTING BUILD PATH.
             // var usaGeojson = './data/geojson/USA.geo.json';
             // var usaGeojson = './data/geojson/gz_2010_us_outline_20m.json';  // Outline only.
-            var texasGeojson = './data/geojson/TX.geo.json';
-            var majorAquifersGeojson = './data/geojson/NEW_major_aquifers_dd_reduced100.geo.json';
-            var eaaBoundaryZonesGeojson = './data/geojson/eaa_boundary_EPSG-3081.geo.json';
-            var aquiferZonesGeojson = './data/geojson/eaa-aquifer-zones-2014.geo.json';
+            var texasGeojson = '../data/geojson/TX.geo.json';
+            var majorAquifersGeojson = '../data/geojson/NEW_major_aquifers_dd_reduced100.geo.json';
+            var eaaBoundaryZonesGeojson = '../data/geojson/eaa_boundary_EPSG-3081.geo.json';
+            var aquiferZonesGeojson = '../data/geojson/eaa-aquifer-zones-2014.geo.json';
 
             // GeoJSON Layers.
             // var usaLayer = new L.LayerGroup();

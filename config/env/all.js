@@ -8,7 +8,7 @@ module.exports = {
 		// keywords: 'MongoDB, Express, AngularJS, Node.js'
 		keywords: 'Decision Support System, Multi-criteria, Spatial, GIS, Decision Theory, Decision Analysis, AHP, Analytical Hierarchy Process'
 	},
-	port: process.env.PORT || 8888, //3000,
+	port: process.env.PORT || 9000, //3000,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',
@@ -18,6 +18,7 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+				'public/lib/leaflet/dist/leaflet.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -28,7 +29,10 @@ module.exports = {
 				'public/lib/angular-sanitize/angular-sanitize.js',
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js'
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
+				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/leaflet/dist/leaflet.js'
 			]
 		},
 		css: [
@@ -39,7 +43,8 @@ module.exports = {
 			'public/application.js',
 			'public/modules/*/*.js',
 			'public/modules/**/*.js', // Picks up nested controllers within modules.
-			'public/modules/*/*[!tests]*/*.js'
+			'public/modules/*/*[!tests]*/*.js',
+			'public/modules/core/directives/leaflet-directive.js'
 		],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',

@@ -175,7 +175,28 @@ module.exports = function(grunt) {
 					'public/dist/style.min.css': 'public/modules/**/scss/*.{scss,sass}'
 				}
 			}
-		}
+		},
+		//bower: {
+	    //    dev: {
+	    //        base: 'bower_components', /* the path to the bower_components directory */
+	    //        dest: 'web/bower_components',
+	    //        options: {
+	    //            checkExistence: true,
+	    //            debugging: true,
+	    //            paths: {
+	    //                bowerDirectory: 'bower_components',
+	    //                bowerrc: '.bowerrc',
+	    //                bowerJson: 'bower.json'
+	    //            }
+	    //        }
+	    //    },
+	    //    flat: { /* flat folder/file structure */
+	    //        dest: 'public/vendor',
+	    //        options: {
+	    //            debugging: true
+	    //        }
+	    //    }
+	    //}
 	});
 
 	// Load NPM tasks
@@ -210,4 +231,7 @@ module.exports = function(grunt) {
 
 	// Test task.
 	grunt.registerTask('test', ['env:test', 'mochaTest', 'karma:unit']);
+
+	// Bower dependencies.
+	//grunt.loadNpmTasks('main-bower-files');
 };

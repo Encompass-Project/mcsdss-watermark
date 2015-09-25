@@ -16,6 +16,8 @@
     "angular-ui-utils": "~0.1.1",
     "bootstrap": "~3",
     "bootstrap-sass-official": "~3.3.5",
+    "d3": "~3.5.6",
+    "jquery": "~2.1.4",
     "leaflet": "~0.7.5"
   }
 }
