@@ -1,8 +1,8 @@
 'use strict';
 
 // Datasets controller
-angular.module('datasets').controller('DatasetsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Datasets',
-	function($scope, $state, $stateParams, $location, Authentication, Datasets) {
+angular.module('datasets').controller('DatasetsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Datasets', 'FileUploader',
+	function($scope, $state, $stateParams, $location, Authentication, Datasets, FileUploader) {
 		$scope.authentication = Authentication;
 
 		// Create new Dataset
@@ -66,5 +66,7 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 				datasetId: $stateParams.datasetId
 			});
 		};
+
+		$scope.uploader = new FileUploader();
 	}
 ]);

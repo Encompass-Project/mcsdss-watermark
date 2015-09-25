@@ -31,8 +31,10 @@ module.exports = {
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
+				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
-				'public/lib/leaflet/dist/leaflet.js'
+				'public/lib/leaflet/dist/leaflet.js',
+				'public/lib/d3/d3.min.js'
 			]
 		},
 		css: [

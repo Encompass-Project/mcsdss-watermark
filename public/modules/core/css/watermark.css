@@ -1,0 +1,234 @@
+@charset "utf-8";
+
+/*************************/
+/* Watermark Interactive */
+#watermark {
+  /*margin-top: 2rem;*/
+}
+
+.close-watermark {
+  position: absolute;
+  top: -1%;
+  left: 99.2%;
+}
+
+.watermark-panels-navbar {
+  /*margin: -1.9rem 0 0.5rem 0;*/
+  /*width: 98.8%;*/
+  margin: 0 0.5rem 0.5rem;
+  width: 91%;
+}
+
+.watermark-pill {
+  margin: 0.2rem;
+  background-color: rgb(5,5,5);
+  color: rgb(150,150,150);
+  border-radius: 0 !important;
+  border: 1px solid rgb(150,150,150);
+}
+
+.watermark-pill:hover {
+  background-color: rgb(61,35,28) !important; /* rgb(41,65,73) */
+  color: rgb(255,255,255);  /*rgb(169,232,255); rgb(252,147,116); rgb(150,145,69);*/
+  border: 1px solid rgb(252,147,116); /*rgb(252,147,116); rgb(124,121,64);*/
+}
+
+#watermark-navbar > li.active > a {
+  background-color: rgb(41,65,73) !important;
+  color: rgb(255,255,255);
+  border: 1px solid rgba(113,178,201,1);
+}
+
+.watermark-panels {
+  margin-left: 0.25rem;
+}
+
+.watermark-panel-title {
+  margin: 0.5rem auto 0 1rem;
+  /*padding: 0.2rem auto;*/
+  font-size: 1.2rem;
+  color: rgb(255,255,255); /*rgb(113,178,201);*/
+}
+
+.panel-base {
+  width: 63rem;
+  height: 35rem;
+  margin: 0.3rem 0;
+  padding: 0.2rem 0.5rem;
+
+  background-color: #111;
+  border: 1px solid #777;
+}
+
+/*.panel-su {
+  background-color: #f00;
+  border: 1px solid #0f0;
+}
+
+.panel-pm {
+  background-color: #0f0;
+  border: 1px solid #0f0;
+}
+
+.panel-pi {
+  background-color: #00f;
+  border: 1px solid #0f0;
+}*/
+
+.watermark-footer {
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.watermark-footer-label {
+  font-style: italic;
+  color: rgba(255,255,255,0.6); /*rgb(201,158,113); rgb(113,178,201); */
+}
+
+.watermark-link {
+  top: 1rem;
+}
+
+
+.border {
+  border: 1px solid #999;
+}
+
+
+/*** GRAPH ***/
+#graph {
+  min-width: 100%;
+  margin-top: 1rem;
+}
+#graphSVG {
+  /*border: 1px solid #999;*/
+  padding-top: 1em;
+  padding-left: 4em;
+  padding-right: 4em;
+  padding-bottom: 2em;
+  color: #ccc;
+  font-size: 0.625rem;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+}
+.x-axis path,
+.x-axis line,
+.y-axis path,
+.y-axis line {
+  fill: none;
+  stroke: #ccc;
+  color: #ccc;
+  shape-rendering: crispEdges;
+}
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #ccc;
+  color: #ccc;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  /*font-size: 10px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;*/
+  fill: #ccc;
+  shape-rendering: crispEdges;
+}
+
+.axis path {
+  fill: none;
+  stroke: #aaa;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+ .axis line {
+  fill: none;
+  stroke: #aaa;
+  stroke-width: 1px;
+}
+.x-axis-label,
+.y-axis-label {
+  color: #0f0;
+}
+.dot-O {
+  stroke: #fff;
+  fill: #cc5555;
+}
+.dot-M {
+  stroke: #fff;
+  fill: #5555cc;
+}
+.label{}
+.continuum-label {
+  cursor: default;
+}
+.stakeholder-info {
+  position: absolute;
+  width: 32em;
+  height: 12em;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  pointer-events: none;
+  background-color: #100;
+  font-size: 0.8em;
+  border: 0.1em solid #aaa;
+}
+.tooltip {
+  position: absolute;
+  width: 18rem;
+  height: auto;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+  pointer-events: none;
+  background-color: rgba(0,0,0,0.8);
+  font-size: 0.8em;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  border: 0.1em solid rgba(210,175,0,0.7); /*rgb(113,178,201); rgb(61,35,28); rgb(252,147,116);*/
+}
+.label-correlate-runs {
+  color: #D2AF00;
+}
+.label-total-storage {
+  color: #9EC23C; /*#C9D787;*/
+}
+.label-original-run {
+  color: #CD6AD4;
+}
+.label-modified-run {
+  color: #8AE5F2;
+}
+.label-pumping-delta {
+  color: #FC9374; /*#FFC0A9;*/
+}
+.label-data-source {
+  color: #ccc;
+}
+
+#kzones {
+  margin-top: -1rem;
+}
+.kzone-cell {
+  background-color: #797;
+  color: #575;
+  border: 1px solid #ccc;
+}
+
+.recharge-interpretation {
+  /*background-color: rgb(255,255,255);*/
+  margin-top: -1.8rem;
+  margin-left: 1rem;
+  /*padding: 0 1rem 0;*/
+  width: 61.5rem;
+  height: 34rem;
+}
+
+.flow-response {
+  background-color: rgb(255,255,255);
+  margin-top: -1.8rem;
+  margin-left: 1rem;
+  /*padding: 0 1rem 0;*/
+  width: 61.5rem;
+  height: 34rem;
+}
