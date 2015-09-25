@@ -21,6 +21,12 @@ a.dropdown-toggle, ul.dropdown-menu > li * {
     font-size: 3rem;
     font-weight: 700;
 }
+.navar-brand-subtitle {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+}
 .search-box {
     min-width: 30rem;
     width: auto;

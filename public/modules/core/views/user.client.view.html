@@ -16,48 +16,48 @@
                     <span class="dashboard-sidemenu-item-label">Dashboard</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" ui-sref="dashboard.datasets.list" ng-click="clicked('datasets')">
-                <div class="dashboard-sidemenu-item">
-                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-database" aria-hidden="true"></span>
-                    <span class="dashboard-sidemenu-item-label">Data Sets</span>
-                </div>
-            </a>
-            <a class="dashboard-sidebar-link" ui-sref="dashboard.models.list" ng-click="clicked('models')">
-                <div class="dashboard-sidemenu-item">
-                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span>
-                    <span class="dashboard-sidemenu-item-label">Models</span>
-                </div>
-            </a>
             <a class="dashboard-sidebar-link" ui-sref="dashboard.formulations.list" ng-click="clicked('formulations')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-puzzle-piece" aria-hidden="true"></span><!-- fa-briefcase, fa-puzzle-piece, fa-chain -->
                     <span class="dashboard-sidemenu-item-label">Formulations</span>
                 </div>
             </a>
+            <a class="dashboard-sidebar-link" ui-sref="dashboard.datasets.list" ng-click="clicked('datasets')">
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-database" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Data Sets</span>
+                </div>
+            </a>
+            <div class="dashboard-sidebar-link"  ng-click="clicked('models')"><!-- ui-sref="dashboard.models.list" -->
+                <div class="dashboard-sidemenu-item">
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span>
+                    <span class="dashboard-sidemenu-item-label">Models</span>
+                </div>
+            </div>
             <a class="dashboard-sidebar-link" ui-sref="dashboard.analyze" ng-click="clicked('analyze')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-area-chart" aria-hidden="true"></span><!-- fa-bar-chart, fa-line-chart, fa-area-chart -->
                     <span class="dashboard-sidemenu-item-label">Analyze</span>
                 </div>
             </a>
-            <a class="dashboard-sidebar-link" ui-sref="dashboard.decisions.list" ng-click="clicked('decisions')">
+            <div class="dashboard-sidebar-link" ng-click="clicked('decisions')"><!-- ui-sref="dashboard.decisions.list" -->
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-balance-scale" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Decisions</span>
                 </div>
-            </a>
-            <a class="dashboard-sidebar-link" ui-sref="dashboard.notebooks.list" ng-click="clicked('notebooks')">
+            </div>
+            <!-- <a class="dashboard-sidebar-link" ui-sref="dashboard.notebooks.list" ng-click="clicked('notebooks')">
                 <div class="dashboard-sidemenu-item">
-                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-book" aria-hidden="true"></span><!-- fa-sticky-note -->
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-book" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Notebooks</span>
                 </div>
-            </a>
-            <a class="dashboard-sidebar-link" ui-sref="dashboard.publications.list" ng-click="clicked('publications')">
+            </a> -->
+            <!-- <a class="dashboard-sidebar-link" ui-sref="dashboard.publications.list" ng-click="clicked('publications')">
                 <div class="dashboard-sidemenu-item">
-                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-newspaper-o" aria-hidden="true"></span><!-- fa-newspaper-o, fa-book , fa-diamond, fa-university -->
+                    <span class="dashboard-sidemenu-item-icon fa fa-2x fa-newspaper-o" aria-hidden="true"></span>
                     <span class="dashboard-sidemenu-item-label">Publications</span>
                 </div>
-            </a>
+            </a> -->
             <a class="dashboard-sidebar-link" ui-sref="dashboard.profile.view" ng-click="clicked('profile')">
                 <div class="dashboard-sidemenu-item">
                     <span class="dashboard-sidemenu-item-icon fa fa-2x fa-user" aria-hidden="true"></span>
