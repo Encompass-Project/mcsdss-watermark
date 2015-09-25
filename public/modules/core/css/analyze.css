@@ -103,6 +103,7 @@
 }
 
 .leaflet-control-layers {
+  margin-top: 6rem !important;
   color: #fff;
   background-color: rgba(1,0,1,0.9);
   border: 1px solid #71B2C9; /*#ea2;*/

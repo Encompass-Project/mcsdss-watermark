@@ -292,53 +292,53 @@ angular.module('core')
             //     scope.displaySpringsPanel();
             // });
 
-            // J17.
-            var j17MarkerLocation = L.latLng(29.45, -98.48);
-            var j17MarkerOptions = { title: 'J17' };
-            var j17Marker = L.marker(j17MarkerLocation, j17MarkerOptions);
-            // j17Marker.addTo(usaMarkersLayer);
-            j17Marker.addTo(allMarkersLayer);
-            var j17PopupContent = '<h2>J17 Index Well</h2><a href="" class="rechargeInteractiveLink">Recharge Data Interactive</a><br/>';
-            var j17ContentContainer = $('<div />');
-            j17ContentContainer.html(j17PopupContent);
-            j17Marker.bindPopup(j17ContentContainer[0]);
-            j17ContentContainer.on('click', '.rechargeInteractiveLink', function() {
-                event.preventDefault();
-                map.panBy(panByPoint, panOptionsInteractive);
-                scope.displayRechargePanel();
-            });
+            // // J17.
+            // var j17MarkerLocation = L.latLng(29.45, -98.48);
+            // var j17MarkerOptions = { title: 'J17' };
+            // var j17Marker = L.marker(j17MarkerLocation, j17MarkerOptions);
+            // // j17Marker.addTo(usaMarkersLayer);
+            // j17Marker.addTo(allMarkersLayer);
+            // var j17PopupContent = '<h2>J17 Index Well</h2><a href="" class="rechargeInteractiveLink">Recharge Data Interactive</a><br/>';
+            // var j17ContentContainer = $('<div />');
+            // j17ContentContainer.html(j17PopupContent);
+            // j17Marker.bindPopup(j17ContentContainer[0]);
+            // j17ContentContainer.on('click', '.rechargeInteractiveLink', function() {
+            //     event.preventDefault();
+            //     map.panBy(panByPoint, panOptionsInteractive);
+            //     scope.displayRechargePanel();
+            // });
 
-            // Leona Springs.
-            var leonaSpringsMarkerLocation = L.latLng(29.15417, -99.7431);
-            var leonaSpringsMarkerOptions = { title: 'Leona Springs' };
-            var leonaSpringsMarker = L.marker(leonaSpringsMarkerLocation, leonaSpringsMarkerOptions);
-            // leonaSpringsMarker.addTo(usaMarkersLayer);
-            leonaSpringsMarker.addTo(allMarkersLayer);
-            var leonaSpringsPopupContent = '<h2>Leona Springs</h2><a href="" class="wellsInteractiveLink">Wells Data Interactive</a><br/>';
-            var leonaSpringsContentContainer = $('<div />');
-            leonaSpringsContentContainer.html(leonaSpringsPopupContent);
-            leonaSpringsMarker.bindPopup(leonaSpringsContentContainer[0]);
-            leonaSpringsContentContainer.on('click', '.wellsInteractiveLink', function() {
-                event.preventDefault();
-                map.panBy(panByPoint, panOptionsInteractive);
-                scope.displayWellsPanel();
-            });
+            // // Leona Springs.
+            // var leonaSpringsMarkerLocation = L.latLng(29.15417, -99.7431);
+            // var leonaSpringsMarkerOptions = { title: 'Leona Springs' };
+            // var leonaSpringsMarker = L.marker(leonaSpringsMarkerLocation, leonaSpringsMarkerOptions);
+            // // leonaSpringsMarker.addTo(usaMarkersLayer);
+            // leonaSpringsMarker.addTo(allMarkersLayer);
+            // var leonaSpringsPopupContent = '<h2>Leona Springs</h2><a href="" class="wellsInteractiveLink">Wells Data Interactive</a><br/>';
+            // var leonaSpringsContentContainer = $('<div />');
+            // leonaSpringsContentContainer.html(leonaSpringsPopupContent);
+            // leonaSpringsMarker.bindPopup(leonaSpringsContentContainer[0]);
+            // leonaSpringsContentContainer.on('click', '.wellsInteractiveLink', function() {
+            //     event.preventDefault();
+            //     map.panBy(panByPoint, panOptionsInteractive);
+            //     scope.displayWellsPanel();
+            // });
 
-            // San Marcos Springs.
-            var sanMarcosSpringsMarkerLocation = L.latLng(29.89326, -97.9312);
-            var sanMarcosSpringsMarkerOptions = { title: 'San Marcos Springs' };
-            var sanMarcosSpringsMarker = L.marker(sanMarcosSpringsMarkerLocation, sanMarcosSpringsMarkerOptions);
-            // sanMarcosSpringsMarker.addTo(usaMarkersLayer);
-            sanMarcosSpringsMarker.addTo(allMarkersLayer);
-            var sanMarcosSpringsPopupContent = '<h2>San Marcos Springs</h2><a href="" class="springsInteractiveLink">Springs Data Interactive</a><br/>';
-            var sanMarcosSpringsContentContainer = $('<div />');
-            sanMarcosSpringsContentContainer.html(sanMarcosSpringsPopupContent);
-            sanMarcosSpringsMarker.bindPopup(sanMarcosSpringsContentContainer[0]);
-            sanMarcosSpringsContentContainer.on('click', '.springsInteractiveLink', function() {
-                event.preventDefault();
-                map.panBy(panByPoint, panOptionsInteractive);
-                scope.displaySpringsPanel();
-            });
+            // // San Marcos Springs.
+            // var sanMarcosSpringsMarkerLocation = L.latLng(29.89326, -97.9312);
+            // var sanMarcosSpringsMarkerOptions = { title: 'San Marcos Springs' };
+            // var sanMarcosSpringsMarker = L.marker(sanMarcosSpringsMarkerLocation, sanMarcosSpringsMarkerOptions);
+            // // sanMarcosSpringsMarker.addTo(usaMarkersLayer);
+            // sanMarcosSpringsMarker.addTo(allMarkersLayer);
+            // var sanMarcosSpringsPopupContent = '<h2>San Marcos Springs</h2><a href="" class="springsInteractiveLink">Springs Data Interactive</a><br/>';
+            // var sanMarcosSpringsContentContainer = $('<div />');
+            // sanMarcosSpringsContentContainer.html(sanMarcosSpringsPopupContent);
+            // sanMarcosSpringsMarker.bindPopup(sanMarcosSpringsContentContainer[0]);
+            // sanMarcosSpringsContentContainer.on('click', '.springsInteractiveLink', function() {
+            //     event.preventDefault();
+            //     map.panBy(panByPoint, panOptionsInteractive);
+            //     scope.displaySpringsPanel();
+            // });
 
             // Populate Map Controls.
             var baseLayers = {
@@ -454,7 +454,7 @@ angular.module('core')
             L.Icon.Default.imagePath = './styles/images';
 
             L.control.layers(baseLayers, overlays, {
-                position: 'topleft'
+                position: 'topright' //'topleft'
             }).addTo(map);
 
             // L.control.zoom({position: 'topright'}).addTo(map);
