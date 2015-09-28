@@ -50,7 +50,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         abstract: false,
         url: '/datasets',
         templateUrl: 'modules/core/views/datasets/datasets.client.view.html',
-        controller: 'DatasetsViewController'
+        controller: 'DatasetsController'  // 'DatasetsViewController'
       })
       .state('dashboard.datasets.list', {
         abstract: false,
@@ -155,61 +155,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/core/views/models/models.sixth.client.view.html',
         controller: 'ModelsSixthViewController'
       })
-      // GOALS
-      // .state('dashboard.goals', {
-      //   abstract: false,
-      //   url: '/goals',
-      //   templateUrl: 'modules/core/views/goals/goals.client.view.html',
-      //   controller: 'GoalsViewController'
-      // })
-      // .state('dashboard.goals.list', {
-      //   abstract: false,
-      //   url: '/list', // can also use- url: '/',
-      //   templateUrl: 'modules/goals/views/list-goals.client.view.html',
-      //   controller: 'GoalsController'
-      // })
-      // .state('dashboard.goals.list.details', {
-      //   abstract: false,
-      //   url: '/details/:goalId',
-      //   templateUrl: 'modules/goals/views/view-goal.client.view.html',
-      //   controller: 'GoalsController'
-      // })
-      // .state('dashboard.goals.list.edit', {
-      //   abstract: false,
-      //   url: '/edit/:goalId',
-      //   templateUrl: 'modules/goals/views/edit-goal.client.view.html',
-      //   controller: 'GoalsController'
-      // })
-      // .state('dashboard.goals.load', {
-      //   abstract: false,
-      //   url: '/load',
-      //   templateUrl: 'modules/goals/views/create-goal.client.view.html',
-      //   controller: 'GoalsController'
-      // })
-      // .state('dashboard.goals.transform', {
-      //   abstract: false,
-      //   url: '/transform',
-      //   templateUrl: 'modules/core/views/goals/goals.third.client.view.html',
-      //   controller: 'GoalsThirdViewController'
-      // })
-      // .state('dashboard.goals.visualize', {
-      //   abstract: false,
-      //   url: '/visualize',
-      //   templateUrl: 'modules/core/views/goals/goals.fourth.client.view.html',
-      //   controller: 'GoalsFourthViewController'
-      // })
-      // .state('dashboard.goals.curate', {
-      //   abstract: false,
-      //   url: '/curate',
-      //   templateUrl: 'modules/core/views/goals/goals.fifth.client.view.html',
-      //   controller: 'GoalsFifthViewController'
-      // })
-      // .state('dashboard.goals.publish', {
-      //   abstract: false,
-      //   url: '/publish',
-      //   templateUrl: 'modules/core/views/goals/goals.sixth.client.view.html',
-      //   controller: 'GoalsSixthViewController'
-      // })
       // FORMULATIONS
       .state('dashboard.formulations', {
         abstract: false,

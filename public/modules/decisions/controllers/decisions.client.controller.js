@@ -4,6 +4,7 @@
 angular.module('decisions').controller('DecisionsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Decisions',
 	function($scope, $state, $stateParams, $location, Authentication, Decisions) {
 		$scope.authentication = Authentication;
+		$scope.currentUser = Authentication.user;
 
 		// Create new Decision
 		$scope.create = function() {
@@ -55,8 +56,17 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 		};
 
 		// Find a list of Decisions
-		$scope.find = function() {
-			$scope.decisions = Decisions.query();
+		// $scope.find = function() {
+		// 	$scope.decisions = Decisions.query();
+		// };
+
+		// Find a list of Formulations belonging to the current user.
+		$scope.find = function(user) {
+			Decisions.query(function(decisions) {
+				$scope.decisions = user ? decisions.filter(function(decision) {
+					return decision.user._id === user._id;
+				}) : decisions;
+			});
 		};
 
 		// Find existing Decision

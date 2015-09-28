@@ -4,6 +4,7 @@
 angular.module('models').controller('ModelsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Models',
 	function($scope, $state, $stateParams, $location, Authentication, Models) {
 		$scope.authentication = Authentication;
+		$scope.currentUser = Authentication.user;
 
 		// Create new Model
 		$scope.create = function() {
@@ -55,8 +56,17 @@ angular.module('models').controller('ModelsController', ['$scope', '$state', '$s
 		};
 
 		// Find a list of Models
-		$scope.find = function() {
-			$scope.models = Models.query();
+		// $scope.find = function() {
+		// 	$scope.models = Models.query();
+		// };
+
+		// Find a list of Formulations belonging to the current user.
+		$scope.find = function(user) {
+			Models.query(function(models) {
+				$scope.models = user ? models.filter(function(model) {
+					return model.user._id === user._id;
+				}) : models;
+			});
 		};
 
 		// Find existing Model

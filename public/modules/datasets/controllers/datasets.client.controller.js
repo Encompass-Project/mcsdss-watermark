@@ -4,6 +4,7 @@
 angular.module('datasets').controller('DatasetsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Datasets', 'FileUploader',
 	function($scope, $state, $stateParams, $location, Authentication, Datasets, FileUploader) {
 		$scope.authentication = Authentication;
+		$scope.currentUser = Authentication.user;
 
 		// Create new Dataset
 		$scope.create = function() {
@@ -56,8 +57,17 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 		};
 
 		// Find a list of Datasets
-		$scope.find = function() {
-			$scope.datasets = Datasets.query();
+		// $scope.find = function() {
+		// 	$scope.datasets = Datasets.query();
+		// };
+
+		// Find a list of Datasets belonging to the current user.
+		$scope.find = function(user) {
+			Datasets.query(function(datasets) {
+				$scope.datasets = user ? datasets.filter(function(dataset) {
+					return dataset.user._id === user._id;
+				}) : datasets;
+			});
 		};
 
 		// Find existing Dataset

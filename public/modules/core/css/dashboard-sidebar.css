@@ -40,3 +40,7 @@ a.dashboard-sidebar-link {
 .dashboard-sidemenu-item-label {
     text-align: left;
 }
+.dashboard-sidemenu-item-disabled {
+    background: #333333;
+    color: #cccccc;
+}

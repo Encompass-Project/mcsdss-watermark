@@ -4,6 +4,7 @@
 angular.module('publications').controller('PublicationsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Publications',
 	function($scope, $state, $stateParams, $location, Authentication, Publications) {
 		$scope.authentication = Authentication;
+		$scope.currentUser = Authentication.user;
 
 		// Create new Publication
 		$scope.create = function() {
@@ -55,8 +56,17 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 		};
 
 		// Find a list of Publications
-		$scope.find = function() {
-			$scope.publications = Publications.query();
+		// $scope.find = function() {
+		// 	$scope.publications = Publications.query();
+		// };
+
+		// Find a list of Formulations belonging to the current user.
+		$scope.find = function(user) {
+			Publications.query(function(publications) {
+				$scope.publications = user ? publications.filter(function(publication) {
+					return publication.user._id === user._id;
+				}) : publications;
+			});
 		};
 
 		// Find existing Publication

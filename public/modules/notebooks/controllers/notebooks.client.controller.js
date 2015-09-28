@@ -4,6 +4,7 @@
 angular.module('notebooks').controller('NotebooksController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Notebooks',
 	function($scope, $state, $stateParams, $location, Authentication, Notebooks) {
 		$scope.authentication = Authentication;
+		$scope.currentUser = Authentication.user;
 
 		// Create new Notebook
 		$scope.create = function() {
@@ -55,8 +56,17 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 		};
 
 		// Find a list of Notebooks
-		$scope.find = function() {
-			$scope.notebooks = Notebooks.query();
+		// $scope.find = function() {
+		// 	$scope.notebooks = Notebooks.query();
+		// };
+
+		// Find a list of Formulations belonging to the current user.
+		$scope.find = function(user) {
+			Notebooks.query(function(notebooks) {
+				$scope.notebooks = user ? notebooks.filter(function(notebook) {
+					return notebook.user._id === user._id;
+				}) : notebooks;
+			});
 		};
 
 		// Find existing Notebook

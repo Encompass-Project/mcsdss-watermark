@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-xs-6">
-        <div class="row dashboard-panel" data-ng-controller="DatasetsController" data-ng-init="find()">
+        <div class="row dashboard-panel" data-ng-controller="DatasetsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.datasets.list">
@@ -22,34 +22,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row dashboard-panel" data-ng-controller="GoalsController" data-ng-init="find()">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="clickable" data-ui-sref="dashboard.goals.list">
-                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-bullseye" aria-hidden="true"></span> My Goals</h3>
-                    </a>
-                </div>
-                <div class="panel-body">
-                    <div class="list-group">
-                        <a data-ng-repeat="goal in goals | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.goals.list.details({goalId: goal._id})" class="list-group-item">
-                            <small class="list-group-item-text">
-                                Posted on
-                                <span data-ng-bind="goal.created | date:'medium'"></span>
-                                by
-                                <span data-ng-bind="goal.user.displayName"></span>
-                                , Updated on
-                                <span data-ng-bind="goal.updated | date:'medium'"></span>
-                            </small>
-                            <h4 class="list-group-item-heading" data-ng-bind="goal.name"></h4>
-                        </a>
-                    </div>
-                    <div class="alert alert-warning text-center" data-ng-hide="!goals.$resolved || goals.length">
-                        No Goals yet, why don't you <a href="/#!/goals/create">create one</a>?
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <div class="row dashboard-panel" data-ng-controller="FormulationsController" data-ng-init="find()">
+        <div class="row dashboard-panel" data-ng-controller="FormulationsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.formulations.list">
@@ -76,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="row dashboard-panel" data-ng-controller="NotebooksController" data-ng-init="find()">
+        <!-- <div class="row dashboard-panel" data-ng-controller="NotebooksController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.notebooks.list">
@@ -101,9 +74,9 @@
                 </div>
             </div>
         </div> -->
-    </div>
-    <div class="col-xs-6">
-        <div class="row dashboard-panel" data-ng-controller="ModelsController" data-ng-init="find()">
+    <!-- </div>
+    <div class="col-xs-6"> -->
+        <!-- <div class="row dashboard-panel" data-ng-controller="ModelsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.models.list">
@@ -127,8 +100,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row dashboard-panel" data-ng-controller="DecisionsController" data-ng-init="find()">
+        </div> -->
+        <!-- <div class="row dashboard-panel" data-ng-controller="DecisionsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.decisions.list">
@@ -152,8 +125,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- <div class="row dashboard-panel" data-ng-controller="PublicationsController" data-ng-init="find()">
+        </div> -->
+        <!-- <div class="row dashboard-panel" data-ng-controller="PublicationsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.publications.list">

@@ -4,6 +4,7 @@
 angular.module('formulations').controller('FormulationsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Formulations',
 	function($scope, $state, $stateParams, $location, Authentication, Formulations) {
 		$scope.authentication = Authentication;
+		$scope.currentUser = Authentication.user;
 
 		// Create new Formulation
 		$scope.create = function() {
@@ -55,8 +56,17 @@ angular.module('formulations').controller('FormulationsController', ['$scope', '
 		};
 
 		// Find a list of Formulations
-		$scope.find = function() {
-			$scope.formulations = Formulations.query();
+		// $scope.find = function() {
+		// 	$scope.formulations = Formulations.query();
+		// };
+
+		// Find a list of Formulations belonging to the current user.
+		$scope.find = function(user) {
+			Formulations.query(function(formulations) {
+				$scope.formulations = user ? formulations.filter(function(formulation) {
+					return formulation.user._id === user._id;
+				}) : formulations;
+			});
 		};
 
 		// Find existing Formulation
