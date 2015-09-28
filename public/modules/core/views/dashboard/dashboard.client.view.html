@@ -11,7 +11,7 @@
                     <div class="list-group">
                         <a data-ng-repeat="dataset in datasets | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.datasets.list.details({datasetId: dataset._id})" class="list-group-item">
                             <small class="list-group-item-text">
-                                Posted on <span data-ng-bind="dataset.created | date:'medium'"></span> by <span data-ng-bind="dataset.user.displayName"></span> ( ID: <span data-ng-bind="dataset._id"></span> )
+                                Posted on <span data-ng-bind="dataset.created | date:'medium'"></span> by <span data-ng-bind="dataset.user.displayName"></span><!--  ( ID: <span data-ng-bind="dataset._id"></span> ) -->
                             </small>
                             <h4 class="list-group-item-heading" data-ng-bind="dataset.name"></h4>
                         </a>
@@ -22,11 +22,13 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="col-xs-6">
         <div class="row dashboard-panel" data-ng-controller="FormulationsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.formulations.list">
-                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-bullseye" aria-hidden="true"></span> My Formulations</h3>
+                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-puzzle-piece" aria-hidden="true"></span> My Formulations</h3>
                     </a>
                 </div>
                 <div class="panel-body">
@@ -37,8 +39,8 @@
                                 <span data-ng-bind="formulation.created | date:'medium'"></span>
                                 by
                                 <span data-ng-bind="formulation.user.displayName"></span>
-                                , Updated on
-                                <span data-ng-bind="formulation.updated | date:'medium'"></span>
+                                <!-- , Updated on
+                                <span data-ng-bind="formulation.updated | date:'medium'"></span> -->
                             </small>
                             <h4 class="list-group-item-heading" data-ng-bind="formulation.name"></h4>
                         </a>
@@ -49,11 +51,16 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- MODULES -->
+
         <!-- <div class="row dashboard-panel" data-ng-controller="NotebooksController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.notebooks.list">
-                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-sticky-note" aria-hidden="true"></span> My Notebooks</h3>
+                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-book" aria-hidden="true"></span> My Notebooks</h3>
                     </a>
                 </div>
                 <div class="panel-body">
@@ -74,8 +81,7 @@
                 </div>
             </div>
         </div> -->
-    <!-- </div>
-    <div class="col-xs-6"> -->
+
         <!-- <div class="row dashboard-panel" data-ng-controller="ModelsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -101,6 +107,7 @@
                 </div>
             </div>
         </div> -->
+
         <!-- <div class="row dashboard-panel" data-ng-controller="DecisionsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -126,11 +133,12 @@
                 </div>
             </div>
         </div> -->
+
         <!-- <div class="row dashboard-panel" data-ng-controller="PublicationsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <a class="clickable" data-ui-sref="dashboard.publications.list">
-                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-book" aria-hidden="true"></span> My Publications</h3>
+                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-newspaper-o" aria-hidden="true"></span> My Publications</h3>
                     </a>
                 </div>
                 <div class="panel-body">
@@ -151,5 +159,3 @@
                 </div>
             </div>
         </div> -->
-    </div>
-</div>
