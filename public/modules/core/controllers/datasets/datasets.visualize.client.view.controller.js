@@ -6,6 +6,7 @@ angular.module('core').controller('DatasetsVisualizeViewController', ['$scope', 
         $scope.authentication = Authentication;
 
         $scope.whoami = 'datasets.visualize.client.view.html';
+        console.log($scope.whoami);
 
     }
 ]);

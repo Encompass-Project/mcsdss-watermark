@@ -50,7 +50,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         abstract: false,
         url: '/datasets',
         templateUrl: 'modules/core/views/datasets/datasets.client.view.html',
-        controller: 'DatasetsController'  // 'DatasetsViewController'
+        controller: 'DatasetsViewController'
       })
       .state('dashboard.datasets.list', {
         abstract: false,

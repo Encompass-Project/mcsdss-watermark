@@ -1,29 +1,5 @@
 <div class="row">
     <div class="col-xs-6">
-        <div class="row dashboard-panel" data-ng-controller="DatasetsController" data-ng-init="find(currentUser)">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <a class="clickable" data-ui-sref="dashboard.datasets.list">
-                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-database" aria-hidden="true"></span> My Datasets</h3>
-                    </a>
-                </div>
-                <div class="panel-body">
-                    <div class="list-group">
-                        <a data-ng-repeat="dataset in datasets | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.datasets.list.details({datasetId: dataset._id})" class="list-group-item">
-                            <small class="list-group-item-text">
-                                Posted on <span data-ng-bind="dataset.created | date:'medium'"></span> by <span data-ng-bind="dataset.user.displayName"></span><!--  ( ID: <span data-ng-bind="dataset._id"></span> ) -->
-                            </small>
-                            <h4 class="list-group-item-heading" data-ng-bind="dataset.name"></h4>
-                        </a>
-                    </div>
-                    <div class="alert alert-warning text-center" data-ng-hide="!datasets.$resolved || datasets.length">
-                        No Datasets yet, why don't you <a href="/#!/datasets/create">create one</a>?
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-6">
         <div class="row dashboard-panel" data-ng-controller="FormulationsController" data-ng-init="find(currentUser)">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -47,6 +23,30 @@
                     </div>
                     <div class="alert alert-warning text-center" data-ng-hide="!formulations.$resolved || formulations.length">
                         No Formulations yet, why don't you <a href="/#!/formulations/create">create one</a>?
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div class="row dashboard-panel" data-ng-controller="DatasetsController" data-ng-init="find(currentUser)">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <a class="clickable" data-ui-sref="dashboard.datasets.list">
+                        <h3 class="panel-title"><span class="dashboard-paneltitle-item-icon fa fa-2x fa-database" aria-hidden="true"></span> My Datasets</h3>
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <a data-ng-repeat="dataset in datasets | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="dashboard.datasets.list.details({datasetId: dataset._id})" class="list-group-item">
+                            <small class="list-group-item-text">
+                                Posted on <span data-ng-bind="dataset.created | date:'medium'"></span> by <span data-ng-bind="dataset.user.displayName"></span><!--  ( ID: <span data-ng-bind="dataset._id"></span> ) -->
+                            </small>
+                            <h4 class="list-group-item-heading" data-ng-bind="dataset.name"></h4>
+                        </a>
+                    </div>
+                    <div class="alert alert-warning text-center" data-ng-hide="!datasets.$resolved || datasets.length">
+                        No Datasets yet, why don't you <a href="/#!/datasets/create">create one</a>?
                     </div>
                 </div>
             </div>

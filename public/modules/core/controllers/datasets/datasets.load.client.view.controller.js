@@ -6,6 +6,7 @@ angular.module('core').controller('DatasetsLoadViewController', ['$scope', 'Auth
         $scope.authentication = Authentication;
 
         $scope.whoami = 'datasets.load.client.view.html';
+        console.log($scope.whoami);
 
     }
 ]);

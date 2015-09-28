@@ -6,6 +6,7 @@ angular.module('core').controller('DatasetsTransformViewController', ['$scope', 
         $scope.authentication = Authentication;
 
         $scope.whoami = 'datasets.transform.client.view.html';
+        console.log($scope.whoami);
 
     }
 ]);
