@@ -6,6 +6,8 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 		$scope.authentication = Authentication;
 		$scope.currentUser = Authentication.user;
 
+		$scope.uploader = new FileUploader();
+
 		// Create new Dataset
 		$scope.create = function() {
 			// Create new Dataset object
@@ -77,6 +79,14 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 			});
 		};
 
-		$scope.uploader = new FileUploader();
+		// Trace file data out.
+		$scope.whatfiles = function(uploader) {
+			var targets = uploader;
+			console.log(targets);
+			// for (target in targets) {
+			// 	console.log(target);
+			// 	console.log('--------------');
+			// }
+		};
 	}
 ]);

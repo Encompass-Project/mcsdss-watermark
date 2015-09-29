@@ -4,3 +4,19 @@
 .dataset-view-header-subtitle {
     margin-bottom: 3rem !important;
 }
+.file-uploader {
+    background: #123;
+    color: #eee;
+    padding: 0 1rem 1rem;
+    border: 1px solid #456;
+}
+.my-drop-zone {
+    color: #222;
+    border: none;
+}
+.my-drop-zone-over {
+    border: 2px solid #D93;
+}
+.file-upload-label {
+    margin: 0 0 0.5rem;
+}
