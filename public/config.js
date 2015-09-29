@@ -4,7 +4,7 @@
 var ApplicationConfiguration = (function() {
 	// Init module configuration options
 	var applicationModuleName = 'mcsdss';
-	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'nemLogging', 'leaflet-directive', 'angularFileUpload' ];
+	var applicationModuleVendorDependencies = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'nemLogging', 'leaflet-directive', /*'ngFileUpload',*/ 'angularFileUpload' ];
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

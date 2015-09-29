@@ -7,6 +7,9 @@ var init = require('./config/init')(),
 	mongoose = require('mongoose'),
 	chalk = require('chalk');
 
+    // multer = require('multer');
+    // upload = multer({ dest: './uploads/'});
+
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
@@ -25,6 +28,10 @@ var app = require('./config/express')(db);
 
 // Bootstrap passport config
 require('./config/passport')();
+
+// multipart file uploads.
+// app.use('/uploads', express.static(__dirname + &quot;/uploads&quot;));
+// app.use(multer({dest: './uploads/'}));
 
 // Start the app by listening on <port>
 app.listen(config.port);

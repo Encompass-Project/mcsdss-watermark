@@ -1,12 +1,10 @@
 'use strict';
 
 // Datasets controller
-angular.module('datasets').controller('DatasetsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Datasets', 'FileUploader',
-	function($scope, $state, $stateParams, $location, Authentication, Datasets, FileUploader) {
+angular.module('datasets').controller('DatasetsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Datasets', /*'$upload',*/  'FileUploader',
+	function($scope, $state, $stateParams, $location, Authentication, Datasets, /*$upload,*/ FileUploader ) {
 		$scope.authentication = Authentication;
 		$scope.currentUser = Authentication.user;
-
-		$scope.uploader = new FileUploader();
 
 		// Create new Dataset
 		$scope.create = function() {
@@ -79,14 +77,29 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 			});
 		};
 
+		// METHOD 1: ng-file-upload.js
+		// $upload.upload({
+  //           url: '/serverRouteUrl', //upload.php script, node.js route, etc..
+  //           method: 'POST', //Post or Put
+  //           headers: {'Content-Type': 'multipart/form-data'},
+  //           //withCredentials: true,
+  //           data: JsonObject, //from data to send along with the file
+  //           file: blob, // or list of files ($files) for html5 only
+  //           //fileName: 'photo' // to modify the name of the file(s)
+  //       }).success(function (response, status) {
+  //              //success
+  //           }
+  //       ).error(function (err) {
+  //              //error
+  //           }
+  //       );
+
+  		// METHOD 2: angular-file-upload.js
+  		$scope.uploader = new FileUploader();
 		// Trace file data out.
 		$scope.whatfiles = function(uploader) {
-			var targets = uploader;
-			console.log(targets);
-			// for (target in targets) {
-			// 	console.log(target);
-			// 	console.log('--------------');
-			// }
+			// console.log(uploader);
+			console.log(uploader.queue);
 		};
 	}
 ]);
