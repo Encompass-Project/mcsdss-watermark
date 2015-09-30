@@ -1,10 +1,10 @@
-<section data-ng-controller="NotebooksController" data-ng-init="find(currentUser)">
+<section data-ng-init="find(currentUser)">
     <div class="page-header">
         <h1>Notebooks</h1>
     </div>
     <div class="col-xs-4">
         <div class="list-group">
-            <a data-ng-repeat="notebook in notebooks" data-ui-sref="dashboard.notebooks.list.details({notebookId: notebook._id})" class="list-group-item"><!-- data-ng-href="#!/notebooks/{{notebook._id}}" -->
+            <a data-ng-repeat="notebook in notebooks" data-ui-sref="dashboard.notebooks.list.details({notebookId: notebook._id})" class="list-group-item">
     			<small class="list-group-item-text">
     				Posted on
     				<span data-ng-bind="notebook.created | date:'medium'"></span>

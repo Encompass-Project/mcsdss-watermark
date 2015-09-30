@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('core').controller('ModelsThirdViewController', ['$scope', 'Authentication',
+angular.module('core').controller('ModelsCurateViewController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'models.third.client.view.html';
+        $scope.whoami = 'models.curate.client.view';
 
     }
 ]);

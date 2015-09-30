@@ -1,11 +1,11 @@
 'use strict';
 
-angular.module('core').controller('NotebooksFourthViewController', ['$scope', 'Authentication',
+angular.module('core').controller('PublicationsCurateViewController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.whoami = 'notebooks.fourth.client.view.html';
+        $scope.whoami = 'publications.curate.client.view';
 
     }
 ]);

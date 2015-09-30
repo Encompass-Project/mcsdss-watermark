@@ -1,8 +1,8 @@
-<section data-ng-controller="FormulationsController" data-ng-init="findOne()">
+<section data-ng-init="findOne()">
 	<div class="page-header">
 		<h1 data-ng-bind="formulation.name"></h1>
 		<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == formulation.user._id))">
-			<a class="btn btn-primary" data-ui-sref="dashboard.formulations.list.edit({formulationId: formulation._id})"><!-- href="/#!/formulations/{{formulation._id}}/edit" -->
+			<a class="btn btn-primary" data-ui-sref="dashboard.formulations.list.edit({formulationId: formulation._id})">
 				<i class="glyphicon glyphicon-edit"></i>
 			</a>
 			<a class="btn btn-danger" data-ng-click="remove();">

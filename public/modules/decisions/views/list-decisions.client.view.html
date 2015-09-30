@@ -1,10 +1,10 @@
-<section data-ng-controller="DecisionsController" data-ng-init="find(currentUser)">
+<section data-ng-init="find(currentUser)">
     <div class="page-header">
         <h1>Decisions</h1>
     </div>
     <div class="col-xs-4">
         <div class="list-group">
-            <a data-ng-repeat="decision in decisions" data-ui-sref="dashboard.decisions.list.details({decisionId: decision._id})" class="list-group-item"><!-- data-ng-href="#!/decisions/{{decision._id}}" -->
+            <a data-ng-repeat="decision in decisions" data-ui-sref="dashboard.decisions.list.details({decisionId: decision._id})" class="list-group-item">
     			<small class="list-group-item-text">
     				Posted on
     				<span data-ng-bind="decision.created | date:'medium'"></span>
