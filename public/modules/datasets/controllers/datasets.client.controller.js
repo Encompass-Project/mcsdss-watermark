@@ -1,10 +1,11 @@
 'use strict';
 
 // Datasets controller
-angular.module('datasets').controller('DatasetsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Datasets', /*'$upload',*/  'FileUploader',
-	function($scope, $state, $stateParams, $location, Authentication, Datasets, /*$upload,*/ FileUploader ) {
+angular.module('datasets').controller('DatasetsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Datasets', 'FileUploader', /* '$upload', 'multipartForm', */
+	function($scope, $state, $stateParams, $location, Authentication, Datasets, FileUploader) { /* $upload, multipartForm, */
 		$scope.authentication = Authentication;
 		$scope.currentUser = Authentication.user;
+        $scope.newDataset = {}
 
 		// Create new Dataset
 		$scope.create = function() {
@@ -77,7 +78,18 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 			});
 		};
 
-		// METHOD 1: ng-file-upload.js
+
+        /* START UPLOAD TESTS */
+
+        // SIMPLE TEST - UPLOADS.
+
+        // $scope.Submit = function() {
+        //     var uploadUrl = '/uploads';
+        //     multipartForm.post(uploadUrl, $scope.newDataset);
+        // };
+
+
+		// MORE MULTIPART TESTS - METHOD 1: ng-file-upload.js
 
 		// $upload.upload({
   //           url: '/serverRouteUrl', //upload.php script, node.js route, etc..
@@ -95,11 +107,12 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
   //           }
   //       );
 
-  		// METHOD 2: angular-file-upload.js
+  		// COMPLEX TESTS - METHOD 3: angular-file-upload.js
 
   		// $scope.uploader = new FileUploader();
   		var uploader = $scope.uploader = new FileUploader({
-            url: './uploads.php'
+            // url: './uploads.php'
+            url: './uploads'
         });
 
         // Trace file data out.
@@ -109,7 +122,6 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
 		};
 
         // FILTERS
-
         uploader.filters.push({
             name: 'customFilter',
             fn: function(item /*{File|FileLikeObject}*/, options) {
@@ -118,7 +130,6 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
         });
 
         // CALLBACKS
-
         uploader.onWhenAddingFileFailed = function(item /*{File|FileLikeObject}*/, filter, options) {
             console.info('onWhenAddingFileFailed', item, filter, options);
         };

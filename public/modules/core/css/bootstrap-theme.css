@@ -1,9 +1,12 @@
+/* Blue */
 .btn-list {
     background-color: #739BC3 !important;
 }
 .btn-list:hover, .btn-list:focus, .btn-list:active {
     background-color: #5179A1 !important;
 }
+
+/* Green */
 .btn-new {
     background-color: #9AA159 !important;
 }
@@ -11,31 +14,35 @@
     background-color: #818844 !important;
 }
 
-.btn-transform {
+/* Brown */
+/*.btn-transform {
     background-color: #A18351 !important;
 }
 .btn-transform:hover, .btn-transform:focus, .btn-transform:active {
     background-color: #876E44 !important;
-}
+}*/
 
-.btn-visualize {
+/* Yellow */
+/*.btn-visualize {
     background-color: #F8D263 !important;
 }
 .btn-visualize:hover, .btn-visualize:focus, .btn-visualize:active {
     background-color: #EEBD5F !important;
-}
+}*/
 
-.btn-curate {
+/* Maroon */
+.btn-transform, .btn-curate {
     background-color: #AE6D69 !important;
 }
-.btn-curate:hover, .btn-curate:focus, .btn-curate:active {
+.btn-transform:hover, .btn-transform:focus, .btn-transform:active, .btn-curate:hover, .btn-curate:focus, .btn-curate:active {
     background-color: #624644 !important;
 }
 
-.btn-publish {
+/* Violet */
+.btn-visualize, .btn-publish {
     background-color: #A37CB0 !important;
 }
-.btn-publish:hover, .btn-publish:focus, .btn-publish:active {
+.btn-visualize:hover, .btn-visualize:focus, .btn-visualize:active, .btn-publish:hover, .btn-publish:focus, .btn-publish:active {
     background-color: #593C64 !important;
 }
 
