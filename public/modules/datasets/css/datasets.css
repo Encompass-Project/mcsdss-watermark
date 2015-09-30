@@ -5,10 +5,28 @@
     margin-bottom: 3rem !important;
 }
 .file-uploader {
-    background: #123;
+    background: #234;
     color: #eee;
     padding: 0 1rem 1rem;
     border: 1px solid #456;
+}
+.file-upload-label {
+    margin: 0 0 0.5rem;
+    color: #ccc;
+}
+.input-field-long {
+    width: 100%;
+}
+.select-upload-files {
+    padding: 0 1rem;
+    border: 1px solid #456;
+    background: #123;
+}
+.upload-queue {
+    margin: 1rem 0 0 0;
+    padding: 0 1rem 1rem;
+    border: 1px solid #456;
+    background: #222;
 }
 .my-drop-zone {
     color: #222;
@@ -16,7 +34,4 @@
 }
 .my-drop-zone-over {
     border: 2px solid #D93;
-}
-.file-upload-label {
-    margin: 0 0 0.5rem;
 }

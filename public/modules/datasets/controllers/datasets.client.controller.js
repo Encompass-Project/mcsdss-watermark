@@ -112,7 +112,7 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
   		// $scope.uploader = new FileUploader();
   		var uploader = $scope.uploader = new FileUploader({
             // url: './uploads.php'
-            url: './uploads'
+            url: '/uploads'
         });
 
         // Trace file data out.
