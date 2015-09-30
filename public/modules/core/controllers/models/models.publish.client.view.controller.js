@@ -7,5 +7,9 @@ angular.module('core').controller('ModelsPublishViewController', ['$scope', 'Aut
 
         $scope.whoami = 'models.publish.client.view';
 
+        $scope.clicked = function(target) {
+            console.log(target);
+        };
+
     }
 ]);

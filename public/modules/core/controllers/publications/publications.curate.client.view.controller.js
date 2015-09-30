@@ -7,5 +7,9 @@ angular.module('core').controller('PublicationsCurateViewController', ['$scope',
 
         $scope.whoami = 'publications.curate.client.view';
 
+        $scope.clicked = function(target) {
+            console.log(target);
+        };
+
     }
 ]);

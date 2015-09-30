@@ -7,5 +7,9 @@ angular.module('core').controller('ModelsCurateViewController', ['$scope', 'Auth
 
         $scope.whoami = 'models.curate.client.view';
 
+        $scope.clicked = function(target) {
+            console.log(target);
+        };
+
     }
 ]);
