@@ -12,6 +12,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       .when('/notebooks', '/notebooks/list')
       .when('/publications', '/publications/list')
       .when('/profile', '/profile/view')
+      // .when('/analyze-abstract', '/analyze-abstract/layout')   // redirects to dashboard.
       .otherwise('/');
 
     // Use state routing primarilly.
@@ -216,6 +217,24 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         url: '/analyze-abstract',
         templateUrl: 'modules/core/views/analyze/analyze-abstract.client.view.html',
         controller: 'AnalyzeAbstractViewController'
+      })
+      .state('dashboard.analyze-abstract.layout', {
+        abstract: false,
+        url: '',
+        views: {
+          'graph': {
+              templateUrl: 'modules/core/views/analyze/analyze.graph.client.view.html',
+              controller: 'GraphViewController'
+           },
+           'map': {
+              templateUrl: 'modules/core/views/analyze/analyze.map.client.view.html',
+              controller: ''
+          },
+          'datatable': {
+              templateUrl: 'modules/core/views/analyze/analyze.datatable.client.view.html',
+              controller: 'DatatableViewController'
+          }
+        }
       })
       // DECISIONS
       .state('dashboard.decisions', {

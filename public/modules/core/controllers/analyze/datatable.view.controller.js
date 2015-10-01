@@ -42,7 +42,7 @@ angular.module('core').controller('DatatableViewController', ['$scope', 'Authent
         ];
 
         $scope.datasets = [
-            {''}
+            // {''}
         ];
 
         // $scope.counter = 0;
