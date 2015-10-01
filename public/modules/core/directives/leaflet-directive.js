@@ -28,6 +28,8 @@ angular.module('core')
 
         directiveDefinitionObject.link = function postLink(scope, element) {
 
+            // Base Tile Layers.
+            // These are hard coded into the directive and will remain sttaic unless new baseTile layers are needed.
             var mqLink = '<a href="http://www.mapquest.com/">MapQuest</a>';
             var mqPic = '<img src="http://developer.mapquest.com/content/osm/mq_logo.png">';
             var mqArialUrl = 'http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg';
@@ -130,24 +132,31 @@ angular.module('core')
             var baseStyleHover = { 'fillOpacity': fillOpacityHover };
 
             // var usaStyle = { 'fillColor': color_eaa_Blue };
-            // var usaStyleHover = { };
+            var usaStyle = {};
+            var usaStyleHover = {};
 
-            var texasStyle = {
-                'fillColor': color_eaa_Orange,
-                'fillOpacity': 0.0,
-                'color': color_eaa_Orange,
-                'weight': '3px'
-            };
-            var texasStyleHover = { 'fillOpacity': 0.0 };
+            // var texasStyle = {'fillColor': color_eaa_Orange, 'fillOpacity': 0.0, 'color': color_eaa_Orange, 'weight': '3px'};
+            // var texasStyleHover = { 'fillOpacity': 0.0 };
+            var texasStyle = {'fillColor': color_eaa_Orange};
+            var texasStyleHover = {};
 
-            var majorAquiferStyle = { 'fillColor': color_eaa_Lake };
-            var majorAquiferStyleHover = { };
+            // var majorAquiferStyle = { 'fillColor': color_eaa_Lake };
+            var majorAquiferStyle = {};
+            var majorAquiferStyleHover = {};
 
-            var eaaBoundaryZonesStyle = { 'fillColor': color_eaa_Gold };
-            var eaaBoundaryZonesStyleHover = { };
+            // var eaaBoundaryZonesStyle = { 'fillColor': color_eaa_Gold };
+            var eaaBoundaryZonesStyle = {};
+            var eaaBoundaryZonesStyleHover = {};
 
-            var aquiferZonesStyle = { 'fillColor': color_eaa_Melon };
-            var aquiferZonesStyleHover = { };
+            // var aquiferZonesStyle = { 'fillColor': color_eaa_Melon };
+            var aquiferZonesStyle = {};
+            var aquiferZonesStyleHover = {};
+
+            var bsgamZonesStyle = {};
+            var bsgamZonesStyleHover = {};
+
+            var bsgamZonesMergedStyle = {};
+            var bsgamZonesMergedStyleHover = {};
 
             // Geojson to display.
             // // var usaGeojson = './data/geojson/USA.geo.json';
@@ -158,25 +167,28 @@ angular.module('core')
             // var aquiferZonesGeojson = './data/geojson/eaa/eaa-aquifer-zones-2014.geo.json';
 
             // TESTING BUILD PATH.
-            // var usaGeojson = './data/geojson/USA.geo.json';
-            // var usaGeojson = './data/geojson/gz_2010_us_outline_20m.json';  // Outline only.
-            var texasGeojson = '../data/geojson/TX.geo.json';
-            var majorAquifersGeojson = '../data/geojson/NEW_major_aquifers_dd_reduced100.geo.json';
-            var eaaBoundaryZonesGeojson = '../data/geojson/eaa_boundary_EPSG-3081.geo.json';
-            var aquiferZonesGeojson = '../data/geojson/eaa-aquifer-zones-2014.geo.json';
+            var usaGeojson = './data/geojson/USA.geo.json';
+            var texasGeojson = './data/geojson/TX.geo.json';
+            var majorAquifersGeojson = './data/geojson/NEW_major_aquifers_dd_reduced100.geo.json';
+            var eaaBoundaryZonesGeojson = './data/geojson/eaa_boundary_EPSG-3081.geo.json';
+            var aquiferZonesGeojson = './data/geojson/eaa-aquifer-zones-2014.geo.json';
+            var bsgam_kzonesGeojson = './data/geojson/BSGAMKZ.geo.json';
+            var bsgam_kzones_mergedGeojson = './data/geojson/BSGAMKZones.merged.WGS84.lco15.geo.json';
 
             // GeoJSON Layers.
-            // var usaLayer = new L.LayerGroup();
+            var usaLayer = new L.LayerGroup();
             var texasLayer = new L.LayerGroup();
             var majorAquifersLayer = new L.LayerGroup();
             var aquiferZonesLayer = new L.LayerGroup();
             var eaaBoundaryLayer = new L.LayerGroup();
+            var bsgam_kzonesLayer = new L.LayerGroup();
+            var bsgam_kzones_mergedLayer = new L.LayerGroup();
 
             // Marker Layers.
             // Look into using the MarkerClusterGroup.
             var allMarkersLayer = new L.LayerGroup();
 
-            // Merges Style Objects.
+            // Merges two objects.
             var mergeObjects = function() {
                 // Earlier objects override later objects.
                 var o = {}
@@ -226,9 +238,9 @@ angular.module('core')
                 geojson.addTo(layerGroup);
             };
 
-            // $.getJSON(usaGeojson, function(data) {
-            //     processGeojson(data, usaLayer, usaStyle, usaStyleHover);
-            // });
+            $.getJSON(usaGeojson, function(data) {
+                processGeojson(data, usaLayer, usaStyle, usaStyleHover);
+            });
 
             $.getJSON(texasGeojson, function(data) {
                 processGeojson(data, texasLayer, texasStyle, texasStyleHover);
@@ -267,6 +279,14 @@ angular.module('core')
                     }
                 });
                 geojson.addTo(eaaBoundaryLayer);
+            });
+
+            $.getJSON(bsgam_kzonesGeojson, function(data) {
+                processGeojson(data, bsgam_kzonesLayer, bsgamZonesStyle, bsgamZonesStyleHover);
+            });
+
+            $.getJSON(bsgam_kzones_mergedGeojson, function(data) {
+                processGeojson(data, bsgam_kzones_mergedLayer, bsgamZonesMergedStyle, bsgamZonesMergedStyleHover);
             });
 
             // Markers.
@@ -356,11 +376,14 @@ angular.module('core')
                 // All Markers.
                 'EAA Monitoring Stations': allMarkersLayer,
                 // USA.
-                // 'USA': usaLayer,
+                'USA': usaLayer,
                 'Texas': texasLayer,
                 'Major Aquifers': majorAquifersLayer,
                 'Aquifer Zones': aquiferZonesLayer,
-                'EAA Boundary Zone<br/>': eaaBoundaryLayer,
+                'EAA Boundary Zone': eaaBoundaryLayer,
+                'bsgam kzones': bsgam_kzonesLayer,
+                'bsgam kzones merged': bsgam_kzones_mergedLayer,
+                '<br/>' : {}
             };
 
             // Map Panning/Zooming.
@@ -387,7 +410,7 @@ angular.module('core')
             };
             var panOptionsInitial = {
                 'animate': true,
-                'duration': 4,
+                'duration': 3,
                 'easeLinearity': 0.50,
                 'noMoveStart': 'false'
             };
@@ -405,29 +428,37 @@ angular.module('core')
             };
             var panByPoint = new L.Point(-350, 0);
 
-            var southWest0 = L.latLng(32, -100),
-                northEast0 = L.latLng(28, -92),
-                bounds0 = L.latLngBounds(southWest0, northEast0);
+            // var southWest0 = L.latLng(32, -100),
+            //     northEast0 = L.latLng(28, -92),
+            //     bounds0 = L.latLngBounds(southWest0, northEast0);
 
-            var southWest1 = L.latLng(17, 100),
-                northEast1 = L.latLng(16, 100),
-                bounds1 = L.latLngBounds(southWest1, northEast1);
+            // var southWest1 = L.latLng(17, 100),
+            //     northEast1 = L.latLng(16, 100),
+            //     bounds1 = L.latLngBounds(southWest1, northEast1);
 
-            var southWest2 = L.latLng(30, -97),
-                northEast2 = L.latLng(30, -97),
-                bounds2 = L.latLngBounds(southWest2, northEast2);
+            // var southWest2 = L.latLng(30, -97),
+            //     northEast2 = L.latLng(30, -97),
+            //     bounds2 = L.latLngBounds(southWest2, northEast2);
 
-            var area3 = L.latLngBounds([[32, -100],[28, -92]]);
+            // var area3 = L.latLngBounds([[32, -100],[28, -92]]);
 
-            var rechargeView = L.latLng(29.45, -109.48);
-            var wellsView = L.latLng(29.15417, -110.7431);
-            var springsView = L.latLng(29.89326, -108.9312);
+            // var rechargeView = L.latLng(29.45, -109.48);
+            // var wellsView = L.latLng(29.15417, -110.7431);
+            // var springsView = L.latLng(29.89326, -108.9312);
 
             // Build Map.
 
-            var initialZoom = 6;
-            var initialPosition = [50, -98];
-            var targetPosition = [30, -98];
+            // Map config inputs.
+            // var targetPosition = [30, -99];
+            // var initialZoom = 6;
+            var targetPosition = [30.15, -97.85];
+            var initialZoom = 12;
+            // Derive map config.
+            var offsetConstant = 100;
+            var baseOffset = offsetConstant / initialZoom;
+            var initialPanLatOffset = targetPosition[0]; // + baseOffset;
+            var initialPanLonOffset = targetPosition[1] - baseOffset;
+            var initialPosition = [initialPanLatOffset, initialPanLonOffset];
 
             var map = L.map('map', {
                 zoomControl: false,
@@ -438,7 +469,7 @@ angular.module('core')
                 scrollWheelZoom: true,
                 zoomAnimation: true,
                 click: true,
-                layers: [mqArialMap] // only add one!
+                layers: [thunOutdoorsMap] // mqArialMap, only add one!
             }).setView(initialPosition, initialZoom);
 
             map.on('popupopen', function(centerMarker) {
@@ -457,7 +488,7 @@ angular.module('core')
                 position: 'topright' //'topleft'
             }).addTo(map);
 
-            // L.control.zoom({position: 'topright'}).addTo(map);
+            L.control.zoom({position: 'topleft'}).addTo(map);
 
             L.control.scale({
                 position: 'bottomleft'
@@ -467,10 +498,14 @@ angular.module('core')
                 position: 'bottomright'
             }).addTo(map);
 
-            // Setup Initial View & Animation.
-            texasLayer.addTo(map);
-            eaaBoundaryLayer.addTo(map);
-            allMarkersLayer.addTo(map);
+            // Setup Initial Visible Layers.
+            // texasLayer.addTo(map);
+            // eaaBoundaryLayer.addTo(map);
+            // allMarkersLayer.addTo(map);
+            // bsgam_kzonesLayer.addTo(map);
+            bsgam_kzones_mergedLayer.addTo(map);
+
+            // Trigger Initial Animation.
             map.panTo(targetPosition, panOptionsInitial);
 
             // $(".leaflet-popup-close-button")[0].click();  // Closes all popups.

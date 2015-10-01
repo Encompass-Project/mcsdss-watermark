@@ -205,6 +205,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/core/views/analyze/analyze.client.view.html',
         controller: 'AnalyzeViewController'
       })
+      .state('dashboard.analyze-test', {
+        abstract: false,
+        url: '/analyze-test',
+        templateUrl: 'modules/core/views/analyze/analyze-test.client.view.html',
+        controller: 'AnalyzeTestViewController'
+      })
       // DECISIONS
       .state('dashboard.decisions', {
         abstract: false,
