@@ -54,10 +54,10 @@ angular.module('core').controller('DatatableViewController', ['$scope', 'Authent
         };
 
         $scope.userOrder = function(key) {
-            console.log("key="+key);    //prints: "key=undefined"
+            // console.log("key="+key);    //prints: "key=undefined"
 
             angular.forEach($scope.headers, function(header){
-                console.log("key="+key);
+                // console.log("key="+key);
                 if(header.data == key) {
                     if(header.visible) {
                         return header.order;
