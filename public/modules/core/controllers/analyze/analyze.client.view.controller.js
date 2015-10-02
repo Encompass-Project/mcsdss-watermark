@@ -8,6 +8,13 @@ angular.module('core').controller('AnalyzeViewController', ['$scope', '$state', 
 
         $scope.sourceFile = './data/BSGAM_Heads_Wells_Drains_Zones_Master.csv';
 
+        /*
+        // Need a way to manage sharing async data between controllers in order to populate child views properly and not repeat http requests.
+        // See: http://stackoverflow.com/questions/18377348/share-async-data-between-controllers-without-making-multiple-requests
+        // http://stackoverflow.com/questions/18004298/angular-ui-router-get-asynchronous-data-with-resolve
+        // http://stackoverflow.com/questions/31272074/passing-scope-variable-to-child-controller
+        */
+
         $httpq.get($scope.sourceFile)
             .then(function(data) {
                 $scope.parseCsvData(data);
