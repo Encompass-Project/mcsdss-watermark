@@ -35,6 +35,8 @@ module.exports = {
 				// 'public/lib/ng-file-upload/angular-file-upload-shim.min.js',
 				// 'public/lib/ng-file-upload/angular-file-upload.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/papaparse/papaparse.min.js',
+				'public/lib/angular-papaparse/dist/js/angular-PapaParse.js',
 				'public/lib/leaflet/dist/leaflet.js',
 				'public/lib/d3/d3.min.js'
 			]
