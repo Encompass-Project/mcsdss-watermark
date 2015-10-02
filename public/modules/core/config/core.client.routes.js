@@ -228,7 +228,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
            },
            'map': {
               templateUrl: 'modules/core/views/analyze/analyze.map.client.view.html',
-              controller: ''
+              controller: 'MapViewController'
           },
           'datatable': {
               templateUrl: 'modules/core/views/analyze/analyze.datatable.client.view.html',

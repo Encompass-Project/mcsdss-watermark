@@ -1,20 +1,35 @@
 <section>
     <div class="row">
-        <!-- <h1>Datatable View</h1> -->
         <div class="datatable table-responsive analysis-data-table" id="datatable" ng-controller="DatatableViewController">
             <table class="table table-striped table-condensed table-hover">
                 <thead>
-                <tr>
-                    <th ng-repeat="header in headers | filter:headerFilter | orderBy:headerOrder" width="{{header.width}}">{{header.label}}</th>
-                </tr>
+                    <tr>
+                        <th ng-repeat="header in headers | filter:headerFilter | orderBy:headerOrder" width="{{header.width}}">{{header.label}}</th>
+                    </tr>
+                    <tr>
+                        <th ng-repeat="header in headers | filter:headerFilter | orderBy:headerOrder" width="{{header.width}}">{{header.label}}</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="user in users" ng-class-odd="'trOdd'" ng-class-even="'trEven'" ng-click="rowClicked(user)">
-                    <td ng-repeat="(key,val) in user | orderBy:userOrder(key)">{{val}}</td>
-                </tr>
+                    <tr ng-repeat="dataset in datasets" ng-class-odd="'trOdd'" ng-class-even="'trEven'" ng-click="rowClicked(dataset)">
+                        <!-- <td ng-repeat="(key,val) in dataset | orderBy:datasetOrder(key)">{{val}}</td> -->
+                        <td>{{ dataset.runName }}</td>
+                        <td>{{ dataset.attrName_0 }}</td>
+                        <td>{{ dataset.attrValue_0 }}</td>
+                        <td>{{ dataset.attrSparkline_0 }}</td>
+                        <td>{{ dataset.attrSufScore_0 }}</td>
+                        <td>{{ dataset.attrName_1 }}</td>
+                        <td>{{ dataset.attrValue_1 }}</td>
+                        <td>{{ dataset.attrSparkline_1 }}</td>
+                        <td>{{ dataset.attrSufScore_1 }}</td>
+                        <td>{{ dataset.attrName_2 }}</td>
+                        <td>{{ dataset.attrValue_2 }}</td>
+                        <td>{{ dataset.attrSparkline_2 }}</td>
+                        <td>{{ dataset.attrSufScore_2 }}</td>
+                        <td>{{ dataset.runMufScore }}</td>
+                    </tr>
                 </tbody>
-                <!-- <tfoot>
-                </tfoot> -->
+                <!-- <tfoot></tfoot> -->
             </table>
         </div>
     </div>

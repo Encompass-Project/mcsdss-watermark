@@ -5,70 +5,77 @@ angular.module('core').controller('DatatableViewController', ['$scope', 'Authent
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        // $scope.headers = [
-        //     { "order": 1, "width": 0, "label": "ID", "data": "id", "type": "string", "visible": true },
-        //     { "order": 2, "width": 120, "label": "Last Name", "data": "lastName", "type": "string", "visible": true },
-        //     { "order": 3, "width": 129, "label": "First Name", "data": "firstName", "type": "string", "visible": true },
-        //     { "order": 4, "width": 200, "label": "Email Address", "data": "email", "type": "string", "visible": true },
-        //     { "order": 5, "width": 120, "label": "Phone Number", "data": "phoneNumber", "type": "string", "visible": true },
-        //     { "order": 6, "width": 80, "label": "Username", "data": "username", "type": "string", "visible": true },
-        //     { "order": 7, "width": 100, "label": "Last Login", "data": "lastLoginDate", "type": "date", "visible": true }
-        // ];
+        $scope.preferences = [
 
-        $scope.users = [
-            { "id": "1", "lastName": "Test1", "firstName": "Test", "email": "test1@example.com", "phoneNumber": "(555) 111-0001", "username": "ttest1", lastLoginDate: "12/28/2012 3:51 PM" },
-            { "id": "2", "lastName": "Test2", "firstName": "Test", "email": "test2@example.com", "phoneNumber": "(555) 222-0002", "username": "ttest2", lastLoginDate: "12/28/2012 3:52 PM" },
-            { "id": "3", "lastName": "Test3", "firstName": "Test", "email": "test3@example.com", "phoneNumber": "(555) 333-0003", "username": "ttest3", lastLoginDate: "12/28/2012 3:53 PM" },
-            { "id": "4", "lastName": "Test4", "firstName": "Test", "email": "test4@example.com", "phoneNumber": "(555) 444-0004", "username": "ttest4", lastLoginDate: "12/28/2012 3:54 PM" },
-            { "id": "5", "lastName": "Test5", "firstName": "Test", "email": "test5@example.com", "phoneNumber": "(555) 555-0005", "username": "ttest5", lastLoginDate: "12/28/2012 3:55 PM" }
         ];
 
         $scope.headers = [
             {'order':1, 'width':0, 'label':'ID', 'data':'id', 'type':'string' ,'visible':false},
             {'order':2, 'width':20, 'label':'Run Name', 'data':'runName', 'type':'string' ,'visible':true},
-            {'order':3, 'width':20, 'label':'Attribute 1', 'data':'attrName', 'type':'string' ,'visible':true},
-            {'order':4, 'width':20, 'label':'Value', 'data':'attrValue', 'type':'string' ,'visible':true},
-            {'order':5, 'width':20, 'label':'Spark Line', 'data':'attrSparkline', 'type':'string' ,'visible':true},
-            {'order':6, 'width':20, 'label':'SUF Score', 'data':'attrSufScore', 'type':'string' ,'visible':true},
-            {'order':7, 'width':20, 'label':'Attribute 2', 'data':'attrName', 'type':'string' ,'visible':true},
-            {'order':8, 'width':20, 'label':'Value', 'data':'attrValue', 'type':'string' ,'visible':true},
-            {'order':9, 'width':20, 'label':'Spark Line', 'data':'attrSparkline', 'type':'string' ,'visible':true},
-            {'order':10, 'width':20, 'label':'SUF Score', 'data':'attrSufScore', 'type':'string' ,'visible':true},
-            {'order':11, 'width':20, 'label':'Attribute 3', 'data':'attrName', 'type':'string' ,'visible':true},
-            {'order':12, 'width':20, 'label':'Value', 'data':'attrValue', 'type':'string' ,'visible':true},
-            {'order':13, 'width':20, 'label':'Spark Line', 'data':'attrSparkline', 'type':'string' ,'visible':true},
-            {'order':14, 'width':20, 'label':'SUF Score', 'data':'attrSufScore', 'type':'string' ,'visible':true},
+            {'order':3, 'width':20, 'label':'Attribute 1', 'data':'attrName_0', 'type':'string' ,'visible':true},
+            {'order':4, 'width':20, 'label':'Value', 'data':'attrValue_0', 'type':'string' ,'visible':true},
+            {'order':5, 'width':20, 'label':'Spark Line', 'data':'attrSparkline_0', 'type':'string' ,'visible':true},
+            {'order':6, 'width':20, 'label':'SUF Score', 'data':'attrSufScore_0', 'type':'string' ,'visible':true},
+            {'order':7, 'width':20, 'label':'Attribute 2', 'data':'attrName_1', 'type':'string' ,'visible':true},
+            {'order':8, 'width':20, 'label':'Value', 'data':'attrValue_1', 'type':'string' ,'visible':true},
+            {'order':9, 'width':20, 'label':'Spark Line', 'data':'attrSparkline_1', 'type':'string' ,'visible':true},
+            {'order':10, 'width':20, 'label':'SUF Score', 'data':'attrSufScore_1', 'type':'string' ,'visible':true},
+            {'order':11, 'width':20, 'label':'Attribute 3', 'data':'attrName_2', 'type':'string' ,'visible':true},
+            {'order':12, 'width':20, 'label':'Value', 'data':'attrValue_2', 'type':'string' ,'visible':true},
+            {'order':13, 'width':20, 'label':'Spark Line', 'data':'attrSparkline_2', 'type':'string' ,'visible':true},
+            {'order':14, 'width':20, 'label':'SUF Score', 'data':'attrSufScore_2', 'type':'string' ,'visible':true},
             {'order':15, 'width':20, 'label':'MUF Score', 'data':'runMufScore', 'type':'string' ,'visible':true}
         ];
 
         $scope.datasets = [
-            // {''}
+            {'id':'1', 'runName':'hash_tag_file_01', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'2', 'runName':'hash_tag_file_02', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'3', 'runName':'hash_tag_file_03', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'4', 'runName':'hash_tag_file_04', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'5', 'runName':'hash_tag_file_05', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'6', 'runName':'hash_tag_file_06', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'7', 'runName':'hash_tag_file_07', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'8', 'runName':'hash_tag_file_08', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'9', 'runName':'hash_tag_file_09', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'10', 'runName':'hash_tag_file_10', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'11', 'runName':'hash_tag_file_11', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'1', 'runName':'hash_tag_file_01', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'2', 'runName':'hash_tag_file_02', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'3', 'runName':'hash_tag_file_03', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'4', 'runName':'hash_tag_file_04', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'5', 'runName':'hash_tag_file_05', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'6', 'runName':'hash_tag_file_06', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'7', 'runName':'hash_tag_file_07', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'8', 'runName':'hash_tag_file_08', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'9', 'runName':'hash_tag_file_09', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'10', 'runName':'hash_tag_file_10', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'},
+            {'id':'11', 'runName':'hash_tag_file_11', 'attrName_0':'ATTR 0', 'attrValue_0':'attr 0 value', 'attrSparkline_0': 'graph here', 'attrSufScore_0':'attr 0 suf score', 'attrName_1':'ATTR 1', 'attrValue_1':'attr 1 value', 'attrSparkline_1': 'graph here', 'attrSufScore_1':'attr 1 suf score', 'attrName_2':'ATTR 2', 'attrValue_2':'attr 2 value', 'attrSparkline_2': 'graph here', 'attrSufScore_2':'attr 2 suf score', 'runMufScore':'run muf score'}
         ];
 
-        // $scope.counter = 0;
-
         $scope.headerOrder = 'order';
+        $scope.counter = 0;
 
-        $scope.headerFilter = function(header) {
-            return header.visible;
+        $scope.headerFilter = function(target) {
+            return target.visible;
         };
 
-        $scope.userOrder = function(key) {
+        $scope.datasetOrder = function(key) {
+            console.log(key);
             // console.log("key="+key);    //prints: "key=undefined"
 
-            angular.forEach($scope.headers, function(header){
+            angular.forEach($scope.headers, function (target){
                 // console.log("key="+key);
-                if(header.data == key) {
-                    if(header.visible) {
-                        return header.order;
+                if (target.data == key) {
+                    if (target.visible) {
+                        return target.order;
                     }
                 }
             });
             return -1;
         };
 
-        $scope.rowClicked = function(user) {
-            console.log("Username: " + user.username);
+        $scope.rowClicked = function (target) {
+            console.log("Dataset: " + target.runName);
         };
 
     }

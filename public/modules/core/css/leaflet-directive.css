@@ -2,7 +2,7 @@
 .div-fixed { position: fixed; }
 .div-relative { position: relative; }
 .div-absolute { position: absolute; }
-/*.div-static { position: static; }*/
+.div-static { position: static; }
 
 /* Depth */
 .z-0 {
@@ -18,19 +18,20 @@
   z-index: 100;
 }
 
-/* MAP */
+/* LEAFLET MAP DIRECTIVE */
+#map-content{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  z-index: -1;
+}
 
 #map {
-  position: fixed;
-  width: 41%; /*30rem; 100%;*/
-  height: 38%; /* 48%, 94%;*/ /*10rem; 100%;*/
-  top: 5rem;  /* 5%; */
-  right: 1rem;
-  /*bottom: 0;*/
-  /*left: 0;*/
-  /*border-right: 2px solid #4e5d6c;*/ /* #2b3e50; */
-  /*border-left: 2px solid #4e5d6c;*/ /* #2b3e50; */
-  border: 2px solid #4e5d6c;
+  position: absolute;
+  margin: 0 1rem;
+  height: 46rem;
+  width: 98%;
+  z-index: 1;
 }
 
 #map-nav {
@@ -157,14 +158,20 @@
 }
 
 .leaflet-control-attribution {
-  bottom: 3rem;
+  z-index: 10;
+  /*right: 1rem;*/
+  /*bottom: 1rem;*/
   background-color: rgba(0,0,0,0.8) !important;
   color: #fff;
 }
 
 .leaflet-control-scale {
-  bottom: 3rem;
+  /*bottom: 1rem;*/
 }
+
+/*.map-controls-layer {
+  z-index: 900;
+}*/
 
 .leaflet-popup {
   font-family: 'Open Sans Condensed', sans-serif;

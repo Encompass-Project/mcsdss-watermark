@@ -51,12 +51,12 @@
 }
 
 .panel-base {
-  width: 63rem;
-  height: 35rem;
+  width: 98%; /*63rem;*/
+  height: 46rem; /*35rem;*/
   /*margin: 0.3rem 0;*/
   padding: 0.2rem 0.5rem;
   background-color: #111;
-  border: 1px solid #777;
+  border: 1px solid #ccc;
 }
 
 /*.panel-su {
@@ -173,18 +173,19 @@
   font-size: 0.8em;
   border: 0.1em solid #aaa;
 }
-.tooltip {
+.watermark-tooltip {
   position: absolute;
-  width: 18rem;
+  width: 24rem;
   height: auto;
-  padding-left: 0.75em;
-  padding-right: 0.75em;
+  /*padding-left: 1rem;
+  padding-right: 1rem;*/
+  padding: 1rem;
   pointer-events: none;
-  background-color: rgba(0,0,0,0.8);
-  font-size: 0.8em;
-  font-family: 'Open Sans', sans-serif;
+  background-color: rgba(32,32,32,0.8); /*rgba(0,0,0,0.8);*/
+  font-size: 1rem;
+  /*font-family: 'Open Sans', sans-serif;*/
   font-weight: 300;
-  border: 0.1em solid rgba(210,175,0,0.7); /*rgb(113,178,201); rgb(61,35,28); rgb(252,147,116);*/
+  border: 0.1rem solid #fff; /*rgba(210,175,0,0.7); rgb(113,178,201); rgb(61,35,28); rgb(252,147,116);*/
 }
 .label-correlate-runs {
   color: #D2AF00;
@@ -203,6 +204,14 @@
 }
 .label-data-source {
   color: #ccc;
+}
+.zone-data-label {
+  margin-left: 2rem;
+  color: #eee;
+}
+.zone-data-value {
+  margin-right: 2rem;
+  color: #ddd;
 }
 
 #kzones {

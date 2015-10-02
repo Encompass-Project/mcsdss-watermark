@@ -373,17 +373,14 @@ angular.module('core')
             };
 
             var overlays = {
-                // All Markers.
-                'EAA Monitoring Stations': allMarkersLayer,
-                // USA.
-                'USA': usaLayer,
-                'Texas': texasLayer,
+                // 'EAA Monitoring Stations': allMarkersLayer,
+                // 'USA': usaLayer,
+                // 'Texas': texasLayer,
                 'Major Aquifers': majorAquifersLayer,
                 'Aquifer Zones': aquiferZonesLayer,
-                'EAA Boundary Zone': eaaBoundaryLayer,
+                // 'EAA Boundary Zone': eaaBoundaryLayer,
                 'bsgam kzones': bsgam_kzonesLayer,
-                'bsgam kzones merged': bsgam_kzones_mergedLayer,
-                '<br/>' : {}
+                'bsgam kzones merged': bsgam_kzones_mergedLayer
             };
 
             // Map Panning/Zooming.
@@ -452,7 +449,7 @@ angular.module('core')
             // var targetPosition = [30, -99];
             // var initialZoom = 6;
             var targetPosition = [30.15, -97.85];
-            var initialZoom = 12;
+            var initialZoom = 11;
             // Derive map config.
             var offsetConstant = 100;
             var baseOffset = offsetConstant / initialZoom;
@@ -488,6 +485,13 @@ angular.module('core')
                 position: 'topright' //'topleft'
             }).addTo(map);
 
+            // Add layer control to a different div.
+            // Has z-index issues... See: https://groups.google.com/forum/#!topic/leaflet-js/rKMZX3PKFuI
+            // var layerControl = L.control.layers(baseLayers, overlays, { position: 'topright' });
+            // layerControl.addTo(map);
+            // layerControl._container.remove();
+            // document.getElementById('map-controls-layer').appendChild(layerControl.onAdd(map));
+
             L.control.zoom({position: 'topleft'}).addTo(map);
 
             L.control.scale({
@@ -497,6 +501,13 @@ angular.module('core')
             L.control.attribution({
                 position: 'bottomright'
             }).addTo(map);
+
+            // Append attribution to different layer.
+            // Also has z-index issues, but could be positioned well enough.
+            // var layerControl = L.control.attribution({ position: 'bottomright' });
+            // layerControl.addTo(map);
+            // layerControl._container.remove();
+            // document.getElementById('map-controls-layer').appendChild(layerControl.onAdd(map));
 
             // Setup Initial Visible Layers.
             // texasLayer.addTo(map);
