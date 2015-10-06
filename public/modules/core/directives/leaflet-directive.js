@@ -137,7 +137,7 @@ angular.module('core')
 
             // var texasStyle = {'fillColor': color_eaa_Orange, 'fillOpacity': 0.0, 'color': color_eaa_Orange, 'weight': '3px'};
             // var texasStyleHover = { 'fillOpacity': 0.0 };
-            var texasStyle = {'fillColor': color_eaa_Orange};
+            var texasStyle = { 'fillColor': color_eaa_Orange };
             var texasStyleHover = {};
 
             // var majorAquiferStyle = { 'fillColor': color_eaa_Lake };
@@ -159,14 +159,6 @@ angular.module('core')
             var bsgamZonesMergedStyleHover = {};
 
             // Geojson to display.
-            // // var usaGeojson = './data/geojson/USA.geo.json';
-            // // var usaGeojson = './data/geojson/gz_2010_us_outline_20m.json';  // Outline only.
-            // var texasGeojson = './data/geojson/TX.geo.json';
-            // var majorAquifersGeojson = './data/geojson/eaa/NEW_major_aquifers_dd_reduced100.geo.json';
-            // var eaaBoundaryZonesGeojson = './data/geojson/eaa/eaa_boundary_EPSG-3081.geo.json';
-            // var aquiferZonesGeojson = './data/geojson/eaa/eaa-aquifer-zones-2014.geo.json';
-
-            // TESTING BUILD PATH.
             var usaGeojson = './data/geojson/USA.geo.json';
             var texasGeojson = './data/geojson/TX.geo.json';
             var majorAquifersGeojson = './data/geojson/NEW_major_aquifers_dd_reduced100.geo.json';
@@ -191,7 +183,7 @@ angular.module('core')
             // Merges two objects.
             var mergeObjects = function() {
                 // Earlier objects override later objects.
-                var o = {}
+                var o = {};
                 for (var i = arguments.length - 1; i >= 0; i--) {
                     var s = arguments[i];
                     for (var k in s) {
@@ -211,7 +203,12 @@ angular.module('core')
                     }
                     popupString += '</div>';
                     layer.bindPopup(popupString);
-                }
+
+                    // Testing out evented comms.
+                    $scope.$on('newGraphTarget', function () {
+                        console.log('you are touching the graph!');
+                    });
+                };
                 if (!(layer instanceof L.Point)) {
                     layer.on('mouseover', function() {
                         var thisStyleHover = mergeObjects(styleHover, baseStyleHover);
@@ -221,7 +218,7 @@ angular.module('core')
                         var thisStyle = mergeObjects(style, baseStyle);
                         layer.setStyle(thisStyle);
                     });
-                }
+                };
             };
 
             // Load geojson.
@@ -232,6 +229,7 @@ angular.module('core')
                         return thisStyle;
                     },
                     onEachFeature: function(feature, layer) {
+                        // console.log(feature);
                         geojsonHandler(feature, layer, layerStyle, layerStyleHover);
                     }
                 });
@@ -261,8 +259,6 @@ angular.module('core')
                         return thisStyle;
                     },
                     onEachFeature: function(feature, layer) {
-                        // geojsonHandler(feature, layer, eaaBoundaryZonesStyle, eaaBoundaryZonesStyleHover);
-
                         var popupString = '<div class="popup">Edwards Aquifer Association Boundary Zone</div>';
                         layer.bindPopup(popupString);
 
@@ -288,6 +284,11 @@ angular.module('core')
             $.getJSON(bsgam_kzones_mergedGeojson, function(data) {
                 processGeojson(data, bsgam_kzones_mergedLayer, bsgamZonesMergedStyle, bsgamZonesMergedStyleHover);
             });
+
+            // Graph events to Map.
+            var graphEvent = function() {
+
+            };
 
             // Markers.
             // On Popup with Links - Take care with hyphenated spelling of method in view HTML.

@@ -36,9 +36,8 @@ angular.module('core').controller('DatatableViewController', ['$scope', 'Authent
         };
 
         $scope.updateView = function (data) {
-            console.log('Datatable view updated.');
             // console.log($scope.sourceData);
-            console.log($scope.sourceData[0]);
+            // console.log($scope.sourceData[0]);   // header data. Need to iterate over rest for column-row values.
 
             // $scope.headers = $scope.sourceData[0];
             // $scope.datasets = $scope.sourceData;
@@ -90,6 +89,8 @@ angular.module('core').controller('DatatableViewController', ['$scope', 'Authent
 
             $scope.headerOrder = 'order';
             $scope.counter = 0;
+
+            console.log('Datatable view updated.');
         };
 
     }

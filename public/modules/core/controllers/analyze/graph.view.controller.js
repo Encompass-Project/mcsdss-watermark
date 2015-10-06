@@ -5,10 +5,6 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.clicked = function (target) {
-            console.log(target);
-        };
-
         $scope.$on('analysisDataLoaded', function () {
             // console.log($scope.this, 'receiving broadcast');
             console.log('Graph View receiving broadcast');
@@ -16,139 +12,23 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
             $scope.updateView($scope.sourceData);
         });
 
+        $scope.clicked = function (target) {
+            console.log(target);
+        };
+
         $scope.updateView = function (data) {
             console.log('Graph view updated.');
-            console.log($scope.sourceData);
-            $scope.visualization();
+            // console.log($scope.sourceData);
+            $scope.visualization(data);
         };
 
         // WATERMARK.
-        // $scope.watermarkSubpanelSU = false;
-        $scope.watermarkSubpanelPM = true;
-        // $scope.watermarkSubpanelPI = false;
 
-        // $scope.initialPosition = [49, -97];
-        // $scope.panOptionsInteractive = {
-        //     'animate': true,
-        //     'duration': 3,
-        //     'easeLinearity': 0.25,
-        //     'noMoveStart': 'false'
-        // };
+        // $scope.watermarkSubpanelPM = true;   // Used by ng-show in template. Disabled for now.
 
-        // $scope.resetView = function() {
-        //     $location.hash('.geography');
-        //     $anchorScroll();
-        // };
+        $scope.visualization = function (data) {
 
-        // $scope.togglePanel = function(target) {
-        //     $(target).toggleClass('open-panel');
-        // };
-
-        // $scope.toggleSlide = function(target) {
-        //     $(target).toggleClass('open');
-        // };
-
-        // $scope.closeAllPanels = function() {
-        //     if ($scope.rechargePanelVisible) {
-        //         $scope.togglePanel('#data-panel-recharge');
-        //         $scope.rechargePanelVisible = false;
-        //     }
-        //     if ($scope.wellsPanelVisible) {
-        //         $scope.togglePanel('#data-panel-wells');
-        //         $scope.wellsPanelVisible = false;
-        //     }
-        //     if ($scope.springsPanelVisible) {
-        //         $scope.togglePanel('#data-panel-springs');
-        //         $scope.springsPanelVisible = false;
-        //     }
-        //     if ($scope.watermarkPanelVisible) {
-        //         $scope.togglePanel('#data-panel-watermark');
-        //         $scope.watermarkPanelVisible = false;
-        //         $scope.watermarkSubpanelSU = true;
-        //         $scope.watermarkSubpanelPM = false;
-        //         $scope.watermarkSubpanelPI = false;
-        //     }
-        // };
-
-        // $scope.closePanel = function(event) {
-        //     console.log('closing panel.');
-        //     $scope.closeAllPanels();
-        // };
-
-        // $scope.displayRechargePanel = function() {
-        //     $scope.closeAllPanels();
-        //     if (!$scope.rechargePanelVisible) {
-        //         $scope.togglePanel('#data-panel-recharge');
-        //         $scope.rechargePanelVisible = true;
-        //     }
-        // };
-
-        // $scope.displayWellsPanel = function() {
-        //     $scope.closeAllPanels();
-        //     if (!$scope.wellsPanelVisible) {
-        //         $scope.togglePanel('#data-panel-wells');
-        //         $scope.wellsPanelVisible = true;
-        //     }
-        // };
-
-        // $scope.displaySpringsPanel = function() {
-        //     $scope.closeAllPanels();
-        //     if (!$scope.springsPanelVisible) {
-        //         $scope.togglePanel('#data-panel-springs');
-        //         $scope.springsPanelVisible = true;
-        //     }
-        // };
-
-        // $scope.displayWatermarkPanel = function() {
-        //     $scope.closeAllPanels();
-        //     if (!$scope.watermarkPanelVisible) {
-        //         $scope.togglePanel('#data-panel-watermark');
-        //         $scope.watermarkPanelVisible = true;
-        //     }
-        // };
-
-        // $scope.tabSelect = function(event) {
-        //     var targetButtonName = event.target.parentElement;
-        //     if ($(targetButtonName).hasClass('active')) {
-        //         // console.log('already active');
-        //     } else {
-        //         $scope.clearNavPills();
-        //         $(targetButtonName).toggleClass('active');
-        //     }
-        //     var targetPanelName = event.target.id;
-        //     $scope.toggleSubpanel(targetPanelName);
-        // };
-
-        // $scope.clearNavPills = function() {
-        //     var element = document.getElementById('watermark-navbar');
-        //     var subelements = element.getElementsByTagName('li');
-        //     for (var i = 0; i < subelements.length; i++) {
-        //         $(subelements[i]).removeClass('active');
-        //     }
-        // };
-
-        // $scope.toggleSubpanel = function(target) {
-        //     $scope.watermarkSubpanelSU = false;
-        //     $scope.watermarkSubpanelPM = false;
-        //     $scope.watermarkSubpanelPI = false;
-
-        //     switch (target) {
-        //         case 'nav-su':
-        //             $scope.watermarkSubpanelSU = true;
-        //             break;
-        //         case 'nav-pm':
-        //             $scope.watermarkSubpanelPM = true;
-        //             break;
-        //         case 'nav-pi':
-        //             $scope.watermarkSubpanelPI = true;
-        //             break;
-        //         default:
-        //             $scope.watermarkSubpanelPM = true;
-        //             break;
-        //     }
-        // };
-
-        $scope.visualization = function () {
+            console.log(data[0]);
 
             var graphPanel = document.getElementById('panel-pm');
             var graphPanelWidth = graphPanel.offsetWidth;
@@ -156,8 +36,8 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
             // console.log(graphPanelWidth, graphPanelHeight);
 
             // setup scales for graph layout.
-            var graphWidthScale = .95; //.65;
-            var graphHeightScale = .91; //.85;
+            var graphWidthScale = .95;  //.65;
+            var graphHeightScale = .91;  //.85;
             var width = graphPanelWidth * graphWidthScale;
             var height = graphPanelHeight * graphHeightScale;
 
@@ -167,8 +47,6 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
             var graph_dataSource = '../../../../data/Watermark_Master_Total_Wells_Heads_Zones_optimized.csv';
             var aquiferContinuum_dataSource = '../../../../data/AquiferYield_ContinuumData_BartonSprings.csv';
             //var stakeholder_dataSource = './data/watermark/stakeholders.csv';
-            var bsgam_kzones = '../../../../data/geojson/BSGAMKZ.geo.json';
-            var bsgam_kzones_merged = '../../../../data/geojson/BSGAMKZones.merged.WGS84.lco15.geo.json';
 
             // MODULE private methods.
             function drawGraph () {
@@ -349,6 +227,10 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                 var tooltip = d3.select('#watermark').append('div').attr('class', 'watermark-tooltip').style('opacity', 0);
 
                 var displayTooltip = function (d) {
+                    // Testing out evented comms.
+                    $scope.$emit('currentGraphTarget', d);  // Sending out event but not with correct subdata.
+
+                    // Tooltip
                     tooltip.transition().duration(250).style('opacity', 1);
                     tooltip.html('<div class="">'
                         + '<div class="pull-left label-total-storage"><strong>Total Storage (Both Runs):</strong></div><div class="pull-right"> ' + yValue_O(d) + ' ft</div><br/>'
@@ -489,7 +371,9 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                 // };
 
                 // load data
+
                 d3.csv(graph_dataSource, function (error, data) {
+                // d3.csv($scope.sourceData, function (error, data) {
 
                     // change string (from CSV) into number format
                     data.forEach(function (d) {
@@ -499,6 +383,14 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         d.value_M = +d.value_M;
                         d.value_M_heads = +d.value_M_heads;
                     });
+
+                    // data.forEach(function (d) {
+                    //     console.log(d);
+                    //     d.value_O = +d.value_O_wells;
+                    //     d.value_O_heads = +d.value_O_heads;
+                    //     d.value_M = +d.value_M_wells;
+                    //     d.value_M_heads = +d.value_M_heads;
+                    // });
 
                     // console.log('=========================');
                     // console.log(data);

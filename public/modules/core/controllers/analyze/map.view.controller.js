@@ -13,8 +13,8 @@ angular.module('core').controller('MapViewController', ['$scope', 'Authenticatio
         });
 
         $scope.updateView = function (data) {
+            // console.log($scope.sourceData);
             console.log('Map view updated.');
-            console.log($scope.sourceData);
         };
 
         // Standard Leaflet Map.
