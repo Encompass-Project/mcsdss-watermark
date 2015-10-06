@@ -1,0 +1,37 @@
+<section class="analysis-view">
+    <div class="row">
+
+        <!-- ng-controller="Sandcrawler" -->
+        <!-- INHERITED: APPROACH 1. -->
+        <!-- <div>
+            <p>Location: {{location}}</p>
+            <button ng-click="move('Mos Eisley South')">Move</button>
+        </div> -->
+
+        <!-- INHERITED: APPROACH 2. -->
+        <!-- <p>Sandcrawler Location: {{sandcrawler.location}}</p> -->
+
+        <!-- EVENTED: APPROACH 1 - EMIT from CHILD. -->
+        <!-- <p>Sandcrawler Location: {{location}}</p> -->
+
+        <!-- EVENTED: APPROACH 2 - BROADCAST from PARENT. -->
+        <!-- <p>Sandcrawler Location: {{location}}</p>
+        <button ng-click="recall()">Recall Droids</button> -->
+
+        <!-- EVENTED: APPROACH 3 - SIBLINGS via PARENT. -->
+
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <div data-ui-view="graph"></div>
+        </div>
+        <div class="col-xs-6">
+            <div data-ui-view="map"></div>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col-xs-12">
+            <div data-ui-view="datatable"></div>
+        </div>
+    </div> -->
+</section>

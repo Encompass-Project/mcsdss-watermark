@@ -205,6 +205,8 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         url: '/analyze',
         templateUrl: 'modules/core/views/analyze/analyze.client.view.html',
         controller: 'AnalyzeViewController'
+        // templateUrl: 'modules/core/views/analyze/analyze-test.client.view.html',
+        // controller: 'AnalyzeTestViewController'
       })
       .state('dashboard.analyze.layout', {
         abstract: false,
@@ -213,14 +215,20 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
           'graph': {
               templateUrl: 'modules/core/views/analyze/analyze.graph.client.view.html',
               controller: 'GraphViewController'
+              // templateUrl: 'modules/core/views/analyze/analyze-test.graph.client.view.html',
+              // controller: 'GraphTestViewController'
            },
            'map': {
               templateUrl: 'modules/core/views/analyze/analyze.map.client.view.html',
               controller: 'MapViewController'
+              // templateUrl: 'modules/core/views/analyze/analyze-test.map.client.view.html',
+              // controller: 'MapTestViewController'
           },
           'datatable': {
               templateUrl: 'modules/core/views/analyze/analyze.datatable.client.view.html',
               controller: 'DatatableViewController'
+              // templateUrl: 'modules/core/views/analyze/analyze-test.datatable.client.view.html',
+              // controller: 'DatatableTestViewController'
           }
         }
       })

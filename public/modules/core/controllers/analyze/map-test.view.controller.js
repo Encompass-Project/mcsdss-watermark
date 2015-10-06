@@ -1,21 +1,9 @@
 'use strict';
 
-angular.module('core').controller('MapViewController', ['$scope', 'Authentication',
+angular.module('core').controller('MapTestViewController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
-
-        $scope.$on('analysisDataLoaded', function () {
-            // console.log($scope.this, 'receiving broadcast');
-            console.log('Map View receiving broadcast');
-            // console.log($scope.sourceData);
-            $scope.updateView($scope.sourceData);
-        });
-
-        $scope.updateView = function (data) {
-            console.log('Map view updated.');
-            console.log($scope.sourceData);
-        };
 
         // Standard Leaflet Map.
         // $scope.element = $('#mapPage');
@@ -25,6 +13,19 @@ angular.module('core').controller('MapViewController', ['$scope', 'Authenticatio
         // L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         //     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         // }).addTo($scope.map);
+
+
+        $scope.location = 'Beru Farm';
+
+        $scope.recallAllDroids = function () {
+            console.log($scope.this, 'emitting event');
+            $scope.$emit('requestDroidRecall');
+        };
+
+        $scope.$on('executeDroidRecall', function () {
+            console.log($scope.this, 'receiving broadcast');
+            $scope.location = 'Sandcrawler Beru';
+        });
     }
 ]);
 

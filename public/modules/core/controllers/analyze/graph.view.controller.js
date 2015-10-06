@@ -9,6 +9,19 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
             console.log(target);
         };
 
+        $scope.$on('analysisDataLoaded', function () {
+            // console.log($scope.this, 'receiving broadcast');
+            console.log('Graph View receiving broadcast');
+            // console.log($scope.sourceData);
+            $scope.updateView($scope.sourceData);
+        });
+
+        $scope.updateView = function (data) {
+            console.log('Graph view updated.');
+            console.log($scope.sourceData);
+            $scope.visualization();
+        };
+
         // WATERMARK.
         // $scope.watermarkSubpanelSU = false;
         $scope.watermarkSubpanelPM = true;
@@ -695,6 +708,5 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
             drawGraph();
         };
 
-        $scope.visualization();
-    // };
+        // $scope.visualization();
 }]);

@@ -11,7 +11,7 @@ angular.module('core')
             controllerAs: false,
             link: false,
             priority: 0,
-            require: '^parentComponent', // false,
+            require: false, // '^parentComponent',
             restrict: 'E',
             scope: {
                 // displayRechargePanel: '&',
