@@ -32,6 +32,7 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
 				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
+				'public/lib/karma-jasmine/lib/jasmine.js',
 				// 'public/lib/ng-file-upload/angular-file-upload-shim.min.js',
 				// 'public/lib/ng-file-upload/angular-file-upload.min.js',
 				'public/lib/jquery/dist/jquery.min.js',

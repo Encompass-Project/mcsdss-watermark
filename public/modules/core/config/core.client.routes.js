@@ -203,21 +203,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       .state('dashboard.analyze', {
         abstract: false,
         url: '/analyze',
-        templateUrl: 'modules/core/views/analyze/analyze-abstract.client.view.html',
+        templateUrl: 'modules/core/views/analyze/analyze.client.view.html',
         controller: 'AnalyzeViewController'
       })
-      // .state('dashboard.analyze-test', {
-      //   abstract: false,
-      //   url: '/analyze-test',
-      //   templateUrl: 'modules/core/views/analyze/analyze-test.client.view.html',
-      //   controller: 'AnalyzeTestViewController'
-      // })
-      // .state('dashboard.analyze-abstract', {
-      //   abstract: false,
-      //   url: '/analyze-abstract',
-      //   templateUrl: 'modules/core/views/analyze/analyze-abstract.client.view.html',
-      //   controller: 'AnalyzeAbstractViewController'
-      // })
       .state('dashboard.analyze.layout', {
         abstract: false,
         url: '',
