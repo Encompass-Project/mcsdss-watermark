@@ -7,6 +7,7 @@ angular.module('core').controller('AnalyzeViewController', ['$scope', '$state', 
         $state.go('dashboard.analyze.layout'); // Required to get nested named views to populate correctly. Not routing correctly from routes.js without this.
 
         $scope.sourceFile = './data/BSGAM_Heads_Wells_Drains_Zones_Master.csv';
+        $scope.sourceData;
 
         /*
         // Need a way to manage sharing async data between controllers in order to populate child views properly and not repeat http requests.
@@ -31,16 +32,19 @@ angular.module('core').controller('AnalyzeViewController', ['$scope', '$state', 
         };
 
         $scope.traceData = function(data) {
-            // console.log(data);
-            $scope.sourceData = data;
+            console.log(data);
+            // $scope.sourceData = data;
         };
 
         $scope.parseCsvData = function(csvData) {
             Papa.parse(csvData, {
                 complete: function(results) {
                     // console.log(results.data);
-                    var newData = results.data;
-                    $scope.traceData(newData);
+
+                    // var newData = results.data;
+                    $scope.sourceData = results.data;
+
+                    $scope.traceData($scope.sourceData);
                 }
             });
         };
