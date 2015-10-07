@@ -278,12 +278,22 @@ angular.module('core')
             // Graph events to Map.
             $rootScope.$on('newGraphTarget', function (event, args) {
                 // console.log('you are touching the graph!');
-                encodeZones(args);
+                if (map.hasLayer(bsgam_kzones_mergedLayer)) {
+                    // console.log('kzones layer present');
+                    encodeZones(args);
+                } else {
+                    // console.log('no kzones layer');
+                }
             });
 
             $rootScope.$on('removeGraphTarget', function (event, args) {
                 // console.log('you stopped touching the graph!');
-                decodeZones(args);
+                if (map.hasLayer(bsgam_kzones_mergedLayer)) {
+                    // console.log('kzones layer present');
+                    decodeZones(args);
+                } else {
+                    // console.log('no kzones layer');
+                }
             });
 
             var getColor = function (d) {
@@ -302,11 +312,11 @@ angular.module('core')
 
             var encodeZones = function (d) {
                 // console.log(d);
-                console.log(d.Zone_1,d.Zone_2,d.Zone_3,d.Zone_4,d.Zone_5,d.Zone_6,d.Zone_7,d.Zone_8,d.Zone_9,d.Zone_10,d.Zone_11);
+                // console.log(d.Zone_1,d.Zone_2,d.Zone_3,d.Zone_4,d.Zone_5,d.Zone_6,d.Zone_7,d.Zone_8,d.Zone_9,d.Zone_10,d.Zone_11);
 
                 // Define colors for pumping scalars.
                 // var pumpingScalarColors = d3.scale.category20();
-
+                //
                 // Styles require a map object with corresponding zones to color code.
                 // $('.Kzone-1')[0].style.fill = pumpingScalarColors(d.Zone_1);
                 // $('.Kzone-2')[0].style.fill = pumpingScalarColors(d.Zone_2);
@@ -486,10 +496,6 @@ angular.module('core')
             // allMarkersLayer.addTo(map);
             // bsgam_kzonesLayer.addTo(map);
             bsgam_kzones_mergedLayer.addTo(map);
-
-            bsgam_kzones_mergedLayer.eachLayer(function (layer) {
-                layer._path.id = 'feature-' + layer.feature.properties.id;
-            });
 
             // Trigger Initial Animation.
             map.panTo(targetPosition, panOptionsInitial);
