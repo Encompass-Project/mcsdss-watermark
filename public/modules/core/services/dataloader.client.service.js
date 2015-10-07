@@ -24,5 +24,5 @@ angular.module('core')
         };
 
         // APPROACH 2.
-        // Requires managing deferred object and custom promise.
+        //
 }]);

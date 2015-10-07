@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('core').controller('AnalyzeViewController', ['$scope', '$state', '$location', 'Authentication', 'httpq',
-    function ($scope, $state, $location, Authentication, $httpq) {
+angular.module('core').controller('AnalyzeViewController', ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq',
+    function ($rootScope, $scope, $state, $location, Authentication, $httpq) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
         $state.go('dashboard.analyze.layout'); // Required to get nested named views to populate correctly. Not routing correctly from routes.js without this.
@@ -67,9 +67,15 @@ angular.module('core').controller('AnalyzeViewController', ['$scope', '$state', 
         };
 
         // Testing out evented comms.
-        $scope.$on('currentGraphTarget', function (e) {
-            console.log($scope.this, 'received an emission from graph, sending out a broadcast');
-            $scope.$broadcast('newGraphTarget');
+        $scope.$on('currentGraphTarget', function (event, args) {
+            // console.log($scope.this);
+            // console.log('AnalyzeViewCtrl received an emission from GraphViewCtrl, sending out a broadcast');
+            // console.log(event, args);
+            $rootScope.$broadcast('newGraphTarget', args);
+        });
+
+        $scope.$on('clearGraphTarget', function (event, args) {
+            $rootScope.$broadcast('removeGraphTarget', args);
         });
 
         // Testing events.

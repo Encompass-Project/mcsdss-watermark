@@ -1,9 +1,7 @@
 'use strict';
 
-// ApplicationConfiguration.registerModule('directives');
-
 angular.module('core')
-    .directive('leafletMap', [function() {
+    .directive('leafletMap', ['$rootScope', function ($rootScope) {
 
         var directiveDefinitionObject = {
             compile: false,
@@ -11,14 +9,9 @@ angular.module('core')
             controllerAs: false,
             link: false,
             priority: 0,
-            require: false, // '^parentComponent',
+            require: false,
             restrict: 'E',
-            scope: {
-                // displayRechargePanel: '&',
-                // displayWellsPanel: '&',
-                // displaySpringsPanel: '&',
-                // closeAllPanels: '&'
-            },
+            scope: { },
             template: false,
             templateUrl: false,
             terminal: false,
@@ -52,7 +45,6 @@ angular.module('core')
                 attribution: osmAttrib
             });
 
-            // Performance is poor on this one.
             var osmBwLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
             var osmBwUrl = 'http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png';
             var osmBwAttrib = '&copy; ' + osmBwLink + ' Contributors';
@@ -180,9 +172,8 @@ angular.module('core')
             // Look into using the MarkerClusterGroup.
             var allMarkersLayer = new L.LayerGroup();
 
-            // Merges two objects.
-            var mergeObjects = function() {
-                // Earlier objects override later objects.
+            // Merges two objects. Note: Earlier objects override later objects.
+            var mergeObjects = function () {
                 var o = {};
                 for (var i = arguments.length - 1; i >= 0; i--) {
                     var s = arguments[i];
@@ -194,27 +185,26 @@ angular.module('core')
             };
 
             // Geojson interaction.
-            var geojsonHandler = function(feature, layer, style, styleHover) {
+            var geojsonHandler = function (feature, layer, style, styleHover) {
                 if (feature.properties) {
+                    // console.log(feature.properties);
                     var popupString = '<div class="popup">';
+                    var layerClassName = {};
                     for (var k in feature.properties) {
                         var v = feature.properties[k];
                         popupString += k + ': ' + v + '<br />';
+                        layerClassName = k + '-' + v;
                     }
                     popupString += '</div>';
                     layer.bindPopup(popupString);
-
-                    // Testing out evented comms.
-                    $scope.$on('newGraphTarget', function () {
-                        console.log('you are touching the graph!');
-                    });
+                    layer.setStyle({'className': layerClassName });
                 };
                 if (!(layer instanceof L.Point)) {
-                    layer.on('mouseover', function() {
+                    layer.on('mouseover', function () {
                         var thisStyleHover = mergeObjects(styleHover, baseStyleHover);
                         layer.setStyle(thisStyleHover);
                     });
-                    layer.on('mouseout', function() {
+                    layer.on('mouseout', function () {
                         var thisStyle = mergeObjects(style, baseStyle);
                         layer.setStyle(thisStyle);
                     });
@@ -222,13 +212,13 @@ angular.module('core')
             };
 
             // Load geojson.
-            var processGeojson = function(data, layerGroup, layerStyle, layerStyleHover) {
+            var processGeojson = function (data, layerGroup, layerStyle, layerStyleHover) {
                 var geojson = L.geoJson(data, {
-                    style: function(feature, layer) {
+                    style: function (feature, layer) {
                         var thisStyle = mergeObjects(layerStyle, baseStyle);
                         return thisStyle;
                     },
-                    onEachFeature: function(feature, layer) {
+                    onEachFeature: function (feature, layer) {
                         // console.log(feature);
                         geojsonHandler(feature, layer, layerStyle, layerStyleHover);
                     }
@@ -236,38 +226,38 @@ angular.module('core')
                 geojson.addTo(layerGroup);
             };
 
-            $.getJSON(usaGeojson, function(data) {
+            $.getJSON(usaGeojson, function (data) {
                 processGeojson(data, usaLayer, usaStyle, usaStyleHover);
             });
 
-            $.getJSON(texasGeojson, function(data) {
+            $.getJSON(texasGeojson, function (data) {
                 processGeojson(data, texasLayer, texasStyle, texasStyleHover);
             });
 
-            $.getJSON(majorAquifersGeojson, function(data) {
+            $.getJSON(majorAquifersGeojson, function (data) {
                 processGeojson(data, majorAquifersLayer, majorAquiferStyle, majorAquiferStyleHover);
             });
 
-            $.getJSON(aquiferZonesGeojson, function(data) {
+            $.getJSON(aquiferZonesGeojson, function (data) {
                 processGeojson(data, aquiferZonesLayer, aquiferZonesStyle, aquiferZonesStyleHover);
             });
 
-            $.getJSON(eaaBoundaryZonesGeojson, function(data) {
+            $.getJSON(eaaBoundaryZonesGeojson, function (data) {
                 var geojson = L.geoJson(data, {
-                    style: function(feature, layer) {
+                    style: function (feature, layer) {
                         var thisStyle = mergeObjects(eaaBoundaryZonesStyle, baseStyle);
                         return thisStyle;
                     },
-                    onEachFeature: function(feature, layer) {
+                    onEachFeature: function (feature, layer) {
                         var popupString = '<div class="popup">Edwards Aquifer Association Boundary Zone</div>';
                         layer.bindPopup(popupString);
 
                         if (!(layer instanceof L.Point)) {
-                            layer.on('mouseover', function() {
+                            layer.on('mouseover', function () {
                                 var eaaStyleHover = mergeObjects(eaaBoundaryZonesStyleHover, baseStyleHover);
                                 layer.setStyle(eaaStyleHover);
                             });
-                            layer.on('mouseout', function() {
+                            layer.on('mouseout', function () {
                                 var eaaStyle = mergeObjects(eaaBoundaryZonesStyle, baseStyle);
                                 layer.setStyle(eaaStyle);
                             });
@@ -277,89 +267,86 @@ angular.module('core')
                 geojson.addTo(eaaBoundaryLayer);
             });
 
-            $.getJSON(bsgam_kzonesGeojson, function(data) {
+            $.getJSON(bsgam_kzonesGeojson, function (data) {
                 processGeojson(data, bsgam_kzonesLayer, bsgamZonesStyle, bsgamZonesStyleHover);
             });
 
-            $.getJSON(bsgam_kzones_mergedGeojson, function(data) {
+            $.getJSON(bsgam_kzones_mergedGeojson, function (data) {
                 processGeojson(data, bsgam_kzones_mergedLayer, bsgamZonesMergedStyle, bsgamZonesMergedStyleHover);
             });
 
             // Graph events to Map.
-            var graphEvent = function() {
+            $rootScope.$on('newGraphTarget', function (event, args) {
+                // console.log('you are touching the graph!');
+                encodeZones(args);
+            });
 
+            $rootScope.$on('removeGraphTarget', function (event, args) {
+                // console.log('you stopped touching the graph!');
+                decodeZones(args);
+            });
+
+            var getColor = function (d) {
+                return d >= 2.0 ? '#400026' :
+                       d > 1.8 ? '#800026' :
+                       d > 1.6 ? '#BD0026' :
+                       d > 1.4 ? '#E31A1C' :
+                       d > 1.2 ? '#FC4E2A' :
+                       d > 1.0 ? '#FD8D3C' :
+                       d > 0.8 ? '#FEB24C' :
+                       d > 0.6 ? '#FED976' :
+                       d > 0.4 ? '#FFEDA0' :
+                       d > 0.2 ? '#FFFEBA' :
+                                 '#FFFFFF';
             };
 
-            // Markers.
-            // On Popup with Links - Take care with hyphenated spelling of method in view HTML.
+            var encodeZones = function (d) {
+                // console.log(d);
+                console.log(d.Zone_1,d.Zone_2,d.Zone_3,d.Zone_4,d.Zone_5,d.Zone_6,d.Zone_7,d.Zone_8,d.Zone_9,d.Zone_10,d.Zone_11);
 
-            // Example.
-            // var exampleView = L.latLng(45.5, -100.5);
-            // var exampleMarkerLocationSW = L.latLng(35.5, -90.5);
-            // var exampleMarkerLocationNE = L.latLng(55.5, -110.5);
-            // var exampleMarkerBounds = L.latLngBounds(exampleMarkerLocationSW, exampleMarkerLocationNE);
+                // Define colors for pumping scalars.
+                // var pumpingScalarColors = d3.scale.category20();
 
-            // var exampleMarkerLocation = L.latLng(45.5, -100.5);
-            // var exampleMarkerOptions = { title: 'example title' };
-            // var exampleMarker = L.marker(exampleMarkerLocation, exampleMarkerOptions);
-            // exampleMarker.addTo(allMarkersLayer);
-            // var examplePopupContent = '<p>Example Popup</p>';
-            // var exampleContentContainer = $('<div />');
-            // exampleContentContainer.html(examplePopupContent);
-            // exampleMarker.bindPopup(exampleContentContainer[0]);
-            // exampleContentContainer.on('click', '.exampleLink', function() {
-            //     event.preventDefault();
-            //     map.panBy(panByPoint, panOptionsInteractive);
-            //     scope.displaySpringsPanel();
-            // });
+                // Styles require a map object with corresponding zones to color code.
+                // $('.Kzone-1')[0].style.fill = pumpingScalarColors(d.Zone_1);
+                // $('.Kzone-2')[0].style.fill = pumpingScalarColors(d.Zone_2);
+                // $('.Kzone-3')[0].style.fill = pumpingScalarColors(d.Zone_3);
+                // $('.Kzone-4')[0].style.fill = pumpingScalarColors(d.Zone_4);
+                // $('.Kzone-5')[0].style.fill = pumpingScalarColors(d.Zone_5);
+                // $('.Kzone-6')[0].style.fill = pumpingScalarColors(d.Zone_6);
+                // $('.Kzone-7')[0].style.fill = pumpingScalarColors(d.Zone_7);
+                // $('.Kzone-8')[0].style.fill = pumpingScalarColors(d.Zone_8);
+                // $('.Kzone-9')[0].style.fill = pumpingScalarColors(d.Zone_9);
+                // $('.Kzone-10')[0].style.fill = pumpingScalarColors(d.Zone_10);
+                // $('.Kzone-11')[0].style.fill = pumpingScalarColors(d.Zone_11);
 
-            // // J17.
-            // var j17MarkerLocation = L.latLng(29.45, -98.48);
-            // var j17MarkerOptions = { title: 'J17' };
-            // var j17Marker = L.marker(j17MarkerLocation, j17MarkerOptions);
-            // // j17Marker.addTo(usaMarkersLayer);
-            // j17Marker.addTo(allMarkersLayer);
-            // var j17PopupContent = '<h2>J17 Index Well</h2><a href="" class="rechargeInteractiveLink">Recharge Data Interactive</a><br/>';
-            // var j17ContentContainer = $('<div />');
-            // j17ContentContainer.html(j17PopupContent);
-            // j17Marker.bindPopup(j17ContentContainer[0]);
-            // j17ContentContainer.on('click', '.rechargeInteractiveLink', function() {
-            //     event.preventDefault();
-            //     map.panBy(panByPoint, panOptionsInteractive);
-            //     scope.displayRechargePanel();
-            // });
+                $('.Kzone-1')[0].style.fill = getColor(d.Zone_1);
+                $('.Kzone-2')[0].style.fill = getColor(d.Zone_2);
+                $('.Kzone-3')[0].style.fill = getColor(d.Zone_3);
+                $('.Kzone-4')[0].style.fill = getColor(d.Zone_4);
+                $('.Kzone-5')[0].style.fill = getColor(d.Zone_5);
+                $('.Kzone-6')[0].style.fill = getColor(d.Zone_6);
+                $('.Kzone-7')[0].style.fill = getColor(d.Zone_7);
+                $('.Kzone-8')[0].style.fill = getColor(d.Zone_8);
+                $('.Kzone-9')[0].style.fill = getColor(d.Zone_9);
+                $('.Kzone-10')[0].style.fill = getColor(d.Zone_10);
+                $('.Kzone-11')[0].style.fill = getColor(d.Zone_11);
+            };
 
-            // // Leona Springs.
-            // var leonaSpringsMarkerLocation = L.latLng(29.15417, -99.7431);
-            // var leonaSpringsMarkerOptions = { title: 'Leona Springs' };
-            // var leonaSpringsMarker = L.marker(leonaSpringsMarkerLocation, leonaSpringsMarkerOptions);
-            // // leonaSpringsMarker.addTo(usaMarkersLayer);
-            // leonaSpringsMarker.addTo(allMarkersLayer);
-            // var leonaSpringsPopupContent = '<h2>Leona Springs</h2><a href="" class="wellsInteractiveLink">Wells Data Interactive</a><br/>';
-            // var leonaSpringsContentContainer = $('<div />');
-            // leonaSpringsContentContainer.html(leonaSpringsPopupContent);
-            // leonaSpringsMarker.bindPopup(leonaSpringsContentContainer[0]);
-            // leonaSpringsContentContainer.on('click', '.wellsInteractiveLink', function() {
-            //     event.preventDefault();
-            //     map.panBy(panByPoint, panOptionsInteractive);
-            //     scope.displayWellsPanel();
-            // });
-
-            // // San Marcos Springs.
-            // var sanMarcosSpringsMarkerLocation = L.latLng(29.89326, -97.9312);
-            // var sanMarcosSpringsMarkerOptions = { title: 'San Marcos Springs' };
-            // var sanMarcosSpringsMarker = L.marker(sanMarcosSpringsMarkerLocation, sanMarcosSpringsMarkerOptions);
-            // // sanMarcosSpringsMarker.addTo(usaMarkersLayer);
-            // sanMarcosSpringsMarker.addTo(allMarkersLayer);
-            // var sanMarcosSpringsPopupContent = '<h2>San Marcos Springs</h2><a href="" class="springsInteractiveLink">Springs Data Interactive</a><br/>';
-            // var sanMarcosSpringsContentContainer = $('<div />');
-            // sanMarcosSpringsContentContainer.html(sanMarcosSpringsPopupContent);
-            // sanMarcosSpringsMarker.bindPopup(sanMarcosSpringsContentContainer[0]);
-            // sanMarcosSpringsContentContainer.on('click', '.springsInteractiveLink', function() {
-            //     event.preventDefault();
-            //     map.panBy(panByPoint, panOptionsInteractive);
-            //     scope.displaySpringsPanel();
-            // });
+            var decodeZones = function (d) {
+                // console.log('zones decoded.');
+                $('.Kzone-1')[0].style.fill = color_grey;
+                $('.Kzone-2')[0].style.fill = color_grey;
+                $('.Kzone-3')[0].style.fill = color_grey;
+                $('.Kzone-4')[0].style.fill = color_grey;
+                $('.Kzone-5')[0].style.fill = color_grey;
+                $('.Kzone-6')[0].style.fill = color_grey;
+                $('.Kzone-7')[0].style.fill = color_grey;
+                $('.Kzone-8')[0].style.fill = color_grey;
+                $('.Kzone-9')[0].style.fill = color_grey;
+                $('.Kzone-10')[0].style.fill = color_grey;
+                $('.Kzone-11')[0].style.fill = color_grey;
+            };
 
             // Populate Map Controls.
             var baseLayers = {
@@ -426,24 +413,6 @@ angular.module('core')
             };
             var panByPoint = new L.Point(-350, 0);
 
-            // var southWest0 = L.latLng(32, -100),
-            //     northEast0 = L.latLng(28, -92),
-            //     bounds0 = L.latLngBounds(southWest0, northEast0);
-
-            // var southWest1 = L.latLng(17, 100),
-            //     northEast1 = L.latLng(16, 100),
-            //     bounds1 = L.latLngBounds(southWest1, northEast1);
-
-            // var southWest2 = L.latLng(30, -97),
-            //     northEast2 = L.latLng(30, -97),
-            //     bounds2 = L.latLngBounds(southWest2, northEast2);
-
-            // var area3 = L.latLngBounds([[32, -100],[28, -92]]);
-
-            // var rechargeView = L.latLng(29.45, -109.48);
-            // var wellsView = L.latLng(29.15417, -110.7431);
-            // var springsView = L.latLng(29.89326, -108.9312);
-
             // Build Map.
 
             // Map config inputs.
@@ -470,7 +439,7 @@ angular.module('core')
                 layers: [thunOutdoorsMap] // mqArialMap, only add one!
             }).setView(initialPosition, initialZoom);
 
-            map.on('popupopen', function(centerMarker) {
+            map.on('popupopen', function (centerMarker) {
                 var cM = map.project(centerMarker.popup._latlng);
                 cM.y -= centerMarker.popup._container.clientHeight / 2;
                 var cZ = map.getZoom();
@@ -482,6 +451,13 @@ angular.module('core')
             L.Browser.touch = true;
             L.Icon.Default.imagePath = './styles/images';
 
+            // Map Controls.
+            L.control.zoom({position: 'topleft'}).addTo(map);
+
+            L.control.scale({
+                position: 'bottomleft'
+            }).addTo(map);
+
             L.control.layers(baseLayers, overlays, {
                 position: 'topright' //'topleft'
             }).addTo(map);
@@ -492,12 +468,6 @@ angular.module('core')
             // layerControl.addTo(map);
             // layerControl._container.remove();
             // document.getElementById('map-controls-layer').appendChild(layerControl.onAdd(map));
-
-            L.control.zoom({position: 'topleft'}).addTo(map);
-
-            L.control.scale({
-                position: 'bottomleft'
-            }).addTo(map);
 
             L.control.attribution({
                 position: 'bottomright'
@@ -517,15 +487,15 @@ angular.module('core')
             // bsgam_kzonesLayer.addTo(map);
             bsgam_kzones_mergedLayer.addTo(map);
 
+            bsgam_kzones_mergedLayer.eachLayer(function (layer) {
+                layer._path.id = 'feature-' + layer.feature.properties.id;
+            });
+
             // Trigger Initial Animation.
             map.panTo(targetPosition, panOptionsInitial);
 
-            // $(".leaflet-popup-close-button")[0].click();  // Closes all popups.
-            // Reverse this so close button on slide closes popup on leaflet map (reverse of displayRechargePanel method).
-            // Also have the method pan the view back to the default.
-
-            // // $scope.resetView();  // Causes the page to hang. Why?
+            // console.log(map._layers);
+            // console.log(map.getPanes());
         };
-
         return directiveDefinitionObject;
     }]);

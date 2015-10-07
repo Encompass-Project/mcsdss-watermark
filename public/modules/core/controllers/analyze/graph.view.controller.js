@@ -23,12 +23,10 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
         };
 
         // WATERMARK.
-
-        // $scope.watermarkSubpanelPM = true;   // Used by ng-show in template. Disabled for now.
-
         $scope.visualization = function (data) {
 
-            console.log(data[0]);
+            console.log(data);
+            // console.log(data[0]);
 
             var graphPanel = document.getElementById('panel-pm');
             var graphPanelWidth = graphPanel.offsetWidth;
@@ -46,7 +44,6 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
             // data sources.
             var graph_dataSource = '../../../../data/Watermark_Master_Total_Wells_Heads_Zones_optimized.csv';
             var aquiferContinuum_dataSource = '../../../../data/AquiferYield_ContinuumData_BartonSprings.csv';
-            //var stakeholder_dataSource = './data/watermark/stakeholders.csv';
 
             // MODULE private methods.
             function drawGraph () {
@@ -56,8 +53,6 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                 var dotStrokeColor = '#111'; // 333F48
                 var dotColorOriginal = '#CD6AD4';
                 var dotColorModified = '#8AE5F2';
-                // var dotStakeholderRadius = 8;
-                // var dotColorStakeholder = '#F2A900'; //43695B
                 var dotActiveRadius = 13;
                 var dotColorActive = 'rgba(233,174,12,0.7)'; //'#EC9688' #D2AF00;
                 var dotActiveStrokeWidth = 7;
@@ -184,6 +179,16 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                     });
                 };
 
+                var decorateSiblings = function (d) {
+                    // console.log(d);
+                    $scope.$emit('currentGraphTarget', d);
+                };
+
+                var clearSiblings = function (d) {
+                    // console.log(d);
+                    $scope.$emit('clearGraphTarget', d);
+                };
+
                 var showData = function (d) {
                     d3.select('#data-source').text(d.dataSource);
                     d3.select('#total-storage-o').text(xValue_O(d));
@@ -227,9 +232,6 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                 var tooltip = d3.select('#watermark').append('div').attr('class', 'watermark-tooltip').style('opacity', 0);
 
                 var displayTooltip = function (d) {
-                    // Testing out evented comms.
-                    $scope.$emit('currentGraphTarget', d);  // Sending out event but not with correct subdata.
-
                     // Tooltip
                     tooltip.transition().duration(250).style('opacity', 1);
                     tooltip.html('<div class="">'
@@ -271,12 +273,11 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         return d.dataSource == currentHash;
                     });
                     correlateRuns = [originalNode, modifiedNode];
-                    encodeZones(d);
+                    // $scope.$emit('currentGraphTarget', d);
                 };
 
                 var highlightPairs = function () {
                     // console.log(d3.select(correlateRuns[0][0][0]).attr('cx'), d3.select(correlateRuns[0][0][0]).attr('cy'));
-
                     var originalLabelPosX = d3.select(correlateRuns[0][0][0]).attr('cx');
                     var originalLabelPosY = d3.select(correlateRuns[0][0][0]).attr('cy');
 
@@ -315,7 +316,6 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         'fill': dotColorModified
                     });
                     correlateRuns = [];
-                    decodeZones();
                 };
 
                 var correlatePairLabel = function (d) {
@@ -328,52 +328,9 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                     });
                 };
 
-                var encodeZones = function (d) {
-                    var target = d;
-                    // console.log(d);
-                    // console.log(d.Zone_1,d.Zone_2,d.Zone_3,d.Zone_4,d.Zone_5,d.Zone_6,d.Zone_7,d.Zone_8,d.Zone_9,d.Zone_10,d.Zone_11);
-
-                    // Define colors for pumping scalars.
-                    var pumpingScalarColors = d3.scale.category20();
-
-                    // // Styles require a map object with corresponding zones to color code.
-                    // $('.zone-1')[0].style.fill = pumpingScalarColors(d.Zone_1);
-                    // $('.zone-2')[0].style.fill = pumpingScalarColors(d.Zone_2);
-                    // $('.zone-3')[0].style.fill = pumpingScalarColors(d.Zone_3);
-                    // $('.zone-4')[0].style.fill = pumpingScalarColors(d.Zone_4);
-                    // $('.zone-5')[0].style.fill = pumpingScalarColors(d.Zone_5);
-                    // $('.zone-6')[0].style.fill = pumpingScalarColors(d.Zone_6);
-                    // $('.zone-7')[0].style.fill = pumpingScalarColors(d.Zone_7);
-                    // $('.zone-8')[0].style.fill = pumpingScalarColors(d.Zone_8);
-                    // $('.zone-9')[0].style.fill = pumpingScalarColors(d.Zone_9);
-                    // $('.zone-10')[0].style.fill = pumpingScalarColors(d.Zone_10);
-                    // $('.zone-11')[0].style.fill = pumpingScalarColors(d.Zone_11);
-                };
-
-                var decodeZones = function () {
-                    // console.log('zones decoded.');
-                };
-
-                // add the stakeholder info area to the webpage
-                // var stakeholder = d3.select('body').append('div')
-                //     .attr('class', 'stakeholder-info')
-                //     .style('opacity', 0);
-
-                // var displayStakeholderInfo = function(d) {
-                //     stakeholder.style('opacity', 1.0);
-                //     stakeholder.html('<p>' + '<div class="pull-left"><strong>Stakeholder Information</strong></div><br/><br/>' + '<div class="pull-left"><strong>Stakeholder_Values:</strong></div><div class="pull-right"> ' + d.Stakeholder_Values + '</div><br/>' + '<div class="pull-left"><strong>Average_Total_Storage:</strong></div><div class="pull-right"> ' + d.Average_Total_Storage + ' in ft3</div><br/>' + '<div class="pull-left"><strong>Minimum_Spring_Flow:</strong></div><div class="pull-right"> ' + d.Minimum_Spring_Flow + ' in feet (monthly average)</div><br/>' + '<div class="pull-left"><strong>Total_Pumping_Volume:</strong></div><div class="pull-right"> ' + d.Total_Pumping_Volume + ' in ft3</div><br/>' + '</p>')
-                //         .style('left', ((window.innerWidth / 5) + (d3.event.pageX * 0.35)) + 'px')
-                //         .style('top', ((window.innerHeight / 20) + (d3.event.pageY * 0.25)) + 'px')
-                // };
-
-                // var hideStakeholderInfo = function() {
-                //     stakeholder.style('opacity', 0);
-                // };
-
                 // load data
-
-                d3.csv(graph_dataSource, function (error, data) {
                 // d3.csv($scope.sourceData, function (error, data) {
+                d3.csv(graph_dataSource, function (error, data) {
 
                     // change string (from CSV) into number format
                     data.forEach(function (d) {
@@ -383,17 +340,6 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         d.value_M = +d.value_M;
                         d.value_M_heads = +d.value_M_heads;
                     });
-
-                    // data.forEach(function (d) {
-                    //     console.log(d);
-                    //     d.value_O = +d.value_O_wells;
-                    //     d.value_O_heads = +d.value_O_heads;
-                    //     d.value_M = +d.value_M_wells;
-                    //     d.value_M_heads = +d.value_M_heads;
-                    // });
-
-                    // console.log('=========================');
-                    // console.log(data);
 
                     xScale.domain([xScaleDomain_Lower, xScaleDomain_Upper]);
                     yScale.domain([yScaleDomain_Lower, yScaleDomain_Upper]);
@@ -436,12 +382,14 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         .style('fill', dotColorOriginal)
                         .style('stroke', dotStrokeColor)
                         .on('mouseover', function (d) {
+                            decorateSiblings(d);
                             getCorrelatePair(d);
                             highlightPairs();
                             displayTooltip(d);
                             showData(d);
                         })
                         .on('mouseout', function (d) {
+                            clearSiblings(d);
                             var currentNode = d3.select(this);
                             unhighlightPairs();
                             hideTooltip();
@@ -458,12 +406,14 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         .style('fill', dotColorModified)
                         .style('stroke', dotStrokeColor)
                         .on('mouseover', function (d) {
+                            decorateSiblings(d);
                             getCorrelatePair(d);
                             highlightPairs();
                             displayTooltip(d);
                             showData(d);
                         })
                         .on('mouseout', function (d) {
+                            clearSiblings(d);
                             var currentNode = d3.select(this);
                             unhighlightPairs();
                             hideTooltip();
@@ -506,99 +456,7 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                             return d.Description;
                         });
                 });
-
-                // Load Stakeholder Data.
-                // d3.csv(stakeholder_dataSource, function(error, data) {
-                //     // change string (from CSV) into number format
-                //     data.forEach(function(d) {
-                //         // console.log(d);
-                //         d.Average_Total_Storage = +d.Average_Total_Storage;
-                //         d.Minimum_Spring_Flow = +d.Minimum_Spring_Flow;
-                //         d.Total_Pumping_Volume = +d.Total_Pumping_Volume;
-                //     });
-
-                //     xScale.domain([xScaleDomain_Lower, xScaleDomain_Upper]);
-                //     yScale.domain([yScaleDomain_Lower, yScaleDomain_Upper]);
-
-                //     canvas.selectAll('.dot_S')
-                //         .data(data)
-                //         .enter().append('circle')
-                //         .attr('class', 'dot-S')
-                //         .attr('r', dotStakeholderRadius)
-                //         .attr('cx', xMap_S)
-                //         .attr('cy', yMap_S)
-                //         .style('fill', dotColorStakeholder)
-                //         .style('stroke', dotStrokeColor)
-                //         .on('mouseover', function(d) {
-                //             d3.select(this).moveToFront();
-                //             // console.log(d.Stakeholder_Values);
-                //             displayStakeholderInfo(d);
-                //         })
-                //         .on('mouseout', function(d) {
-                //             d3.select(this).moveToBack();
-                //             hideStakeholderInfo();
-                //         });
-                // });
-
-                // // Configure Map.
-                // var mapwidth = width * 0.48;
-                // var mapheight = height * 0.96;
-                // var colors = d3.scale.category20c();
-
-                // // Build Map.
-                // var kzones_svg = d3.select('#kzones').append('svg').attr('id', 'mapSVG').attr('width', mapwidth).attr('height', mapheight); // #kzones (panel-pm), #geotest (panel-su)
-
-                // d3.json(bsgam_kzones_merged, function (json) {
-
-                //     // 1. Create a projection and d3.geo.path
-                //     // 2. Calculate the bounds of the current projection
-                //     // 3. Use these bounds to calculate the scale and translation
-                //     // 4. Recreate the projection
-
-                //     // create a first guess for the projection
-                //     var center = d3.geo.centroid(json)
-                //     var scale = 120;
-                //     var offset = [width / 2, height / 2];
-                //     var projection = d3.geo.mercator().scale(scale).center(center).translate(offset);
-
-                //     // create the path
-                //     var path = d3.geo.path().projection(projection);
-
-                //     // using the path determine the bounds of the current map and use
-                //     // these to determine better values for the scale and translation
-                //     var bounds = path.bounds(json);
-                //     var hscale = scale * width / (bounds[1][0] - bounds[0][0]);
-                //     var vscale = scale * height / (bounds[1][1] - bounds[0][1]);
-                //     //var scale   = (hscale < vscale) ? hscale : vscale; // 82944.55625683897
-                //     var scale = 60000;
-
-                //     var w_off = 1.3; //2
-                //     var h_off = 1.65; //2
-                //     var offset = [width - (bounds[0][0] + bounds[1][0]) / w_off, height - (bounds[0][1] + bounds[1][1]) / h_off];
-                //     // new projection
-                //     projection = d3.geo.mercator().center(center).scale(scale).translate(offset);
-                //     path = path.projection(projection);
-
-                //     kzones_svg.selectAll("path").data(json.features).enter().append("path").attr("d", path)
-                //         .attr('class', function (d) {
-                //             var zoneClass = 'zone-' + d.properties.Kzone;
-                //             return zoneClass;
-                //         })
-                //         .style('fill', function (d, i) {
-                //             return colors(d.properties.Kzone);
-                //             // return '#555';
-                //         })
-                //         // .style('opacity','0.3')
-                //         .on('mouseover', function (d, i) {
-                //             console.log(d);
-                //             // console.log(d.HydroID);
-                //             // console.log(d.properties.Kzone);
-                //         });
-                // });
             };
-
             drawGraph();
         };
-
-        // $scope.visualization();
 }]);
