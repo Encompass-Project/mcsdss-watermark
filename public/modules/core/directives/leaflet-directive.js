@@ -275,27 +275,6 @@ angular.module('core')
                 processGeojson(data, bsgam_kzones_mergedLayer, bsgamZonesMergedStyle, bsgamZonesMergedStyleHover);
             });
 
-            // Graph events to Map.
-            $rootScope.$on('newGraphTarget', function (event, args) {
-                // console.log('you are touching the graph!');
-                if (map.hasLayer(bsgam_kzones_mergedLayer)) {
-                    // console.log('kzones layer present');
-                    encodeZones(args);
-                } else {
-                    // console.log('no kzones layer');
-                }
-            });
-
-            $rootScope.$on('removeGraphTarget', function (event, args) {
-                // console.log('you stopped touching the graph!');
-                if (map.hasLayer(bsgam_kzones_mergedLayer)) {
-                    // console.log('kzones layer present');
-                    decodeZones(args);
-                } else {
-                    // console.log('no kzones layer');
-                }
-            });
-
             var getColor = function (d) {
                 return d >= 2.0 ? '#400026' :
                        d > 1.8 ? '#800026' :
@@ -330,20 +309,24 @@ angular.module('core')
                 // $('.Kzone-10')[0].style.fill = pumpingScalarColors(d.Zone_10);
                 // $('.Kzone-11')[0].style.fill = pumpingScalarColors(d.Zone_11);
 
-                $('.Kzone-1')[0].style.fill = getColor(d.Zone_1);
-                $('.Kzone-2')[0].style.fill = getColor(d.Zone_2);
-                $('.Kzone-3')[0].style.fill = getColor(d.Zone_3);
-                $('.Kzone-4')[0].style.fill = getColor(d.Zone_4);
-                $('.Kzone-5')[0].style.fill = getColor(d.Zone_5);
-                $('.Kzone-6')[0].style.fill = getColor(d.Zone_6);
-                $('.Kzone-7')[0].style.fill = getColor(d.Zone_7);
-                $('.Kzone-8')[0].style.fill = getColor(d.Zone_8);
-                $('.Kzone-9')[0].style.fill = getColor(d.Zone_9);
-                $('.Kzone-10')[0].style.fill = getColor(d.Zone_10);
-                $('.Kzone-11')[0].style.fill = getColor(d.Zone_11);
+                // console.log(d[0][0][0]['__data__']);
+                // console.log(d[0][0][0]['__data__']['dataSource']);
+                // console.log(d[0][0][0]['__data__']['Zone_1']);
+
+                $('.Kzone-1')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_1']);
+                $('.Kzone-2')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_2']);
+                $('.Kzone-3')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_3']);
+                $('.Kzone-4')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_4']);
+                $('.Kzone-5')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_5']);
+                $('.Kzone-6')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_6']);
+                $('.Kzone-7')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_7']);
+                $('.Kzone-8')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_8']);
+                $('.Kzone-9')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_9']);
+                $('.Kzone-10')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_10']);
+                $('.Kzone-11')[0].style.fill = getColor(d[0][0][0]['__data__']['Zone_11']);
             };
 
-            var decodeZones = function (d) {
+            var decodeZones = function () {
                 // console.log('zones decoded.');
                 $('.Kzone-1')[0].style.fill = color_grey;
                 $('.Kzone-2')[0].style.fill = color_grey;
@@ -502,6 +485,26 @@ angular.module('core')
 
             // console.log(map._layers);
             // console.log(map.getPanes());
+
+            // Graph events to Map.
+            $rootScope.$on('addMapTarget', function (event, args) {
+                // console.log('you are touching the graph!');
+                // console.log(args);
+                if (map.hasLayer(bsgam_kzones_mergedLayer)) {
+                    encodeZones(args);
+                } else {
+                    // no kzone layer.
+                }
+            });
+
+            $rootScope.$on('removeMapTarget', function (event, args) {
+                // console.log('you stopped touching the graph!');
+                if (map.hasLayer(bsgam_kzones_mergedLayer)) {
+                    decodeZones();
+                } else {
+                    // no kzone layer.
+                }
+            });
         };
         return directiveDefinitionObject;
     }]);

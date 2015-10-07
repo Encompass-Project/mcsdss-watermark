@@ -1,16 +1,9 @@
 'use strict';
 
-angular.module('core').controller('GraphViewController', ['$scope', '$state', '$location', 'Authentication',
-    function ($scope, $state, $location, Authentication) {
+angular.module('core').controller('GraphViewController', ['$rootScope', '$scope', '$state', '$location', 'Authentication',
+    function ($rootScope, $scope, $state, $location, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
-
-        $scope.$on('analysisDataLoaded', function () {
-            // console.log($scope.this, 'receiving broadcast');
-            console.log('Graph View receiving broadcast');
-            // console.log($scope.sourceData);
-            $scope.updateView($scope.sourceData);
-        });
 
         $scope.clicked = function (target) {
             console.log(target);
@@ -24,8 +17,7 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
 
         // WATERMARK.
         $scope.visualization = function (data) {
-
-            console.log(data);
+            // console.log(data);
             // console.log(data[0]);
 
             var graphPanel = document.getElementById('panel-pm');
@@ -71,6 +63,7 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                 var yScaleDomain_Upper = 792;
 
                 // Static Values.
+                var animationDuration = 150;
                 var tooltipPosX = 30; // width * 1.12; // dynamic values for moving tooltip.
                 var tooltipPosY = 60; // height * 1.3; // dynamic values for moving tooltip.
                 // Dynamic Values.
@@ -179,93 +172,17 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                     });
                 };
 
-                var decorateSiblings = function (d) {
-                    // console.log(d);
-                    $scope.$emit('currentGraphTarget', d);
-                };
-
-                var clearSiblings = function (d) {
-                    // console.log(d);
-                    $scope.$emit('clearGraphTarget', d);
-                };
-
-                var showData = function (d) {
-                    d3.select('#data-source').text(d.dataSource);
-                    d3.select('#total-storage-o').text(xValue_O(d));
-                    d3.select('#total-pumping-o').text(yValue_O(d));
-                    d3.select('#total-storage-m').text(xValue_M(d));
-                    d3.select('#total-pumping-m').text(yValue_M(d));
-                    d3.select('#zone1').text(d.Zone_1);
-                    d3.select('#zone2').text(d.Zone_2);
-                    d3.select('#zone3').text(d.Zone_3);
-                    d3.select('#zone4').text(d.Zone_4);
-                    d3.select('#zone5').text(d.Zone_5);
-                    d3.select('#zone6').text(d.Zone_6);
-                    d3.select('#zone7').text(d.Zone_7);
-                    d3.select('#zone8').text(d.Zone_8);
-                    d3.select('#zone9').text(d.Zone_9);
-                    d3.select('#zone10').text(d.Zone_10);
-                    d3.select('#zone11').text(d.Zone_11);
-                };
-
-                var clearData = function () {
-                    d3.select('#data-source').text('');
-                    d3.select('#total-storage-o').text('');
-                    d3.select('#total-pumping-o').text('');
-                    d3.select('#total-storage-m').text('');
-                    d3.select('#total-pumping-m').text('');
-                    d3.select('#zone1').text('');
-                    d3.select('#zone2').text('');
-                    d3.select('#zone3').text('');
-                    d3.select('#zone4').text('');
-                    d3.select('#zone5').text('');
-                    d3.select('#zone6').text('');
-                    d3.select('#zone7').text('');
-                    d3.select('#zone8').text('');
-                    d3.select('#zone9').text('');
-                    d3.select('#zone10').text('');
-                    d3.select('#zone11').text('');
-                };
-
-                // add the tooltip area to the webpage
-                // var tooltip = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 0);
-                var tooltip = d3.select('#watermark').append('div').attr('class', 'watermark-tooltip').style('opacity', 0);
-
-                var displayTooltip = function (d) {
-                    // Tooltip
-                    tooltip.transition().duration(250).style('opacity', 1);
-                    tooltip.html('<div class="">'
-                        + '<div class="pull-left label-total-storage"><strong>Total Storage (Both Runs):</strong></div><div class="pull-right"> ' + yValue_O(d) + ' ft</div><br/>'
-                        + '<div class="pull-left label-original-run"><strong>Original Total Pumping:</strong></div><div class="pull-right"> ' + (xValue_O(d) / cfsDenominator).toFixed(decimalLimit) + ' cfs</div><br/>'
-                        + '<div class="pull-left label-modified-run"><strong>Modified Total Pumping:</strong></div><div class="pull-right"> ' + (xValue_M(d) / cfsDenominator).toFixed(decimalLimit) + ' cfs</div><br/>'
-                        + '<div class="pull-left label-pumping-delta"><strong>Total Pumping Delta:</strong></div><div class="pull-right"> ' + ((xValue_O(d) / cfsDenominator) - (xValue_M(d) / cfsDenominator)).toFixed(decimalLimit) + ' cfs</div><br/><br/>'
-                        + '<div class="pull-left label-correlate-runs"><strong>Data Source:</strong></div><br/><div class="pull-right label-data-source"> ' + d.dataSource + '</div><br/><br/>'
-                        + '<div class="zone-data"><strong>Pumping by Zones:</strong></div>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 1:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_1 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 2:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_2 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 3:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_3 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 4:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_4 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 5:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_5 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 6:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_6 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 7:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_7 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 8:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_8 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 9:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_9 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 10:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_10 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 11:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_11 + '</div>'
-                        + '</div>')
-                        .style('right', tooltipPosX + 'px')
-                        .style('top', tooltipPosY + 'px');
-                        // Dynamic Positioning.
-                        // .style('left', ((graphPanelWidth / tooltipPosXadjust) + (d3.event.pageX * tooltipPosXoffset)) + 'px')
-                        // .style('top', ((graphPanelHeight / tooltipPosYadjust) + (d3.event.pageY * tooltipPosYoffset)) + 'px');
-                };
-
-                var hideTooltip = function () {
-                    tooltip.transition().duration(250).style('opacity', 0);
-                };
-
                 var getCorrelatePair = function (d) {
-                    var currentHash = d.dataSource;
+                    // console.log(d);
+
+                    var currentHash;
+                    if (d instanceof Object) {
+                        currentHash = d.dataSource;
+                    } else {
+                        currentHash = d;
+                    }
+                    // console.log(currentHash);
+
                     var originalNode = d3.selectAll('.dot-O').filter(function (d) {
                         return d.dataSource == currentHash;
                     });
@@ -273,7 +190,35 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         return d.dataSource == currentHash;
                     });
                     correlateRuns = [originalNode, modifiedNode];
-                    // $scope.$emit('currentGraphTarget', d);
+                    // console.log(correlateRuns[0][0][0]);
+                    // console.log(d3.select(correlateRuns[0][0][0]));
+
+                    // graphInteractionStart(d);
+                    graphInteractionStart(correlateRuns);
+                };
+
+                var graphInteractionStart = function (data) {
+                    decorateSiblings(data);    // PubSub
+                    // getCorrelatePair(d);
+                    highlightPairs();
+                    displayTooltip(data);
+                    showData(data);
+                };
+
+                var graphInteractionStop = function (data) {
+                    clearSiblings(data);       // PubSub
+                    // var currentNode = d3.select(this);
+                    unhighlightPairs();
+                    hideTooltip();
+                    clearData();
+                };
+
+                // PUB SUB.
+                var decorateSiblings = function (d) {
+                    $scope.$emit('currentGraphTarget', d);
+                };
+                var clearSiblings = function (d) {
+                    $scope.$emit('clearGraphTarget', d);
                 };
 
                 var highlightPairs = function () {
@@ -326,6 +271,105 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                     var modifiedNode = d3.selectAll('.dot-M').filter(function (d) {
                         return d.dataSource == currentHash;
                     });
+                };
+
+                // add the tooltip area to the webpage
+                // var tooltip = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 0);
+                var tooltip = d3.select('#watermark').append('div').attr('class', 'watermark-tooltip').style('opacity', 0);
+
+                var displayTooltip = function (d) {
+                    // Tooltip
+                    tooltip.transition().duration(animationDuration).style('opacity', 1);
+                    tooltip.html('<div class="">'
+                        + '<div class="pull-left label-total-storage"><strong>Total Storage (Both Runs):</strong></div><div class="pull-right"> ' + yValue_O(d) + ' ft</div><br/>'
+                        + '<div class="pull-left label-original-run"><strong>Original Total Pumping:</strong></div><div class="pull-right"> ' + (xValue_O(d) / cfsDenominator).toFixed(decimalLimit) + ' cfs</div><br/>'
+                        + '<div class="pull-left label-modified-run"><strong>Modified Total Pumping:</strong></div><div class="pull-right"> ' + (xValue_M(d) / cfsDenominator).toFixed(decimalLimit) + ' cfs</div><br/>'
+                        + '<div class="pull-left label-pumping-delta"><strong>Total Pumping Delta:</strong></div><div class="pull-right"> ' + ((xValue_O(d) / cfsDenominator) - (xValue_M(d) / cfsDenominator)).toFixed(decimalLimit) + ' cfs</div><br/><br/>'
+                        + '<div class="pull-left label-correlate-runs"><strong>Data Source:</strong></div><br/><div class="pull-right label-data-source"> ' + d.dataSource + '</div><br/><br/>'
+                        + '<div class="zone-data"><strong>Pumping by Zones:</strong></div>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 1:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_1 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 2:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_2 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 3:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_3 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 4:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_4 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 5:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_5 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 6:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_6 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 7:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_7 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 8:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_8 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 9:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_9 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 10:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_10 + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 11:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_11 + '</div>'
+                        + '</div>')
+                        .style('right', tooltipPosX + 'px')
+                        .style('top', tooltipPosY + 'px');
+                        // Dynamic Positioning.
+                        // .style('left', ((graphPanelWidth / tooltipPosXadjust) + (d3.event.pageX * tooltipPosXoffset)) + 'px')
+                        // .style('top', ((graphPanelHeight / tooltipPosYadjust) + (d3.event.pageY * tooltipPosYoffset)) + 'px');
+                };
+
+                var hideTooltip = function () {
+                    tooltip.transition().duration(animationDuration).style('opacity', 0);
+                };
+
+                var showData = function (d) {
+                    // console.log(d);
+                    // console.log(d[0].datum().dataSource);
+                     // console.log(d[0][0][0]['__data__']['dataSource']);
+
+                    var dataSource = d[0][0][0]['__data__']['dataSource'].toString();
+                    // console.log(dataSource);
+
+                    d3.select('#data-source').text(dataSource);
+                    d3.select('#total-storage-o').text(xValue_O(d[0].datum()));
+                    d3.select('#total-pumping-o').text(yValue_O(d[0].datum()));
+                    d3.select('#total-storage-m').text(xValue_M(d[0].datum()));
+                    d3.select('#total-pumping-m').text(yValue_M(d[0].datum()));
+                    d3.select('#zone1').text(d[0].datum().Zone_1);
+                    d3.select('#zone2').text(d[0].datum().Zone_2);
+                    d3.select('#zone3').text(d[0].datum().Zone_3);
+                    d3.select('#zone4').text(d[0].datum().Zone_4);
+                    d3.select('#zone5').text(d[0].datum().Zone_5);
+                    d3.select('#zone6').text(d[0].datum().Zone_6);
+                    d3.select('#zone7').text(d[0].datum().Zone_7);
+                    d3.select('#zone8').text(d[0].datum().Zone_8);
+                    d3.select('#zone9').text(d[0].datum().Zone_9);
+                    d3.select('#zone10').text(d[0].datum().Zone_10);
+                    d3.select('#zone11').text(d[0].datum().Zone_11);
+
+                    // d3.select('#data-source').text(d.dataSource);
+                    // d3.select('#total-storage-o').text(xValue_O(d));
+                    // d3.select('#total-pumping-o').text(yValue_O(d));
+                    // d3.select('#total-storage-m').text(xValue_M(d));
+                    // d3.select('#total-pumping-m').text(yValue_M(d));
+                    // d3.select('#zone1').text(d.Zone_1);
+                    // d3.select('#zone2').text(d.Zone_2);
+                    // d3.select('#zone3').text(d.Zone_3);
+                    // d3.select('#zone4').text(d.Zone_4);
+                    // d3.select('#zone5').text(d.Zone_5);
+                    // d3.select('#zone6').text(d.Zone_6);
+                    // d3.select('#zone7').text(d.Zone_7);
+                    // d3.select('#zone8').text(d.Zone_8);
+                    // d3.select('#zone9').text(d.Zone_9);
+                    // d3.select('#zone10').text(d.Zone_10);
+                    // d3.select('#zone11').text(d.Zone_11);
+                };
+
+                var clearData = function () {
+                    d3.select('#data-source').text('');
+                    d3.select('#total-storage-o').text('');
+                    d3.select('#total-pumping-o').text('');
+                    d3.select('#total-storage-m').text('');
+                    d3.select('#total-pumping-m').text('');
+                    d3.select('#zone1').text('');
+                    d3.select('#zone2').text('');
+                    d3.select('#zone3').text('');
+                    d3.select('#zone4').text('');
+                    d3.select('#zone5').text('');
+                    d3.select('#zone6').text('');
+                    d3.select('#zone7').text('');
+                    d3.select('#zone8').text('');
+                    d3.select('#zone9').text('');
+                    d3.select('#zone10').text('');
+                    d3.select('#zone11').text('');
                 };
 
                 // load data
@@ -381,20 +425,9 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         .attr('cy', yMap_O)
                         .style('fill', dotColorOriginal)
                         .style('stroke', dotStrokeColor)
-                        .on('mouseover', function (d) {
-                            decorateSiblings(d);
-                            getCorrelatePair(d);
-                            highlightPairs();
-                            displayTooltip(d);
-                            showData(d);
-                        })
-                        .on('mouseout', function (d) {
-                            clearSiblings(d);
-                            var currentNode = d3.select(this);
-                            unhighlightPairs();
-                            hideTooltip();
-                            clearData();
-                        });
+                        // .on('mouseover', graphInteractionStart)
+                        .on('mouseover', getCorrelatePair)
+                        .on('mouseout', graphInteractionStop);
 
                     canvas.selectAll('.dot_M')
                         .data(data)
@@ -405,20 +438,9 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                         .attr('cy', yMap_M)
                         .style('fill', dotColorModified)
                         .style('stroke', dotStrokeColor)
-                        .on('mouseover', function (d) {
-                            decorateSiblings(d);
-                            getCorrelatePair(d);
-                            highlightPairs();
-                            displayTooltip(d);
-                            showData(d);
-                        })
-                        .on('mouseout', function (d) {
-                            clearSiblings(d);
-                            var currentNode = d3.select(this);
-                            unhighlightPairs();
-                            hideTooltip();
-                            clearData();
-                        });
+                        // .on('mouseover', graphInteractionStart)
+                        .on('mouseover', getCorrelatePair)
+                        .on('mouseout', graphInteractionStop);
                 });
 
                 // Load Continuum Data.
@@ -456,7 +478,35 @@ angular.module('core').controller('GraphViewController', ['$scope', '$state', '$
                             return d.Description;
                         });
                 });
+
+                // Datatable events to Graph.
+                $rootScope.$on('newDatatableTarget', function (event, args) {
+                    // console.log('you are touching the datatable!');
+                    // console.log(args);
+                    getCorrelatePair(args);
+                });
+
+                $rootScope.$on('removeDatatableTarget', function (event, args) {
+                    // console.log('you stopped touching the datatable!');
+                    graphInteractionStop(args);
+                });
             };
             drawGraph();
         };
+
+        $scope.$on('analysisDataLoaded', function () {
+            // console.log('Graph View receiving broadcast');
+            $scope.updateView($scope.sourceData);
+        });
+
+        // // Datatable events to Graph.
+        // $rootScope.$on('newDatatableTarget', function (event, args) {
+        //     // console.log('you are touching the datatable!');
+        //     console.log(args);
+        //     getCorrelatePair(args);
+        // });
+
+        // $rootScope.$on('removeDatatableTarget', function (event, args) {
+        //     // console.log('you stopped touching the datatable!');
+        // });
 }]);
