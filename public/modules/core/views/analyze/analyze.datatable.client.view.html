@@ -16,67 +16,9 @@
     </div>
     <div class="row">
         <div class="datatable table-responsive analysis-data-table" id="datatable" ng-controller="DatatableViewController">
-
-            <!-- V1: Meh -->
-            <!-- <table class="table table-striped table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th ng-repeat="header in headers | filter:headerFilter | orderBy:headerOrder" width="{{header.width}}">{{header.label}}</th>
-                    </tr>
-                    <tr>sliders go here</tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="data in tabledata" ng-class-odd="'trOdd'" ng-class-even="'trEven'" ng-click="rowClicked(data)" ng-mouseenter="decorateSiblings(data)" ng-mouseleave="clearSiblings(data)">
-                        <td ng-repeat="(key,val) in dataset | orderBy:datasetOrder(key)">{{val}}</td>
-                        <td>{{ dataset.runName }}</td>
-                        <td>{{ dataset.attrName_0 }}</td>
-                        <td>{{ dataset.attrValue_0 }}</td>
-                        <td>{{ dataset.attrSparkline_0 }}</td>
-                        <td>{{ dataset.attrSufScore_0 }}</td>
-                        <td>{{ dataset.attrName_1 }}</td>
-                        <td>{{ dataset.attrValue_1 }}</td>
-                        <td>{{ dataset.attrSparkline_1 }}</td>
-                        <td>{{ dataset.attrSufScore_1 }}</td>
-                        <td>{{ dataset.attrName_2 }}</td>
-                        <td>{{ dataset.attrValue_2 }}</td>
-                        <td>{{ dataset.attrSparkline_2 }}</td>
-                        <td>{{ dataset.attrSufScore_2 }}</td>
-                        <td>{{ dataset.runMufScore }}</td>
-                    </tr>
-                </tbody>
-            </table> -->
-
-            <!-- V2: Messy -->
-            <!-- <table class="table table-striped table-condensed table-hover">
-                <thead>
-                    <tr>
-                        <th ng-repeat="header in headers | filter:headerFilter" width="{{header.width}}">{{header.label}}</th>
-                    </tr>
-                    <tr>sliders go here</tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="data in tabledata | limitTo:limit" ng-show="$index != 0" ng-class-odd="'trOdd'" ng-class-even="'trEven'" ng-click="rowClicked(data)" ng-mouseenter="decorateSiblings(data)" ng-mouseleave="clearSiblings(data)">
-                        <td>{{ data[0] }}</td>
-                        <td>{{ data[1] }}</td>
-                        <td>{{ data[2] }}</td>
-                        <td>{{ data[3] }}</td>
-                        <td>{{ data[4] }}</td>
-                        <td>{{ data[5] }}</td>
-                        <td>{{ data[6] }}</td>
-                        <td>{{ data[7] }}</td>
-                        <td>{{ data[8] }}</td>
-                        <td>{{ data[9] }}</td>
-                        <td>{{ data[10] }}</td>
-                        <td>{{ data[11] }}</td>
-                        <td>{{ data[12] }}</td>
-                        <td>{{ data[13] }}</td>
-                    </tr>
-                </tbody>
-            </table> -->
-
-            <!-- V3: ngTable -->
-            <table ng-table="dataTable" show-filter='true' class="table table-striped">
-               <tr ng-repeat="dataitem in data" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)">
+            <!-- ngTable -->
+            <table ng-table="dataTable" class="table table-striped"><!-- show-filter='true'  -->
+               <tr ng-repeat="dataitem in data" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)"><!-- ng-hide="$first" ng-if="$index > 0"  -->
                    <td data-title="'Run'" sortable="'dataSource'">
                        {{ dataitem[0] }}
                    </td>
@@ -84,31 +26,31 @@
                        {{ dataitem[1] }}
                    </td>
                    <td data-title="'Attr 1 Sparkline'" >
-                       {{ dataitem[1] }}
+                       <!-- {{ dataitem[1] }} -->
                    </td>
                    <td data-title="'Attr 1 SUF'" >
-                       {{ dataitem[1] }}
+                       <!-- {{ dataitem[1] }} -->
                    </td>
                    <td data-title="'Attr 2 Value'" sortable="'attr_2'" >
-                       {{ dataitem[2] }}
+                       {{ dataitem[5] }}
                    </td>
                    <td data-title="'Attr 2 Sparkline'" >
-                       {{ dataitem[2] }}
+                       <!-- {{ dataitem[2] }} -->
                    </td>
                    <td data-title="'Attr 2 SUF'" >
-                       {{ dataitem[2] }}
+                       <!-- {{ dataitem[2] }} -->
                    </td>
                    <td data-title="'Attr 3 Value'" sortable="'attr_3'" >
-                       {{ dataitem[4] }}
+                       {{ dataitem[7] }}
                    </td>
                    <td data-title="'Attr 3 Sparkline'" >
-                       {{ dataitem[4] }}
+                       <!-- {{ dataitem[4] }} -->
                    </td>
                    <td data-title="'Attr 3 SUF'" >
-                       {{ dataitem[4] }}
+                       <!-- {{ dataitem[4] }} -->
                    </td>
                    <td data-title="'Run MUF'" >
-                       {{ dataitem[5] }}
+                       <!-- {{ dataitem[5] }} -->
                    </td>
                </tr>
             </table>
