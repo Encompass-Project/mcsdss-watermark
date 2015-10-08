@@ -18,7 +18,9 @@ module.exports = {
 			css: [
 				'public/lib/bootstrap/dist/css/bootstrap.css',
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-				'public/lib/leaflet/dist/leaflet.css'
+				'public/lib/leaflet/dist/leaflet.css',
+				'public/lib/ng-table/dist/ng-table.min.css',
+				'public/lib/bootstrap-slider/slider.css'
 			],
 			js: [
 				'public/lib/angular/angular.js',
@@ -39,7 +41,9 @@ module.exports = {
 				'public/lib/papaparse/papaparse.min.js',
 				'public/lib/angular-papaparse/dist/js/angular-PapaParse.js',
 				'public/lib/leaflet/dist/leaflet.js',
-				'public/lib/d3/d3.min.js'
+				'public/lib/d3/d3.min.js',
+				'public/lib/ng-table/dist/ng-table.js',
+				'public/lib/bootstrap-slider/bootstrap-slider.js'
 			]
 		},
 		css: [
