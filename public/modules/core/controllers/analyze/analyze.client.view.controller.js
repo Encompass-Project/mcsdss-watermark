@@ -27,6 +27,28 @@ angular.module('core').controller('AnalyzeViewController', ['$rootScope', '$scop
                 $scope.$broadcast('analysisDataLoaded', $scope.sourceData);
             });
 
+        // PubSub between Graph and Map.
+        $scope.$on('currentGraphTarget', function (event, args) {
+            // console.log('you touched the graph at record: ' + args);
+            $rootScope.$broadcast('addMapTarget', args);
+        });
+
+        $scope.$on('clearGraphTarget', function (event, args) {
+            // console.log('you stopped touching the graph record: ' + args[0]);
+            $rootScope.$broadcast('removeMapTarget', args);
+        });
+
+        // PubSub between Datatable and Graph.
+        $scope.$on('currentDatatableTarget', function (event, args) {
+            // console.log('you touched the datatable at row: ' + args[0]);
+            $rootScope.$broadcast('newDatatableTarget', args[0]);
+        });
+
+        $scope.$on('clearDatatableTarget', function (event, args) {
+            // console.log('you stopped touching the datatable row: ' + args[0]);
+            $rootScope.$broadcast('removeDatatableTarget', args[0]);
+        });
+
         $scope.clicked = function (target) {
             console.log(target);
         };
@@ -65,27 +87,5 @@ angular.module('core').controller('AnalyzeViewController', ['$rootScope', '$scop
                 });
             });
         };
-
-        // PubSub between Graph and Map.
-        $scope.$on('currentGraphTarget', function (event, args) {
-            // console.log('you touched the graph at record: ' + args);
-            $rootScope.$broadcast('addMapTarget', args);
-        });
-
-        $scope.$on('clearGraphTarget', function (event, args) {
-            // console.log('you stopped touching the graph record: ' + args[0]);
-            $rootScope.$broadcast('removeMapTarget', args);
-        });
-
-        // PubSub between Datatable and Graph.
-        $scope.$on('currentDatatableTarget', function (event, args) {
-            // console.log('you touched the datatable at row: ' + args[0]);
-            $rootScope.$broadcast('newDatatableTarget', args[0]);
-        });
-
-        $scope.$on('clearDatatableTarget', function (event, args) {
-            // console.log('you stopped touching the datatable row: ' + args[0]);
-            $rootScope.$broadcast('removeDatatableTarget', args[0]);
-        });
     }
 ]);

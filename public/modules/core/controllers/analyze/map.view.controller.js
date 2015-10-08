@@ -5,16 +5,14 @@ angular.module('core').controller('MapViewController', ['$scope', 'Authenticatio
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
-        $scope.$on('analysisDataLoaded', function () {
-            // console.log($scope.this, 'receiving broadcast');
-            console.log('Map View receiving broadcast');
-            // console.log($scope.sourceData);
-            $scope.updateView($scope.sourceData);
+        $scope.$on('analysisDataLoaded', function (event, args) {
+            // console.log(event, args);
+            console.log('Map View receiving broadcast.');
+            $scope.updateView(args);
         });
 
         $scope.updateView = function (data) {
-            // console.log($scope.sourceData);
-            console.log('Map view updated.');
+            console.log('mapViewCtrl.updateView(data): ', data);
         };
 
         // Standard Leaflet Map.

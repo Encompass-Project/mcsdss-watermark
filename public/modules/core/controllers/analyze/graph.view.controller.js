@@ -5,13 +5,20 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
         // This provides Authentication context.
         $scope.authentication = Authentication;
 
+        $scope.graphTitle = 'Identifying Desired Future Conditions (DFCs)';
+
+        $scope.$on('analysisDataLoaded', function (event, args) {
+            // console.log(event, args);
+            console.log('Graph View receiving broadcast.');
+            $scope.updateView(args);
+        });
+
         $scope.clicked = function (target) {
             console.log(target);
         };
 
         $scope.updateView = function (data) {
-            console.log('Graph view updated.');
-            // console.log($scope.sourceData);
+            console.log('graphViewCtrl.updateView(data): ', data);
             $scope.visualization(data);
         };
 
@@ -64,7 +71,7 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
 
                 // Static Values.
                 var animationDuration = 150;
-                var tooltipPosX = 30; // width * 1.12; // dynamic values for moving tooltip.
+                var tooltipPosX = 2; // width * 1.12; // dynamic values for moving tooltip.
                 var tooltipPosY = 60; // height * 1.3; // dynamic values for moving tooltip.
                 // Dynamic Values.
                 // var tooltipPosXadjust = 5;
@@ -277,33 +284,35 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                 // var tooltip = d3.select('body').append('div').attr('class', 'tooltip').style('opacity', 0);
                 var tooltip = d3.select('#watermark').append('div').attr('class', 'watermark-tooltip').style('opacity', 0);
 
-                var displayTooltip = function (d) {
+                var displayTooltip = function (data) {
+                    var datapath = data[0][0][0]['__data__'];
+                    // console.log(datapath);
+                    // console.log(datapath['dataSource'],datapath['value_O'],datapath['value_M'],datapath['Zone_1']);
+
                     // Tooltip
                     tooltip.transition().duration(animationDuration).style('opacity', 1);
+
                     tooltip.html('<div class="">'
-                        + '<div class="pull-left label-total-storage"><strong>Total Storage (Both Runs):</strong></div><div class="pull-right"> ' + yValue_O(d) + ' ft</div><br/>'
-                        + '<div class="pull-left label-original-run"><strong>Original Total Pumping:</strong></div><div class="pull-right"> ' + (xValue_O(d) / cfsDenominator).toFixed(decimalLimit) + ' cfs</div><br/>'
-                        + '<div class="pull-left label-modified-run"><strong>Modified Total Pumping:</strong></div><div class="pull-right"> ' + (xValue_M(d) / cfsDenominator).toFixed(decimalLimit) + ' cfs</div><br/>'
-                        + '<div class="pull-left label-pumping-delta"><strong>Total Pumping Delta:</strong></div><div class="pull-right"> ' + ((xValue_O(d) / cfsDenominator) - (xValue_M(d) / cfsDenominator)).toFixed(decimalLimit) + ' cfs</div><br/><br/>'
-                        + '<div class="pull-left label-correlate-runs"><strong>Data Source:</strong></div><br/><div class="pull-right label-data-source"> ' + d.dataSource + '</div><br/><br/>'
+                        + '<div class="pull-left label-total-storage"><strong>Total Storage (Both Runs):</strong></div><div class="pull-right"> ' + datapath['value_O_heads'] + ' ft</div><br/>'
+                        + '<div class="pull-left label-original-run"><strong>Original Total Pumping:</strong></div><div class="pull-right"> ' + (datapath['value_O'] / cfsDenominator).toFixed(decimalLimit) + ' cfs</div><br/>'
+                        + '<div class="pull-left label-modified-run"><strong>Modified Total Pumping:</strong></div><div class="pull-right"> ' + (datapath['value_M'] / cfsDenominator).toFixed(decimalLimit) + ' cfs</div><br/>'
+                        + '<div class="pull-left label-pumping-delta"><strong>Total Pumping Delta:</strong></div><div class="pull-right"> ' + ( (datapath['value_O'] / cfsDenominator) - (datapath['value_M'] / cfsDenominator) ).toFixed(decimalLimit) + ' cfs</div><br/><br/>'
+                        + '<div class="pull-left label-correlate-runs"><strong>Data Source:</strong></div><br/><div class="pull-right label-data-source"> ' + datapath['dataSource'] + '</div><br/><br/>'
                         + '<div class="zone-data"><strong>Pumping by Zones:</strong></div>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 1:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_1 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 2:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_2 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 3:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_3 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 4:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_4 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 5:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_5 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 6:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_6 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 7:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_7 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 8:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_8 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 9:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_9 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 10:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_10 + '</div><br/>'
-                        + '<div class="pull-left zone-data-label"><strong>Zone 11:</strong></div><div class="pull-right zone-data-value"> ' + d.Zone_11 + '</div>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 1:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_1'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 2:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_2'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 3:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_3'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 4:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_4'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 5:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_5'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 6:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_6'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 7:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_7'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 8:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_8'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 9:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_9'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 10:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_10'] + '</div><br/>'
+                        + '<div class="pull-left zone-data-label"><strong>Zone 11:</strong></div><div class="pull-right zone-data-value"> ' + datapath['Zone_11'] + '</div>'
                         + '</div>')
                         .style('right', tooltipPosX + 'px')
                         .style('top', tooltipPosY + 'px');
-                        // Dynamic Positioning.
-                        // .style('left', ((graphPanelWidth / tooltipPosXadjust) + (d3.event.pageX * tooltipPosXoffset)) + 'px')
-                        // .style('top', ((graphPanelHeight / tooltipPosYadjust) + (d3.event.pageY * tooltipPosYoffset)) + 'px');
                 };
 
                 var hideTooltip = function () {
@@ -312,7 +321,6 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
 
                 var showData = function (d) {
                     // console.log(d);
-                    // console.log(d[0].datum().dataSource);
                      // console.log(d[0][0][0]['__data__']['dataSource']);
 
                     var dataSource = d[0][0][0]['__data__']['dataSource'].toString();
@@ -494,19 +502,9 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
             drawGraph();
         };
 
-        $scope.$on('analysisDataLoaded', function () {
-            // console.log('Graph View receiving broadcast');
-            $scope.updateView($scope.sourceData);
-        });
-
-        // // Datatable events to Graph.
-        // $rootScope.$on('newDatatableTarget', function (event, args) {
-        //     // console.log('you are touching the datatable!');
-        //     console.log(args);
-        //     getCorrelatePair(args);
-        // });
-
-        // $rootScope.$on('removeDatatableTarget', function (event, args) {
-        //     // console.log('you stopped touching the datatable!');
+        // $scope.$on('analysisDataLoaded', function (event, args) {
+        //     // console.log(event, args);
+        //     console.log('Graph View receiving broadcast.');
+        //     $scope.updateView(args);
         // });
 }]);
