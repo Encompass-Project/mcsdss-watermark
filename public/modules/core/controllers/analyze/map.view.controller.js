@@ -7,16 +7,12 @@ angular.module('core').controller('MapViewController', ['$scope', 'Authenticatio
 
         $scope.$on('analysisDataLoaded', function (event, args) {
             // console.log(event, args);
-            console.log('Map View receiving broadcast.');
+            // console.log('Map View receiving broadcast.');
             $scope.updateView(args);
         });
 
         $scope.updateView = function (data) {
-            console.log('mapViewCtrl.updateView(data): ', data);
+            // console.log('mapViewCtrl.updateView(data): ', data);
         };
     }
 ]);
-
-
-
-

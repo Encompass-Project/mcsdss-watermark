@@ -23,7 +23,7 @@ angular.module('core').controller('AnalyzeViewController', ['$rootScope', '$scop
             .finally(function () {
                 // console.log($scope.sourceData);
                 // Data is available here to inject into sub-controllers for Graph, Map and Datatable.
-                console.log('Analysis data loaded. Broadcasting...');
+                // console.log('Analysis data loaded. Broadcasting...');
                 $scope.$broadcast('analysisDataLoaded', $scope.sourceData);
             });
 

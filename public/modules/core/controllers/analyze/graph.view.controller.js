@@ -9,7 +9,7 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
 
         $scope.$on('analysisDataLoaded', function (event, args) {
             // console.log(event, args);
-            console.log('Graph View receiving broadcast.');
+            // console.log('Graph View receiving broadcast.');
             $scope.updateView(args);
         });
 
@@ -18,13 +18,13 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
         };
 
         $scope.updateView = function (data) {
-            console.log('graphViewCtrl.updateView(data): ', data);
+            // console.log('graphViewCtrl.updateView(data): ', data);
             $scope.visualization(data);
         };
 
         // WATERMARK.
         $scope.visualization = function (data) {
-            // console.log(data);
+            console.log(data);
             // console.log(data[0]);
 
             var graphPanel = document.getElementById('panel-pm');
@@ -41,7 +41,8 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
             // console.log('graph dimensions are: ' + width, height);
 
             // data sources.
-            var graph_dataSource = '../../../../data/Watermark_Master_Total_Wells_Heads_Zones_optimized.csv';
+            // var graph_dataSource = '../../../../data/Watermark_Master_Total_Wells_Heads_Zones_optimized.csv';
+            var graph_dataSource = data;    // Uses async data from promise via http.
             var aquiferContinuum_dataSource = '../../../../data/AquiferYield_ContinuumData_BartonSprings.csv';
 
             // MODULE private methods.
@@ -380,17 +381,44 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                     d3.select('#zone11').text('');
                 };
 
+                console.log(graph_dataSource);
+
                 // load data
-                // d3.csv($scope.sourceData, function (error, data) {
-                d3.csv(graph_dataSource, function (error, data) {
+                // d3 request options: csv, tsv, json, xhr, xml, html, text.
+                d3.json(graph_dataSource, function (error, data) {
+                    // console.log(graph_dataSource);
+                    // console.log(data);
+                    data = graph_dataSource;
 
                     // change string (from CSV) into number format
                     data.forEach(function (d) {
                         // console.log(d);
-                        d.value_O = +d.value_O;
-                        d.value_O_heads = +d.value_O_heads;
-                        d.value_M = +d.value_M;
-                        d.value_M_heads = +d.value_M_heads;
+
+                        // csv method.
+                        // d.value_O = +d.value_O;
+                        // d.value_O_heads = +d.value_O_heads;
+                        // d.value_M = +d.value_M;
+                        // d.value_M_heads = +d.value_M_heads;
+
+                        // Array method.
+                        d.dataSource = d[0];        // sourceflie.
+                        d.value_O = +d[1];          // wells O
+                        d.value_O_heads = +d[4];    // heads O
+                        d.value_M = +d[2];          // wells M
+                        d.value_M_heads = +d[5];    // heads M
+                        d.value_O_drains = +d[7];   // drains O
+                        d.value_M_drains = +d[8];   // drains M
+                        d.Zone_1 = +d[10];
+                        d.Zone_2 = +d[11];
+                        d.Zone_3 = +d[12];
+                        d.Zone_4 = +d[13];
+                        d.Zone_5 = +d[14];
+                        d.Zone_6 = +d[15];
+                        d.Zone_7 = +d[16];
+                        d.Zone_8 = +d[17];
+                        d.Zone_9 = +d[18];
+                        d.Zone_10 = +d[19];
+                        d.Zone_11 = +d[20];
                     });
 
                     xScale.domain([xScaleDomain_Lower, xScaleDomain_Upper]);

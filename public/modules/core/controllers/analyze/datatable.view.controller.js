@@ -7,7 +7,7 @@ angular.module('core').controller('DatatableViewController', ['$scope', 'Authent
 
         $scope.$on('analysisDataLoaded', function (event, args) {
             // console.log(event, args);
-            console.log('Datatable View receiving broadcast.');
+            // console.log('Datatable View receiving broadcast.');
             $scope.updateView(args);
         });
 
@@ -16,7 +16,7 @@ angular.module('core').controller('DatatableViewController', ['$scope', 'Authent
         };
 
         $scope.datasetOrder = function(key) {
-            console.log(key);
+            // console.log(key);
             // console.log("key="+key);    //prints: "key=undefined"
 
             angular.forEach($scope.headers, function (target){
@@ -45,7 +45,7 @@ angular.module('core').controller('DatatableViewController', ['$scope', 'Authent
         };
 
         $scope.updateView = function (data) {
-            console.log('datatableViewCtrl.updateView(data): ', data);
+            // console.log('datatableViewCtrl.updateView(data): ', data);
             // console.log(data);
             // $scope.preferences = [ ];
             // $scope.limit = 50;
