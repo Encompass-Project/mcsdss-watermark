@@ -4,15 +4,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
     // Fall back on url-based routing for redirects and bad url catch-all.
     $urlRouterProvider
+      .when('/formulations', '/formulations/list')
       .when('/datasets', '/datasets/list')
       .when('/models', '/models/list')
-      // .when('/goals', '/goals/list')
-      .when('/formulations', '/formulations/list')
+      .when('/analyze', '/analyze')   // This is required to refresh the view on nav change. Not yet sure why...
       .when('/decisions', '/decisions/list')
-      .when('/notebooks', '/notebooks/list')
+      // .when('/notebooks', '/notebooks/list')   // Still determining where these will live. Maybe under the formulation module?
       .when('/publications', '/publications/list')
       .when('/profile', '/profile/view')
-      // .when('/analyze-abstract', '/analyze-abstract/layout')   // redirects to dashboard.
       .otherwise('/');
 
     // Use state routing primarilly.
@@ -46,6 +45,61 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/core/views/dashboard/dashboard.client.view.html',
         controller: 'DashboardViewController'
       })
+      // FORMULATIONS
+      .state('dashboard.formulations', {
+        abstract: false,
+        url: '/formulations',
+        templateUrl: 'modules/core/views/formulations/formulations.client.view.html',
+        controller: 'FormulationsViewController'
+      })
+      .state('dashboard.formulations.list', {
+        abstract: false,
+        url: '/list', // can also use- url: '/', but that has no semantic meaning.
+        templateUrl: 'modules/formulations/views/list-formulations.client.view.html',
+        controller: 'FormulationsController'
+      })
+      .state('dashboard.formulations.list.details', {
+        abstract: false,
+        url: '/details/:formulationId',
+        templateUrl: 'modules/formulations/views/view-formulation.client.view.html',
+        controller: 'FormulationsController'
+      })
+      .state('dashboard.formulations.list.edit', {
+        abstract: false,
+        url: '/edit/:formulationId',
+        templateUrl: 'modules/formulations/views/edit-formulation.client.view.html',
+        controller: 'FormulationsController'
+      })
+      .state('dashboard.formulations.load', {
+        abstract: false,
+        url: '/load',
+        templateUrl: 'modules/formulations/views/create-formulation.client.view.html',
+        controller: 'FormulationsController'
+      })
+      .state('dashboard.formulations.transform', {
+        abstract: false,
+        url: '/transform',
+        templateUrl: 'modules/core/views/formulations/formulations.third.client.view.html',
+        controller: 'FormulationsThirdViewController'
+      })
+      .state('dashboard.formulations.visualize', {
+        abstract: false,
+        url: '/visualize',
+        templateUrl: 'modules/core/views/formulations/formulations.fourth.client.view.html',
+        controller: 'FormulationsFourthViewController'
+      })
+      .state('dashboard.formulations.curate', {
+        abstract: false,
+        url: '/curate',
+        templateUrl: 'modules/core/views/formulations/formulations.fifth.client.view.html',
+        controller: 'FormulationsFifthViewController'
+      })
+      .state('dashboard.formulations.publish', {
+        abstract: false,
+        url: '/publish',
+        templateUrl: 'modules/core/views/formulations/formulations.sixth.client.view.html',
+        controller: 'FormulationsSixthViewController'
+      })
       // DATASETS
       .state('dashboard.datasets', {
         abstract: false,
@@ -55,7 +109,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.datasets.list', {
         abstract: false,
-        url: '/list', // can also use- url: '/',
+        url: '/list', // can also use- url: '/', but that has no semantic meaning.
         templateUrl: 'modules/datasets/views/list-datasets.client.view.html',
         controller: 'DatasetsController'
       })
@@ -110,7 +164,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.models.list', {
         abstract: false,
-        url: '/list', // can also use- url: '/',
+        url: '/list', // can also use- url: '/', but that has no semantic meaning.
         templateUrl: 'modules/models/views/list-models.client.view.html',
         controller: 'ModelsController'
       })
@@ -144,69 +198,12 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'modules/core/views/models/models.publish.client.view.html',
         controller: 'ModelsPublishViewController'
       })
-      // FORMULATIONS
-      .state('dashboard.formulations', {
-        abstract: false,
-        url: '/formulations',
-        templateUrl: 'modules/core/views/formulations/formulations.client.view.html',
-        controller: 'FormulationsViewController'
-      })
-      .state('dashboard.formulations.list', {
-        abstract: false,
-        url: '/list', // can also use- url: '/',
-        templateUrl: 'modules/formulations/views/list-formulations.client.view.html',
-        controller: 'FormulationsController'
-      })
-      .state('dashboard.formulations.list.details', {
-        abstract: false,
-        url: '/details/:formulationId',
-        templateUrl: 'modules/formulations/views/view-formulation.client.view.html',
-        controller: 'FormulationsController'
-      })
-      .state('dashboard.formulations.list.edit', {
-        abstract: false,
-        url: '/edit/:formulationId',
-        templateUrl: 'modules/formulations/views/edit-formulation.client.view.html',
-        controller: 'FormulationsController'
-      })
-      .state('dashboard.formulations.load', {
-        abstract: false,
-        url: '/load',
-        templateUrl: 'modules/formulations/views/create-formulation.client.view.html',
-        controller: 'FormulationsController'
-      })
-      .state('dashboard.formulations.transform', {
-        abstract: false,
-        url: '/transform',
-        templateUrl: 'modules/core/views/formulations/formulations.third.client.view.html',
-        controller: 'FormulationsThirdViewController'
-      })
-      .state('dashboard.formulations.visualize', {
-        abstract: false,
-        url: '/visualize',
-        templateUrl: 'modules/core/views/formulations/formulations.fourth.client.view.html',
-        controller: 'FormulationsFourthViewController'
-      })
-      .state('dashboard.formulations.curate', {
-        abstract: false,
-        url: '/curate',
-        templateUrl: 'modules/core/views/formulations/formulations.fifth.client.view.html',
-        controller: 'FormulationsFifthViewController'
-      })
-      .state('dashboard.formulations.publish', {
-        abstract: false,
-        url: '/publish',
-        templateUrl: 'modules/core/views/formulations/formulations.sixth.client.view.html',
-        controller: 'FormulationsSixthViewController'
-      })
       // ANALYZE
       .state('dashboard.analyze', {
         abstract: false,
         url: '/analyze',
         templateUrl: 'modules/core/views/analyze/analyze.client.view.html',
         controller: 'AnalyzeViewController'
-        // templateUrl: 'modules/core/views/analyze/analyze-test.client.view.html',
-        // controller: 'AnalyzeTestViewController'
       })
       .state('dashboard.analyze.layout', {
         abstract: false,
@@ -215,20 +212,14 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
           'graph': {
               templateUrl: 'modules/core/views/analyze/analyze.graph.client.view.html',
               controller: 'GraphViewController'
-              // templateUrl: 'modules/core/views/analyze/analyze-test.graph.client.view.html',
-              // controller: 'GraphTestViewController'
            },
            'map': {
               templateUrl: 'modules/core/views/analyze/analyze.map.client.view.html',
               controller: 'MapViewController'
-              // templateUrl: 'modules/core/views/analyze/analyze-test.map.client.view.html',
-              // controller: 'MapTestViewController'
           },
           'datatable': {
               templateUrl: 'modules/core/views/analyze/analyze.datatable.client.view.html',
               controller: 'DatatableViewController'
-              // templateUrl: 'modules/core/views/analyze/analyze-test.datatable.client.view.html',
-              // controller: 'DatatableTestViewController'
           }
         }
       })
@@ -241,7 +232,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.decisions.list', {
         abstract: false,
-        url: '/list', // can also use- url: '/',
+        url: '/list', // can also use- url: '/', but that has no semantic meaning.
         templateUrl: 'modules/decisions/views/list-decisions.client.view.html',
         controller: 'DecisionsController'
       })
@@ -276,36 +267,36 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         controller: 'PublishDecisionsViewController'
       })
       // NOTEBOOKS
-      .state('dashboard.notebooks', {
-        abstract: false,
-        url: '/notebooks',
-        templateUrl: 'modules/core/views/notebooks/notebooks.client.view.html',
-        controller: 'NotebooksViewController'
-      })
-      .state('dashboard.notebooks.list', {
-        abstract: false,
-        url: '/list', // can also use- url: '/',
-        templateUrl: 'modules/notebooks/views/list-notebooks.client.view.html',
-        controller: 'NotebooksController'
-      })
-      .state('dashboard.notebooks.list.details', {
-        abstract: false,
-        url: '/details/:notebookId',
-        templateUrl: 'modules/notebooks/views/view-notebook.client.view.html',
-        controller: 'NotebooksController'
-      })
-      .state('dashboard.notebooks.list.edit', {
-        abstract: false,
-        url: '/edit/:notebookId',
-        templateUrl: 'modules/notebooks/views/edit-notebook.client.view.html',
-        controller: 'NotebooksController'
-      })
-      .state('dashboard.notebooks.load', {
-        abstract: false,
-        url: '/load',
-        templateUrl: 'modules/notebooks/views/create-notebook.client.view.html',
-        controller: 'NotebooksController'
-      })
+      // .state('dashboard.notebooks', {
+      //   abstract: false,
+      //   url: '/notebooks',
+      //   templateUrl: 'modules/core/views/notebooks/notebooks.client.view.html',
+      //   controller: 'NotebooksViewController'
+      // })
+      // .state('dashboard.notebooks.list', {
+      //   abstract: false,
+      //   url: '/list', // can also use- url: '/', but that has no semantic meaning.
+      //   templateUrl: 'modules/notebooks/views/list-notebooks.client.view.html',
+      //   controller: 'NotebooksController'
+      // })
+      // .state('dashboard.notebooks.list.details', {
+      //   abstract: false,
+      //   url: '/details/:notebookId',
+      //   templateUrl: 'modules/notebooks/views/view-notebook.client.view.html',
+      //   controller: 'NotebooksController'
+      // })
+      // .state('dashboard.notebooks.list.edit', {
+      //   abstract: false,
+      //   url: '/edit/:notebookId',
+      //   templateUrl: 'modules/notebooks/views/edit-notebook.client.view.html',
+      //   controller: 'NotebooksController'
+      // })
+      // .state('dashboard.notebooks.load', {
+      //   abstract: false,
+      //   url: '/load',
+      //   templateUrl: 'modules/notebooks/views/create-notebook.client.view.html',
+      //   controller: 'NotebooksController'
+      // })
       // PUBLICATIONS
       .state('dashboard.publications', {
         abstract: false,
@@ -315,7 +306,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.publications.list', {
         abstract: false,
-        url: '/list', // can also use- url: '/',
+        url: '/list', // can also use- url: '/', but that has no semantic meaning.
         templateUrl: 'modules/publications/views/list-publications.client.view.html',
         controller: 'PublicationsController'
       })
@@ -358,7 +349,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       })
       .state('dashboard.profile.view', {
         abstract: false,
-        url: '/view', // can also use- url: '/',
+        url: '/view', // can also use- url: '/', but that has no semantic meaning.
         templateUrl: 'modules/users/views/settings/view-profile.client.view.html',
         controller: 'SettingsController'
       })

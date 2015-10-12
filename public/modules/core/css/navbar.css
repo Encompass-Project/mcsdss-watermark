@@ -5,6 +5,7 @@
     background: #234;
     border: none;
     padding: 0 1rem;
+    margin-bottom: 0 !important;
 }
 .navbar:hover {
     background: #111111;
