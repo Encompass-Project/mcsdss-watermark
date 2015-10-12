@@ -46,7 +46,7 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
             var aquiferContinuum_dataSource = '../../../../data/AquiferYield_ContinuumData_BartonSprings.csv';
 
             // MODULE private methods.
-            function drawGraph () {
+            function drawGraph (graphData) {
 
                 var dotRadius = 2;
                 var dotStrokeWidth = 1;
@@ -100,9 +100,21 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                 // setup x original
                 var xValue_O = function (d) {
                         return d.value_O;
+                        // var xVal = d.value_O;
+                        // if (xVal === 'NaN') {
+                        //     console.log('This datum did not process:', xVal);
+                        // } else {
+                        //     return xVal;
+                        // }
                     }, // data -> value
                     xMap_O = function (d) {
                         return xScale(xValue_O(d));
+                        // var xMap = xScale(xValue_O(d));
+                        // if (xMap === 'NaN') {
+                        //     console.log('This datum did not process:', xMap);
+                        // } else {
+                        //     return xMap;
+                        // }
                     }; // data -> display
 
                 // setup y original
@@ -328,10 +340,10 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                     // console.log(dataSource);
 
                     d3.select('#data-source').text(dataSource);
-                    d3.select('#total-storage-o').text(xValue_O(d[0].datum()));
-                    d3.select('#total-pumping-o').text(yValue_O(d[0].datum()));
-                    d3.select('#total-storage-m').text(xValue_M(d[0].datum()));
-                    d3.select('#total-pumping-m').text(yValue_M(d[0].datum()));
+                    d3.select('#total-storage-o').text(xValue_O(d[0].datum()));      // throwing cx="NaN" error on 463.
+                    d3.select('#total-pumping-o').text(yValue_O(d[0].datum()));      // throwing cy="NaN" error on 464.
+                    d3.select('#total-storage-m').text(xValue_M(d[0].datum()));      // throwing cx="NaN" error on 476.
+                    d3.select('#total-pumping-m').text(yValue_M(d[0].datum()));      // throwing cy="NaN" error on 477.
                     d3.select('#zone1').text(d[0].datum().Zone_1);
                     d3.select('#zone2').text(d[0].datum().Zone_2);
                     d3.select('#zone3').text(d[0].datum().Zone_3);
@@ -381,14 +393,18 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                     d3.select('#zone11').text('');
                 };
 
-                console.log(graph_dataSource);
+                // console.log(graph_dataSource);
+                // console.log(graphData);
 
                 // load data
                 // d3 request options: csv, tsv, json, xhr, xml, html, text.
-                d3.json(graph_dataSource, function (error, data) {
-                    // console.log(graph_dataSource);
-                    // console.log(data);
-                    data = graph_dataSource;
+                d3.json(graphData, function (error, data) {
+
+                    data = graphData;   // For some reason this has to be included.
+
+                    // This entiore method can be freed from the parens and executed succcefully sans this data assignment,
+                    // but the subsequent stakeholder data does NOT get loaded in that case.
+                    // Need to clean up this graph stat - directive time?
 
                     // change string (from CSV) into number format
                     data.forEach(function (d) {
@@ -457,8 +473,8 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                         .enter().append('circle')
                         .attr('class', 'dot-O')
                         .attr('r', dotRadius)
-                        .attr('cx', xMap_O)
-                        .attr('cy', yMap_O)
+                        .attr('cx', xMap_O)     // throwing cx="NaN" error.
+                        .attr('cy', yMap_O)     // throwing cy="NaN" error.
                         .style('fill', dotColorOriginal)
                         .style('stroke', dotStrokeColor)
                         // .on('mouseover', graphInteractionStart)
@@ -470,8 +486,8 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                         .enter().append('circle')
                         .attr('class', 'dot-M')
                         .attr('r', dotRadius)
-                        .attr('cx', xMap_M)
-                        .attr('cy', yMap_M)
+                        .attr('cx', xMap_M)      // throwing cx="NaN" error.
+                        .attr('cy', yMap_M)      // throwing cy="NaN" error.
                         .style('fill', dotColorModified)
                         .style('stroke', dotStrokeColor)
                         // .on('mouseover', graphInteractionStart)
@@ -518,7 +534,6 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                 // Datatable events to Graph.
                 $rootScope.$on('newDatatableTarget', function (event, args) {
                     // console.log('you are touching the datatable!');
-                    // console.log(args);
                     getCorrelatePair(args);
                 });
 
@@ -526,8 +541,9 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
                     // console.log('you stopped touching the datatable!');
                     graphInteractionStop(args);
                 });
-            };
-            drawGraph();
+            }
+
+            drawGraph(graph_dataSource);
         };
 
         // $scope.$on('analysisDataLoaded', function (event, args) {
