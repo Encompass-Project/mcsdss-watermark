@@ -164,6 +164,6 @@ angular.module('datasets').controller('DatasetsController', ['$scope', '$state',
             console.info('onCompleteAll');
         };
 
-        console.info('uploader', uploader);
+        // console.info('uploader', uploader);
 	}
 ]);

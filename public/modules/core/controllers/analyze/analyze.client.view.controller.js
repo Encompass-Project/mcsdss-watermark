@@ -1,6 +1,8 @@
 'use strict';
 
-angular.module('core').controller('AnalyzeViewController', ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq',
+angular
+.module('core')
+.controller('AnalyzeViewController', ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq',
     function ($rootScope, $scope, $state, $location, Authentication, $httpq) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
