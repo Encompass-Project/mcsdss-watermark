@@ -2,9 +2,9 @@
 
 /*************************/
 /* Watermark Interactive */
-#watermark {
-  /*margin-top: 2rem;*/
-}
+/*#watermark {
+  margin-top: 2rem;
+}*/
 
 .close-watermark {
   position: absolute;
@@ -36,7 +36,7 @@
 #watermark-navbar > li.active > a {
   background-color: rgb(41,65,73) !important;
   color: rgb(255,255,255);
-  border: 1px solid rgba(113,178,201,1);
+  border: 1px solid rgb(113,178,201);
 }
 
 .watermark-panels {
@@ -81,6 +81,7 @@
 
 .watermark-footer-label {
   font-style: italic;
+  color: rgb(255,255,255);
   color: rgba(255,255,255,0.6); /*rgb(201,158,113); rgb(113,178,201); */
 }
 
@@ -101,10 +102,11 @@
 }
 #graphSVG {
   /*border: 1px solid #999;*/
-  padding-top: 1em;
+  padding: 1rem 4rem 2rem;
+  /*padding-top: 1em;
   padding-left: 4em;
   padding-right: 4em;
-  padding-bottom: 2em;
+  padding-bottom: 2em;*/
   color: #ccc;
   font-size: 0.625rem;
   font-family: 'Open Sans', sans-serif;
@@ -158,7 +160,7 @@
   stroke: #fff;
   fill: #5555cc;
 }
-.label{}
+/*.label{}*/
 .continuum-label {
   cursor: default;
 }
@@ -181,7 +183,8 @@
   padding-right: 1rem;*/
   padding: 1rem;
   pointer-events: none;
-  background-color: rgba(32,32,32,0.8); /*rgba(0,0,0,0.8);*/
+  background: rgb(32,32,32);
+  background: rgba(32,32,32,0.8); /*rgba(0,0,0,0.8);*/
   font-size: 1rem;
   /*font-family: 'Open Sans', sans-serif;*/
   font-weight: 300;
