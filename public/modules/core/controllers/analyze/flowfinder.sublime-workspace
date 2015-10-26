@@ -1,0 +1,617 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"inline",
+				"inline-block"
+			],
+			[
+				"st",
+				"stylesheet"
+			],
+			[
+				"moni",
+				"Monitoring"
+			]
+		]
+	},
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 400.0,
+		"last_filter": "pa",
+		"selected_items":
+		[
+			[
+				"pa",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"packagere",
+				"PackageResourceViewer: Open Resource"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"dis",
+				"Package Control: Disable Package"
+			],
+			[
+				"In",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"fl",
+				"Floobits - Complete Sign Up"
+			],
+			[
+				"package C",
+				"Package Control: Install Package"
+			],
+			[
+				"Pa",
+				"Package Control: Install Package"
+			],
+			[
+				"Insta",
+				"Package Control: Install Package"
+			],
+			[
+				"en",
+				"Package Control: Enable Package"
+			],
+			[
+				"enab",
+				"Package Control: Enable Package"
+			],
+			[
+				"html",
+				"HTMLPrettify"
+			],
+			[
+				"control",
+				"Preferences: Package Control Settings – User"
+			],
+			[
+				"pack",
+				"Preferences: Package Control Settings – Default"
+			],
+			[
+				"json",
+				"Pretty JSON: Minify (compress) JSON"
+			],
+			[
+				"prett",
+				"Pretty JSON: Format (Pretty Print) JSON"
+			],
+			[
+				"d",
+				"Package Control: Disable Package"
+			],
+			[
+				"di",
+				"Package Control: Disable Package"
+			],
+			[
+				"s",
+				"SassBeautify"
+			],
+			[
+				"sass",
+				"SassBeautify"
+			],
+			[
+				"Be",
+				"SassBeautify"
+			],
+			[
+				"insa",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"install pa",
+				"Package Control: Install Package"
+			],
+			[
+				"rem",
+				"Package Control: Remove Package"
+			],
+			[
+				"i",
+				"Colorsublime: Install Theme"
+			],
+			[
+				"install Package",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Colorsublime: Install Theme"
+			]
+		],
+		"width": 754.0
+	},
+	"console":
+	{
+		"height": 145.0,
+		"history":
+		[
+			"node",
+			"sublime.log_commands(True)",
+			"ing \"concurrent:server\" (concurrent) task",
+			"sublime.log_commands(True)",
+			"sublime.log_input(True)",
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)",
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/TTG-Lavender.tmTheme",
+		"/Users/jgentle/Library/Application Support/Sublime Text 3/Packages/Colorsublime - Themes/TaoTeG.tmTheme",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/services/dataloader.client.service.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/services/httpq.factory.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/services/menus.client.service.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/services/multipartForm.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/map-test.view.controller.js",
+		"/Users/jgentle/Projects/javascript/angular-npr/views/nprListItem.html",
+		"/Users/jgentle/Projects/javascript/angular-npr/index.html",
+		"/Users/jgentle/Projects/javascript/angular-npr/styles/main.css",
+		"/Users/jgentle/Projects/javascript/angular-npr/js/main.js",
+		"/Users/jgentle/.zshrc",
+		"/usr/local/Cellar/autoenv/0.1.0/activate.sh",
+		"/Users/jgentle/Projects/config/env.sh",
+		"/Users/jgentle/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/jgentle/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/jgentle/Projects/javascript/angular-shedding/app/styles/main.scss",
+		"/Users/jgentle/Projects/javascript/angular-shedding/app/scripts/services/data.service.js.bak",
+		"/Users/jgentle/Projects/javascript/angular-shedding/app/scripts/services/logger.service.js.bak",
+		"/Users/jgentle/Projects/javascript/angular-shedding/app/scripts/services",
+		"/Applications/AMPPS/ampps/scripts/piwigo/php53/install.php",
+		"/Users/jgentle/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/.jsbeautifyrc",
+		"/Users/jgentle/Library/Application Support/Sublime Text 3/Packages/HTML-CSS-JS Prettify/HTMLPrettify.sublime-settings",
+		"/Users/jgentle/Projects/javascript/angular-shedding/package.json",
+		"/Users/jgentle/Documents/wrangler/terms-defs.txt",
+		"/Users/jgentle/.npmrc",
+		"/Users/jgentle/Resources/Code/Issues/NVM Issues",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/grails-app/views/index.gsp",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/grails-app/assets/javascripts/map.js",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/grails-app/conf/Config.groovy",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/grails-app/conf/BuildConfig.groovy",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/usgs.sld",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/grails-app/assets/javascripts/maps.js",
+		"/Users/jgentle/Library/Application Support/GeoServer/jetty/README.md",
+		"/Users/jgentle/Library/Application",
+		"/Users/jgentle/Support/GeoServer/jetty/start.ini",
+		"/Applications/GeoServer.app/Contents/Java/webapps/geoserver/WEB-INF/web.xml",
+		"/Users/jgentle/Library/Application Support/Sublime Text 3/Packages/User/SublimeLinter.sublime-settings",
+		"/Users/jgentle/.zprofile",
+		"/Users/jgentle/.zshenv",
+		"/Users/jgentle/floobits/welcome.md",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/grailsw",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/grails-app/views/index/tools.gsp",
+		"/Users/jgentle/Projects/tacc/npl/PaleoCentral2/grailsw.bat",
+		"/Users/jgentle/Projects/tacc/npl/paleocentral2-grails-errors-startup.txt",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/leaflet-directive.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/datapanel.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/datasets-view.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/watermark.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/notebooks-view.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/publications-view.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/models-view.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/media-queries.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/goals-view.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/decisions-view.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/config.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/analyze.client.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/directives/leaflet-directive.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/unused/services/multipartForm.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/unused/factories/httpq.factory.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/unused/directives/fileModel.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/publications/services/publications.client.service.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/directives/angular-leaflet-directive.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/.gitignore",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/services/restapi-factory.client.service.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/config/core.client.routes.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/config/config.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/application.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/formulations/services/formulations.client.service.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/formulations/controllers/formulations.client.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/formulations/formulations.client.module.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/core.client.module.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/config/express.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/config/init.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/config/env/all.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/config/env/secrets.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/config/env/development.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/config/env/test.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/datasets/services/datasets.client.service.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/datasets/controllers/datasets.client.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/datasets/datasets.client.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze.graph.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/tests/header.client.controller.test.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/app/views/index.server.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/lib/components-font-awesome/README.md",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/app/views/layout.server.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/header.client.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/lib/karma-jasmine/lib/jasmine.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/user.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/vendor/superhero.bootstrap.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/global.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/default-view.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/dashboard-view.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/navbar.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/mean-defaults.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze.map.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/lib/ng-table/dist/ng-table.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/data/Watermark_Master_Total_Wells_Heads_Zones_optimized.csv",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/data/BSGAM_Heads_Wells_Drains_Zones_Master.csv",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/data/geojson/BSGAMKZones.merged.WGS84.lco15.geo.json",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/analyze-test.client.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/map.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/datatable.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/data/AquiferYield_ContinuumData_BartonSprings.csv",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze.datatable.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/graph-test.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/services/multipartForm.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze-test.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze-test.map.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze-test.graph.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze-test.datatable.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/graph.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/analyze.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/core.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/bootstrap-theme.css",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/analyze.abstract.client.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/karma.conf.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/tests/home.client.controller.test.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/models/tests/models.client.controller.test.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/bower.json",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/package.json",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/factories/httpq.factory.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/factories",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/dashboard/dashboard.client.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/views/analyze/analyze-abstract.client.view.html",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/controllers/analyze/analyze.test.client.view.controller.js",
+		"/Users/jgentle/Projects/encompass/encompass-mcsdss-mean/public/modules/core/css/dashboard-sidebar.css"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 94.0,
+		"where_history":
+		[
+			"<current file>",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"<h4 class=\"dxhr-03\">Input: <span ng-bind=\"main.title\"></span></h4>\n  <input class=\"dxhr-06\" ng-model=\"main.title\" />",
+			"jasmine",
+			"NVM_PATH",
+			"NVM_DIR",
+			"wec",
+			"8080",
+			"xValue_O",
+			"xMap_O",
+			"cfsDenominator",
+			"showData",
+			"graph_dataSource",
+			"updateView",
+			"showData",
+			"getCorrelatePair",
+			"bsgamZonesMergedStyle",
+			"leaflet-clickable",
+			"d",
+			"geojsonHandler",
+			"click",
+			"bsgam_kzones_mergedGeojson",
+			"moveToFront",
+			"kzone",
+			"encodeZones",
+			"graph_dataSource",
+			"aquiferContinuum_dataSource",
+			"watermarkSubpanelPM",
+			":hover",
+			"tr-odd",
+			"PKG_CONFIG_PATH",
+			"graph_dataSource",
+			"d3",
+			"d3.",
+			"tool",
+			"tooltipPosX",
+			"displayTooltip",
+			"rechargeView",
+			"area3",
+			"bounds2",
+			"bounds1",
+			"bounds0",
+			"southWest0",
+			"file-",
+			"datasets.list",
+			"header.client",
+			"home.client",
+			"signin.",
+			"#",
+			"datasets",
+			"{\n",
+			"taxauto",
+			"resetForm",
+			"li",
+			"hr",
+			"h3",
+			"notebooks",
+			"goals",
+			"notebooks",
+			"decisions",
+			"goals",
+			"models",
+			"datasets",
+			"'\n",
+			"JAVA",
+			"hibernate",
+			"$controller/$action?/$id?",
+			"wecee",
+			"config.",
+			"weceem",
+			"config",
+			"wecee",
+			"wec",
+			"GRAILS",
+			"weceem",
+			"weceem.",
+			"weceem.config",
+			"weceem.config.location",
+			"compile",
+			"source",
+			"gvm",
+			"@import",
+			"id=\"\"",
+			"</li>",
+			"<li>",
+			"</li>",
+			"<li>",
+			"Dashbaord",
+			"Default",
+			"dashboard-nav",
+			"gvm",
+			"homebrew",
+			">TBD</button>",
+			"submit",
+			"search",
+			"<div class=\"dashboard-sidemenu-item\"><a href=\"#\">",
+			"center-block",
+			"<br/>",
+			"</br>",
+			"</h4>",
+			"data",
+			"angular.module(",
+			"body",
+			"process.env.NODE_ENV",
+			"file exists",
+			"gvm",
+			"eval",
+			"eval \"$(dircolors -b)\"",
+			"apps",
+			"legendG",
+			"timelineG",
+			"mapG",
+			"colorScale",
+			"recolorMap",
+			"themeUsed",
+			"MANAGERS",
+			"initialize_logger",
+			"shuffle",
+			"”",
+			"“",
+			"”",
+			"“",
+			"recolorMap",
+			"expressed",
+			"colorScale",
+			"themeUsed",
+			"”",
+			"“",
+			"”",
+			"“"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"args",
+			"formulations",
+			"p",
+			"li",
+			"publications",
+			"notebooks",
+			"publications",
+			"notebooks",
+			"decisions",
+			"goals",
+			"models",
+			"",
+			"',",
+			"'",
+			"",
+			"Dashboard",
+			"Publications",
+			"Notebooks",
+			"Models",
+			"Goals",
+			"Decisions",
+			"subnavbar-nav",
+			" ng-click=\"publicationsTemplate.path = 'modules/core/views/publications/publications.default.client.view.html'\">Default</button>",
+			" ng-click=\"notebooksTemplate.path = 'modules/core/views/notebooks/notebooks.default.client.view.html'\">Default</button>",
+			"button",
+			"<a href=\"#\"><div class=\"dashboard-sidemenu-item\">",
+			"dashboard-sidemenu",
+			"",
+			"'",
+			"tooltipDiv",
+			"csvData",
+			"jsonData",
+			"kzonesImpervious",
+			"kzonesJSON",
+			"geojson_data",
+			" >>> redirects to >>>",
+			"'",
+			"worldmap_50m",
+			"'",
+			"idaho_svg",
+			" = ",
+			" - ",
+			"$",
+			"</p",
+			"p",
+			"img",
+			"about",
+			"",
+			"animate-all",
+			"TLD for app",
+			"TBD",
+			"o──",
+			">── ",
+			"├──",
+			"",
+			"\"",
+			" ",
+			"Mouth",
+			"wallerCreek9th",
+			"buttermilkCreek_",
+			"iterm2"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 28.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 122.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 122.0
+	},
+	"pinned_build_system": "",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 356.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

@@ -1,9 +1,9 @@
 'use strict';
 
 // Get listing of registered modules.
-(function(orig) {
+(function (orig) {
     angular.modules = [];
-    angular.module = function() {
+    angular.module = function () {
         if (arguments.length > 1) {
             angular.modules.push(arguments[0]);
         }
@@ -15,13 +15,13 @@
 angular.module(ApplicationConfiguration.applicationModuleName, ApplicationConfiguration.applicationModuleVendorDependencies);
 
 // Setting HTML5 Location Mode
-angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider',	function($locationProvider) {
+angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider',	function ($locationProvider) {
 		$locationProvider.hashPrefix('!');
 	}
 ]);
 
 //Then define the init function for starting up the application
-angular.element(document).ready(function() {
+angular.element(document).ready(function () {
 	//Fixing facebook bug with redirect
 	if (window.location.hash === '#_=_') window.location.hash = '#!';
 
@@ -29,4 +29,4 @@ angular.element(document).ready(function() {
 	angular.bootstrap(document, [ApplicationConfiguration.applicationModuleName]);
 });
 
-console.log(angular.modules);   // This only lists the main app module at load. You can find all registered modules in the browser console at: window.angular.modules
+// console.log(angular.modules);   // This only lists the main app module at load. You can find all registered modules in the browser console at: window.angular.modules

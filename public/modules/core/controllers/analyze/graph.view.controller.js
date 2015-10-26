@@ -24,7 +24,7 @@ angular.module('core').controller('GraphViewController', ['$rootScope', '$scope'
 
         // WATERMARK.
         $scope.visualization = function (data) {
-            console.log(data);
+            // console.log(data);
             // console.log(data[0]);
 
             var graphPanel = document.getElementById('panel-pm');

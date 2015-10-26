@@ -5,11 +5,11 @@
 @import url('dashboard-sidebar.css');
 @import url('dashboard-view.css');
 @import url('datasets-view.css');
-@import url('models-view.css');
-@import url('notebooks-view.css');
-@import url('goals-view.css');
-@import url('decisions-view.css');
-@import url('publications-view.css');
+/*@import url('models-view.css');*/
+/*@import url('notebooks-view.css');*/
+/*@import url('goals-view.css');*/
+/*@import url('decisions-view.css');*/
+/*@import url('publications-view.css');*/
 
 /* Third party themes */
 @import url('vendor/superhero.bootstrap.css');

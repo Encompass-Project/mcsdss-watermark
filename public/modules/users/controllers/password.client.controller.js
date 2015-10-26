@@ -1,14 +1,22 @@
-'use strict';
+(function() {
+	'use strict';
 
-angular.module('users').controller('PasswordController', ['$scope', '$stateParams', '$http', '$location', 'Authentication',
-	function($scope, $stateParams, $http, $location, Authentication) {
+	angular
+		.module('users')
+		.controller('PasswordController', PasswordController);
+
+	PasswordController.$inject = ['$scope', '$stateParams', '$http', '$location', 'Authentication'];
+
+	function PasswordController($scope, $stateParams, $http, $location, Authentication) {
 		$scope.authentication = Authentication;
+		$scope.askForPasswordReset = askForPasswordReset;
+		$scope.resetUserPassword = resetUserPassword;
 
 		//If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
 
 		// Submit forgotten password account id
-		$scope.askForPasswordReset = function() {
+		function askForPasswordReset() {
 			$scope.success = $scope.error = null;
 
 			$http.post('/auth/forgot', $scope.credentials).success(function(response) {
@@ -21,10 +29,10 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 				$scope.credentials = null;
 				$scope.error = response.message;
 			});
-		};
+		}
 
 		// Change user password
-		$scope.resetUserPassword = function() {
+		function resetUserPassword() {
 			$scope.success = $scope.error = null;
 
 			$http.post('/auth/reset/' + $stateParams.token, $scope.passwordDetails).success(function(response) {
@@ -39,6 +47,7 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 			}).error(function(response) {
 				$scope.error = response.message;
 			});
-		};
+		}
 	}
-]);
+
+})();

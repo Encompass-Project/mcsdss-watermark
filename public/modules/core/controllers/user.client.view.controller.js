@@ -7,7 +7,7 @@ angular.module('core').controller('UserViewController', ['$scope', 'Authenticati
         $scope.authentication = Authentication;
 
         $scope.clicked = function(target) {
-            console.log(target);
+            // console.log(target);
         };
     }
 ]);
