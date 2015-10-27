@@ -1,8 +1,14 @@
-'use strict';
+(function() {
+	'use strict';
 
-//Setting up route
-angular.module('publications').config(['$stateProvider',
-	function($stateProvider) {
+	//Setting up route
+	angular
+		.module('publications')
+		.config(PublicationsConfig);
+
+	PublicationsConfig.$inject = ['$stateProvider'];
+
+	function PublicationsConfig($stateProvider) {
 		// Publications state routing
 		$stateProvider.
 		state('listPublications', {
@@ -22,4 +28,4 @@ angular.module('publications').config(['$stateProvider',
 			templateUrl: 'modules/publications/views/edit-publication.client.view.html'
 		});
 	}
-]);
+})();

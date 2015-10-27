@@ -1,13 +1,24 @@
-'use strict';
+(function() {
+	'use strict';
 
-// Publications controller
-angular.module('publications').controller('PublicationsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Publications',
-	function($scope, $state, $stateParams, $location, Authentication, Publications) {
+	// Publications controller
+	angular
+		.module('publications')
+		.controller('PublicationsController', PublicationsController);
+
+	PublicationsController.$inject = ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Publications'];
+
+	function PublicationsController($scope, $state, $stateParams, $location, Authentication, Publications) {
 		$scope.authentication = Authentication;
 		$scope.currentUser = Authentication.user;
+		$scope.create = create;
+		$scope.remove = remove;
+		$scope.update = update;
+		$scope.find = find;
+		$scope.findOne = findOne;
 
 		// Create new Publication
-		$scope.create = function() {
+		function create() {
 			// Create new Publication object
 			var publication = new Publications ({
 				name: this.name
@@ -23,10 +34,10 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
+		}
 
 		// Remove existing Publication
-		$scope.remove = function(publication) {
+		function remove(publication) {
 			if ( publication ) {
 				publication.$remove();
 
@@ -41,10 +52,10 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 					$state.go('dashboard.publications', {}, {reload: true});
 				});
 			}
-		};
+		}
 
 		// Update existing Publication
-		$scope.update = function() {
+		function update() {
 			var publication = $scope.publication;
 
 			publication.$update(function() {
@@ -53,7 +64,7 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
+		}
 
 		// Find a list of Publications
 		// $scope.find = function() {
@@ -61,19 +72,19 @@ angular.module('publications').controller('PublicationsController', ['$scope', '
 		// };
 
 		// Find a list of Formulations belonging to the current user.
-		$scope.find = function(user) {
+		function find(user) {
 			Publications.query(function(publications) {
 				$scope.publications = user ? publications.filter(function(publication) {
 					return publication.user._id === user._id;
 				}) : publications;
 			});
-		};
+		}
 
 		// Find existing Publication
-		$scope.findOne = function() {
+		function findOne() {
 			$scope.publication = Publications.get({
 				publicationId: $stateParams.publicationId
 			});
-		};
+		}
 	}
-]);
+})();

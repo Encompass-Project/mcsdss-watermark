@@ -4,11 +4,11 @@
 	// Setting up route
 	angular
 		.module('users')
-		.config(stateProviderConfig);
+		.config(UsersConfig);
 
-		stateProviderConfig.$inject =	['$stateProvider'];
+		UsersConfig.$inject =	['$stateProvider'];
 
-		function stateProviderConfig($stateProvider) {
+		function UsersConfig($stateProvider) {
 			// Users state routing
 			$stateProvider.
 			state('profile', {

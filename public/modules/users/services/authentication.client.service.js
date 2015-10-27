@@ -6,13 +6,13 @@
     .module('users')
     .factory('Authentication', Authentication);
 
-  	function Authentication() {
-  		var _this = this;
+	function Authentication() {
+		var _this = this;
 
-  		_this._data = {
-  			user: window.user
-  		};
+		_this._data = {
+			user: window.user
+		};
 
-  		return _this._data;
-  	}
+		return _this._data;
+	}
 })();
