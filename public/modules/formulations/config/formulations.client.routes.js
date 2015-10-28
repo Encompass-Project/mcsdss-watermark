@@ -1,8 +1,14 @@
-'use strict';
+(function() {
+	'use strict';
 
-//Setting up route
-angular.module('formulations').config(['$stateProvider',
-	function($stateProvider) {
+	//Setting up route
+	angular
+		.module('formulations')
+		.config(FormulationsRoutes);
+
+	FormulationsRoutes.$inject =['$stateProvider'];
+
+	function FormulationsRoutes($stateProvider) {
 		// Formulations state routing
 		$stateProvider.
 		state('listFormulations', {
@@ -22,4 +28,4 @@ angular.module('formulations').config(['$stateProvider',
 			templateUrl: 'modules/formulations/views/edit-formulation.client.view.html'
 		});
 	}
-]);
+})();
