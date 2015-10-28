@@ -1,8 +1,14 @@
-'use strict';
+(function() {
+	'use strict';
 
-//Setting up route
-angular.module('notebooks').config(['$stateProvider',
-	function($stateProvider) {
+	//Setting up route
+	angular
+		.module('notebooks')
+		.config(NotebooksConfig);
+
+	NotebooksConfig.$inject = ['$stateProvider'];
+
+	function NotebooksConfig($stateProvider) {
 		// Notebooks state routing
 		$stateProvider.
 		state('listNotebooks', {
@@ -22,4 +28,4 @@ angular.module('notebooks').config(['$stateProvider',
 			templateUrl: 'modules/notebooks/views/edit-notebook.client.view.html'
 		});
 	}
-]);
+})();

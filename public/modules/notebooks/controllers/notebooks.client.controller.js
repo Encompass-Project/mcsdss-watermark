@@ -1,13 +1,24 @@
-'use strict';
+(function() {
+	'use strict';
 
-// Notebooks controller
-angular.module('notebooks').controller('NotebooksController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Notebooks',
-	function($scope, $state, $stateParams, $location, Authentication, Notebooks) {
+	// Notebooks controller
+	angular
+		.module('notebooks')
+		.controller('NotebooksController', NotebooksController);
+
+	NotebooksController.$inject = ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Notebooks'];
+
+	function NotebooksController($scope, $state, $stateParams, $location, Authentication, Notebooks) {
 		$scope.authentication = Authentication;
 		$scope.currentUser = Authentication.user;
+		$scope.create = create;
+		$scope.remove = remove;
+		$scope.update = update;
+		$scope.find = find;
+		$scope.findOne = findOne;
 
 		// Create new Notebook
-		$scope.create = function() {
+		function create() {
 			// Create new Notebook object
 			var notebook = new Notebooks ({
 				name: this.name
@@ -23,10 +34,10 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
+		}
 
 		// Remove existing Notebook
-		$scope.remove = function(notebook) {
+		function remove(notebook) {
 			if ( notebook ) {
 				notebook.$remove();
 
@@ -41,10 +52,10 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 					$state.go('dashboard.notebooks', {}, {reload: true});
 				});
 			}
-		};
+		}
 
 		// Update existing Notebook
-		$scope.update = function() {
+		function update() {
 			var notebook = $scope.notebook;
 
 			notebook.$update(function() {
@@ -53,7 +64,7 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
+		}
 
 		// Find a list of Notebooks
 		// $scope.find = function() {
@@ -61,19 +72,21 @@ angular.module('notebooks').controller('NotebooksController', ['$scope', '$state
 		// };
 
 		// Find a list of Formulations belonging to the current user.
-		$scope.find = function(user) {
-			Notebooks.query(function(notebooks) {
-				$scope.notebooks = user ? notebooks.filter(function(notebook) {
-					return notebook.user._id === user._id;
-				}) : notebooks;
-			});
-		};
+		function find(user) {
+			Notebooks.query(
+				function(notebooks) {
+					$scope.notebooks = user ? notebooks.filter(function(notebook) {
+						return notebook.user._id === user._id;
+					}) : notebooks;
+				}
+			);
+		}
 
 		// Find existing Notebook
-		$scope.findOne = function() {
+		function findOne() {
 			$scope.notebook = Notebooks.get({
 				notebookId: $stateParams.notebookId
 			});
-		};
+		}
 	}
-]);
+})();
