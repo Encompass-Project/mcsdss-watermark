@@ -4,11 +4,11 @@
 	//Setting up route
 	angular
 		.module('notebooks')
-		.config(NotebooksConfig);
+		.config(NotebooksRoutes);
 
-	NotebooksConfig.$inject = ['$stateProvider'];
+	NotebooksRoutes.$inject = ['$stateProvider'];
 
-	function NotebooksConfig($stateProvider) {
+	function NotebooksRoutes($stateProvider) {
 		// Notebooks state routing
 		$stateProvider.
 		state('listNotebooks', {

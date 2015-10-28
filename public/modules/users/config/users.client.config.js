@@ -4,11 +4,11 @@
 	// Config HTTP Error Handling
 	angular
 		.module('users')
-		.config(httpProviderConfig);
+		.config(UsersConfig);
 
-		httpProviderConfig.$inject = ['$httpProvider'];
+		UsersConfig.$inject = ['$httpProvider'];
 
-	function httpProviderConfig ($httpProvider) {
+	function UsersConfig ($httpProvider) {
 		// Set the httpProvider "not authorized" interceptor
 		$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
 			function($q, $location, Authentication) {

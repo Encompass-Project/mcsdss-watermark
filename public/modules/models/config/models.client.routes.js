@@ -1,8 +1,14 @@
-'use strict';
+(function() {
+	'use strict';
 
-//Setting up route
-angular.module('models').config(['$stateProvider',
-	function($stateProvider) {
+	//Setting up route
+	angular
+		.module('models')
+		.config(ModelsRoutes);
+
+	ModelsRoutes.$inject =['$stateProvider'];
+
+	function ModelsRoutes($stateProvider) {
 		// Models state routing
 		$stateProvider.
 		state('listModels', {
@@ -22,4 +28,4 @@ angular.module('models').config(['$stateProvider',
 			templateUrl: 'modules/models/views/edit-model.client.view.html'
 		});
 	}
-]);
+})();

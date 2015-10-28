@@ -6,11 +6,11 @@
 
   // angular
   //   .module('notebooks')
-  //   .run(NotebooksMenus);
+  //   .run(NotebooksConfig);
 
-  // NotebooksMenus.$inject = ['Menus'];
+  // NotebooksConfig.$inject = ['Menus'];
 
-  // function NotebooksMenus(Menus) {
+  // function NotebooksConfig(Menus) {
   //     // Set top bar menu items
   //     Menus.addMenuItem('topbar', 'Notebooks', 'notebooks', 'dropdown', '/notebooks(/create)?');
   //     Menus.addSubMenuItem('topbar', 'notebooks', 'List Notebooks', 'notebooks');

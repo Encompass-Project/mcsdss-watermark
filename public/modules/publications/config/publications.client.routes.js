@@ -4,11 +4,11 @@
 	//Setting up route
 	angular
 		.module('publications')
-		.config(PublicationsConfig);
+		.config(PublicationsRoutes);
 
-	PublicationsConfig.$inject = ['$stateProvider'];
+	PublicationsRoutes.$inject = ['$stateProvider'];
 
-	function PublicationsConfig($stateProvider) {
+	function PublicationsRoutes($stateProvider) {
 		// Publications state routing
 		$stateProvider.
 		state('listPublications', {
