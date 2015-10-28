@@ -1,8 +1,13 @@
-'use strict';
+(function() {
+	'use strict';
 
-//Setting up route
-angular.module('datasets').config(['$stateProvider',
-	function($stateProvider) {
+	angular
+		.module('datasets')
+		.config(DatasetsRoutes);
+
+	DatasetsRoutes.$inject = ['$stateProvider'];
+
+	function DatasetsRoutes($stateProvider) {
 		// Datasets state routing
 		$stateProvider.
 		state('listDatasets', {
@@ -22,4 +27,4 @@ angular.module('datasets').config(['$stateProvider',
 			templateUrl: 'modules/datasets/views/edit-dataset.client.view.html'
 		});
 	}
-]);
+})();
