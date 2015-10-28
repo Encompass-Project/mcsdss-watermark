@@ -18,7 +18,7 @@
 		$scope.findOne = findOne;
 
 		// Create new Decision
-		unction create() {
+		function create() {
 			// Create new Decision object
 			var decision = new Decisions ({
 				name: this.name
