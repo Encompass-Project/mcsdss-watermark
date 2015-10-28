@@ -1,13 +1,19 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('core').controller('UserViewController', ['$scope', 'Authentication',
-    function($scope, Authentication) {
+  angular
+    .module('core')
+    .controller('UserViewController', UserViewController);
 
-        // This provides Authentication context.
-        $scope.authentication = Authentication;
+  UserViewController.$injetc = ['$scope', 'Authentication'];
 
-        $scope.clicked = function(target) {
-            // console.log(target);
-        };
+  function UserViewController($scope, Authentication) {
+    // This provides Authentication context.
+    $scope.authentication = Authentication;
+    $scope.clicked = clicked;
+
+    function clicked(target) {
+        // console.log(target);
     }
-]);
+  }
+})();

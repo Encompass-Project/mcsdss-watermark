@@ -1,7 +1,13 @@
-'use strict';
-// Setting up routes.
-angular.module('core').config(['$stateProvider', '$urlRouterProvider',
-  function($stateProvider, $urlRouterProvider) {
+(function() {
+  'use strict';
+  // Setting up routes.
+  angular
+    .module('core')
+    .config(CoreRoutes);
+
+  CoreRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+
+  function CoreRoutes($stateProvider, $urlRouterProvider) {
     // Fall back on url-based routing for redirects and bad url catch-all.
     $urlRouterProvider
       .when('/formulations', '/formulations/list')
@@ -372,4 +378,4 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         controller: 'SettingsController'
       });
   }
-]);
+})();
