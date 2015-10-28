@@ -1,8 +1,14 @@
-'use strict';
+(function() {
+	'use strict';
 
-//Setting up route
-angular.module('decisions').config(['$stateProvider',
-	function($stateProvider) {
+	//Setting up route
+	angular
+		.module('decisions')
+		.config(DecisionsRoutes);
+
+	DecisionsRoutes.$inject =	['$stateProvider'];
+
+	function DecisionsRoutes($stateProvider) {
 		// Decisions state routing
 		$stateProvider.
 		state('listDecisions', {
@@ -22,4 +28,4 @@ angular.module('decisions').config(['$stateProvider',
 			templateUrl: 'modules/decisions/views/edit-decision.client.view.html'
 		});
 	}
-]);
+})();

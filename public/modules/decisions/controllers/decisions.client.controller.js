@@ -1,13 +1,24 @@
-'use strict';
+(function() {
+	'use strict';
 
-// Decisions controller
-angular.module('decisions').controller('DecisionsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Decisions',
-	function($scope, $state, $stateParams, $location, Authentication, Decisions) {
+	// Decisions controller
+	angular
+		.module('decisions')
+		.controller('DecisionsController', DecisionsController);
+
+	DecisionsController.$inject = ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Decisions'];
+
+	function DecisionsController($scope, $state, $stateParams, $location, Authentication, Decisions) {
 		$scope.authentication = Authentication;
 		$scope.currentUser = Authentication.user;
+		$scope.create = create;
+		$scope.remove = remove;
+		$scope.update = update;
+		$scope.find = find;
+		$scope.findOne = findOne;
 
 		// Create new Decision
-		$scope.create = function() {
+		unction create() {
 			// Create new Decision object
 			var decision = new Decisions ({
 				name: this.name
@@ -23,10 +34,10 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
+		}
 
 		// Remove existing Decision
-		$scope.remove = function(decision) {
+		function remove(decision) {
 			if ( decision ) {
 				decision.$remove();
 
@@ -41,10 +52,10 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 					$state.go('dashboard.decisions', {}, {reload: true});
 				});
 			}
-		};
+		}
 
 		// Update existing Decision
-		$scope.update = function() {
+		function update() {
 			var decision = $scope.decision;
 
 			decision.$update(function() {
@@ -53,7 +64,7 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
+		}
 
 		// Find a list of Decisions
 		// $scope.find = function() {
@@ -61,19 +72,19 @@ angular.module('decisions').controller('DecisionsController', ['$scope', '$state
 		// };
 
 		// Find a list of Formulations belonging to the current user.
-		$scope.find = function(user) {
+		function find(user) {
 			Decisions.query(function(decisions) {
 				$scope.decisions = user ? decisions.filter(function(decision) {
 					return decision.user._id === user._id;
 				}) : decisions;
 			});
-		};
+		}
 
 		// Find existing Decision
-		$scope.findOne = function() {
+		function findOne() {
 			$scope.decision = Decisions.get({
 				decisionId: $stateParams.decisionId
 			});
-		};
+		}
 	}
-]);
+})();
