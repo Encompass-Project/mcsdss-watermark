@@ -17,8 +17,8 @@
     $scope.clearSiblings = clearSiblings;
     $scope.updateView = updateView;
 
-    $scope.headerdata = [];
-    $scope.tabledata = [];
+    // $scope.headerdata = [];
+    // $scope.tabledata = [];
 
     $scope.suf01 = 0;
     $scope.suf02 = 0;
@@ -94,17 +94,17 @@
       */
 
       $scope.newdata = data;
+
       console.log($scope.newdata.length);  // 9383
-      // console.log($scope.newdata);
-      // console.log($scope.newdata[0]);
+      console.log($scope.newdata);
+      console.log($scope.newdata[0]);
 
       $scope.headerdata = $scope.newdata[0];
-      $scope.tabledata = $scope.newdata.shift();
-
       console.log($scope.headerdata.length); // 21
       console.log($scope.headerdata);
       // console.log($scope.headerdata[0]);
 
+      $scope.tabledata = $scope.newdata.shift();
       console.log($scope.tabledata.length);  // 9382
       console.log($scope.tabledata);
       // console.log($scope.tabledata[0]);
