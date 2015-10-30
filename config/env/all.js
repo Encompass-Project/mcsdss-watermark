@@ -36,7 +36,8 @@ module.exports = {
 				'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
 				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
 				'public/lib/karma-jasmine/lib/jasmine.js',
-				// 'public/lib/ng-file-upload/angular-file-upload-shim.min.js',
+				'public/lib/mocha/mocha.js', // Added.
+				// 'public/lib/ng-file-upload-shim/angular-file-upload-shim.min.js',
 				// 'public/lib/ng-file-upload/angular-file-upload.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/papaparse/papaparse.min.js',
@@ -44,6 +45,7 @@ module.exports = {
 				'public/lib/leaflet/dist/leaflet.js',
 				'public/lib/d3/d3.min.js',
 				'public/lib/ng-table/dist/ng-table.js',
+				'public/lib/bootstrap/dist/js/bootstrap.min.js', 	// Added.
 				'public/lib/bootstrap-slider/bootstrap-slider.js'
 			]
 		},

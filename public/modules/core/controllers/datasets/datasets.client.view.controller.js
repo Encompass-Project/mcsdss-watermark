@@ -1,12 +1,19 @@
-'use strict';
+(function() {
+  'use strict';
 
-angular.module('core').controller('DatasetsViewController', ['$scope', 'Authentication',
-    function($scope, Authentication) {
-        // This provides Authentication context.
-        $scope.authentication = Authentication;
+  angular
+    .module('core')
+    .controller('DatasetsViewController', DatasetsViewController);
 
-        $scope.clicked = function(target) {
-            console.log(target);
-        };
+  DatasetsViewController.$inject = ['$scope', 'Authentication'];
+
+  function DatasetsViewController($scope, Authentication) {
+    // This provides Authentication context.
+    $scope.authentication = Authentication;
+    $scope.clicked = clicked;
+
+    function clicked(target) {
+        console.log(target);
     }
-]);
+  }
+})();

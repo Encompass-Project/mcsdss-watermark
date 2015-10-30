@@ -26,6 +26,7 @@
     "angular-papaparse": "~1.0.0",
     "papaparse": "~4.1.2",
     "ng-table": "~0.8.3",
-    "components-font-awesome": "~4.4.0"
+    "components-font-awesome": "~4.4.0",
+    "mocha": "~2.3.3"
   }
 }

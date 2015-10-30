@@ -1,9 +1,8 @@
 (function() {
   'use strict';
 
-  // AnalysisDataLoader used to load data for Anlaysis dashboard views asynchronously.
   angular
-    .module('core')
+    .module('mcsdss')  // mcsdss.providers not registering this provider correctly for some reason but mcsdss or mcsdss.directives does... WTH?
     .factory('AnalysisDataFactory', AnalysisDataFactory);
 
   AnalysisDataFactory.$inject = ['$q', '$http', '$log'];
