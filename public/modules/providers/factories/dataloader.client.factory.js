@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('mcsdss')  // mcsdss.providers not registering this provider correctly for some reason but mcsdss or mcsdss.directives does... WTH?
+    .module('mcsdss.providers')  // mcsdss.providers not registering this provider correctly for some reason but mcsdss or mcsdss.directives does... WTH?
     .factory('AnalysisDataFactory', AnalysisDataFactory);
 
   AnalysisDataFactory.$inject = ['$q', '$http', '$log'];

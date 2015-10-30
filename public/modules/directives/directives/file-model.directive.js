@@ -58,4 +58,5 @@
     //     });
     //   })
     // };
-})();  // Throwing unexpected syntax error on first ) which makes no sense. Not using this code right now so resolve later if at all.
+    // Throwing unexpected syntax error on first ) which makes no sense. Not using this code right now so resolve later if at all.
+})();

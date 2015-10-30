@@ -1,9 +1,16 @@
-'use strict';
+(function() {
+    'use strict';
 
-angular.module('core').controller('MapViewController', ['$scope', 'Authentication',
-    function($scope, Authentication) {
+    angular
+        .module('core')
+        .controller('MapViewController', MapViewController);
+
+    MapViewController.$inject = ['$scope', 'Authentication'];
+
+    function MapViewController($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
+        $scope.updateView = updateView;
 
         $scope.$on('analysisDataLoaded', function (event, args) {
             // console.log(event, args);
@@ -11,8 +18,8 @@ angular.module('core').controller('MapViewController', ['$scope', 'Authenticatio
             $scope.updateView(args);
         });
 
-        $scope.updateView = function (data) {
+        function updateView(data) {
             // console.log('mapViewCtrl.updateView(data): ', data);
-        };
+        }
     }
-]);
+})();

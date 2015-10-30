@@ -62,6 +62,7 @@ module.exports = {
 		],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',
+			'public/lib/mongoose/bin/mongoose.js',
 			'public/modules/*/tests/*.js'
 		]
 	}
