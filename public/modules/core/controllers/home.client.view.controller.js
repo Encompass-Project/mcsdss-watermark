@@ -10,6 +10,9 @@
   function HomeViewController($scope, Authentication, $state) {
   // This provides Authentication context.
   $scope.authentication = Authentication;
+  $scope.currentRoute = 'Home';
+
+  console.log($scope.currentRoute);
 
     if ($scope.authentication.user === '') {
         // console.log('NO AUTH!');

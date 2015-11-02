@@ -1,111 +1,119 @@
 <section>
-    <div class="row utility-weighting">
-        <!-- <h4>Preference Weighting for Attribute Utility Scores</h4> -->
-        <div class="col-xs-4">
-            <label for="weight">Attr 1</label>
-            <input type="range" id="attr_1" min="0" value="10" max="100" step="1">
-        </div>
-        <div class="col-xs-4">
-            <label for="weight">Attr 2</label>
-            <input type="range" id="attr_2" min="0" value="10" max="100" step="1">
-        </div>
-        <div class="col-xs-4">
-            <label for="weight">Attr 3</label>
-            <input type="range" id="attr_3" min="0" value="10" max="100" step="1">
-        </div>
+  <!-- Ranking Sliders -->
+  <!-- <h4>Preference Weighting for Attribute Utility Scores</h4> -->
+
+  <div class="row utility-weighting">
+    <div class="col-xs-4">
+      <label for="weight">Attr 1</label>
+      <input type="range" id="attr_1" min="0" value="10" max="100" step="1">
     </div>
-    <!-- <div class="row">
-        <div class="datatable table-responsive analysis-data-table" id="datatable" ng-controller="DatatableViewController">
-            <table ng-table="dataTable" class="table table-striped">
-               <tr ng-repeat="dataitem in data" ng-if="$index > 0" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)">
-                   <td data-title="'Run'" sortable="'dataSource'" class="datatable-source">
-                       {{ dataitem[0] }}
-                   </td>
-                   <td data-title="'Attr 1 Value'" sortable="'value_O'" class="datatable-value">
-                       {{ dataitem[1] }}
-                   </td>
-                   <td data-title="'Attr 1 SUF'" class="datatable-suf">
-                       {{ suf01 }}
-                   </td>
-                   <td data-title="'Attr 2 Value'" sortable="'attr_2'" class="datatable-value">
-                       {{ dataitem[5] }}
-                   </td>
-                   <td data-title="'Attr 2 SUF'" class="datatable-suf">
-                       {{ suf02 }}
-                   </td>
-                   <td data-title="'Attr 3 Value'" sortable="'attr_3'" class="datatable-value">
-                       {{ dataitem[7] }}
-                   </td>
-                   <td data-title="'Attr 3 SUF'" class="datatable-suf">
-                       {{ suf03 }}
-                   </td>
-                   <td data-title="'Run MUF'" class="datatable-muf">
-                       {{ muf }}
-                   </td>
-               </tr>
-            </table>
-        </div>
-    </div> -->
-    <div class="row">
-        <div class="datatable table-responsive analysis-data-table" id="datatable" ng-controller="DatatableViewController">
-            <table class="table table-striped table-bordered"><!-- show-filter='true'  -->
-              <thead>
-                <tr>
-                  <th>{{ headerdata[0] }}</th>
-                  <th>{{ headerdata[1] }}</th>
-                  <th>{{ headerdata[2] }}</th>
-                  <th>{{ headerdata[3] }}</th>
-                  <th>{{ headerdata[4] }}</th>
-                  <th>{{ headerdata[5] }}</th>
-                  <th>{{ headerdata[6] }}</th>
-                  <th>{{ headerdata[7] }}</th>
-                  <th>{{ headerdata[8] }}</th>
-                  <th>{{ headerdata[9] }}</th>
-                  <th>{{ headerdata[10] }}</th>
-                  <th>{{ headerdata[11] }}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="data in tabledata track by $index" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)">
-                  <td>{{ data }}</td>
-                  <td>{{ data[1] }}</td>
-                  <td>{{ data[2] }}</td>
-                  <td>{{ data[3] }}</td>
-                  <td>{{ data[4] }}</td>
-                  <td>{{ data[5] }}</td>
-                  <td>{{ data[6] }}</td>
-                  <td>{{ data[7] }}</td>
-                  <td>{{ data[8] }}</td>
-                  <td>{{ data[9] }}</td>
-                  <td>{{ data[10] }}</td>
-                  <td>{{ data[11] }}</td>
-                  <!-- <td data-title="'Run'" sortable="'dataSource'" class="datatable-source">
-                     {{ tabledata[0] }}
-                  </td>
-                  <td data-title="'Attr 1 Value'" sortable="'value_O'" class="datatable-value">
-                     {{ dataitem[1] }}
-                  </td>
-                  <td data-title="'Attr 1 SUF'" class="datatable-suf">
-                     {{ suf01 }}
-                  </td>
-                  <td data-title="'Attr 2 Value'" sortable="'attr_2'" class="datatable-value">
-                     {{ dataitem[5] }}
-                  </td>
-                  <td data-title="'Attr 2 SUF'" class="datatable-suf">
-                     {{ suf02 }}
-                  </td>
-                  <td data-title="'Attr 3 Value'" sortable="'attr_3'" class="datatable-value">
-                     {{ dataitem[7] }}
-                  </td>
-                  <td data-title="'Attr 3 SUF'" class="datatable-suf">
-                     {{ suf03 }}
-                  </td>
-                  <td data-title="'Run MUF'" class="datatable-muf">
-                     {{ muf }}
-                  </td> -->
-                </tr>
-              </tbody>
-            </table>
-        </div>
+    <div class="col-xs-4">
+      <label for="weight">Attr 2</label>
+      <input type="range" id="attr_2" min="0" value="10" max="100" step="1">
     </div>
+    <div class="col-xs-4">
+      <label for="weight">Attr 3</label>
+      <input type="range" id="attr_3" min="0" value="10" max="100" step="1">
+    </div>
+  </div>
+
+  <!--
+  <div class="row">
+    <div class="datatable table-responsive analysis-data-table" id="datatable" ng-controller="DatatableViewController">
+      <table ng-table="dataTable" class="table table-striped">
+        <tr ng-repeat="dataitem in data" ng-if="$index > 0" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)">
+          <td data-title="'Run'" sortable="'dataSource'" class="datatable-source">
+            {{ dataitem[0] }}
+          </td>
+          <td data-title="'Attr 1 Value'" sortable="'value_O'" class="datatable-value">
+           {{ dataitem[1] }}
+          </td>
+          <td data-title="'Attr 1 SUF'" class="datatable-suf">
+           {{ suf01 }}
+          </td>
+          <td data-title="'Attr 2 Value'" sortable="'attr_2'" class="datatable-value">
+           {{ dataitem[5] }}
+          </td>
+          <td data-title="'Attr 2 SUF'" class="datatable-suf">
+           {{ suf02 }}
+          </td>
+          <td data-title="'Attr 3 Value'" sortable="'attr_3'" class="datatable-value">
+           {{ dataitem[7] }}
+          </td>
+          <td data-title="'Attr 3 SUF'" class="datatable-suf">
+           {{ suf03 }}
+          </td>
+          <td data-title="'Run MUF'" class="datatable-muf">
+           {{ muf }}
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  -->
+  <div class="row">
+    <div class="table-responsive analysis-data-table" id="datatable"><!-- datatable  -->
+      <table class="table table-striped table-bordered">
+        <!-- show-filter='true'  -->
+        <thead>
+          <tr>
+            <th>{{ headerdata[0] }}</th>
+            <th>{{ headerdata[1] }}</th>
+            <th>{{ headerdata[2] }}</th>
+            <th>{{ headerdata[3] }}</th>
+            <th>{{ headerdata[4] }}</th>
+            <th>{{ headerdata[5] }}</th>
+            <th>{{ headerdata[6] }}</th>
+            <th>{{ headerdata[7] }}</th>
+            <th>{{ headerdata[8] }}</th>
+            <th>{{ headerdata[9] }}</th>
+            <th>{{ headerdata[10] }}</th>
+            <th>{{ headerdata[11] }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="data in tabledata track by $index" ng-click="rowClicked(data)" ng-mouseenter="decorateSiblings(data)" ng-mouseleave="clearSiblings(data)">
+            <!-- track by $index -->
+            <td>{{ tabledata }}</td>
+            <td>{{ tabledata[1] }}</td>
+            <td>{{ tabledata[2] }}</td>
+            <td>{{ tabledata[3] }}</td>
+            <td>{{ tabledata[4] }}</td>
+            <td>{{ tabledata[5] }}</td>
+            <td>{{ tabledata[6] }}</td>
+            <td>{{ tabledata[7] }}</td>
+            <td>{{ tabledata[8] }}</td>
+            <td>{{ tabledata[9] }}</td>
+            <td>{{ tabledata[10] }}</td>
+            <td>{{ tabledata[11] }}</td>
+            <!--
+            <td data-title="'Run'" sortable="'dataSource'" class="datatable-source">
+               {{ tabledata[0] }}
+            </td>
+            <td data-title="'Attr 1 Value'" sortable="'value_O'" class="datatable-value">
+               {{ dataitem[1] }}
+            </td>
+            <td data-title="'Attr 1 SUF'" class="datatable-suf">
+               {{ suf01 }}
+            </td>
+            <td data-title="'Attr 2 Value'" sortable="'attr_2'" class="datatable-value">
+               {{ dataitem[5] }}
+            </td>
+            <td data-title="'Attr 2 SUF'" class="datatable-suf">
+               {{ suf02 }}
+            </td>
+            <td data-title="'Attr 3 Value'" sortable="'attr_3'" class="datatable-value">
+               {{ dataitem[7] }}
+            </td>
+            <td data-title="'Attr 3 SUF'" class="datatable-suf">
+               {{ suf03 }}
+            </td>
+            <td data-title="'Run MUF'" class="datatable-muf">
+               {{ muf }}
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </section>

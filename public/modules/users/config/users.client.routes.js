@@ -53,6 +53,11 @@
 				url: '/password/reset/:token',
 				templateUrl: 'modules/users/views/password/reset-password.client.view.html',
 				controller: 'PasswordController'
+			}).
+			state('signout', {
+				url: '/auth/signout',
+				templateUrl: '',
+				controller: ''
 			});
 		}
 })();

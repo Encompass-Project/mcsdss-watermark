@@ -28,6 +28,7 @@ table{
 thead {
   border-bottom: 1px solid #789;
   background: #234;
+  height: 8rem;
 }
 thead > * {
   color: #fff;

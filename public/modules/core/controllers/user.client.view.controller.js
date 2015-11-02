@@ -10,7 +10,10 @@
   function UserViewController($scope, Authentication) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
+    $scope.currentRoute = 'Dashboard';
     $scope.clicked = clicked;
+
+    console.log($scope.currentRoute);
 
     function clicked(target) {
         // console.log(target);

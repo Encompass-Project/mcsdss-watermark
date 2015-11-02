@@ -9,6 +9,7 @@
 
 	function HeaderController($scope, Authentication, Menus) {
 		$scope.authentication = Authentication;
+		$scope.currentRoute = 'Navigation';  // Need to make dynamic from loaded controller.
 		$scope.toggleCollapsibleMenu = toggleCollapsibleMenu;
 		$scope.isCollapsed = false;
 		$scope.menu = Menus.getMenu('topbar');

@@ -15,7 +15,6 @@
       .when('/models', '/models/list')
       .when('/analyze', '/analyze')   // This is required to refresh the view on nav change. Not yet sure why...
       .when('/decisions', '/decisions/list')
-      // .when('/notebooks', '/notebooks/list')   // Still determining where these will live. Maybe under the formulation module?
       .when('/publications', '/publications/list')
       .when('/profile', '/profile/view')
       .otherwise('/');
@@ -30,8 +29,8 @@
       .state('anon', {
         abstract: false,
         url: '/',
-        templateUrl: 'modules/core/views/default.client.view.html',
-        controller: 'DefaultViewController'
+        templateUrl: 'modules/core/views/anon.client.view.html',
+        controller: 'AnonViewController'
       })
       .state('dashboard', {
         abstract: false,
@@ -229,80 +228,6 @@
           }
         }
       })
-      // DECISIONS
-      .state('dashboard.decisions', {
-        abstract: false,
-        url: '/decisions',
-        templateUrl: 'modules/core/views/decisions/decisions.client.view.html',
-        controller: 'DecisionsViewController'
-      })
-      .state('dashboard.decisions.list', {
-        abstract: false,
-        url: '/list', // can also use- url: '/', but that has no semantic meaning.
-        templateUrl: 'modules/decisions/views/list-decisions.client.view.html',
-        controller: 'DecisionsController'
-      })
-      .state('dashboard.decisions.list.details', {
-        abstract: false,
-        url: '/details/:decisionId',
-        templateUrl: 'modules/decisions/views/view-decision.client.view.html',
-        controller: 'DecisionsController'
-      })
-      .state('dashboard.decisions.list.edit', {
-        abstract: false,
-        url: '/edit/:decisionId',
-        templateUrl: 'modules/decisions/views/edit-decision.client.view.html',
-        controller: 'DecisionsController'
-      })
-      .state('dashboard.decisions.load', {
-        abstract: false,
-        url: '/load',
-        templateUrl: 'modules/decisions/views/create-decision.client.view.html',
-        controller: 'DecisionsController'
-      })
-      .state('dashboard.decisions.curate', {
-        abstract: false,
-        url: '/curate',
-        templateUrl: 'modules/core/views/decisions/curate-decisions.client.view.html',
-        controller: 'CurateDecisionsViewController'
-      })
-      .state('dashboard.decisions.publish', {
-        abstract: false,
-        url: '/publish',
-        templateUrl: 'modules/core/views/decisions/publish-decisions.client.view.html',
-        controller: 'PublishDecisionsViewController'
-      })
-      // NOTEBOOKS
-      // .state('dashboard.notebooks', {
-      //   abstract: false,
-      //   url: '/notebooks',
-      //   templateUrl: 'modules/core/views/notebooks/notebooks.client.view.html',
-      //   controller: 'NotebooksViewController'
-      // })
-      // .state('dashboard.notebooks.list', {
-      //   abstract: false,
-      //   url: '/list', // can also use- url: '/', but that has no semantic meaning.
-      //   templateUrl: 'modules/notebooks/views/list-notebooks.client.view.html',
-      //   controller: 'NotebooksController'
-      // })
-      // .state('dashboard.notebooks.list.details', {
-      //   abstract: false,
-      //   url: '/details/:notebookId',
-      //   templateUrl: 'modules/notebooks/views/view-notebook.client.view.html',
-      //   controller: 'NotebooksController'
-      // })
-      // .state('dashboard.notebooks.list.edit', {
-      //   abstract: false,
-      //   url: '/edit/:notebookId',
-      //   templateUrl: 'modules/notebooks/views/edit-notebook.client.view.html',
-      //   controller: 'NotebooksController'
-      // })
-      // .state('dashboard.notebooks.load', {
-      //   abstract: false,
-      //   url: '/load',
-      //   templateUrl: 'modules/notebooks/views/create-notebook.client.view.html',
-      //   controller: 'NotebooksController'
-      // })
       // PUBLICATIONS
       .state('dashboard.publications', {
         abstract: false,

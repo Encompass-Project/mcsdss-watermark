@@ -1,73 +1,124 @@
-<section data-ng-controller="HeaderController">
-	<div class="navbar-header">
-		<button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
-			<span class="sr-only">Toggle navigation</span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<!-- Link this up to the About/Info/Help Module OR back to dashboard for user/landing view. -->
-		<!-- <a href="/#!/" class="navbar-brand">MCSDSS v0.3.1</a> -->
-		<a ui-sref="home" class="navbar-brand">FlowFinder</a>
-		<div class="pull-left navar-brand-subtitle">A MultiCriteria Spatial Decision Support System (Single User Version)</div>
-	</div>
-	<!-- Search Bar for Later -->
-	<!-- <div class="hidden-xs col-sm-1 col-md-3 col-md-offset-3 col-lg-4 col-lg-offset-4">
-	    <form class="navbar-form" role="search">
-	        <div class="input-group">
-	            <input type="text" class="form-control search-box" placeholder="Search" name="srch-term" id="srch-term">
-	            <div class="input-group-btn">
-	                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-	            </div>
-	        </div>
-	    </form>
-	</div> -->
-	<nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-		<ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
-			<li data-ng-repeat="item in menu.items | orderBy:'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
-				<a ng-switch-when="dropdown" class="dropdown-toggle">
-					<span data-ng-bind="item.title"></span>
-					<b class="caret"></b>
-				</a>
-				<ul ng-switch-when="dropdown" class="dropdown-menu">
-					<li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
-						<a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
-					</li>
-				</ul>
-				<a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
-			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-			<li ui-route="/signup" ng-class="{active: $uiRoute}">
-				<a href="/#!/signup">Sign Up</a>
-			</li>
-			<li class="divider-vertical"></li>
-			<li ui-route="/signin" ng-class="{active: $uiRoute}">
-				<a href="/#!/signin">Sign In</a>
-			</li>
-		</ul>
-		<ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">
-			<li class="dropdown header-nav-dropdown-toggle">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-					<span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
-				</a>
-				<ul class="dropdown-menu">
-					<!-- Moved to profile view -->
-					<!-- <li>
-						<a href="/#!/settings/profile">Edit Profile</a>
-					</li>
-					<li>
-						<a href="/#!/settings/accounts">Manage Social Accounts</a>
-					</li>
-					<li data-ng-show="authentication.user.provider === 'local'">
-						<a href="/#!/settings/password">Change Password</a>
-					</li>
-					<li class="divider"></li> -->
-					<li>
-						<a href="/auth/signout">Signout</a>
-					</li>
-				</ul>
-			</li>
-		</ul>
-	</nav>
+<section>
+<nav class="navbar-container" data-ng-controller="HeaderController">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <!-- <a ui-sref="home" class="navbar-brand" data-ng-if="!menu.shouldRender(authentication.user);">
+    	<div class="navbar-toggle-label">
+	      <span class="dashboard-sidemenu-item-icon fa fa-2x fa-bars" aria-hidden="true"></span>
+	      <span class="dashboard-sidemenu-item-label">Navigation</span>
+      </div>
+    </a> -->
+  </div>
+  <div class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+    <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle navbar-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+        	<div>
+	          <span class="fa fa-globe fa-2x" aria-hidden="true"></span>
+	          <span class="navbar-toggle-label">{{ currentRoute }}</span>
+          </div>
+        </a>
+        <ul class="dropdown-menu main-nav">
+          <a ui-sref="dashboard.main" ng-click="clicked('dashboard')">
+            <div class="dashboard-sidemenu-item">
+              <span class="dashboard-sidemenu-item-icon fa fa-desktop" aria-hidden="true"></span>
+              <span class="dashboard-sidemenu-item-label">Dashboard</span>
+            </div>
+          </a>
+          <a ui-sref="dashboard.analyze" ng-click="clicked('analyze')">
+            <div class="dashboard-sidemenu-item">
+              <span class="dashboard-sidemenu-item-icon fa fa-area-chart" aria-hidden="true"></span>
+              <span class="dashboard-sidemenu-item-label">Analyze</span>
+            </div>
+          </a>
+          <a ui-sref="dashboard.formulations.list" ng-click="clicked('formulations')">
+            <div class="dashboard-sidemenu-item dashboard-sidemenu-item-disabled">
+              <span class="dashboard-sidemenu-item-icon fa fa-puzzle-piece" aria-hidden="true"></span>
+              <span class="dashboard-sidemenu-item-label">Formulations</span>
+            </div>
+          </a>
+          <a ui-sref="dashboard.datasets.list" ng-click="clicked('datasets')">
+            <div class="dashboard-sidemenu-item dashboard-sidemenu-item-disabled">
+              <span class="dashboard-sidemenu-item-icon fa fa-database" aria-hidden="true"></span>
+              <span class="dashboard-sidemenu-item-label">Data Sources</span>
+            </div>
+          </a>
+          <a ui-sref="dashboard.models.list" ng-click="clicked('models')">
+            <div class="dashboard-sidemenu-item dashboard-sidemenu-item-disabled">
+              <span class="dashboard-sidemenu-item-icon fa fa-cubes" aria-hidden="true"></span>
+              <span class="dashboard-sidemenu-item-label">Models</span>
+            </div>
+          </a>
+          <a ui-sref="dashboard.publications.list" ng-click="clicked('publications')">
+            <div class="dashboard-sidemenu-item dashboard-sidemenu-item-disabled">
+              <span class="dashboard-sidemenu-item-icon fa fa-newspaper-o" aria-hidden="true"></span>
+              <span class="dashboard-sidemenu-item-label">Publications</span>
+            </div>
+          </a>
+        </ul>
+      </li>
+      <li data-ng-repeat="item in menu.items | orderBy:'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
+        <a ng-switch-when="dropdown" class="dropdown-toggle">
+          <span data-ng-bind="item.title"></span>
+          <b class="caret"></b>
+        </a>
+        <ul ng-switch-when="dropdown" class="dropdown-menu">
+          <li data-ng-repeat="subitem in item.items | orderBy: 'position'" data-ng-if="subitem.shouldRender(authentication.user);" ui-route="{{subitem.uiRoute}}" ng-class="{active: $uiRoute}">
+            <a href="/#!/{{subitem.link}}" data-ng-bind="subitem.title"></a>
+          </li>
+        </ul>
+        <a ng-switch-default href="/#!/{{item.link}}" data-ng-bind="item.title"></a>
+      </li>
+    </ul>
+
+    <!-- <div class="pull-left navbar-brand-subtitle">A MultiCriteria Spatial Decision Support System (Single User Version)</div> -->
+    <div class="navbar-brand">Flow Finder <span class="navbar-brand-subtitle">Alpha v0.3</span></div>
+
+    <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(!authentication.user);"> <!-- data-ng-hide="authentication.user" -->
+      <li ui-route="/signup" ng-class="{active: $uiRoute}">
+        <a href="/#!/signup">Sign Up<span class="dashboard-sidemenu-item-icon fa fa-user-plus" aria-hidden="true"></span></a>
+      </li>
+      <li class="divider-vertical"></li>
+      <li ui-route="/signin" ng-class="{active: $uiRoute}">
+        <a href="/#!/signin">Sign In<span class="dashboard-sidemenu-item-icon fa fa-sign-in" aria-hidden="true"></span></a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(authentication.user);"> <!-- data-ng-show="authentication.user" -->
+    	<div class="usernav-greeting pull-left">Welcome, </div>
+      <li class="dropdown"><!-- data-ng-if="menu.shouldRender(authentication.user);" --> <!-- data-ng-hide="authentication.user" -->
+        <a href="#" class="dropdown-toggle navbar-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+          <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu user-nav">
+          <li>
+            <a ui-sref="dashboard.profile">View Profile<span class="dashboard-sidemenu-item-icon fa fa-user" aria-hidden="true"></span></a><!-- href="/#!/settings/profile" -->
+          </li>
+          <li>
+            <a ui-sref="dashboard.profile.accounts">Social Accounts<span class="dashboard-sidemenu-item-icon fa fa-bullhorn" aria-hidden="true"></span></a><!-- href="/#!/settings/accounts" -->
+          </li>
+          <li data-ng-show="authentication.user.provider === 'local'">
+            <a ui-sref="dashboard.profile.password">Change Password<span class="dashboard-sidemenu-item-icon fa fa-key" aria-hidden="true"></span></a><!-- href="/#!/settings/password" -->
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a ui-sref="documentation">FAQ | Documentation<span class="dashboard-sidemenu-item-icon fa fa-file-text" aria-hidden="true"></span></a>
+          </li>
+          <li>
+            <a ui-sref="about">About FlowFinder<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="/auth/signout">Signout<span class="dashboard-sidemenu-item-icon fa fa-sign-out" aria-hidden="true"></span></a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
 </section>
