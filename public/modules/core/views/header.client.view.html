@@ -7,12 +7,14 @@
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
-    <!-- <a ui-sref="home" class="navbar-brand" data-ng-if="!menu.shouldRender(authentication.user);">
+		<!--
+		<a ui-sref="home" class="navbar-brand" data-ng-if="!menu.shouldRender(authentication.user);">
     	<div class="navbar-toggle-label">
 	      <span class="dashboard-sidemenu-item-icon fa fa-2x fa-bars" aria-hidden="true"></span>
 	      <span class="dashboard-sidemenu-item-label">Navigation</span>
       </div>
-    </a> -->
+    </a>
+    -->
   </div>
   <div class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
     <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
@@ -79,7 +81,7 @@
     <!-- <div class="pull-left navbar-brand-subtitle">A MultiCriteria Spatial Decision Support System (Single User Version)</div> -->
     <div class="navbar-brand">Flow Finder <span class="navbar-brand-subtitle">Alpha v0.3</span></div>
 
-    <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(!authentication.user);"> <!-- data-ng-hide="authentication.user" -->
+    <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(!authentication.user);">
       <li ui-route="/signup" ng-class="{active: $uiRoute}">
         <a href="/#!/signup">Sign Up<span class="dashboard-sidemenu-item-icon fa fa-user-plus" aria-hidden="true"></span></a>
       </li>
@@ -89,11 +91,10 @@
       </li>
     </ul>
 
-    <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(authentication.user);"> <!-- data-ng-show="authentication.user" -->
-    	<div class="usernav-greeting pull-left">Hello, </div>
-      <li class="dropdown"><!-- data-ng-if="menu.shouldRender(authentication.user);" --> <!-- data-ng-hide="authentication.user" -->
+    <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(authentication.user);">
+      <li class="dropdown">
         <a href="#" class="dropdown-toggle navbar-toggle" role="button" aria-haspopup="true" aria-expanded="false">
-          <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+          Hello, <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
         </a>
         <ul class="dropdown-menu user-nav">
           <li>
