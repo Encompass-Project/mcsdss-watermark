@@ -9,6 +9,8 @@
 
 	function HeaderController($scope, Authentication, Menus) {
 		$scope.authentication = Authentication;
+		$scope.appTitle = 'Conflux';
+		$scope.versionNumber = 'Alpha v0.23.314';
 		$scope.currentRoute = 'Navigation';  // Need to make dynamic from loaded controller.
 		$scope.toggleCollapsibleMenu = toggleCollapsibleMenu;
 		$scope.isCollapsed = false;
@@ -23,10 +25,5 @@
 			$scope.isCollapsed = false;
 		});
 
-		// $scope.filter('customNavbarOrder', function() {
-		// 	function navbarOrder(subitem) {
-		// 		// tbd.
-		// 	}
-		// });
 	}
 })();
