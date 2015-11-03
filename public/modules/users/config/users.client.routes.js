@@ -58,6 +58,37 @@
 				url: '/auth/signout',
 				templateUrl: '',
 				controller: ''
-			});
+			})
+			// PROFILE
+      .state('dashboard.profile', {
+        abstract: false,
+        url: '/profile',
+        templateUrl: 'modules/core/views/profile/profile.client.view.html',
+        controller: 'ProfileViewController'
+      })
+      .state('dashboard.profile.view', {
+        abstract: false,
+        url: '/view', // can also use- url: '/', but that has no semantic meaning.
+        templateUrl: 'modules/users/views/settings/view-profile.client.view.html',
+        controller: 'SettingsController'
+      })
+      .state('dashboard.profile.edit', {
+        abstract: false,
+        url: '/edit',
+        templateUrl: 'modules/users/views/settings/edit-profile.client.view.html',
+        controller: 'SettingsController'
+      })
+      .state('dashboard.profile.accounts', {
+        abstract: false,
+        url: '/accounts',
+        templateUrl: 'modules/users/views/settings/social-accounts.client.view.html',
+        controller: 'SettingsController'
+      })
+      .state('dashboard.profile.password', {
+        abstract: false,
+        url: '/password',
+        templateUrl: 'modules/users/views/settings/change-password.client.view.html',
+        controller: 'SettingsController'
+      });
 		}
 })();

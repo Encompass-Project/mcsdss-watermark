@@ -246,13 +246,15 @@ ul.dropdown-menu > li > a:hover {
   color: #111111;
 }
 
-.list-group-item {
-  padding: 0 0 0 1rem !important;
+.list-group-item-heading {
+  padding: 0.3rem 0 0 0;
+  font-weight: 500;
+  color: #111111 !important;
 }
 
-.list-group-item-heading {
-  padding: 0.2rem 0 0 0;
-  color: #111111 !important;
+.list-group-item {
+  padding: 0 0 0.4rem 1rem !important;
+  border-top: 1px solid #345 !important;
 }
 
 .list-group-item.ng-scope.odd {
