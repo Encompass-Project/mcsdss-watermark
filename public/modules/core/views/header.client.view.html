@@ -21,37 +21,37 @@
             </div>
           </a>
           <ul class="dropdown-menu main-nav">
-            <a ui-sref="dashboard.main" ng-click="clicked('dashboard')">
+            <a ui-sref="dashboard" ng-click="clicked('dashboard')">
               <div class="dashboard-sidemenu-item">
                 <span class="dashboard-sidemenu-item-icon fa fa-desktop" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Dashboard</span>
               </div>
             </a>
-            <a ui-sref="dashboard.analyze" ng-click="clicked('analyze')">
+            <a ui-sref="analyze" ng-click="clicked('analyze')">
               <div class="dashboard-sidemenu-item">
                 <span class="dashboard-sidemenu-item-icon fa fa-area-chart" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Analyze</span>
               </div>
             </a>
-            <a ui-sref="dashboard.formulations.list" ng-click="clicked('formulations')">
+            <a ui-sref="formulations" ng-click="clicked('formulations')">
               <div class="dashboard-sidemenu-item dashboard-sidemenu-item-disabled">
                 <span class="dashboard-sidemenu-item-icon fa fa-puzzle-piece" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Formulations</span>
               </div>
             </a>
-            <a ui-sref="dashboard.datasets.list" ng-click="clicked('datasets')">
+            <a ui-sref="datasets" ng-click="clicked('datasets')">
               <div class="dashboard-sidemenu-item dashboard-sidemenu-item-disabled">
                 <span class="dashboard-sidemenu-item-icon fa fa-database" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Data Sources</span>
               </div>
             </a>
-            <a ui-sref="dashboard.models.list" ng-click="clicked('models')">
+            <a ui-sref="models" ng-click="clicked('models')">
               <div class="dashboard-sidemenu-item dashboard-sidemenu-item-disabled">
                 <span class="dashboard-sidemenu-item-icon fa fa-cubes" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Models</span>
               </div>
             </a>
-            <a ui-sref="dashboard.publications.list" ng-click="clicked('publications')">
+            <a ui-sref="publications" ng-click="clicked('publications')">
               <div class="dashboard-sidemenu-item dashboard-sidemenu-item-disabled">
                 <span class="dashboard-sidemenu-item-icon fa fa-newspaper-o" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Publications</span>
@@ -61,7 +61,11 @@
         </li>
       </ul>
       <!-- Branding -->
-      <div class="navbar-brand"><a class="anon-home-link" ui-sref="home"><img class="pull-left nav-icon" ng-src="{{ iconpath }}" alt="Conflux Icon" />{{ appTitle }} <span class="navbar-brand-subtitle">{{ versionNumber }}</span></a></div>
+      <div class="navbar-brand">
+        <a class="anon-home-link" ui-sref="home">
+          <img class="pull-left nav-icon" ng-src="{{ iconpath }}" alt="Conflux Icon" />{{ appTitle }} <span class="navbar-brand-subtitle">{{ versionNumber }}</span>
+        </a>
+      </div>
       <!-- Anonymous Navbar -->
       <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(!authentication.user);">
         <li class="dropdown">
@@ -91,13 +95,13 @@
           </a>
           <ul class="dropdown-menu user-nav">
             <li>
-              <a ui-sref="dashboard.profile">View Profile<span class="dashboard-sidemenu-item-icon fa fa-user" aria-hidden="true"></span></a>
+              <a ui-sref="profile">View Profile<span class="dashboard-sidemenu-item-icon fa fa-user" aria-hidden="true"></span></a>
             </li>
             <li>
-              <a ui-sref="dashboard.profile.accounts">Social Accounts<span class="dashboard-sidemenu-item-icon fa fa-bullhorn" aria-hidden="true"></span></a>
+              <a ui-sref="profile.accounts">Social Accounts<span class="dashboard-sidemenu-item-icon fa fa-bullhorn" aria-hidden="true"></span></a>
             </li>
             <li data-ng-show="authentication.user.provider === 'local'">
-              <a ui-sref="dashboard.profile.password">Change Password<span class="dashboard-sidemenu-item-icon fa fa-key" aria-hidden="true"></span></a>
+              <a ui-sref="profile.password">Change Password<span class="dashboard-sidemenu-item-icon fa fa-key" aria-hidden="true"></span></a>
             </li>
             <li class="divider"></li>
             <li>

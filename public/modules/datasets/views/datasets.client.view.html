@@ -1,0 +1,23 @@
+<section>
+    <div class="row subnavbar">
+        <div class="hidden-sm hidden-md">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default btn-list" type="button" data-ui-sref="datasets.list" ng-click="clicked('datasets.list')">List</button>
+                <button class="btn btn-default btn-new" type="button" data-ui-sref="datasets.load" ng-click="clicked('datasets.load')">New</button>
+                <button class="btn btn-default btn-transform" type="button" data-ui-sref="datasets.transform" ng-click="clicked('datasets.transform')">Transform</button>
+                <button class="btn btn-default btn-visualize" type="button" data-ui-sref="datasets.visualize" ng-click="clicked('datasets.visualize')">Visualize</button>
+            </div>
+        </div>
+        <div class="visible-sm visible-md">
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default btn-list" type="button" data-ui-sref="datasets.list" ng-click="clicked('datasets.list')">List</button>
+                <button class="btn btn-default btn-new" type="button" data-ui-sref="datasets.load" ng-click="clicked('datasets.load')">New</button>
+            </div>
+            <div class="row subnavbar-nav">
+                <button class="btn btn-default btn-transform" type="button" data-ui-sref="datasets.transform" ng-click="clicked('datasets.transform')">Transform</button>
+                <button class="btn btn-default btn-visualize" type="button" data-ui-sref="datasets.visualize" ng-click="clicked('datasets.visualize')">Visualize</button>
+            </div>
+        </div>
+    </div>
+    <div data-ui-view=""></div>
+</section>

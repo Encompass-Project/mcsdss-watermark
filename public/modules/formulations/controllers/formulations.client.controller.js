@@ -27,7 +27,7 @@
 			// Redirect after save
 			formulation.$save(function(response) {
 				// $location.path('formulations/' + response._id);
-				$state.go('dashboard.formulations', {}, {reload: true});
+				$state.go('formulations', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -49,7 +49,7 @@
 			} else {
 				$scope.formulation.$remove(function() {
 					// $location.path('formulations');
-					$state.go('dashboard.formulations', {}, {reload: true});
+					$state.go('formulations', {}, {reload: true});
 				});
 			}
 		}
@@ -60,7 +60,7 @@
 
 			formulation.$update(function() {
 				// $location.path('formulations/' + formulation._id);
-				$state.go('dashboard.formulations.list', {}, {reload: true});
+				$state.go('formulations.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

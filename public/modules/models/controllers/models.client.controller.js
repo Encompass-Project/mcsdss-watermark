@@ -27,7 +27,7 @@
 			// Redirect after save
 			model.$save(function(response) {
 				// $location.path('models/' + response._id);
-				$state.go('dashboard.models', {}, {reload: true});
+				$state.go('models', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -49,7 +49,7 @@
 			} else {
 				$scope.model.$remove(function() {
 					// $location.path('models');
-					$state.go('dashboard.models', {}, {reload: true});
+					$state.go('models', {}, {reload: true});
 				});
 			}
 		}
@@ -60,7 +60,7 @@
 
 			model.$update(function() {
 				// $location.path('models/' + model._id);
-				$state.go('dashboard.models.list', {}, {reload: true});
+				$state.go('models.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

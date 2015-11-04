@@ -2,15 +2,15 @@
   'use strict';
 
   angular
-    .module('core')
-    .controller('UserViewController', UserViewController);
+    .module('dashboard')
+    .controller('DashboardViewController', DashboardViewController);
 
-  UserViewController.$inject = ['$scope', 'Authentication'];
+  DashboardViewController.$inject = ['$scope', 'Authentication'];
 
-  function UserViewController($scope, Authentication) {
+  function DashboardViewController($scope, Authentication) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
-    $scope.currentRoute = 'Authenticated';
+    $scope.currentRoute = 'Dashboard';
     $scope.clicked = clicked;
 
     console.log($scope.currentRoute);

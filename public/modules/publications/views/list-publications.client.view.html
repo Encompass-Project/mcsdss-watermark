@@ -4,7 +4,7 @@
     </div>
     <div class="col-xs-4">
         <div class="list-group">
-            <a data-ng-repeat="publication in publications" data-ui-sref="dashboard.publications.list.details({publicationId: publication._id})" class="list-group-item">
+            <a data-ng-repeat="publication in publications" data-ui-sref="publications.list.details({publicationId: publication._id})" class="list-group-item">
     			<small class="list-group-item-text">
     				Posted on
     				<span data-ng-bind="publication.created | date:'medium'"></span>

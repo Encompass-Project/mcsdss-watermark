@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('core').controller('DashboardActivityViewController', ['$scope', 'Authentication',
+angular.module('dashboard').controller('DashboardActivityViewController', ['$scope', 'Authentication',
     function($scope, Authentication) {
         // This provides Authentication context.
         $scope.authentication = Authentication;

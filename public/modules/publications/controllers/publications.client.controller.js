@@ -27,7 +27,7 @@
 			// Redirect after save
 			publication.$save(function(response) {
 				// $location.path('publications/' + response._id);
-				$state.go('dashboard.publications', {}, {reload: true});
+				$state.go('publications', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -49,7 +49,7 @@
 			} else {
 				$scope.publication.$remove(function() {
 					// $location.path('publications');
-					$state.go('dashboard.publications', {}, {reload: true});
+					$state.go('publications', {}, {reload: true});
 				});
 			}
 		}
@@ -60,7 +60,7 @@
 
 			publication.$update(function() {
 				// $location.path('publications/' + publication._id);
-				$state.go('dashboard.publications.list', {}, {reload: true});
+				$state.go('publications.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

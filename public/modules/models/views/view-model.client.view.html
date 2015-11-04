@@ -2,7 +2,7 @@
 	<div class="page-header">
 		<h1 data-ng-bind="model.name"></h1>
 		<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == model.user._id))">
-			<a class="btn btn-primary" data-ui-sref="dashboard.models.list.edit({modelId: model._id})">
+			<a class="btn btn-primary" data-ui-sref="models.list.edit({modelId: model._id})">
 				<i class="glyphicon glyphicon-edit"></i>
 			</a>
 			<a class="btn btn-danger" data-ng-click="remove();">

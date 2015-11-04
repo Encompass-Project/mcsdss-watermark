@@ -30,7 +30,7 @@
 			dataset.$save(function(response) {
 				// $location.path('datasets/' + response._id);
 				// $location.path('datasets');
-				$state.go('dashboard.datasets', {}, {reload: true});
+				$state.go('datasets', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
@@ -52,7 +52,7 @@
 			} else {
 				$scope.dataset.$remove(function() {
 					// $location.path('datasets');
-					$state.go('dashboard.datasets', {}, {reload: true});
+					$state.go('datasets', {}, {reload: true});
 				});
 			}
 		}
@@ -63,7 +63,7 @@
 
 			dataset.$update(function() {
 				// $location.path('datasets/' + dataset._id);
-				$state.go('dashboard.datasets.list', {}, {reload: true});
+				$state.go('datasets.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});

@@ -4,7 +4,7 @@
     </div>
     <div class="col-xs-4">
         <div class="list-group">
-            <a data-ng-repeat="formulation in formulations" data-ui-sref="dashboard.formulations.list.details({formulationId: formulation._id})" class="list-group-item">
+            <a data-ng-repeat="formulation in formulations" data-ui-sref="formulations.list.details({formulationId: formulation._id})" class="list-group-item">
     			<small class="list-group-item-text">
     				Posted on
     				<span data-ng-bind="formulation.created | date:'medium'"></span>

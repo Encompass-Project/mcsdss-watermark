@@ -4,7 +4,7 @@
     </div>
     <div class="col-xs-4">
         <div class="list-group">
-            <a data-ng-repeat="model in models" data-ui-sref="dashboard.models.list.details({modelId: model._id})" class="list-group-item">
+            <a data-ng-repeat="model in models" data-ui-sref="models.list.details({modelId: model._id})" class="list-group-item">
     			<small class="list-group-item-text">
     				Posted on
     				<span data-ng-bind="model.created | date:'medium'"></span>
