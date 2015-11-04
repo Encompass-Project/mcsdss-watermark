@@ -88,6 +88,10 @@ a {
   text-align: right;
 }
 
+.nav-icon {
+  margin: -1.4rem 1rem 0 0;
+}
+
 .main-nav {
   width: 18rem;
   border: 1px solid #df691a;

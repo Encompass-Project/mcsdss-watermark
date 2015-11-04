@@ -11,6 +11,7 @@
 		$scope.authentication = Authentication;
 		$scope.appTitle = 'Conflux';
 		$scope.versionNumber = 'Alpha v0.23.314';
+		$scope.iconpath = '/modules/core/img/brand/conflux-logo-v1-icon-white-nods.png';
 		$scope.currentRoute = 'Navigation';  // Need to make dynamic from loaded controller.
 		$scope.toggleCollapsibleMenu = toggleCollapsibleMenu;
 		$scope.isCollapsed = false;

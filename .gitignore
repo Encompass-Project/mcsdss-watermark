@@ -11,3 +11,4 @@ config/env/secrets.js
 dev_notes/
 restapi-factory.client.service.js
 flowfinder-refactor-20151102.txt
+ignore/

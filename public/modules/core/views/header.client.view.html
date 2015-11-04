@@ -61,7 +61,7 @@
         </li>
       </ul>
       <!-- Branding -->
-      <div class="navbar-brand"><a class="anon-home-link" ui-sref="home">{{ appTitle }} <span class="navbar-brand-subtitle">{{ versionNumber }}</span></a></div>
+      <div class="navbar-brand"><a class="anon-home-link" ui-sref="home"><img class="pull-left nav-icon" ng-src="{{ iconpath }}" alt="Conflux Icon" />{{ appTitle }} <span class="navbar-brand-subtitle">{{ versionNumber }}</span></a></div>
       <!-- Anonymous Navbar -->
       <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(!authentication.user);">
         <li class="dropdown">
