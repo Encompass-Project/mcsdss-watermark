@@ -19,8 +19,7 @@
         $state.go('anon');
     } else {
         // console.log('WELCOME');
-        // $state.go('dashboard.main');
-        $state.go('dashboard');  // Route refactor
+        $state.go('dashboard');
     }
   }
 })();

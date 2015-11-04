@@ -10,7 +10,6 @@
   function CoreRoutes($stateProvider, $urlRouterProvider) {
     // Fall back on url-based routing for redirects and bad url catch-all.
     $urlRouterProvider
-      // .when('/analyze', '/analyze/layout')       // Not working.
       .when('/formulations', '/formulations/list')
       .when('/datasets', '/datasets/list')
       .when('/models', '/models/list')

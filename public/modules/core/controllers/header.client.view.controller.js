@@ -9,6 +9,7 @@
 
 	function HeaderController($scope, Authentication, Menus) {
 		$scope.authentication = Authentication;
+		// Need to consolidate all app info into a config object that is shared across modules.
 		$scope.appTitle = 'Conflux';
 		$scope.versionNumber = 'Alpha v0.23.314';
 		$scope.iconpath = '/modules/core/img/brand/conflux-logo-v1-icon-white-nods.png';
