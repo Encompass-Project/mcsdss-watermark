@@ -11,7 +11,7 @@
     // This provides Authentication context.
     $scope.authentication = Authentication;
     $scope.currentRoute = 'Dashboard';
-    $scope.listDisplayLimit = 7;
+    $scope.listDisplayLimit = 9;
     $scope.clicked = clicked;
 
     console.log($scope.currentRoute);
