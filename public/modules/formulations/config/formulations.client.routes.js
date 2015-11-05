@@ -33,7 +33,7 @@
         templateUrl: 'modules/formulations/views/edit-formulation.client.view.html',
         controller: 'FormulationsController'
       })
-      .state('formulations.load', {
+      .state('formulations.list.load', {
         abstract: false,
         url: '/load',
         templateUrl: 'modules/formulations/views/create-formulation.client.view.html',

@@ -149,7 +149,6 @@ ul.dropdown-menu > li > a:hover {
 
 .landing-page {
   padding: 0 5rem 1rem;
-  /*1rem 5rem;*/
 }
 
 .jumbotron-splash {
@@ -187,7 +186,6 @@ ul.dropdown-menu > li > a:hover {
   border-top-left-radius: 0.4rem !important;
   border-top-right-radius: 0.4rem !important;
   border: 1px solid #778899 !important;
-  /*border-top: none;*/
 }
 
 .panel-heading {
@@ -236,6 +234,7 @@ ul.dropdown-menu > li > a:hover {
 
 .subnavbar-nav > button {
   margin: 1rem;
+  width: 15rem;
 }
 
 .list-group {
@@ -250,15 +249,19 @@ ul.dropdown-menu > li > a:hover {
   color: #111111;
 }
 
+.list-group-item {
+  padding: 0.5rem 0 0.2rem 1rem !important;
+  border-top: 1px solid #345 !important;
+}
+
 .list-group-item-heading {
   padding: 0.3rem 0 0 0;
   font-weight: 500;
   color: #111111 !important;
 }
 
-.list-group-item {
-  padding: 0 0 0.4rem 1rem !important;
-  border-top: 1px solid #345 !important;
+.list-group-item-text {
+  /*padding: 1rem 0 0 0 !important;*/
 }
 
 .list-group-item.ng-scope.odd {
@@ -289,27 +292,27 @@ ul.dropdown-menu > li > a:hover {
 /* -xs */
 @media (max-width: 767px) {
   .subnavbar-nav > button {
-    min-width: 98%;
+    width: 15rem;
   }
 }
 
 /* -sm */
 @media (min-width: 768px) {
   .subnavbar-nav > button {
-    min-width: 44%;
+    width: 16rem;
   }
 }
 
 /* -md */
 @media (min-width: 992px) {
   .subnavbar-nav > button {
-    min-width: 30%;
+    width: 17rem;
   }
 }
 
 /* -lg */
 @media (min-width: 1200px) {
   .subnavbar-nav > button {
-    min-width: 14%;
+    width: 18rem;
   }
 }

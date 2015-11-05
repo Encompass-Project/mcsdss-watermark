@@ -33,19 +33,19 @@
         templateUrl: 'modules/datasets/views/edit-dataset.client.view.html',
         controller: 'DatasetsController'
       })
-      .state('datasets.load', {
+      .state('datasets.list.load', {
         abstract: false,
         url: '/load',
         templateUrl: 'modules/datasets/views/create-dataset.client.view.html',
         controller: 'DatasetsController'
       })
-      .state('datasets.transform', {
+      .state('datasets.list.transform', {
         abstract: false,
         url: '/transform',
         templateUrl: 'modules/datasets/views/datasets.transform.client.view.html',
         controller: 'DatasetsTransformViewController'
       })
-      .state('datasets.visualize', {
+      .state('datasets.list.visualize', {
         abstract: false,
         url: '/visualize',
         templateUrl: 'modules/datasets/views/datasets.visualize.client.view.html',

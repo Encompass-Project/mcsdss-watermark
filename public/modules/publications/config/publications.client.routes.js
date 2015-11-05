@@ -33,19 +33,19 @@
         templateUrl: 'modules/publications/views/edit-publication.client.view.html',
         controller: 'PublicationsController'
       })
-      .state('publications.load', {
+      .state('publications.list.load', {
         abstract: false,
         url: '/load',
         templateUrl: 'modules/publications/views/create-publication.client.view.html',
         controller: 'PublicationsController'
       })
-      .state('publications.curate', {
+      .state('publications.list.curate', {
         abstract: false,
         url: '/curate',
         templateUrl: 'modules/publications/views/publications.curate.client.view.html',
         controller: 'PublicationsCurateViewController'
       })
-      .state('publications.publish', {
+      .state('publications.list.publish', {
         abstract: false,
         url: '/publish',
         templateUrl: 'modules/publications/views/publications.publish.client.view.html',
