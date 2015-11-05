@@ -35,8 +35,6 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
 				'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
 				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
-				'public/lib/karma-jasmine/lib/jasmine.js',
-				'public/lib/mocha/mocha.js', // Added.
 				// 'public/lib/ng-file-upload-shim/angular-file-upload-shim.min.js',
 				// 'public/lib/ng-file-upload/angular-file-upload.min.js',
 				'public/lib/jquery/dist/jquery.min.js',
@@ -45,7 +43,7 @@ module.exports = {
 				'public/lib/leaflet/dist/leaflet.js',
 				'public/lib/d3/d3.min.js',
 				'public/lib/ng-table/dist/ng-table.js',
-				'public/lib/bootstrap/dist/js/bootstrap.min.js', 	// Added.
+				'public/lib/bootstrap/dist/js/bootstrap.min.js',
 				'public/lib/bootstrap-slider/bootstrap-slider.js'
 			]
 		},
@@ -56,13 +54,16 @@ module.exports = {
 			'public/config.js',
 			'public/application.js',
 			'public/modules/*/*.js',
-			'public/modules/**/*.js', // Picks up nested controllers within modules.
+			// 'public/modules/**/*.js', // Picks up nested tests within modules and throws a describe error in dev mode.
 			'public/modules/*/*[!tests]*/*.js',
 			'public/modules/core/directives/leaflet-directive.js'
 		],
 		tests: [
 			'public/lib/angular-mocks/angular-mocks.js',
 			'public/lib/mongoose/bin/mongoose.js',
+			'public/lib/karma/lib/karma.js',
+			'public/lib/karma-jasmine/lib/jasmine.js',
+			'public/lib/mocha/mocha.js',
 			'public/modules/*/tests/*.js'
 		]
 	}

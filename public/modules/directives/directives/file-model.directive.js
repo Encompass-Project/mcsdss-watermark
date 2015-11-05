@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   angular
@@ -58,5 +58,6 @@
     //     });
     //   })
     // };
-    // Throwing unexpected syntax error on first ) which makes no sense. Not using this code right now so resolve later if at all.
+
+  }
 })();
