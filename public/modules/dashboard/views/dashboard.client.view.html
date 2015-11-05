@@ -1,7 +1,7 @@
 <section>
     <div class="row">
-        <h1>Dashboard Info</h1>
-        <hr/>
+        <h1>Dashboard</h1>
+        <p>Further explanation and metrics forth coming...</p>
     </div>
     <div class="row">
         <div class="col-xs-3">
@@ -14,7 +14,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a data-ng-repeat="formulation in formulations | limitTo:7" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="formulations.list.details({formulationId: formulation._id})" class="list-group-item">
+                            <a data-ng-repeat="formulation in formulations | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="formulations.list.details({formulationId: formulation._id})" class="list-group-item">
                                 <h4 class="list-group-item-heading" data-ng-bind="formulation.name"></h4>
                                 <small class="list-group-item-text">
                                     Posted on
@@ -43,7 +43,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a data-ng-repeat="dataset in datasets | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="datasets.list.details({datasetId: dataset._id})" class="list-group-item">
+                            <a data-ng-repeat="dataset in datasets | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="datasets.list.details({datasetId: dataset._id})" class="list-group-item">
                                 <h4 class="list-group-item-heading" data-ng-bind="dataset.name"></h4>
                                 <small class="list-group-item-text">
                                     Posted on <span data-ng-bind="dataset.created | date:'medium'"></span> by <span data-ng-bind="dataset.user.displayName"></span><!--  ( ID: <span data-ng-bind="dataset._id"></span> ) -->
@@ -67,7 +67,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a data-ng-repeat="model in models | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="models.list.details({modelId: model._id})" class="list-group-item">
+                            <a data-ng-repeat="model in models | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="models.list.details({modelId: model._id})" class="list-group-item">
                                 <h4 class="list-group-item-heading" data-ng-bind="model.name"></h4>
                                 <small class="list-group-item-text">
                                     Posted on
@@ -94,7 +94,7 @@
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a data-ng-repeat="publication in publications | limitTo:3" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="publications.list.details({publicationId: publication._id})" class="list-group-item">
+                            <a data-ng-repeat="publication in publications | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="publications.list.details({publicationId: publication._id})" class="list-group-item">
                                 <h4 class="list-group-item-heading" data-ng-bind="publication.name"></h4>
                                 <small class="list-group-item-text">
                                     Posted on
