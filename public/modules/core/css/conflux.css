@@ -305,6 +305,48 @@ ul.dropdown-menu > li > a:hover {
 }
 
 /****************************************/
+/* About */
+
+.drop-shadow {
+  text-shadow: 1px 1px 2px #000000;
+}
+
+.quote-text {
+  color: #ffffff;
+  /*font-style: italic;*/
+}
+
+.text-question {
+  color: #f0ad4e; /*#593C64;*/
+  font-size: 2rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.text-conflux {
+  color: #7b5c86; /*#593C64;*/
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+.text-conflux-slogan {
+  color: #628AB2;
+  font-weight: 600;
+  font-size: 2.5rem;
+  font-style: italic;
+}
+
+.text-conflux-phrase {
+  color: #818844;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.quote-author {
+  color: #8899aa;
+}
+
+/****************************************/
 /* Datasets View */
 
 .utility-weighting {
