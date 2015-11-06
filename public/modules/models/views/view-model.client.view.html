@@ -1,12 +1,15 @@
 <section data-ng-init="findOne()">
 	<h1 data-ng-bind="model.name"></h1>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == model.user._id))">
-		<a class="btn btn-primary" data-ui-sref="models.list.edit({modelId: model._id})">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-danger" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
+		<button class="btn btn-default btn-publish" type="button" data-ui-sref="models.list.design" ng-click="clicked('models.list.design')">
+			<span class="fa fa-flask"></span><span class="btn-label">Design</span>
+		</button>
+		<button class="btn btn-primary" data-ui-sref="models.list.edit({modelId: model._id})">
+			<span class="fa fa-pencil-square-o"></span><span class="btn-label">Edit</span>
+		</button>
+		<button class="btn btn-danger" type="button" data-ng-click="remove();">
+			<span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
+		</button>
 	</div>
 	<h5 class="model-view-header-subtitle">
 		<em class="text-warning">

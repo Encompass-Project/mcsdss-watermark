@@ -1,21 +1,11 @@
 <section>
-    <div class="row subnavbar">
-        <div class="hidden-sm hidden-md">
-            <div class="row subnavbar-nav">
-                <button class="btn btn-default btn-list" type="button" data-ui-sref="models.list" ng-click="clicked('models.list')">List</button>
-                <button class="btn btn-default btn-new" type="button" data-ui-sref="models.list.load" ng-click="clicked('models.list.load')">New</button>
-                <button class="btn btn-default btn-curate" type="button" data-ui-sref="models.list.curate" ng-click="clicked('models.list.curate')">Curate</button>
-                <button class="btn btn-default btn-publish" type="button" data-ui-sref="models.list.publish" ng-click="clicked('models.list.publish')">Publish</button>
-            </div>
-        </div>
-        <div class="visible-sm visible-md">
-            <div class="row subnavbar-nav">
-                <button class="btn btn-default btn-list" type="button" data-ui-sref="models.list" ng-click="clicked('models.list')">List</button>
-                <button class="btn btn-default btn-new" type="button" data-ui-sref="models.list.load" ng-click="clicked('models.list.load')">New</button>
-                <button class="btn btn-default btn-curate" type="button" data-ui-sref="models.list.curate" ng-click="clicked('models.list.curate')">Curate</button>
-                <button class="btn btn-default btn-publish" type="button" data-ui-sref="models.list.publish" ng-click="clicked('models.list.publish')">Publish</button>
-            </div>
-        </div>
+    <div class="row subnavbar-nav">
+        <button class="btn btn-default btn-list" type="button" data-ui-sref="models.list" ng-click="clicked('models.list')">
+          <span class="fa fa-list-ul"></span><span class="btn-label">List</span>
+        </button>
+        <button class="btn btn-default btn-new" type="button" data-ui-sref="models.list.load" ng-click="clicked('models.list.load')">
+          <span class="fa fa-plus-square-o"></span><span class="btn-label">New</span>
+        </button>
     </div>
     <div data-ui-view=""></div>
 </section>

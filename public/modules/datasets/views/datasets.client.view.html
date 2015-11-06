@@ -1,23 +1,11 @@
 <section>
-    <div class="row subnavbar">
-        <div class="hidden-sm hidden-md">
-            <div class="row subnavbar-nav">
-                <button class="btn btn-default btn-list" type="button" data-ui-sref="datasets.list" ng-click="clicked('datasets.list')">List</button>
-                <button class="btn btn-default btn-new" type="button" data-ui-sref="datasets.list.load" ng-click="clicked('datasets.list.load')">New</button>
-                <button class="btn btn-default btn-transform" type="button" data-ui-sref="datasets.list.transform" ng-click="clicked('datasets.list.transform')">Transform</button>
-                <button class="btn btn-default btn-visualize" type="button" data-ui-sref="datasets.list.visualize" ng-click="clicked('datasets.list.visualize')">Visualize</button>
-            </div>
-        </div>
-        <div class="visible-sm visible-md">
-            <div class="row subnavbar-nav">
-                <button class="btn btn-default btn-list" type="button" data-ui-sref="datasets.list" ng-click="clicked('datasets.list')">List</button>
-                <button class="btn btn-default btn-new" type="button" data-ui-sref="datasets.list.load" ng-click="clicked('datasets.list.load')">New</button>
-            </div>
-            <div class="row subnavbar-nav">
-                <button class="btn btn-default btn-transform" type="button" data-ui-sref="datasets.list.transform" ng-click="clicked('datasets.list.transform')">Transform</button>
-                <button class="btn btn-default btn-visualize" type="button" data-ui-sref="datasets.list.visualize" ng-click="clicked('datasets.list.visualize')">Visualize</button>
-            </div>
-        </div>
+    <div class="row subnavbar-nav">
+        <button class="btn btn-default btn-list" type="button" data-ui-sref="datasets.list" ng-click="clicked('datasets.list')">
+          <span class="fa fa-list-ul"></span><span class="btn-label">List</span>
+        </button>
+        <button class="btn btn-default btn-new" type="button" data-ui-sref="datasets.list.load" ng-click="clicked('datasets.list.load')">
+          <span class="fa fa-plus-square-o"></span><span class="btn-label">New</span>
+        </button>
     </div>
     <div data-ui-view=""></div>
 </section>

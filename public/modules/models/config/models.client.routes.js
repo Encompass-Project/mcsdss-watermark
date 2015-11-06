@@ -39,17 +39,11 @@
         templateUrl: 'modules/models/views/create-model.client.view.html',
         controller: 'ModelsController'
       })
-      .state('models.list.curate', {
+      .state('models.list.design', {
         abstract: false,
-        url: '/load',
-        templateUrl: 'modules/models/views/models.curate.client.view.html',
-        controller: 'ModelsCurateViewController'
-      })
-      .state('models.list.publish', {
-        abstract: false,
-        url: '/load',
-        templateUrl: 'modules/models/views/models.publish.client.view.html',
-        controller: 'ModelsPublishViewController'
+        url: '/design',
+        templateUrl: 'modules/models/views/models.design.client.view.html',
+        controller: 'ModelsDesignViewController'
       });
 	}
 })();

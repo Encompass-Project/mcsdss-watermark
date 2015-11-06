@@ -78,8 +78,8 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
 
       // Static Values.
       var animationDuration = 150;
-      var tooltipPosX = 15; // width * 1.12; // dynamic values for moving tooltip.
-      var tooltipPosY = 65; // height * 1.3; // dynamic values for moving tooltip.
+      var tooltipPosX = 10; // width * 1.12; // dynamic values for moving tooltip.
+      var tooltipPosY = 30; // height * 1.3; // dynamic values for moving tooltip.
       // Dynamic Values.
       // var tooltipPosXadjust = 5;
       // var tooltipPosYadjust = 15;

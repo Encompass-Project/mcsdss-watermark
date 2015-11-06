@@ -1,13 +1,17 @@
 <section data-ng-init="findOne()">
 	<h1 data-ng-bind="formulation.name"></h1>
 	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == formulation.user._id))">
-		<a class="btn btn-primary" data-ui-sref="formulations.list.edit({formulationId: formulation._id})">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-danger" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
+		<button class="btn btn-default btn-publish" data-ui-sref="analyze">
+			<span class="fa fa-line-chart"></span><span class="btn-label">Analyze</span>
+		</button>
+		<button class="btn btn-primary" data-ui-sref="formulations.list.edit({formulationId: formulation._id})">
+			<span class="fa fa-pencil-square-o"></span><span class="btn-label">Edit</span>
+		</button>
+		<button class="btn btn-danger" data-ng-click="remove();">
+			<span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
+		</button>
 	</div>
+	<div class="pull-left">
 	<h5 class="formulation-view-header-subtitle">
 		<em class="text-warning">
 			Posted on
@@ -16,4 +20,5 @@
 			<span data-ng-bind="formulation.user.displayName"></span>
 		</em>
 	</h5>
+	</div>
 </section>
