@@ -1,21 +1,26 @@
 <section data-ng-init="find(currentUser)">
-    <h1>Models</h1>
-    <hr/>
     <div class="row">
         <div class="col-xs-4">
-            <div class="list-group">
-                <a data-ng-repeat="model in models" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="models.list.details({modelId: model._id})" class="list-group-item">
-        			<small class="list-group-item-text">
-        				Posted on
-        				<span data-ng-bind="model.created | date:'medium'"></span>
-        				by
-        				<span data-ng-bind="model.user.displayName"></span>
-        			</small>
-        			<h4 class="list-group-item-heading" data-ng-bind="model.name"></h4>
-                </a>
-            </div>
-            <div class="alert alert-warning text-center" data-ng-hide="!models.$resolved || models.length">
-            	No Models yet, why don't you <a href="/#!/models/create">create one</a>?
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="paneltitle-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span><span class="panel-title"> My Models</span>
+                </div>
+                <div class="panel-body">
+                    <div class="list-group">
+                        <a data-ng-repeat="model in models" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="models.list.details({modelId: model._id})" class="list-group-item">
+                			<small class="list-group-item-text">
+                				Posted on
+                				<span data-ng-bind="model.created | date:'medium'"></span>
+                				by
+                				<span data-ng-bind="model.user.displayName"></span>
+                			</small>
+                			<h4 class="list-group-item-heading" data-ng-bind="model.name"></h4>
+                        </a>
+                    </div>
+                    <div class="alert alert-warning text-center" data-ng-hide="!models.$resolved || models.length">
+                    	No Models yet, why don't you <a href="/#!/models/create">create one</a>?
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-xs-8">

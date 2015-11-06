@@ -42,8 +42,8 @@
       .state('publications.list.curate', {
         abstract: false,
         url: '/curate',
-        templateUrl: 'modules/publications/views/publications.curate.client.view.html',
-        controller: 'PublicationsCurateViewController'
+        templateUrl: 'modules/publications/views/edit-publication.client.view.html', // '/publications.curate.client.view.html'
+        controller: 'PublicationsController' //'PublicationsCurateViewController'
       })
       .state('publications.list.publish', {
         abstract: false,

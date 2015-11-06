@@ -1,25 +1,28 @@
 <section data-ng-init="findOne()">
-	<h1 data-ng-bind="publication.name"></h1>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == publication.user._id))">
+	<div>
+		<h1 data-ng-bind="publication.name"></h1>
+		<h5>
+			<em class="text-warning">
+				Posted on
+				<span data-ng-bind="publication.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="publication.user.displayName"></span>
+			</em>
+		</h5>
+	</div>
+	<hr/>
+	<div data-ng-show="((authentication.user) && (authentication.user._id == publication.user._id))">
 		<button class="btn btn-default btn-publish" type="button" data-ui-sref="publications.list.publish" ng-click="clicked('publications.list.publish')">
 			<span class="fa fa-bullhorn"></span><span class="btn-label">Publish</span>
 		</button>
-		<button class="btn btn-default btn-curate" type="button" data-ui-sref="publications.list.curate({publicationId: publication._id})" ng-click="clicked('publications.list.curate')">
+		<!-- <button class="btn btn-default btn-curate" type="button" data-ui-sref="publications.list.curate({publicationId: publication._id})" ng-click="clicked('publications.list.curate')">
 			<span class="fa fa-tags"></span><span class="btn-label">Curate</span>
-		</button>
-		<!-- <button class="btn btn-primary" data-ui-sref="publications.list.edit({publicationId: publication._id})">
-			<span class="fa fa-pencil-square-o"></span><span class="btn-label">Edit</span>
 		</button> -->
+		<button class="btn btn-primary" data-ui-sref="publications.list.edit({publicationId: publication._id})">
+			<span class="fa fa-pencil-square-o"></span><span class="btn-label">Edit</span>
+		</button>
 		<button class="btn btn-danger" type="button" data-ng-click="remove();">
 			<span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
 		</button>
 	</div>
-	<h5>
-		<em class="text-warning">
-			Posted on
-			<span data-ng-bind="publication.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="publication.user.displayName"></span>
-		</em>
-	</h5>
 </section>

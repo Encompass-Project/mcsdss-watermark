@@ -1,6 +1,17 @@
 <section data-ng-init="findOne()">
-  <h1 data-ng-bind="dataset.name"></h1>
-  <div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == dataset.user._id))">
+  <div>
+    <h1 data-ng-bind="dataset.name"></h1>
+    <h5 class="dataset-view-header-subtitle">
+      <em class="text-warning">
+        Posted on
+        <span data-ng-bind="dataset.created | date:'mediumDate'"></span>
+        by
+        <span data-ng-bind="dataset.user.displayName"></span>
+      </em>
+    </h5>
+  </div>
+  <hr/>
+  <div data-ng-show="((authentication.user) && (authentication.user._id == dataset.user._id))">
     <button class="btn btn-default btn-transform" type="button" data-ui-sref="datasets.list.transform" ng-click="clicked('datasets.list.transform')">
       <span class="fa fa-wrench"></span><span class="btn-label">ETL</span>
     </button>
@@ -14,12 +25,4 @@
       <span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
     </button>
   </div>
-  <h5 class="dataset-view-header-subtitle">
-		<em class="text-warning">
-			Posted on
-			<span data-ng-bind="dataset.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="dataset.user.displayName"></span>
-		</em>
-	</h5>
 </section>

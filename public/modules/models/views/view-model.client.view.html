@@ -1,6 +1,17 @@
 <section data-ng-init="findOne()">
-	<h1 data-ng-bind="model.name"></h1>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == model.user._id))">
+	<div>
+		<h1 data-ng-bind="model.name"></h1>
+		<h5 class="model-view-header-subtitle">
+			<em class="text-warning">
+				Posted on
+				<span data-ng-bind="model.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="model.user.displayName"></span>
+			</em>
+		</h5>
+	</div>
+	<hr/>
+	<div data-ng-show="((authentication.user) && (authentication.user._id == model.user._id))">
 		<button class="btn btn-default btn-publish" type="button" data-ui-sref="models.list.design" ng-click="clicked('models.list.design')">
 			<span class="fa fa-flask"></span><span class="btn-label">Design</span>
 		</button>
@@ -11,12 +22,4 @@
 			<span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
 		</button>
 	</div>
-	<h5 class="model-view-header-subtitle">
-		<em class="text-warning">
-			Posted on
-			<span data-ng-bind="model.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="model.user.displayName"></span>
-		</em>
-	</h5>
 </section>
