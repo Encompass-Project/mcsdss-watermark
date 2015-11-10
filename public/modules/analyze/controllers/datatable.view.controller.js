@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('core')
+    .module('analyze')
     .controller('DatatableViewController', DatatableViewController);
 
   DatatableViewController.$inject = ['$scope', 'Authentication', '$filter', 'ngTableParams', 'AnalysisDataFactory'];

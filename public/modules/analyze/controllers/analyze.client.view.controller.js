@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('core')
+    .module('analyze')
     .controller('AnalyzeViewController', AnalyzeViewController);
 
   AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'AnalysisDataFactory'];

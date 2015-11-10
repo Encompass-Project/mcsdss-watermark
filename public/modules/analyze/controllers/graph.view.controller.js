@@ -2,7 +2,7 @@
   'use strict';
 
   angular
-    .module('core')
+    .module('analyze')
     .controller('GraphViewController', GraphViewController);
 
   GraphViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication'];

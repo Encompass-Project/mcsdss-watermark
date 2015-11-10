@@ -21,17 +21,22 @@
         url: '',
         views: {
           'graph': {
-              templateUrl: 'modules/analyze/views/analyze.graph.client.view.html',
-              controller: 'GraphViewController'
-           },
-           'map': {
-              templateUrl: 'modules/analyze/views/analyze.map.client.view.html',
-              controller: 'MapViewController'
+            templateUrl: 'modules/analyze/views/analyze.graph.client.view.html',
+            controller: 'GraphViewController'
+          },
+          'map': {
+            templateUrl: 'modules/analyze/views/analyze.map.client.view.html',
+            controller: 'MapViewController'
+          },
+          'filters': {
+            templateUrl: 'modules/analyze/views/analyze.filters.client.view.html',
+            controller: 'FiltersViewController',
+            controllerAs: 'filters'
           },
           'datatable': {
-              templateUrl: 'modules/analyze/views/analyze.datatable.client.view.html',
-              controller: 'DatatableViewController',
-              controllerAs: 'datatable'
+            templateUrl: 'modules/analyze/views/analyze.datatable.client.view.html',
+            controller: 'DatatableViewController',
+            controllerAs: 'datatable'
           }
         }
       });

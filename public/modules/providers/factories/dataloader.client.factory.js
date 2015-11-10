@@ -28,7 +28,7 @@
     //   }
     // };
 
-    // APPROACH 2.
+    // APPROACH 2 TEST.
     return $resource('https://api.github.com/repos/:username/:repo/issues', {
       state: 'open'
     }, {
