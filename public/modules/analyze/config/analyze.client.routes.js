@@ -5,9 +5,9 @@
     .module('analyze')
     .config(DashboardRoutes);
 
-  DashboardRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+  DashboardRoutes.$inject = ['$stateProvider'];
 
-  function DashboardRoutes($stateProvider, $urlRouterProvider) {
+  function DashboardRoutes($stateProvider) {
     $stateProvider
       .state('analyze', {
         abstract: false,

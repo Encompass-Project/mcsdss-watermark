@@ -17,8 +17,8 @@
     $scope.sortParsedData = sortParsedData;
 
     $scope.sourceFile_A = './data/BSGAM_Heads_Wells_Drains_Zones_Master.csv';
-    $scope.sourceFile_O = './data/BSGAM_Heads_Wells_Drains_Zones_Original.csv';
-    $scope.sourceFile_M = './data/BSGAM_Heads_Wells_Drains_Zones_Modified.csv';
+    // $scope.sourceFile_O = './data/BSGAM_Heads_Wells_Drains_Zones_Original.csv';
+    // $scope.sourceFile_M = './data/BSGAM_Heads_Wells_Drains_Zones_Modified.csv';
 
     $scope.sourceData = {};
 

@@ -5,9 +5,9 @@
     .module('documentation')
     .config(DocumentationRoutes);
 
-  DocumentationRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+  DocumentationRoutes.$inject = ['$stateProvider'];
 
-  function DocumentationRoutes($stateProvider, $urlRouterProvider) {
+  function DocumentationRoutes($stateProvider) {
     $stateProvider
       .state('documentation', {
         abstract: false,

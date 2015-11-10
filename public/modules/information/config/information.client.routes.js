@@ -5,9 +5,9 @@
     .module('information')
     .config(InformationRoutes);
 
-  InformationRoutes.$inject = ['$stateProvider', '$urlRouterProvider'];
+  InformationRoutes.$inject = ['$stateProvider'];
 
-  function InformationRoutes($stateProvider, $urlRouterProvider) {
+  function InformationRoutes($stateProvider) {
     $stateProvider
       .state('information', {
         abstract: false,
