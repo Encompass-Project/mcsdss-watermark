@@ -422,7 +422,8 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
       // d3 request options: csv, tsv, json, xhr, xml, html, text.
       d3.json(graphData, function(error, data) {
 
-        data = graphData; // For some reason this has to be included.
+        data = graphData;
+        // console.log(data);
 
         // This entiore method can be freed from the parens and executed succcefully sans this data assignment,
         // but the subsequent stakeholder data does NOT get loaded in that case.

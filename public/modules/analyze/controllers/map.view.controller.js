@@ -19,6 +19,7 @@
         });
 
         function updateView(data) {
+            // console.log('MapView Updated with new data:' , data);
             // console.log('mapViewCtrl.updateView(data): ', data);
         }
     }

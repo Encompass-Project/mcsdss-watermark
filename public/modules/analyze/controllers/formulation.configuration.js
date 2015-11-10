@@ -9,13 +9,13 @@
 
     // General
     generalConfig: {
-      datasources: { }
+      // TBD
     },
 
     // Table
     datatableConfig: {
       datasources: {
-        tabledata: [ './data/BSGAM_Heads_Wells_Drains_Zones_Master.csv', './data/BSGAM_Heads_Wells_Drains_Zones_Original.csv','./data/BSGAM_Heads_Wells_Drains_Zones_Modified.csv' ]
+        tabledata: [ './data/BSGAM_Heads_Wells_Drains_Zones_Master.csv' ]
       }
     },
 

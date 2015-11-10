@@ -13,7 +13,8 @@
         abstract: false,
         url: '/analyze',
         templateUrl: 'modules/analyze/views/analyze.client.view.html',
-        controller: 'AnalyzeViewController'
+        controller: 'AnalyzeViewController',
+        controllerAs: 'analyze'
       })
       .state('analyze.layout', {
         abstract: false,
@@ -29,7 +30,8 @@
           },
           'datatable': {
               templateUrl: 'modules/analyze/views/analyze.datatable.client.view.html',
-              controller: 'DatatableViewController'
+              controller: 'DatatableViewController',
+              controllerAs: 'datatable'
           }
         }
       });
