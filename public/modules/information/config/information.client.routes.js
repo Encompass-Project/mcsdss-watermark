@@ -15,7 +15,10 @@
       url: '/information',
       templateUrl: 'modules/information/views/information.client.view.html',
       controller: 'InformationViewController',
-      controllerAs: 'informationView'
+      controllerAs: 'informationView',
+      data: {
+        title: 'Information'
+      }
     };
 
     var information_about_state = {

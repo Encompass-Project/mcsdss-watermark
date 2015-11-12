@@ -15,7 +15,10 @@
       url: '/dashboard',
       templateUrl: 'modules/dashboard/views/dashboard.client.view.html',
       controller: 'DashboardViewController',
-      controllerAs: 'dashboard'
+      controllerAs: 'dashboard',
+      data: {
+        title: 'Dashboard'
+      }
     };
 
     // Populate provider.

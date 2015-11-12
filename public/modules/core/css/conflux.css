@@ -111,13 +111,14 @@ button {
 }
 
 .main-nav {
-  width: 18rem;
+  width: 20rem;
   border: 1px solid #df691a;
 }
 
 .user-nav {
   left: 0 !important;
-  width: 18rem;
+  margin-right: 1rem !important;
+  width: 20rem;
   border: 1px solid #df691a;
   text-align: right;
 }
@@ -135,6 +136,7 @@ button {
   font-size: 2.4rem;
   font-weight: 700;
   margin-top: 0.7rem;
+
 }
 
 .navbar-brand-subtitle {
@@ -150,7 +152,8 @@ button {
 
 a.dropdown-toggle,
 ul.dropdown-menu > li > a {
-  width: 18rem;
+  width: 20rem;
+  margin-right: 0;
 }
 
 div.navbar-header > a.navbar-brand:hover,
@@ -158,8 +161,12 @@ ul.dropdown-menu > li > a:hover {
   background: #df691a;
 }
 
+.dashboard-sidemenu-item {
+  padding-left: 1rem !important;
+}
+
 .dashboard-sidemenu-item-label {
-  padding-left: 1rem;
+  padding-left: 1rem !important;
 }
 
 /****************************************/

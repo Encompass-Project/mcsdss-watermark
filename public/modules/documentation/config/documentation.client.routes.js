@@ -15,7 +15,10 @@
       url: '/documentation',
       templateUrl: 'modules/documentation/views/documentation.client.view.html',
       controller: 'DocumentationViewController',
-      controllerAs: 'documentation'
+      controllerAs: 'documentation',
+      data: {
+        title: 'Documents'
+      }
     };
 
     // Populate provider.

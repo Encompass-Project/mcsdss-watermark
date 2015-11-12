@@ -15,7 +15,10 @@
       url: '/models',
       templateUrl: 'modules/models/views/models.client.view.html',
       controller: 'ModelsViewController',
-      controllerAs: 'modelsView'
+      controllerAs: 'modelsView',
+      data: {
+        title: 'Models'
+      }
     };
 
     var models_list_state = {

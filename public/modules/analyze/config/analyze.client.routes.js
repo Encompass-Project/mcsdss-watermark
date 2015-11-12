@@ -15,7 +15,10 @@
       url: '/analyze',
       templateUrl: 'modules/analyze/views/analyze.client.view.html',
       controller: 'AnalyzeViewController',
-      controllerAs: 'analyze'
+      controllerAs: 'analyze',
+      data: {
+        title: 'Analyze'
+      }
     };
 
     var analyze_layout_state = {

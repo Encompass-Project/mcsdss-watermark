@@ -15,7 +15,10 @@
       url: '/publications',
       templateUrl: 'modules/publications/views/publications.client.view.html',
       controller: 'PublicationsViewController',
-      controllerAs: 'publicationsView'
+      controllerAs: 'publicationsView',
+      data: {
+        title: 'Publications'
+      }
     };
 
     var publications_list_state = {

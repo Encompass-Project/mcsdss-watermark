@@ -14,10 +14,10 @@
 
       <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle navbar-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+          <a ui-sref="home" class="dropdown-toggle navbar-toggle" role="button" aria-haspopup="true" aria-expanded="false">  <!-- href="#" -->
           	<div class="drop-shadow">
   	          <span class="fa fa-globe fa-2x" aria-hidden="true"></span>
-  	          <span class="navbar-toggle-label">{{ currentRoute }}</span>
+  	          <span class="navbar-toggle-label" data-ng-bind="$state.current.data.title">Nav</span>
             </div>
           </a>
           <ul class="dropdown-menu main-nav">
@@ -90,7 +90,7 @@
       <!-- Authenticated Navbar -->
       <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(authentication.user);">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle navbar-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="dropdown-toggle navbar-toggle user-nav" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="drop-shadow">Hello, <span data-ng-bind="authentication.user.displayName"></span> <span class="dashboard-sidemenu-item-icon fa fa-2x fa-navicon"></span></span>
           </a>
           <ul class="dropdown-menu user-nav">

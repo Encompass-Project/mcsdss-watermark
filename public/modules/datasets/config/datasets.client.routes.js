@@ -15,7 +15,10 @@
       url: '/datasets',
       templateUrl: 'modules/datasets/views/datasets.client.view.html',
       controller: 'DatasetsViewController',
-      controllerAs: 'datasetsView'
+      controllerAs: 'datasetsView',
+      data: {
+        title: 'Data Sources'
+      }
     };
 
     var datasets_list_state = {

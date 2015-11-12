@@ -15,7 +15,10 @@
       url: '/formulations',
       templateUrl: 'modules/formulations/views/formulations.client.view.html',
       controller: 'FormulationsViewController',
-      controllerAs: 'formulationsView'
+      controllerAs: 'formulationsView',
+      data: {
+        title: 'Formulations'
+      }
     };
 
     var formulations_list_state = {

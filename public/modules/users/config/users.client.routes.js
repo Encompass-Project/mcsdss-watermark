@@ -57,7 +57,10 @@
         url: '/profile',
         templateUrl: 'modules/users/views/profile.client.view.html',
         controller: 'ProfileViewController',
-        controllerAs: 'profileView'
+        controllerAs: 'profileView',
+        data: {
+          title: 'Profile'
+        }
       };
 
       var profile_view_state = {

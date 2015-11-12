@@ -25,7 +25,10 @@
       abstract: false,
       url: '/',
       controller: 'HomeViewController',
-      controllerAs: 'home'
+      controllerAs: 'home',
+      data: {
+        title: 'Home'
+      }
     };
 
     var anon_state = {
@@ -33,7 +36,10 @@
       url: '/index',
       templateUrl: 'modules/core/views/anon.client.view.html',
       controller: 'AnonViewController',
-      controllerAs: 'anon'
+      controllerAs: 'anon',
+      data: {
+        title: 'Welcome'
+      }
     };
 
     // Populate provider.
