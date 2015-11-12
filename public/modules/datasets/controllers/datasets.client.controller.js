@@ -10,6 +10,7 @@
 
 	function DatasetsController($scope, $state, $stateParams, $location, Authentication, Datasets, FileUploader) { /* $upload, multipartForm, */
 		$scope.authentication = Authentication;
+    $scope.currentRoute = 'Datasets';
 		$scope.currentUser = Authentication.user;
     $scope.create = create;
     $scope.remove = remove;
@@ -18,6 +19,8 @@
     $scope.findOne = findOne;
     $scope.whatfiles = whatfiles;
     $scope.newDataset = {};
+
+    console.log($scope.currentRoute);
 
 		// Create new Dataset
 		function create() {

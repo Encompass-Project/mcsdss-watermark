@@ -8,11 +8,11 @@
                 <img src="" alt="">
                 <span class="fa fa-5x fa-user"></span>
             </a>
-    		<h2>{{ user.displayName }}</h2>
-    		<p>First Name: {{ user.firstName }}</p>
-    		<p>Last Name: {{ user.lastName }}</p>
-    		<p>Email: {{ user.email }}</p>
-    		<p>Username: {{ user.displayName }}</p>
+    		<h2 data-ng-bind="user.displayName">User Name</h2>
+    		<p>First Name: <span data-ng-bind="user.firstName">First Name</span></p>
+    		<p>Last Name: <span data-ng-bind="user.lastName">Last Name</span></p>
+    		<p>Email: <span data-ng-bind="user.email">Email</span></p>
+    		<p>Username: <span data-ng-bind="user.displayName">Display Name</span></p>
     	</div>
     </div>
 </section>

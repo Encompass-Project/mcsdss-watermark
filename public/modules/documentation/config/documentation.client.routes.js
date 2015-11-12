@@ -8,12 +8,18 @@
   DocumentationRoutes.$inject = ['$stateProvider'];
 
   function DocumentationRoutes($stateProvider) {
+
+    // Define states.
+    var documentation_state = {
+      abstract: false,
+      url: '/documentation',
+      templateUrl: 'modules/documentation/views/documentation.client.view.html',
+      controller: 'DocumentationViewController',
+      controllerAs: 'documentation'
+    };
+
+    // Populate provider.
     $stateProvider
-      .state('documentation', {
-        abstract: false,
-        url: '/documentation',
-        templateUrl: 'modules/documentation/views/documentation.client.view.html',
-        controller: 'DocumentationViewController'
-      });
+      .state('documentation', documentation_state);
   }
 })();

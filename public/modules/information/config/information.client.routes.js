@@ -8,18 +8,27 @@
   InformationRoutes.$inject = ['$stateProvider'];
 
   function InformationRoutes($stateProvider) {
+
+    // Define states.
+    var information_state = {
+      abstract: false,
+      url: '/information',
+      templateUrl: 'modules/information/views/information.client.view.html',
+      controller: 'InformationViewController',
+      controllerAs: 'informationView'
+    };
+
+    var information_about_state = {
+      abstract: false,
+      url: '/about',
+      templateUrl: 'modules/information/views/about.information.client.view.html',
+      controller: 'AboutInformationViewController',
+      controllerAs: 'informationAboutView'
+    };
+
+    // Populate provider.
     $stateProvider
-      .state('information', {
-        abstract: false,
-        url: '/information',
-        templateUrl: 'modules/information/views/information.client.view.html',
-        controller: 'InformationViewController'
-      })
-      .state('information.about', {
-        abstract: false,
-        url: '/about',
-        templateUrl: 'modules/information/views/about.information.client.view.html',
-        controller: 'AboutInformationViewController'
-      });
+      .state('information', information_state)
+      .state('information.about', information_about_state);
   }
 })();

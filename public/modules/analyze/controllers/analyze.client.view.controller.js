@@ -10,6 +10,9 @@
   function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, AnalysisDataFactory) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
+    $scope.currentRoute = 'Analyze';
+    console.log($scope.currentRoute);
+
     $state.go('analyze.layout'); // Required to get nested named views to populate correctly. Not routing correctly from routes.js without this.
 
     $scope.clicked = clicked;

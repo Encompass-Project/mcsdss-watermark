@@ -10,12 +10,15 @@
 
 	function PublicationsController($scope, $state, $stateParams, $location, Authentication, Publications) {
 		$scope.authentication = Authentication;
+		$scope.currentRoute = 'Publications';
 		$scope.currentUser = Authentication.user;
 		$scope.create = create;
 		$scope.remove = remove;
 		$scope.update = update;
 		$scope.find = find;
 		$scope.findOne = findOne;
+
+		console.log($scope.currentRoute);
 
 		// Create new Publication
 		function create() {

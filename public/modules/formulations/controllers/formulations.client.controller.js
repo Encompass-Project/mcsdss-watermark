@@ -10,12 +10,15 @@
 
 	function FormulationsController($scope, $state, $stateParams, $location, Authentication, Formulations) {
 		$scope.authentication = Authentication;
+		$scope.currentRoute = 'Formulations';
 		$scope.currentUser = Authentication.user;
 		$scope.create = create;
 		$scope.remove = remove;
 		$scope.update = update;
 		$scope.find = find;
 		$scope.findOne = findOne;
+
+    console.log($scope.currentRoute);
 
 		// Create new Formulation
 		function create() {

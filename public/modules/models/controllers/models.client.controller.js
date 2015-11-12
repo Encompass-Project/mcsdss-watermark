@@ -10,12 +10,15 @@
 
 	function ModelsController($scope, $state, $stateParams, $location, Authentication, Models) {
 		$scope.authentication = Authentication;
+		$scope.currentRoute = 'Models';
 		$scope.currentUser = Authentication.user;
 		$scope.create = create;
 		$scope.remove = remove;
 		$scope.update = update;
 		$scope.find = find;
 		$scope.findOne = findOne;
+
+		console.log($scope.currentRoute);
 
 		// Create new Model
 		function create() {

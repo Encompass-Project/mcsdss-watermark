@@ -350,7 +350,10 @@ ul.dropdown-menu > li > a:hover {
 /* Datasets View */
 
 .utility-weighting {
-  margin: 0.5rem 0;
+  margin: 1rem 0;
+  padding: 1rem 0;
+  /*border-top: 3px solid #89a;*/
+  /*border-bottom: 3px solid #89a;*/
 }
 
 /****************************************/

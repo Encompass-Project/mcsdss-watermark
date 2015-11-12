@@ -24,6 +24,8 @@ module.exports = {
 				'public/lib/bootstrap-slider/slider.css'
 			],
 			js: [
+				'public/lib/jquery/dist/jquery.min.js',
+				'public/lib/jquery-ui/jquery-ui.min.js',
 				'public/lib/angular/angular.js',
 				'public/lib/angular-resource/angular-resource.js',
 				'public/lib/angular-cookies/angular-cookies.js',
@@ -33,11 +35,11 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
+				'public/lib/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js',
 				'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
 				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
 				// 'public/lib/ng-file-upload-shim/angular-file-upload-shim.min.js',
 				// 'public/lib/ng-file-upload/angular-file-upload.min.js',
-				'public/lib/jquery/dist/jquery.min.js',
 				'public/lib/papaparse/papaparse.min.js',
 				'public/lib/angular-papaparse/dist/js/angular-PapaParse.js',
 				'public/lib/leaflet/dist/leaflet.js',
