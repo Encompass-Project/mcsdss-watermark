@@ -26,7 +26,10 @@
       url: '/about',
       templateUrl: 'modules/information/views/about.information.client.view.html',
       controller: 'AboutInformationViewController',
-      controllerAs: 'informationAboutView'
+      controllerAs: 'informationAboutView',
+      data: {
+        title: 'About'
+      }
     };
 
     // Populate provider.

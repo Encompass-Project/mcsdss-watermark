@@ -35,7 +35,7 @@ module.exports = {
 				'public/lib/angular-ui-router/release/angular-ui-router.js',
 				'public/lib/angular-ui-utils/ui-utils.js',
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
-				'public/lib/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js',
+				// 'public/lib/angular-bootstrap/ui-bootstrap-tpls-0.14.3.min.js',
 				'public/lib/angular-simple-logger/dist/angular-simple-logger.js',
 				'public/lib/angular-file-upload/dist/angular-file-upload.min.js',
 				// 'public/lib/ng-file-upload-shim/angular-file-upload-shim.min.js',

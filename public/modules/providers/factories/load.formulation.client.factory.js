@@ -3,11 +3,11 @@
 
   angular
     .module('mcsdss.providers')
-    .factory('FormulationRetrievalService',FormulationRetrievalService);
+    .factory('LoadFormulationService', LoadFormulationService);
 
-  FormulationRetrievalService.$inject = ['$http'];
+  LoadFormulationService.$inject = ['$http'];
 
-  function FormulationRetrievalService($http) {
+  function LoadFormulationService($http) {
 
     // START EXAMPLE //
     var formulationUsername;
@@ -19,6 +19,7 @@
         url: 'https://api.github.com/users/' + formulationUsername + '/' + path + '?callback=JSON_CALLBACK'
       });
     };
+
     return {
       formulationData: function() {
         console.log('passing formulationData to getFormulation().');
@@ -27,6 +28,9 @@
       setUsername: function(newUsername) {
         console.log('setting formulationUsername to: ', newUsername);
         formulationUsername = newUsername;
+      },
+      sayHello: function() {
+        return 'Hello';
       }
     };
     // END EXAMPLE //
