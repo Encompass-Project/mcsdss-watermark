@@ -7,7 +7,7 @@
 
   DashboardRoutes.$inject = ['$stateProvider'];
 
-  function DashboardRoutes($stateProvider, LoadFormulationService) {
+  function DashboardRoutes($stateProvider, LoadFormulation) {
 
     // Define states.
     var analyze_state = {
@@ -20,8 +20,11 @@
         title: 'Analyze'
       },
       resolve: {
-        formulationData: function(LoadFormulationService) {
-          return LoadFormulationService.sayHello();
+        formulationData: function(LoadFormulation) {
+          return LoadFormulation.formulationData();
+        },
+        formulationHello: function(LoadFormulation) {
+          return LoadFormulation.sayHello();
         },
         helloFactory: function(TestFactory) {
           return TestFactory.helloFactory;
