@@ -1,21 +1,28 @@
 <section data-ng-init="findOne()">
-	<div class="page-header">
+	<div>
 		<h1 data-ng-bind="publication.name"></h1>
+		<h5>
+			<em class="text-warning">
+				Posted on
+				<span data-ng-bind="publication.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="publication.user.displayName"></span>
+			</em>
+		</h5>
 	</div>
-	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == publication.user._id))">
-		<a class="btn btn-primary" data-ui-sref="dashboard.publications.list.edit({publicationId: publication._id})">
-			<i class="glyphicon glyphicon-edit"></i>
-		</a>
-		<a class="btn btn-danger" data-ng-click="remove();">
-			<i class="glyphicon glyphicon-trash"></i>
-		</a>
+	<hr/>
+	<div data-ng-show="((authentication.user) && (authentication.user._id == publication.user._id))">
+		<button class="btn btn-default btn-publish" type="button" data-ui-sref="publications.list.publish" ng-click="clicked('publications.list.publish')">
+			<span class="fa fa-bullhorn"></span><span class="btn-label">Publish</span>
+		</button>
+		<!-- <button class="btn btn-default btn-curate" type="button" data-ui-sref="publications.list.curate({publicationId: publication._id})" ng-click="clicked('publications.list.curate')">
+			<span class="fa fa-tags"></span><span class="btn-label">Curate</span>
+		</button> -->
+		<button class="btn btn-primary" data-ui-sref="publications.list.edit({publicationId: publication._id})">
+			<span class="fa fa-pencil-square-o"></span><span class="btn-label">Edit</span>
+		</button>
+		<button class="btn btn-danger" type="button" data-ng-click="remove();">
+			<span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
+		</button>
 	</div>
-	<small>
-		<em class="text-muted">
-			Posted on
-			<span data-ng-bind="publication.created | date:'mediumDate'"></span>
-			by
-			<span data-ng-bind="publication.user.displayName"></span>
-		</em>
-	</small>
 </section>

@@ -1,16 +1,3 @@
-@import url('mean-defaults.css');
-@import url('global.css');
-@import url('navbar.css');
-@import url('default-view.css');
-@import url('dashboard-sidebar.css');
-@import url('dashboard-view.css');
-@import url('datasets-view.css');
-@import url('models-view.css');
-@import url('notebooks-view.css');
-@import url('goals-view.css');
-@import url('decisions-view.css');
-@import url('publications-view.css');
-
 /* Third party themes */
 @import url('vendor/superhero.bootstrap.css');
 /*@import url('vendor/yeti.bootstrap.css');*/
@@ -20,3 +7,20 @@
 /*@import url('vendor/darkly.bootstrap.css');*/
 /*@import url('vendor/sandstone.bootstrap.css');*/
 
+/* Custom Styles */
+@import url('conflux.css');
+/*@import url('mean-defaults.css');*/
+/*@import url('global.css');*/
+/*@import url('navbar.css');*/
+/*@import url('default-view.css');*/
+/*@import url('dashboard-view.css');*/
+/*@import url('datasets-view.css');*/
+
+
+/* ALREADY EXCLUDED */
+/*@import url('dashboard-sidebar.css');*/
+/*@import url('analyze.css');*/
+/*@import url('leaflet-directive.css');*/
+/*@import url('datapanel.css');*/
+/*@import url('watermark.css');*/
+/*@import url('bootstrap-theme.css');*/

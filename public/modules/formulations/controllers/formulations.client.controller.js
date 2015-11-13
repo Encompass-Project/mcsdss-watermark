@@ -1,13 +1,27 @@
-'use strict';
+(function() {
+	'use strict';
 
-// Formulations controller
-angular.module('formulations').controller('FormulationsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Formulations',
-	function($scope, $state, $stateParams, $location, Authentication, Formulations) {
+	// Formulations controller
+	angular
+		.module('formulations')
+		.controller('FormulationsController', FormulationsController);
+
+	FormulationsController.$inject = ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Formulations'];
+
+	function FormulationsController($scope, $state, $stateParams, $location, Authentication, Formulations) {
 		$scope.authentication = Authentication;
+		$scope.currentRoute = 'Formulations';
 		$scope.currentUser = Authentication.user;
+		$scope.create = create;
+		$scope.remove = remove;
+		$scope.update = update;
+		$scope.find = find;
+		$scope.findOne = findOne;
+
+    console.log($scope.currentRoute);
 
 		// Create new Formulation
-		$scope.create = function() {
+		function create() {
 			// Create new Formulation object
 			var formulation = new Formulations ({
 				name: this.name
@@ -16,17 +30,17 @@ angular.module('formulations').controller('FormulationsController', ['$scope', '
 			// Redirect after save
 			formulation.$save(function(response) {
 				// $location.path('formulations/' + response._id);
-				$state.go('dashboard.formulations', {}, {reload: true});
+				$state.go('formulations', {}, {reload: true});
 
 				// Clear form fields
 				$scope.name = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
+		}
 
 		// Remove existing Formulation
-		$scope.remove = function(formulation) {
+		function remove(formulation) {
 			if ( formulation ) {
 				formulation.$remove();
 
@@ -38,22 +52,22 @@ angular.module('formulations').controller('FormulationsController', ['$scope', '
 			} else {
 				$scope.formulation.$remove(function() {
 					// $location.path('formulations');
-					$state.go('dashboard.formulations', {}, {reload: true});
+					$state.go('formulations', {}, {reload: true});
 				});
 			}
-		};
+		}
 
 		// Update existing Formulation
-		$scope.update = function() {
+		function update() {
 			var formulation = $scope.formulation;
 
 			formulation.$update(function() {
 				// $location.path('formulations/' + formulation._id);
-				$state.go('dashboard.formulations.list', {}, {reload: true});
+				$state.go('formulations.list', {}, {reload: true});
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
-		};
+		}
 
 		// Find a list of Formulations
 		// $scope.find = function() {
@@ -61,19 +75,19 @@ angular.module('formulations').controller('FormulationsController', ['$scope', '
 		// };
 
 		// Find a list of Formulations belonging to the current user.
-		$scope.find = function(user) {
+		function find(user) {
 			Formulations.query(function(formulations) {
 				$scope.formulations = user ? formulations.filter(function(formulation) {
 					return formulation.user._id === user._id;
 				}) : formulations;
 			});
-		};
+		}
 
 		// Find existing Formulation
-		$scope.findOne = function() {
+		function findOne() {
 			$scope.formulation = Formulations.get({
 				formulationId: $stateParams.formulationId
 			});
-		};
+		}
 	}
-]);
+})();

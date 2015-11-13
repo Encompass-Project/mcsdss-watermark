@@ -1,8 +1,14 @@
-'use strict';
+(function() {
+	'use strict';
 
-// Config HTTP Error Handling
-angular.module('users').config(['$httpProvider',
-	function($httpProvider) {
+	// Config HTTP Error Handling
+	angular
+		.module('users')
+		.config(UsersConfig);
+
+		UsersConfig.$inject = ['$httpProvider'];
+
+	function UsersConfig ($httpProvider) {
 		// Set the httpProvider "not authorized" interceptor
 		$httpProvider.interceptors.push(['$q', '$location', 'Authentication',
 			function($q, $location, Authentication) {
@@ -17,7 +23,7 @@ angular.module('users').config(['$httpProvider',
 								$location.path('signin');
 								break;
 							case 403:
-								// Add unauthorized behaviour 
+								// Add unauthorized behaviour
 								break;
 						}
 
@@ -27,4 +33,4 @@ angular.module('users').config(['$httpProvider',
 			}
 		]);
 	}
-]);
+})();

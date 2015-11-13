@@ -1,6 +1,6 @@
-'use strict';
-
 (function() {
+	'use strict';
+
 	// Publications Controller Spec
 	describe('Publications Controller Tests', function() {
 		// Initialize global variables

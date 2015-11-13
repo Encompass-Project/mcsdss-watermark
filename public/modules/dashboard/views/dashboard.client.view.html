@@ -1,0 +1,117 @@
+<section>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- <h3 class="text-warning float-left">Dashboard</h3> -->
+            <p>Further explanation and metrics forth coming...</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="row dashboard-panel" data-ng-controller="FormulationsController" data-ng-init="find(currentUser)">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable panel-clickable" data-ui-sref="formulations">
+                            <span class="paneltitle-item-icon fa fa-2x fa-puzzle-piece" aria-hidden="true"></span><span class="panel-title"> My Formulations</span>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="formulation in formulations | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="formulations.list.details({formulationId: formulation._id})" class="list-group-item">
+                                <h4 class="list-group-item-heading" data-ng-bind="formulation.name"></h4>
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="formulation.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="formulation.user.displayName"></span>
+                                    <!-- , Updated on
+                                    <span data-ng-bind="formulation.updated | date:'medium'"></span> -->
+                                </small>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!formulations.$resolved || formulations.length">
+                            No Formulations yet, why don't you <a href="/#!/formulations/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="row dashboard-panel" data-ng-controller="DatasetsController" data-ng-init="find(currentUser)">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable panel-clickable" data-ui-sref="datasets">
+                            <span class="paneltitle-item-icon fa fa-2x fa-database" aria-hidden="true"></span><span class="panel-title"> My Data Sources</span>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="dataset in datasets | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="datasets.list.details({datasetId: dataset._id})" class="list-group-item">
+                                <h4 class="list-group-item-heading" data-ng-bind="dataset.name"></h4>
+                                <small class="list-group-item-text">
+                                    Posted on <span data-ng-bind="dataset.created | date:'medium'"></span> by <span data-ng-bind="dataset.user.displayName"></span><!--  ( ID: <span data-ng-bind="dataset._id"></span> ) -->
+                                </small>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!datasets.$resolved || datasets.length">
+                            No Datasets yet, why don't you <a href="/#!/datasets/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="row dashboard-panel" data-ng-controller="ModelsController" data-ng-init="find(currentUser)">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable panel-clickable" data-ui-sref="models">
+                            <span class="paneltitle-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span><span class="panel-title"> My Models</span>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="model in models | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="models.list.details({modelId: model._id})" class="list-group-item">
+                                <h4 class="list-group-item-heading" data-ng-bind="model.name"></h4>
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="model.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="model.user.displayName"></span>
+                                </small>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!models.$resolved || models.length">
+                            No Models yet, why don't you <a href="/#!/models/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3">
+            <div class="row dashboard-panel" data-ng-controller="PublicationsController" data-ng-init="find(currentUser)">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <a class="clickable panel-clickable" data-ui-sref="publications">
+                            <span class="paneltitle-item-icon fa fa-2x fa-newspaper-o" aria-hidden="true"></span><span class="panel-title"> My Publications</span>
+                        </a>
+                    </div>
+                    <div class="panel-body">
+                        <div class="list-group">
+                            <a data-ng-repeat="publication in publications | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="publications.list.details({publicationId: publication._id})" class="list-group-item">
+                                <h4 class="list-group-item-heading" data-ng-bind="publication.name"></h4>
+                                <small class="list-group-item-text">
+                                    Posted on
+                                    <span data-ng-bind="publication.created | date:'medium'"></span>
+                                    by
+                                    <span data-ng-bind="publication.user.displayName"></span>
+                                </small>
+                            </a>
+                        </div>
+                        <div class="alert alert-warning text-center" data-ng-hide="!publications.$resolved || publications.length">
+                            No Publications yet, why don't you <a href="/#!/publications/create">create one</a>?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
