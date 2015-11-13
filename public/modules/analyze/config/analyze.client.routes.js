@@ -25,6 +25,9 @@
         },
         helloFactory: function(TestFactory) {
           return TestFactory.helloFactory;
+        },
+        goodbyeFactory: function(TestFactory) {
+          return TestFactory.goodbyeFactory;
         }
       }
     };

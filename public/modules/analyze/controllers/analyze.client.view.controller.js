@@ -5,9 +5,9 @@
     .module('analyze')
     .controller('AnalyzeViewController', AnalyzeViewController);
 
-  AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'AnalysisDataFactory', 'formulationData', 'helloFactory'];
+  AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'AnalysisDataFactory', 'formulationData', 'helloFactory', 'goodbyeFactory'];
 
-  function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, AnalysisDataFactory, formulationData, helloFactory) {
+  function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, AnalysisDataFactory, formulationData, helloFactory, goodbyeFactory) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
     $scope.currentRoute = 'Analyze';
@@ -15,6 +15,7 @@
 
     console.log(formulationData);
     console.log(helloFactory);
+    console.log(goodbyeFactory);
 
     $state.go('analyze.layout'); // Required to get nested named views to populate correctly. Not routing correctly from routes.js without this.
 

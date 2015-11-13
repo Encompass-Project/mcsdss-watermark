@@ -8,10 +8,12 @@
   TestFactory.$inject = ['$http'];
 
   function TestFactory($http) {
-    var helloFactory = 'helloFactory';
+    var helloFactory = 'hello Factory!';
+    var goodbyeFactory = 'goodbye Factory!';
 
     return {
-      helloFactory
+      helloFactory,
+      goodbyeFactory
     };
   }
 
