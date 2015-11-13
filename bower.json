@@ -21,6 +21,17 @@
     "jquery": "~2.1.4",
     "leaflet": "~0.7.5",
     "ng-file-upload-shim": "~8.0.1",
-    "ng-file-upload": "~8.0.1"
+    "ng-file-upload": "~8.0.1",
+    "angular-papaparse": "~1.0.0",
+    "papaparse": "~4.1.2",
+    "ng-table": "~0.8.3",
+    "components-font-awesome": "~4.4.0",
+    "mocha": "~2.3.3",
+    "mongoose": "~4.2.3"
+  },
+  "devDependencies": {
+    "jasmine-core": "jasmine#~2.3.4",
+    "karma": "~0.4.6",
+    "karma-jasmine": "~0.2.1"
   }
 }

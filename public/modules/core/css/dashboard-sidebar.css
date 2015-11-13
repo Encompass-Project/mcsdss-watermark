@@ -30,15 +30,21 @@ a.dashboard-sidebar-link {
     color: #FFFFFF;
 }
 .dashboard-sidemenu-item {
-    padding: 1rem 0 1.2rem 4rem;
+    padding: 0.5rem 0;
+    color: #FFFFFF;
     border-top: 1px solid #345;
     vertical-align: text-top;
 }
+.dashboard-sidemenu-item:hover {
+    background: #C85E17;
+}
 .dashboard-sidemenu-item-icon {
-    width: 5rem;
+    width: 3rem;
+    padding: 0 0 0 1rem;
 }
 .dashboard-sidemenu-item-label {
     text-align: left;
+    padding-left: 3rem;
 }
 .dashboard-sidemenu-item-disabled {
     background: #222;

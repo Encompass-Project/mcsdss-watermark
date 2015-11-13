@@ -1,16 +1,21 @@
-'use strict';
+(function() {
+	'use strict';
 
-//Menu service used for managing  menus
-angular.module('core').service('Menus', [
+	//Menu service used for managing  menus
+	angular
+		.module('core')
+		.service('Menus', Menus);
 
-	function() {
+	Menus.$inject = [];
+
+	function Menus() {
 		// Define a set of default roles
 		this.defaultRoles = ['*'];
 
 		// Define the menus object
 		this.menus = {};
 
-		// A private function for rendering decision 
+		// A private function for rendering decision
 		var shouldRender = function(user) {
 			if (user) {
 				if (!!~this.roles.indexOf('*')) {
@@ -163,4 +168,4 @@ angular.module('core').service('Menus', [
 		//Adding the topbar menu
 		this.addMenu('topbar');
 	}
-]);
+})();
