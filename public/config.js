@@ -7,7 +7,7 @@ var ApplicationConfiguration = (function() {
 	var applicationModuleDependenciesCustom = ['mcsdss.directives', 'mcsdss.providers'];
 	var applicationModuleDependenciesVendor = ['ngResource', 'ngCookies',  'ngAnimate',  'ngTouch',  'ngSanitize',  'ui.router', 'ui.bootstrap', 'ui.utils', 'nemLogging', 'ngPapaParse', 'ngTable', 'angularFileUpload']; /* 'leaflet-directive', 'ngFileUpload' */
 	var applicationModuleDependencies = applicationModuleDependenciesVendor.concat(applicationModuleDependenciesCustom);
-	console.log(applicationModuleDependencies);
+	// console.log(applicationModuleDependencies);
 
 	// Add a new vertical module
 	var registerModule = function(moduleName, dependencies) {

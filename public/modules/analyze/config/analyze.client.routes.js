@@ -7,7 +7,7 @@
 
   DashboardRoutes.$inject = ['$stateProvider'];
 
-  function DashboardRoutes($stateProvider, LoadFormulation) {
+  function DashboardRoutes($stateProvider) {
 
     // Define states.
     var analyze_state = {
@@ -19,18 +19,19 @@
       data: {
         title: 'Analyze'
       },
+      // NOTE: Factories do not need to be injected. They are already available through the mcsdss.providers module across the app.
       resolve: {
-        formulationData: function(LoadFormulation) {
-          return LoadFormulation.formulationData();
-        },
-        formulationHello: function(LoadFormulation) {
-          return LoadFormulation.sayHello();
-        },
-        helloFactory: function(TestFactory) {
-          return TestFactory.helloFactory;
-        },
-        goodbyeFactory: function(TestFactory) {
-          return TestFactory.goodbyeFactory;
+        // helloFactory: function(TestFactory) {
+        //   return TestFactory.helloFactory;
+        // },
+        // goodbyeFactory: function(TestFactory) {
+        //   return TestFactory.goodbyeFactory;
+        // },
+        // formulationHello: function(FormulationDataRetrieval) {
+        //   return FormulationDataRetrieval.sayHello();
+        // },
+        formulationData: function(FormulationDataRetrieval) {
+          return FormulationDataRetrieval.formulationData();
         }
       }
     };

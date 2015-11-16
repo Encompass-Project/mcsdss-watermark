@@ -14,7 +14,7 @@
     $scope.listDisplayLimit = 9;
     $scope.clicked = clicked;
 
-    console.log($scope.currentRoute);
+    // console.log($scope.currentRoute);
 
     function clicked(target) {
         // console.log(target);

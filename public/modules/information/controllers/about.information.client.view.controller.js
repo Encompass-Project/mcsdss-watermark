@@ -15,8 +15,7 @@
     $scope.logopath = '/modules/core/img/brand/conflux-logo-idea-v1-md-white.png';
     $scope.currentRoute = 'About';
     $scope.clicked = clicked;
-
-    console.log($scope.currentRoute);
+    // console.log($scope.currentRoute);
 
     function clicked(target) {
         // console.log(target);

@@ -17,8 +17,7 @@
 		$scope.update = update;
 		$scope.find = find;
 		$scope.findOne = findOne;
-
-		console.log($scope.currentRoute);
+		// console.log($scope.currentRoute);
 
 		// Create new Publication
 		function create() {

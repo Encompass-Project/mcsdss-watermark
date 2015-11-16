@@ -12,8 +12,7 @@
     $scope.authentication = Authentication;
     $scope.currentRoute = 'Information';
     $scope.clicked = clicked;
-
-    console.log($scope.currentRoute);
+    // console.log($scope.currentRoute);
 
     function clicked(target) {
         // console.log(target);

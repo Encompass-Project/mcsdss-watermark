@@ -19,8 +19,7 @@
     $scope.findOne = findOne;
     $scope.whatfiles = whatfiles;
     $scope.newDataset = {};
-
-    console.log($scope.currentRoute);
+    // console.log($scope.currentRoute);
 
 		// Create new Dataset
 		function create() {
