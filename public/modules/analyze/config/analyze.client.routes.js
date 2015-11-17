@@ -27,12 +27,12 @@
         // goodbyeFactory: function(TestFactory) {
         //   return TestFactory.goodbyeFactory;
         // },
-        // formulationHello: function(FormulationDataRetrieval) {
-        //   return FormulationDataRetrieval.sayHello();
+        // formulationHello: function(FormulationRetrieval) {
+        //   return FormulationRetrieval.sayHello();
         // },
-        formulationData: function(FormulationDataRetrieval) {
-          return FormulationDataRetrieval.getFormulationData('./data/formulations/bs.formulation.json');
-          // return FormulationDataRetrieval.formulationDataContainer;
+        formulationData: function(FormulationRetrieval) {
+          return FormulationRetrieval.getFormulationData('./data/formulations/bs.formulation.json');
+          // return FormulationRetrieval.formulationDataContainer;
         }
       }
     };

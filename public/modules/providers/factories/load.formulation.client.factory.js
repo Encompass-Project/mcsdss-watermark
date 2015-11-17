@@ -3,34 +3,30 @@
 
   angular
     .module('mcsdss.providers')
-    .factory('FormulationDataRetrieval', FormulationDataRetrieval);
+    .factory('FormulationRetrieval', FormulationRetrieval);
 
-  FormulationDataRetrieval.$inject = ['$http', '$q', 'httpq'];
+  FormulationRetrieval.$inject = ['$http', '$q', 'httpq'];
 
-  function FormulationDataRetrieval($http, $q, httpq) {
+  function FormulationRetrieval($http, $q, httpq) {
 
-    // var FormulationDataRetrieval = {};
+    // var FormulationRetrieval = {};
 
     // create the container object for our formulation data.
-    FormulationDataRetrieval.formulationDataContainer = {};
-    FormulationDataRetrieval.formulationDataContainer.table = {};
-    FormulationDataRetrieval.formulationDataContainer.graph = {};
-    FormulationDataRetrieval.formulationDataContainer.map = {};
-    FormulationDataRetrieval.formulationDataContainer.table.config = {};
-    FormulationDataRetrieval.formulationDataContainer.graph.config = {};
-    FormulationDataRetrieval.formulationDataContainer.map.config = {};
+    FormulationRetrieval.formulationDataContainer = {};
+    FormulationRetrieval.formulationDataContainer.table = {};
+    FormulationRetrieval.formulationDataContainer.graph = {};
+    FormulationRetrieval.formulationDataContainer.map = {};
+    FormulationRetrieval.formulationDataContainer.table.config = {};
+    FormulationRetrieval.formulationDataContainer.graph.config = {};
+    FormulationRetrieval.formulationDataContainer.map.config = {};
 
-    // FormulationDataRetrieval.formulationDataTarget = '../../data/formulations/bs.formulation.js';
+    // FormulationRetrieval.formulationDataTarget = '../../data/formulations/bs.formulation.js';
 
     // populate the configuration properties with the appropriate data from the formulationObject.
 
-    FormulationDataRetrieval.getFormulationData = function (target) {
+    FormulationRetrieval.getFormulationData = function (target) {
       // console.log('Loading formulation data for target: ', target);
       // return 'FORMULATION DATA';
-      // return target;
-      // return $http.get(target);        // returns the http get method itself.
-      // var data = $http.get(target);
-      // return data;                     // returns the http get method itself.
 
       var promise = $http
         .get(target)
@@ -39,10 +35,10 @@
           return response.data;           // The return value gets picked up by the then in the controller.
         });
 
-      return promise;  // Return the promise to the controller
+      return promise;                     // Return the promise to the controller
     };
 
-    FormulationDataRetrieval.parseFormulationData = function (d) {
+    FormulationRetrieval.parseFormulationData = function (d) {
       console.log(d);
       console.log('Parsing formulation data...');
       Papa.parse(d, {
@@ -52,11 +48,11 @@
       });
     };
 
-    FormulationDataRetrieval.configureFormulationAnalysisData = function (d) {
+    FormulationRetrieval.configureFormulationAnalysisData = function (d) {
       console.log(d);
     };
 
-    return FormulationDataRetrieval;
+    return FormulationRetrieval;
   }
 
 })();
