@@ -14,7 +14,7 @@
 
         $scope.$on('analysisDataLoaded', function (event, args) {
             // console.log(event, args);
-            console.log('FiltersView receiving broadcast.');
+            // console.log('FiltersView receiving broadcast.');
             // $scope.updateView(args);
         });
 

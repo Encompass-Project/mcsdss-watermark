@@ -31,7 +31,8 @@
         //   return FormulationDataRetrieval.sayHello();
         // },
         formulationData: function(FormulationDataRetrieval) {
-          return FormulationDataRetrieval.formulationData();
+          return FormulationDataRetrieval.getFormulationData('./data/formulations/bs.formulation.json');
+          // return FormulationDataRetrieval.formulationDataContainer;
         }
       }
     };
