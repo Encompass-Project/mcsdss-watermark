@@ -7,8 +7,8 @@
     }
   },
   "maufConfig": {
-    "sufWeighting": {
-      "attr1": {
+    "sufWeighting": [
+      {
         "id": "suf-01",
         "label": "SUF Weighting Attr 1",
         "min": 0,
@@ -16,7 +16,7 @@
         "value": 50,
         "step": 1
       },
-      "attr2": {
+      {
         "id": "suf-02",
         "label": "SUF Weighting Attr 1",
         "min": 0,
@@ -24,7 +24,7 @@
         "value": 50,
         "step": 1
       },
-      "attr3": {
+      {
         "id": "suf-03",
         "label": "SUF Weighting Attr 1",
         "min": 0,
@@ -32,11 +32,11 @@
         "value": 0,
         "step": 0.01
       }
-    },
+    ],
     "mufRanking": {
       "type":"additive",
       "id": "muf",
-      "label": "",
+      "label": "MUF Ranking Filter",
       "min": 0,
       "max": 100,
       "value": 50,
@@ -52,7 +52,9 @@
   },
   "graphConfig": {
     "datasources": {
-      "graphContextData": "./data/AquiferYield_ContinuumData_BartonSprings.csv"
+      "graphContextData": {
+        "source": "./data/AquiferYield_ContinuumData_BartonSprings.csv"
+      }
     },
     "graphTitle": "Identifying Desired Future Conditions (DFCs)",
     "xAxisLabel": "Total Pumping in ft3 (for entire model)",
@@ -61,20 +63,33 @@
   },
   "mapConfig": {
     "datasources": {
-      "geojson": {
-        "texasGeojson": "./data/geojson/TX.geo.json",
-        "majorAquifersGeojson": "./data/geojson/NEW_major_aquifers_dd_reduced100.geo.json",
-        "aquiferZonesGeojson": "./data/geojson/eaa-aquifer-zones-2014.geo.json",
-        "bsgam_kzonesGeojson": "./data/geojson/BSGAMKZ.geo.json",
-        "bsgam_kzones_mergedGeojson": "./data/geojson/BSGAMKZones.merged.WGS84.lco15.geo.json"
-      },
-      "layerStyles": {
-        "texasGeojson": "TBD",
-        "majorAquifersGeojson": "TBD",
-        "aquiferZonesGeojson": "TBD",
-        "bsgam_kzonesGeojson": "TBD",
-        "bsgam_kzones_mergedGeojson": "TBD"
-      }
+      "geojson": [
+        {
+          "layerName": "texasGeojson",
+          "source": "./data/geojson/TX.geo.json",
+          "layerStyle": "texas-geojson"
+        },
+        {
+          "layerName": "majorAquifersGeojson",
+          "source": "./data/geojson/NEW_major_aquifers_dd_reduced100.geo.json",
+          "layerStyle": "major-aquifers-geojson"
+        },
+        {
+          "layerName": "aquiferZonesGeojson",
+          "source": "./data/geojson/eaa-aquifer-zones-2014.geo.json",
+          "layerStyle": "aquifer-zones-geojson"
+        },
+        {
+          "layerName": "bsgam_kzonesGeojson",
+          "source": "./data/geojson/BSGAMKZ.geo.json",
+          "layerStyle": "bsgam-kzones-geojson"
+        },
+        {
+          "layerName": "bsgam_kzones_mergedGeojson",
+          "source": "./data/geojson/BSGAMKZones.merged.WGS84.lco15.geo.json",
+          "layerStyle": "bsgam-kzones-merged-geojson"
+        }
+      ]
     }
   }
 }

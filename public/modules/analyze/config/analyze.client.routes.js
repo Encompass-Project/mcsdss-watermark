@@ -30,9 +30,8 @@
         // formulationHello: function(FormulationRetrieval) {
         //   return FormulationRetrieval.sayHello();
         // },
-        formulationData: function(FormulationRetrieval) {
-          return FormulationRetrieval.getFormulationData('./data/formulations/bs.formulation.json');
-          // return FormulationRetrieval.formulationDataContainer;
+        analysisData: function(FormulationRetrieval) {
+          return FormulationRetrieval.getFormulation('./data/formulations/bs.formulation.json');
         }
       }
     };
