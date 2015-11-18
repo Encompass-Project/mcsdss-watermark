@@ -357,10 +357,16 @@ ul.dropdown-menu > li > a:hover {
 /* Datasets View */
 
 .utility-weighting {
-  margin: 1rem 0;
-  padding: 1rem 0;
-  /*border-top: 3px solid #89a;*/
-  /*border-bottom: 3px solid #89a;*/
+  margin: 1rem 0 0 0;
+  padding: 0.5rem 1rem;
+  background: #111;
+  /*border-top: 1px solid #f0ad4e;*/
+  /*border-bottom: 1px solid #f0ad4e;*/
+}
+
+.mauf-label {
+  padding: 1rem 0 0 0;
+  font-size: 1.2rem;
 }
 
 /****************************************/

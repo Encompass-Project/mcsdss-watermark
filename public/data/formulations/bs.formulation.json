@@ -46,14 +46,16 @@
   "datatableConfig": {
     "datasources": {
       "tabledata": {
-        "source": "./data/BSGAM_Heads_Wells_Drains_Zones_Master.csv"
+        "source": "./data/BSGAM_Heads_Wells_Drains_Zones_Master.csv",
+        "datum": ""
       }
     }
   },
   "graphConfig": {
     "datasources": {
       "graphContextData": {
-        "source": "./data/AquiferYield_ContinuumData_BartonSprings.csv"
+        "source": "./data/AquiferYield_ContinuumData_BartonSprings.csv",
+        "datum": ""
       }
     },
     "graphTitle": "Identifying Desired Future Conditions (DFCs)",
@@ -67,26 +69,31 @@
         {
           "layerName": "texasGeojson",
           "source": "./data/geojson/TX.geo.json",
+          "datum": "",
           "layerStyle": "texas-geojson"
         },
         {
           "layerName": "majorAquifersGeojson",
           "source": "./data/geojson/NEW_major_aquifers_dd_reduced100.geo.json",
+          "datum": "",
           "layerStyle": "major-aquifers-geojson"
         },
         {
           "layerName": "aquiferZonesGeojson",
           "source": "./data/geojson/eaa-aquifer-zones-2014.geo.json",
+          "datum": "",
           "layerStyle": "aquifer-zones-geojson"
         },
         {
           "layerName": "bsgam_kzonesGeojson",
           "source": "./data/geojson/BSGAMKZ.geo.json",
+          "datum": "",
           "layerStyle": "bsgam-kzones-geojson"
         },
         {
           "layerName": "bsgam_kzones_mergedGeojson",
           "source": "./data/geojson/BSGAMKZones.merged.WGS84.lco15.geo.json",
+          "datum": "",
           "layerStyle": "bsgam-kzones-merged-geojson"
         }
       ]

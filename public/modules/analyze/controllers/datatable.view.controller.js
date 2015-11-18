@@ -28,9 +28,11 @@
     $scope.muf = 0;
 
     $scope.$on('analysisDataLoaded', function(event, args) {
-      // console.log('analysisDataLoaded...', event, args);
-      // console.log('Datatable View receiving broadcast.');
+      console.log('analysisDataLoaded...', event, args);
       $scope.updateView(args);
+      // var newData = args.datatableConfig.datasources.tabledata.datum;
+      // console.log(newData);
+      // $scope.updateView(newData);
     });
 
     function headerFilter(target) {

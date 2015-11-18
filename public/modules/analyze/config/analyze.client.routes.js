@@ -5,13 +5,13 @@
     .module('analyze')
     .config(DashboardRoutes);
 
-  DashboardRoutes.$inject = ['$stateProvider'];
+  DashboardRoutes.$inject = ['$stateProvider']; // , '$scope', '$rootScope'
 
-  function DashboardRoutes($stateProvider) {
+  function DashboardRoutes($stateProvider) { // , $scope, $rootScope
 
     // Define states.
     var analyze_state = {
-      abstract: false,
+      abstract: true,
       url: '/analyze',
       templateUrl: 'modules/analyze/views/analyze.client.view.html',
       controller: 'AnalyzeViewController',
@@ -21,18 +21,12 @@
       },
       // NOTE: Factories do not need to be injected. They are already available through the mcsdss.providers module across the app.
       resolve: {
-        // helloFactory: function(TestFactory) {
-        //   return TestFactory.helloFactory;
-        // },
-        // goodbyeFactory: function(TestFactory) {
-        //   return TestFactory.goodbyeFactory;
-        // },
-        // formulationHello: function(FormulationRetrieval) {
-        //   return FormulationRetrieval.sayHello();
-        // },
         analysisData: function(FormulationRetrieval) {
           return FormulationRetrieval.getFormulation('./data/formulations/bs.formulation.json');
         }
+      },
+      onEnter: function(analysisData){
+        // console.log(analysisData);
       }
     };
 

@@ -427,7 +427,7 @@
       var targetPosition = [30.15, -97.85];
       var initialZoom = 11;
       // Derive map config.
-      var offsetConstant = 100;
+      var offsetConstant = 10; //100;
       var baseOffset = offsetConstant / initialZoom;
       var initialPanLatOffset = targetPosition[0]; // + baseOffset;
       var initialPanLonOffset = targetPosition[1] - baseOffset;
