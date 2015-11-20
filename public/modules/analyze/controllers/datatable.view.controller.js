@@ -23,6 +23,11 @@
     $scope.$on('analysisDataLoaded', function(event, args) {
       console.log(args);
       $scope.datagridConfig = datagridConfig;
+
+      // NOTE: Table works with either config object or args.
+      // Data strux is correct already due to whatever altered it in route.
+      // Need to do the same for the graphdata config object.
+
       $scope.tabledata = args;  // Using args.
       // $scope.tabledata = $scope.datagridConfig.datasources.tabledata.datum;  // Using config object.
       // console.log($scope.tabledata);
@@ -132,7 +137,7 @@
 
     // Expose public API.
     $scope.headerFilter = headerFilter;
-    // $scope.datasetOrder = datasetOrder;
+    $scope.datasetOrder = datasetOrder;
     $scope.rowClicked = rowClicked;
     $scope.decorateSiblings = decorateSiblings;
     $scope.clearSiblings = clearSiblings;

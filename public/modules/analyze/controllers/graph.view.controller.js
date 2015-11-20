@@ -18,6 +18,9 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
     $scope.graphConfig = graphConfig;
     // console.log($scope.graphConfig);
 
+    // NOTE: Using args wors but using the configObject does not. This is die to the altered data struc the tabledata has when it makes it to the controller.
+    // If I can determine where this is being introduced I can ensure the same alterations happen uniformly to the config objects.
+
     $scope.graphdata = args;   // Using args.
     // console.log($scope.graphdata);
 
