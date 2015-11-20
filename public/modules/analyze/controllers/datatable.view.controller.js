@@ -5,9 +5,9 @@
     .module('analyze')
     .controller('DatatableViewController', DatatableViewController);
 
-  DatatableViewController.$inject = ['$scope', 'Authentication', '$filter', 'ngTableParams', 'AnalysisDataFactory'];
+  DatatableViewController.$inject = ['$scope', 'Authentication', '$filter', 'ngTableParams', 'AnalysisDataFactory', 'tableConfig'];
 
-  function DatatableViewController($scope, Authentication, $filter, ngTableParams, AnalysisDataFactory) {
+  function DatatableViewController($scope, Authentication, $filter, ngTableParams, AnalysisDataFactory, tableConfig) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
@@ -33,6 +33,8 @@
       // var newData = args.datatableConfig.datasources.tabledata.datum;
       // console.log(newData);
       // $scope.updateView(newData);
+
+      // $scope.updateView(tableConfig);    // Not working yet.
     });
 
     function headerFilter(target) {
@@ -77,7 +79,12 @@
     }
 
     function updateView(data) {
-      // console.log('DatatableView Updated with new data:', data);
+      // console.log('DatatableView updating with new data...');
+      // console.log(data);
+
+      // console.log(data.datasources);
+      // console.log(data.datasources.tabledata);
+      // console.log(data.datasources.tabledata.datum);
 
       // ngTable
 
@@ -97,7 +104,7 @@
         }
       });
 
-      // ngTable Demo
+      // ngTable Demo for Ref.
 
       // this.tableParams = new ngTableParams({}, {
       //   getData: function (params) {

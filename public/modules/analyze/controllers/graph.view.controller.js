@@ -5,26 +5,34 @@
     .module('analyze')
     .controller('GraphViewController', GraphViewController);
 
-  GraphViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication'];
+  GraphViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'graphConfig'];
 
-function GraphViewController($rootScope, $scope, $state, $location, Authentication) {
+function GraphViewController($rootScope, $scope, $state, $location, Authentication, graphConfig) {
   // This provides Authentication context.
   $scope.authentication = Authentication;
-
+  // console.log(graphConfig);
   $scope.graphTitle = 'Identifying Desired Future Conditions (DFCs)';
 
   $scope.$on('analysisDataLoaded', function(event, args) {
+    // console.log('Graph View received broadcast. Updating graph view...');
     // console.log(event, args);
-    // console.log('Graph View receiving broadcast.');
-    $scope.updateView(args);
-  });
+    // console.log(graphConfig);
 
-  $scope.clicked = function(target) {
-    console.log(target);
-  };
+    $scope.updateView(args);
+    // $scope.updateView(args.graphConfig);
+    // $scope.updateView(graphConfig);
+  });
 
   $scope.updateView = function(data) {
     // console.log('graphViewCtrl.updateView(data): ', data);
+    // console.log(data);
+    // console.log(data.datasources);
+    // console.log(data.datasources.graphContextData);
+    // console.log(data.datasources.graphData);
+    // console.log(data.datasources.graphContextData.source);
+    // console.log(data.datasources.graphData.source);
+    // console.log(data.datasources.graphContextData.datum);
+    // console.log(data.datasources.graphData.datum);
     $scope.visualization(data);
   };
 
@@ -33,6 +41,16 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
     // console.log(data);
     // console.log(data[0]);
 
+    // data sources.
+    // var graph_dataSource = '../../../../data/Watermark_Master_Total_Wells_Heads_Zones_optimized.csv';
+    var graph_dataSource = data; // Uses async data from promise via http.
+    var aquiferContinuum_dataSource = '../../../../data/AquiferYield_ContinuumData_BartonSprings.csv';
+
+    // var graph_dataSource = data.datasources.graphData.datum;
+    // var graph_dataSource = graphConfig.datasources.graphData.datum;
+    // var aquiferContinuum_dataSource = data.datasources.graphContext.datum;
+
+    // set graph dimensions.
     var graphPanel = document.getElementById('panel-pm');
     var graphPanelWidth = graphPanel.offsetWidth;
     var graphPanelHeight = graphPanel.offsetHeight;
@@ -45,11 +63,6 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
     var height = graphPanelHeight * graphHeightScale;
 
     // console.log('graph dimensions are: ' + width, height);
-
-    // data sources.
-    // var graph_dataSource = '../../../../data/Watermark_Master_Total_Wells_Heads_Zones_optimized.csv';
-    var graph_dataSource = data; // Uses async data from promise via http.
-    var aquiferContinuum_dataSource = '../../../../data/AquiferYield_ContinuumData_BartonSprings.csv';
 
     // MODULE private methods.
     function drawGraph(graphData) {
@@ -568,12 +581,6 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
 
     drawGraph(graph_dataSource);
   };
-
-  // $scope.$on('analysisDataLoaded', function (event, args) {
-  //     // console.log(event, args);
-  //     console.log('Graph View receiving broadcast.');
-  //     $scope.updateView(args);
-  // });
 
   }
 })();

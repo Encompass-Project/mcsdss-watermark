@@ -1,9 +1,9 @@
 {
-  "generalConfig": {
+  "analysisConfig": {
     "linkages": {
-      "table2graph": "table2graph-linkage",
+      "grid2graph": "grid2graph-linkage",
       "graph2map": "graph2map-linkage",
-      "table2map": "table2map-linkage"
+      "grid2map": "grid2map-linkage"
     }
   },
   "maufConfig": {
@@ -43,7 +43,7 @@
       "step": 1
     }
   },
-  "datatableConfig": {
+  "datagridConfig": {
     "datasources": {
       "tabledata": {
         "source": "./data/BSGAM_Heads_Wells_Drains_Zones_Master.csv",

@@ -5,14 +5,23 @@
     .module('analyze')
     .controller('AnalyzeViewController', AnalyzeViewController);
 
-  AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'analysisData'];
+  AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'analysisData', 'maufConfig', 'tableConfig', 'graphConfig', 'mapConfig'];
 
-  function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, analysisData) {
+  function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, analysisData, analysisConfig, maufConfig, tableConfig, graphConfig, mapConfig) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
     $scope.currentRoute = 'Analyze';
     // console.log($scope.currentRoute);
-    $state.go('analyze.layout'); // Required to get nested named views to populate correctly. Not routing correctly from routes.js without this.
+    // $state.go('analyze.layout'); // Required to get nested named views to populate correctly. Not routing correctly from routes.js without this.
+
+    // console.log(analysisData);
+    // console.log(analysisConfig);
+    // console.log(maufConfig);
+    // console.log(tableConfig);
+    // console.log(graphConfig);
+    // console.log(mapConfig);
+
+    // $scope.analysisData = analysisData;
 
     // Manual data loading.
     // $scope.parseCsvData = parseCsvData;
@@ -21,7 +30,7 @@
 
     $httpq.get($scope.sourceFile_A)
       .then(function(data) {
-        // $scope.parseCsvData(data);
+        // ...
       })
       .catch(function(data, status) {
         console.error('Load error', response.status, response.data);
@@ -32,24 +41,22 @@
         // console.log('Analysis data loaded. Broadcasting...');
         // $scope.$broadcast('analysisDataLoaded', $scope.sourceData);
 
-        $scope.$broadcast('analysisDataLoaded', analysisData.datatableConfig.datasources.tabledata.datum);
+        // Works here, does not work in stateChangeSuccess... WTH??
+        $scope.$broadcast('analysisDataLoaded', analysisData.datagridConfig.datasources.tabledata.datum);
       });
-
-    // function parseCsvData(csvData) {
-    //   Papa.parse(csvData, {
-    //     complete: function(results) {
-    //       // console.log(results.data);
-    //       // $scope.sourceData = results.data;
-    //     }
-    //   });
-    // }
 
     $scope.$on('$stateChangeSuccess', function() {
       // console.log('stateChangeSuccess');
-      console.log(analysisData);
-      // console.log(analysisData.datatableConfig.datasources.tabledata.datum);
-      // $rootScope.$broadcast('analysisDataLoaded', analysisData);
-      // $rootScope.$broadcast('analysisDataLoaded', analysisData.datatableConfig.datasources.tabledata.datum);
+      // console.log(analysisData);
+      // $scope.$broadcast('analysisDataLoaded', analysisData);
+
+      // $scope.$broadcast('analysisDataLoaded', { analysisData, analysisConfig, maufConfig, tableConfig, graphConfig, mapConfig });
+      // $scope.$broadcast('analysisDataLoaded', {});
+
+      // $scope.analysisData = analysisData;
+      // $scope.$broadcast('analysisDataLoaded', analysisData.datagridConfig.datasources.tabledata.datum);
+
+      // $scope.$broadcast('analysisDataLoaded', $scope.analysisData);
     });
 
     // PubSub between Graph and Map.

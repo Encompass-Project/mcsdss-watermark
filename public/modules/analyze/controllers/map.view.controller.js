@@ -5,16 +5,18 @@
         .module('analyze')
         .controller('MapViewController', MapViewController);
 
-    MapViewController.$inject = ['$scope', 'Authentication'];
+    MapViewController.$inject = ['$scope', 'Authentication', 'mapConfig'];
 
-    function MapViewController($scope, Authentication) {
+    function MapViewController($scope, Authentication, mapConfig) {
         // This provides Authentication context.
         $scope.authentication = Authentication;
         $scope.updateView = updateView;
 
+        // console.log(mapConfig);
+
         $scope.$on('analysisDataLoaded', function (event, args) {
-            // console.log(event, args);
             // console.log('Map View receiving broadcast.');
+            // console.log(event, args);
             $scope.updateView(args);
         });
 

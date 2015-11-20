@@ -5,9 +5,9 @@
     .module('analyze')
     .config(DashboardRoutes);
 
-  DashboardRoutes.$inject = ['$stateProvider']; // , '$scope', '$rootScope'
+  DashboardRoutes.$inject = ['$stateProvider'];
 
-  function DashboardRoutes($stateProvider) { // , $scope, $rootScope
+  function DashboardRoutes($stateProvider) {
 
     // Define states.
     var analyze_state = {
@@ -23,10 +23,22 @@
       resolve: {
         analysisData: function(FormulationRetrieval) {
           return FormulationRetrieval.getFormulation('./data/formulations/bs.formulation.json');
+        },
+        analysisConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getAnalysisConfig(analysisData);
+        },
+        maufConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getMaufConfig(analysisData);
+        },
+        tableConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getTableConfig(analysisData);
+        },
+        graphConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getGraphConfig(analysisData);
+        },
+        mapConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getMapConfig(analysisData);
         }
-      },
-      onEnter: function(analysisData){
-        // console.log(analysisData);
       }
     };
 

@@ -9,8 +9,6 @@
 
   function FormulationRetrieval($http, $q, httpq) {
 
-    FormulationRetrieval.formulationContainer = {};
-
     FormulationRetrieval.getFormulation = function (target) {
       var promise = $http
         .get(target)
@@ -28,25 +26,25 @@
     };
 
     FormulationRetrieval.loadFormulationSourceData = function (fc) {
+      function parseFormulationDatasource(fd, destination) {
+        Papa.parse(fd, {
+          complete: function(results) {
+            destination.datum = results.data;
+          }
+        });
+      }
+
       function loadData(target) {
         var promise = $http
           .get(target.source)
           .then(function (response) {
-            FormulationRetrieval.parseFormulationDatasource(response.data, target);
+            parseFormulationDatasource(response.data, target);
           });
         return promise;
       }
 
-      var datasources = [fc.datatableConfig.datasources.tabledata, fc.graphConfig.datasources.graphContextData];
+      var datasources = [fc.datagridConfig.datasources.tabledata, fc.graphConfig.datasources.graphContextData];
       angular.forEach(datasources, loadData);
-    };
-
-    FormulationRetrieval.parseFormulationDatasource = function (fd, destination) {
-      Papa.parse(fd, {
-        complete: function(results) {
-          destination.datum = results.data;
-        }
-      });
     };
 
     FormulationRetrieval.loadFormulationGisData = function (fc) {
@@ -63,6 +61,31 @@
 
       var datasources = [fc.mapConfig.datasources.geojson];
       angular.forEach(datasources, loadGeodata);
+    };
+
+    FormulationRetrieval.getAnalysisConfig = function (fc) {
+      var analysisConfig = fc.analysisConfig;
+      return analysisConfig;
+    };
+
+    FormulationRetrieval.getMaufConfig = function (fc) {
+      var maufConfig = fc.maufConfig;
+      return maufConfig;
+    };
+
+    FormulationRetrieval.getGraphConfig = function (fc) {
+      var graphConfig = fc.graphConfig;
+      return graphConfig;
+    };
+
+    FormulationRetrieval.getTableConfig = function (fc) {
+      var tableConfig = fc.datagridConfig;
+      return tableConfig;
+    };
+
+    FormulationRetrieval.getMapConfig = function (fc) {
+      var mapConfig = fc.mapConfig;
+      return mapConfig;
     };
 
     return FormulationRetrieval;
