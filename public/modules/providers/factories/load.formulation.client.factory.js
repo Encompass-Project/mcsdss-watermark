@@ -5,9 +5,9 @@
     .module('mcsdss.providers')
     .factory('FormulationRetrieval', FormulationRetrieval);
 
-  FormulationRetrieval.$inject = ['$http', '$q', 'httpq'];
+  FormulationRetrieval.$inject = ['$http'];
 
-  function FormulationRetrieval($http, $q, httpq) {
+  function FormulationRetrieval($http) {
 
     FormulationRetrieval.getFormulation = function (target) {
       var promise = $http
