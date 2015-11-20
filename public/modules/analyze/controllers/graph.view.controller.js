@@ -14,25 +14,21 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
   $scope.graphTitle = 'Identifying Desired Future Conditions (DFCs)';
 
   $scope.$on('analysisDataLoaded', function(event, args) {
-    // console.log('Graph View received broadcast. Updating graph view...');
-    // console.log(event, args);
-    // console.log(graphConfig);
+    console.log(args);
+    $scope.graphConfig = graphConfig;
+    // console.log($scope.graphConfig);
 
-    $scope.updateView(args);
-    // $scope.updateView(args.graphConfig);
-    // $scope.updateView(graphConfig);
+    $scope.graphdata = args;   // Using args.
+    // console.log($scope.graphdata);
+
+    $scope.graphdata2 = $scope.graphConfig.datasources.graphdata.datum;   // Using config object.
+    // console.log($scope.graphdata2);
+
+    $scope.updateView($scope.graphdata);
   });
 
   $scope.updateView = function(data) {
-    // console.log('graphViewCtrl.updateView(data): ', data);
     // console.log(data);
-    // console.log(data.datasources);
-    // console.log(data.datasources.graphContextData);
-    // console.log(data.datasources.graphData);
-    // console.log(data.datasources.graphContextData.source);
-    // console.log(data.datasources.graphData.source);
-    // console.log(data.datasources.graphContextData.datum);
-    // console.log(data.datasources.graphData.datum);
     $scope.visualization(data);
   };
 

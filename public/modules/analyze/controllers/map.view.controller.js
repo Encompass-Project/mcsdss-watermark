@@ -12,17 +12,14 @@
         $scope.authentication = Authentication;
         $scope.updateView = updateView;
 
-        // console.log(mapConfig);
-
         $scope.$on('analysisDataLoaded', function (event, args) {
-            // console.log('Map View receiving broadcast.');
-            // console.log(event, args);
-            $scope.updateView(args);
+            $scope.mapConfig = mapConfig;
+            // $scope.updateView(args);
+            // $scope.updateView($scope.mapConfig);
         });
 
         function updateView(data) {
             // console.log('MapView Updated with new data:' , data);
-            // console.log('mapViewCtrl.updateView(data): ', data);
         }
     }
 })();

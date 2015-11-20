@@ -5,55 +5,50 @@
     .module('analyze')
     .controller('AnalyzeViewController', AnalyzeViewController);
 
-  AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'analysisData', 'analysisConfig']; // , 'maufConfig', 'tableConfig', 'graphConfig', 'mapConfig'
+  AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'analysisData', 'analysisConfig'];
 
-  function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, analysisData, analysisConfig) { // , maufConfig, tableConfig, graphConfig, mapConfig
+  function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, analysisData, analysisConfig) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
     $scope.currentRoute = 'Analyze';
-    // console.log($scope.currentRoute);
-    // $state.go('analyze.layout'); // Required to get nested named views to populate correctly. Not routing correctly from routes.js without this.
-
-    console.log(analysisData);
-    console.log(analysisConfig);
-    // console.log(maufConfig);
-    // console.log(tableConfig);
-    // console.log(graphConfig);
-    // console.log(mapConfig);
 
     $scope.$on('$stateChangeSuccess', function() {
-      console.log('stateChangeSuccess');
-      // console.log(analysisData);
       $scope.analysisData = analysisData;
-      // $scope.$broadcast('analysisDataLoaded', {});
-      // $scope.$broadcast('analysisDataLoaded', analysisData);
-      // $scope.$broadcast('analysisDataLoaded', { analysisData, analysisConfig, maufConfig, tableConfig, graphConfig, mapConfig });
-      // $scope.$broadcast('analysisDataLoaded', analysisData.datagridConfig.datasources.tabledata.datum);
-      // $scope.$broadcast('analysisDataLoaded', $scope.analysisData);
+      $scope.analysisConfig = analysisConfig;
+
+      // Confusion starts here:
+
+      console.log($scope.analysisData); // both are preent and yet differ in structure now.
+      console.log($scope.analysisData.datagridConfig.datasources.tabledata.datum); // properly defined
+      console.log($scope.analysisData.graphConfig.datasources.graphdata.datum);   // empty
+
+      // Somehow the graph and the table load the exact same data in the Service, it gets parsed.
+      // Somewhere between parsing it and loading it into the above config objects, the table data gets reparsed to include extra attrs.
+      // These are what is missing from the graph data and causing it to fail when I try and populate with it.
+      // This is in addition to the fact tat the promises are being resolved before the data is fully loaded and therefore not binding correctly.
+
       $scope.$broadcast('analysisDataLoaded', $scope.analysisData.datagridConfig.datasources.tabledata.datum);
+      // $scope.$broadcast('analysisDataLoaded', {});             // If config objects are available directly via resolved resources, no need to pass around data, just trigger update sync.
     });
 
     // PubSub between Graph and Map.
     $scope.$on('currentGraphTarget', function(event, args) {
-      // console.log('you touched the graph at record: ' + args);
-      $rootScope.$broadcast('addMapTarget', args);
+      $rootScope.$broadcast('addMapTarget', args);                // console.log('you touched the graph at record: ' + args);
     });
 
     $scope.$on('clearGraphTarget', function(event, args) {
-      // console.log('you stopped touching the graph record: ' + args[0]);
-      $rootScope.$broadcast('removeMapTarget', args);
+      $rootScope.$broadcast('removeMapTarget', args);             // console.log('you stopped touching the graph record: ' + args[0]);
     });
 
     // PubSub between Datatable and Graph.
     $scope.$on('currentDatatableTarget', function(event, args) {
-      // console.log('you touched the datatable at row: ' + args[0]);
-      $rootScope.$broadcast('newDatatableTarget', args[0]);
+      $rootScope.$broadcast('newDatatableTarget', args[0]);       // console.log('you touched the datatable at row: ' + args[0]);
     });
 
     $scope.$on('clearDatatableTarget', function(event, args) {
-      // console.log('you stopped touching the datatable row: ' + args[0]);
-      $rootScope.$broadcast('removeDatatableTarget', args[0]);
+      $rootScope.$broadcast('removeDatatableTarget', args[0]);    // console.log('you stopped touching the datatable row: ' + args[0]);
     });
-  }
 
+    // NOTE: There is no pubsub between Datatable and Map due to incongruous linkages (at this time).
+  }
 })();

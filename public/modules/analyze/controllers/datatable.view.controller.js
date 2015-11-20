@@ -5,54 +5,28 @@
     .module('analyze')
     .controller('DatatableViewController', DatatableViewController);
 
-  DatatableViewController.$inject = ['$scope', 'Authentication', '$filter', 'ngTableParams', 'AnalysisDataFactory', 'tableConfig'];
+  DatatableViewController.$inject = ['$scope', 'Authentication', '$filter', 'ngTableParams', 'AnalysisDataFactory', 'datagridConfig'];
 
-  function DatatableViewController($scope, Authentication, $filter, ngTableParams, AnalysisDataFactory, tableConfig) {
+  function DatatableViewController($scope, Authentication, $filter, ngTableParams, AnalysisDataFactory, datagridConfig) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
-
-    // Expose public API.
-    $scope.headerFilter = headerFilter;
-    $scope.datasetOrder = datasetOrder;
-    $scope.rowClicked = rowClicked;
-    $scope.decorateSiblings = decorateSiblings;
-    $scope.clearSiblings = clearSiblings;
-    $scope.updateView = updateView;
+    // console.log(datagridConfig);
 
     // Private members.
-    // $scope.tableConfig = {};
-    $scope.headerdata = [];
-    $scope.tabledata = [];
+    // $scope.headerdata = [];
+    // $scope.tabledata = [];
     $scope.suf01 = 0;
     $scope.suf02 = 0;
     $scope.suf03 = 0;
     $scope.muf = 0;
 
     $scope.$on('analysisDataLoaded', function(event, args) {
-      console.log('analysisDataLoaded. Assigning datagrid configuration. Updating view.');
-      // console.log(event);
-      // console.log(args);
-      // console.log(tableConfig);
-      $scope.tableConfig = tableConfig;
-      // console.log($scope.tableConfig);
-      // $scope.tabledata = $scope.datagridConfig.datasources.tabledata.datum;
-      $scope.tabledata = args;
+      console.log(args);
+      $scope.datagridConfig = datagridConfig;
+      $scope.tabledata = args;  // Using args.
+      // $scope.tabledata = $scope.datagridConfig.datasources.tabledata.datum;  // Using config object.
       // console.log($scope.tabledata);
-      // $scope.updateView(args);
       $scope.updateView($scope.tabledata);
-    });
-
-    $scope.$on('$stateChangeSuccess', function() {
-      // console.log('stateChangeSuccess');
-      // console.log(tableConfig);
-      // $scope.tableConfig = tableConfig;
-      // console.log($scope.tabledata);
-
-      // $scope.updateView($scope.tabledata);
-      // $scope.updateView($scope.tableConfig.datasources.tabledata.datum);
-
-      // $scope.tabledata = $scope.datagridConfig.datasources.tabledata.datum;
-      // $scope.updateView($scope.tabledata);
     });
 
     function headerFilter(target) {
@@ -65,7 +39,7 @@
 
       angular.forEach($scope.headers, function(target) {
         // console.log('key='+key);
-        if (target.data == key) {
+        if (target.data === key) {
           if (target.visible) {
             return target.order;
           }
@@ -154,7 +128,15 @@
       //     }).$promise;
       //   }
       // });
-
     }
+
+    // Expose public API.
+    $scope.headerFilter = headerFilter;
+    // $scope.datasetOrder = datasetOrder;
+    $scope.rowClicked = rowClicked;
+    $scope.decorateSiblings = decorateSiblings;
+    $scope.clearSiblings = clearSiblings;
+    $scope.updateView = updateView;
+
   }
 })();

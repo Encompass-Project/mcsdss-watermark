@@ -7,6 +7,7 @@
 
   DashboardRoutes.$inject = ['$stateProvider'];
 
+  // NOTE: Factories do not need to be injected. They are already available through the mcsdss.providers module across the app.
   function DashboardRoutes($stateProvider) {
 
     // Define states.
@@ -19,7 +20,6 @@
       data: {
         title: 'Analyze'
       },
-      // NOTE: Factories do not need to be injected. They are already available through the mcsdss.providers module across the app.
       resolve: {
         analysisData: function(FormulationRetrieval) {
           return FormulationRetrieval.getFormulation('./data/formulations/bs.formulation.json'); // Replace with formulation id by user.
@@ -57,8 +57,8 @@
         maufConfig: function(FormulationRetrieval, analysisData) {
           return FormulationRetrieval.getMaufConfig(analysisData);
         },
-        tableConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getTableConfig(analysisData);
+        datagridConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getDatagridConfig(analysisData);
         },
         graphConfig: function(FormulationRetrieval, analysisData) {
           return FormulationRetrieval.getGraphConfig(analysisData);

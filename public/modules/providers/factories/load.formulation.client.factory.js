@@ -5,19 +5,58 @@
     .module('mcsdss.providers')
     .factory('FormulationRetrieval', FormulationRetrieval);
 
-  FormulationRetrieval.$inject = ['$http'];
+  FormulationRetrieval.$inject = ['$http', '$q'];
 
-  function FormulationRetrieval($http) {
+  function FormulationRetrieval($http, $q) {
 
+    var currentFormulation = null;
+    var analysisConfig = null;
+    var maufConfig = null;
+    var datagridConfig = null;
+    var graphConfig = null;
+    var mapConfig = null;
+
+    // Primary access point for service data.
     FormulationRetrieval.getFormulation = function (target) {
-      var promise = $http
-        .get(target)
-        .then(function (response) {
-          return FormulationRetrieval.configureFormulation(response.data);
-        });
-      return promise;
+      var deferred = $q.defer();
+      if(currentFormulation !== null) {
+        deferred.resolve(currentFormulation);  // Cache
+      }
+      else {
+        var promise = $http
+          .get(target)
+          .then(function (response) {
+            currentFormulation = FormulationRetrieval.configureFormulation(response.data);
+            return currentFormulation;
+          });
+        return promise;
+      }
+
+      return deferred.promise;
     };
 
+    // Populate various config objects.
+    FormulationRetrieval.getAnalysisConfig = function (fc) {
+      return FormulationRetrieval.setConfigurationData(fc.analysisConfig, analysisConfig);
+    };
+
+    FormulationRetrieval.getMaufConfig = function (fc) {
+      return FormulationRetrieval.setConfigurationData(fc.maufConfig, maufConfig);
+    };
+
+    FormulationRetrieval.getGraphConfig = function (fc) {
+      return FormulationRetrieval.setConfigurationData(fc.graphConfig, graphConfig);
+    };
+
+    FormulationRetrieval.getDatagridConfig = function (fc) {
+      return FormulationRetrieval.setConfigurationData(fc.datagridConfig, datagridConfig);
+    };
+
+    FormulationRetrieval.getMapConfig = function (fc) {
+      return FormulationRetrieval.setConfigurationData(fc.mapConfig, mapConfig);
+    };
+
+    // Helper methods.
     FormulationRetrieval.configureFormulation = function (f) {
       FormulationRetrieval.formulationContainer = f;
       FormulationRetrieval.loadFormulationSourceData(FormulationRetrieval.formulationContainer);
@@ -29,6 +68,7 @@
       function parseFormulationDatasource(fd, destination) {
         Papa.parse(fd, {
           complete: function(results) {
+            // console.log(results.data);
             destination.datum = results.data;
           }
         });
@@ -38,12 +78,13 @@
         var promise = $http
           .get(target.source)
           .then(function (response) {
+            // console.log(response.data);
             parseFormulationDatasource(response.data, target);
           });
         return promise;
       }
 
-      var datasources = [fc.datagridConfig.datasources.tabledata, fc.graphConfig.datasources.graphContextData];
+      var datasources = [fc.datagridConfig.datasources.tabledata, fc.graphConfig.datasources.graphContextData, fc.graphConfig.datasources.graphdata];
       angular.forEach(datasources, loadData);
     };
 
@@ -63,29 +104,16 @@
       angular.forEach(datasources, loadGeodata);
     };
 
-    FormulationRetrieval.getAnalysisConfig = function (fc) {
-      var analysisConfig = fc.analysisConfig.$promise;
-      return analysisConfig;
-    };
-
-    FormulationRetrieval.getMaufConfig = function (fc) {
-      var maufConfig = fc.maufConfig.$promise;
-      return maufConfig;
-    };
-
-    FormulationRetrieval.getGraphConfig = function (fc) {
-      var graphConfig = fc.graphConfig.$promise;
-      return graphConfig;
-    };
-
-    FormulationRetrieval.getTableConfig = function (fc) {
-      var tableConfig = fc.datagridConfig.$promise;
-      return tableConfig;
-    };
-
-    FormulationRetrieval.getMapConfig = function (fc) {
-      var mapConfig = fc.mapConfig.$promise;
-      return mapConfig;
+    FormulationRetrieval.setConfigurationData = function (source, targetConfig) {
+      var deferred = $q.defer();
+      if(targetConfig !== null) {
+        deferred.resolve(targetConfig);  // from Cache
+      }
+      else {
+        targetConfig = source;   // from Server
+        return targetConfig;
+      }
+      return deferred.promise;
     };
 
     return FormulationRetrieval;
