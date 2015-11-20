@@ -64,27 +64,27 @@
     };
 
     FormulationRetrieval.getAnalysisConfig = function (fc) {
-      var analysisConfig = fc.analysisConfig;
+      var analysisConfig = fc.analysisConfig.$promise;
       return analysisConfig;
     };
 
     FormulationRetrieval.getMaufConfig = function (fc) {
-      var maufConfig = fc.maufConfig;
+      var maufConfig = fc.maufConfig.$promise;
       return maufConfig;
     };
 
     FormulationRetrieval.getGraphConfig = function (fc) {
-      var graphConfig = fc.graphConfig;
+      var graphConfig = fc.graphConfig.$promise;
       return graphConfig;
     };
 
     FormulationRetrieval.getTableConfig = function (fc) {
-      var tableConfig = fc.datagridConfig;
+      var tableConfig = fc.datagridConfig.$promise;
       return tableConfig;
     };
 
     FormulationRetrieval.getMapConfig = function (fc) {
-      var mapConfig = fc.mapConfig;
+      var mapConfig = fc.mapConfig.$promise;
       return mapConfig;
     };
 

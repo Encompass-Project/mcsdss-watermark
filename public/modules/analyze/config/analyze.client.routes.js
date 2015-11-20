@@ -22,22 +22,10 @@
       // NOTE: Factories do not need to be injected. They are already available through the mcsdss.providers module across the app.
       resolve: {
         analysisData: function(FormulationRetrieval) {
-          return FormulationRetrieval.getFormulation('./data/formulations/bs.formulation.json');
+          return FormulationRetrieval.getFormulation('./data/formulations/bs.formulation.json'); // Replace with formulation id by user.
         },
         analysisConfig: function(FormulationRetrieval, analysisData) {
           return FormulationRetrieval.getAnalysisConfig(analysisData);
-        },
-        maufConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getMaufConfig(analysisData);
-        },
-        tableConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getTableConfig(analysisData);
-        },
-        graphConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getGraphConfig(analysisData);
-        },
-        mapConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getMapConfig(analysisData);
         }
       }
     };
@@ -63,6 +51,20 @@
           templateUrl: 'modules/analyze/views/analyze.datatable.client.view.html',
           controller: 'DatatableViewController',
           controllerAs: 'datatable'
+        }
+      },
+      resolve: {
+        maufConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getMaufConfig(analysisData);
+        },
+        tableConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getTableConfig(analysisData);
+        },
+        graphConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getGraphConfig(analysisData);
+        },
+        mapConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getMapConfig(analysisData);
         }
       }
     };

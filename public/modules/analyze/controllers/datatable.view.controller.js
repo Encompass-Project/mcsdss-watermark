@@ -20,6 +20,7 @@
     $scope.updateView = updateView;
 
     // Private members.
+    // $scope.tableConfig = {};
     $scope.headerdata = [];
     $scope.tabledata = [];
     $scope.suf01 = 0;
@@ -28,13 +29,30 @@
     $scope.muf = 0;
 
     $scope.$on('analysisDataLoaded', function(event, args) {
-      console.log('analysisDataLoaded...', event, args);
-      $scope.updateView(args);
-      // var newData = args.datatableConfig.datasources.tabledata.datum;
-      // console.log(newData);
-      // $scope.updateView(newData);
+      console.log('analysisDataLoaded. Assigning datagrid configuration. Updating view.');
+      // console.log(event);
+      // console.log(args);
+      // console.log(tableConfig);
+      $scope.tableConfig = tableConfig;
+      // console.log($scope.tableConfig);
+      // $scope.tabledata = $scope.datagridConfig.datasources.tabledata.datum;
+      $scope.tabledata = args;
+      // console.log($scope.tabledata);
+      // $scope.updateView(args);
+      $scope.updateView($scope.tabledata);
+    });
 
-      // $scope.updateView(tableConfig);    // Not working yet.
+    $scope.$on('$stateChangeSuccess', function() {
+      // console.log('stateChangeSuccess');
+      // console.log(tableConfig);
+      // $scope.tableConfig = tableConfig;
+      // console.log($scope.tabledata);
+
+      // $scope.updateView($scope.tabledata);
+      // $scope.updateView($scope.tableConfig.datasources.tabledata.datum);
+
+      // $scope.tabledata = $scope.datagridConfig.datasources.tabledata.datum;
+      // $scope.updateView($scope.tabledata);
     });
 
     function headerFilter(target) {
