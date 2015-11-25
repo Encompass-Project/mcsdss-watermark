@@ -40,8 +40,6 @@
 
     function datasetOrder(key) {
       // console.log(key);
-      // console.log('key='+key);    //prints: 'key=undefined'
-
       angular.forEach($scope.headers, function(target) {
         // console.log('key='+key);
         if (target.data === key) {

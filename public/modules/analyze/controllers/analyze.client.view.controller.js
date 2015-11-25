@@ -5,9 +5,9 @@
     .module('analyze')
     .controller('AnalyzeViewController', AnalyzeViewController);
 
-  AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'analysisData', 'analysisConfig'];
+  AnalyzeViewController.$inject = ['$rootScope', '$scope', '$state', '$location', 'Authentication', 'httpq', 'analysisData', 'analysisConfig']; //, 'maufConfig', 'datagridConfig', 'graphConfig', 'mapConfig'];
 
-  function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, analysisData, analysisConfig) {
+  function AnalyzeViewController($rootScope, $scope, $state, $location, Authentication, $httpq, analysisData, analysisConfig) { //, maufConfig, datagridConfig, graphConfig, mapConfig) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
     $scope.currentRoute = 'Analyze';
@@ -16,11 +16,21 @@
       $scope.analysisData = analysisData;
       $scope.analysisConfig = analysisConfig;
 
-      // Confusion starts here:
+      // Data objects returned from Service. All work as expected immediately.
+      console.log(analysisData);
+      console.log(analysisConfig);
+      // console.log(maufConfig);
+      // console.log(datagridConfig);
+      // console.log(graphConfig);
+      // console.log(mapConfig);
 
-      console.log($scope.analysisData); // both are preent and yet differ in structure now.
-      console.log($scope.analysisData.datagridConfig.datasources.tabledata.datum); // properly defined
-      console.log($scope.analysisData.graphConfig.datasources.graphdata.datum);   // empty
+      // This also works every time.
+      console.log($scope.analysisData);
+
+      // Confusion starts here:
+      // These are both either properly defined or empty depending on how async times out.
+      console.log($scope.analysisData.datagridConfig.datasources.tabledata.datum);
+      console.log($scope.analysisData.graphConfig.datasources.graphdata.datum);
 
       // Somehow the graph and the table load the exact same data in the Service, it gets parsed.
       // Somewhere between parsing it and loading it into the above config objects, the table data gets reparsed to include extra attrs.

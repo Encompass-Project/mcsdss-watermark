@@ -17,4 +17,17 @@
     };
   }
 
+  function testDeferredAngularSync() {
+    var deferred = $q.defer();
+
+    deferred.promise.then(function(result) {
+      console.log('promise success');
+    }, function(error) {
+      console.log('promise error');
+    });
+
+    console.log('resolving deferred');
+    deferred.resolve();
+  }
+
 })();

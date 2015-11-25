@@ -26,6 +26,7 @@
         var promise = $http
           .get(target)
           .then(function (response) {
+            console.log('formulation data resolved to: ', response.data);
             currentFormulation = FormulationRetrieval.configureFormulation(response.data);
             return currentFormulation;
           });
@@ -37,22 +38,27 @@
 
     // Populate various config objects.
     FormulationRetrieval.getAnalysisConfig = function (fc) {
+      console.log('getAnalysis data resolved to: ', fc.analysisConfig);
       return FormulationRetrieval.setConfigurationData(fc.analysisConfig, analysisConfig);
     };
 
     FormulationRetrieval.getMaufConfig = function (fc) {
+      console.log('getAnalysis data resolved to: ', fc.maufConfig);
       return FormulationRetrieval.setConfigurationData(fc.maufConfig, maufConfig);
     };
 
     FormulationRetrieval.getGraphConfig = function (fc) {
+      console.log('getAnalysis data resolved to: ', fc.graphConfig);
       return FormulationRetrieval.setConfigurationData(fc.graphConfig, graphConfig);
     };
 
     FormulationRetrieval.getDatagridConfig = function (fc) {
+      console.log('getAnalysis data resolved to: ', fc.datagridConfig);
       return FormulationRetrieval.setConfigurationData(fc.datagridConfig, datagridConfig);
     };
 
     FormulationRetrieval.getMapConfig = function (fc) {
+      console.log('getAnalysis data resolved to: ', fc.mapConfig);
       return FormulationRetrieval.setConfigurationData(fc.mapConfig, mapConfig);
     };
 

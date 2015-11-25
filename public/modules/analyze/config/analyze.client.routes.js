@@ -26,7 +26,19 @@
         },
         analysisConfig: function(FormulationRetrieval, analysisData) {
           return FormulationRetrieval.getAnalysisConfig(analysisData);
-        }
+        }//,
+        // maufConfig: function(FormulationRetrieval, analysisData) {
+        //   return FormulationRetrieval.getMaufConfig(analysisData);
+        // },
+        // datagridConfig: function(FormulationRetrieval, analysisData) {
+        //   return FormulationRetrieval.getDatagridConfig(analysisData);
+        // },
+        // graphConfig: function(FormulationRetrieval, analysisData) {
+        //   return FormulationRetrieval.getGraphConfig(analysisData);
+        // },
+        // mapConfig: function(FormulationRetrieval, analysisData) {
+        //   return FormulationRetrieval.getMapConfig(analysisData);
+        // }
       }
     };
 
