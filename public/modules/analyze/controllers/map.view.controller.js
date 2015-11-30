@@ -13,7 +13,11 @@
         $scope.updateView = updateView;
 
         $scope.$on('analysisDataLoaded', function (event, args) {
+            // console.log(args);
             $scope.mapConfig = mapConfig;
+            // console.log('analysisData event received by MapViewCTRL. Using the following config data: ');
+            // console.log($scope.mapConfig);
+
             // $scope.updateView(args);
             // $scope.updateView($scope.mapConfig);
         });

@@ -30,6 +30,7 @@
             currentFormulation = FormulationRetrieval.configureFormulation(response.data);
             return currentFormulation;
           });
+        // console.log('formulationPromise current value: ', promise);
         return promise;
       }
 
@@ -38,27 +39,27 @@
 
     // Populate various config objects.
     FormulationRetrieval.getAnalysisConfig = function (fc) {
-      console.log('getAnalysis data resolved to: ', fc.analysisConfig);
+      // console.log('getAnalysis data resolved to: ', fc.analysisConfig);
       return FormulationRetrieval.setConfigurationData(fc.analysisConfig, analysisConfig);
     };
 
     FormulationRetrieval.getMaufConfig = function (fc) {
-      console.log('getAnalysis data resolved to: ', fc.maufConfig);
+      // console.log('getMaufConfig data resolved to: ', fc.maufConfig);
       return FormulationRetrieval.setConfigurationData(fc.maufConfig, maufConfig);
     };
 
     FormulationRetrieval.getGraphConfig = function (fc) {
-      console.log('getAnalysis data resolved to: ', fc.graphConfig);
+      // console.log('getGraphConfig data resolved to: ', fc.graphConfig);
       return FormulationRetrieval.setConfigurationData(fc.graphConfig, graphConfig);
     };
 
     FormulationRetrieval.getDatagridConfig = function (fc) {
-      console.log('getAnalysis data resolved to: ', fc.datagridConfig);
+      // console.log('getDatagridConfig data resolved to: ', fc.datagridConfig);
       return FormulationRetrieval.setConfigurationData(fc.datagridConfig, datagridConfig);
     };
 
     FormulationRetrieval.getMapConfig = function (fc) {
-      console.log('getAnalysis data resolved to: ', fc.mapConfig);
+      // console.log('getMapConfig data resolved to: ', fc.mapConfig);
       return FormulationRetrieval.setConfigurationData(fc.mapConfig, mapConfig);
     };
 
@@ -74,7 +75,9 @@
       function parseFormulationDatasource(fd, destination) {
         Papa.parse(fd, {
           complete: function(results) {
+            // console.log('Finished parsing the data. New data looks like: ');
             // console.log(results.data);
+            // console.log('-------------------------------------------------');
             destination.datum = results.data;
           }
         });
@@ -84,13 +87,16 @@
         var promise = $http
           .get(target.source)
           .then(function (response) {
+            // console.log('Finished loading data for file: ' + target.source + '. Now parsing the following data: ');
             // console.log(response.data);
+            // console.log('-------------------------------------------------');
             parseFormulationDatasource(response.data, target);
+            // return parseFormulationDatasource(response.data, target); // Adding return.
           });
         return promise;
       }
 
-      var datasources = [fc.datagridConfig.datasources.tabledata, fc.graphConfig.datasources.graphContextData, fc.graphConfig.datasources.graphdata];
+      var datasources = [fc.datagridConfig.datasources.tabledata, fc.graphConfig.datasources.graphdata, fc.graphConfig.datasources.graphContextData];
       angular.forEach(datasources, loadData);
     };
 
@@ -101,6 +107,7 @@
             .get(value.source)
             .then(function (response) {
               value.datum = response.data;
+              // return value.datum;
             });
           return promise;
         });

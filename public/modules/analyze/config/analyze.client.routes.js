@@ -26,19 +26,19 @@
         },
         analysisConfig: function(FormulationRetrieval, analysisData) {
           return FormulationRetrieval.getAnalysisConfig(analysisData);
-        }//,
-        // maufConfig: function(FormulationRetrieval, analysisData) {
-        //   return FormulationRetrieval.getMaufConfig(analysisData);
-        // },
-        // datagridConfig: function(FormulationRetrieval, analysisData) {
-        //   return FormulationRetrieval.getDatagridConfig(analysisData);
-        // },
-        // graphConfig: function(FormulationRetrieval, analysisData) {
-        //   return FormulationRetrieval.getGraphConfig(analysisData);
-        // },
-        // mapConfig: function(FormulationRetrieval, analysisData) {
-        //   return FormulationRetrieval.getMapConfig(analysisData);
-        // }
+        },
+        maufConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getMaufConfig(analysisData);
+        },
+        datagridConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getDatagridConfig(analysisData);
+        },
+        graphConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getGraphConfig(analysisData);
+        },
+        mapConfig: function(FormulationRetrieval, analysisData) {
+          return FormulationRetrieval.getMapConfig(analysisData);
+        }
       }
     };
 
@@ -63,20 +63,6 @@
           templateUrl: 'modules/analyze/views/analyze.datatable.client.view.html',
           controller: 'DatatableViewController',
           controllerAs: 'datatable'
-        }
-      },
-      resolve: {
-        maufConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getMaufConfig(analysisData);
-        },
-        datagridConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getDatagridConfig(analysisData);
-        },
-        graphConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getGraphConfig(analysisData);
-        },
-        mapConfig: function(FormulationRetrieval, analysisData) {
-          return FormulationRetrieval.getMapConfig(analysisData);
         }
       }
     };

@@ -17,8 +17,13 @@
       $scope.analysisConfig = analysisConfig;
 
       // Data objects returned from Service. All work as expected immediately.
+      // Data in the config object is what is expected.
+      // Somehow the config object is getting parsed and new properties are being added.
+      // Not sure how - results from formulationRetrievalService are identical, even after parsing.
+
       console.log(analysisData);
-      console.log(analysisConfig);
+      // console.log(analysisConfig);
+
       // console.log(maufConfig);
       // console.log(datagridConfig);
       // console.log(graphConfig);
@@ -27,10 +32,9 @@
       // This also works every time.
       console.log($scope.analysisData);
 
-      // Confusion starts here:
-      // These are both either properly defined or empty depending on how async times out.
-      console.log($scope.analysisData.datagridConfig.datasources.tabledata.datum);
-      console.log($scope.analysisData.graphConfig.datasources.graphdata.datum);
+      // Confusion starts here: These are both either properly defined or empty depending on how async times out.
+      // console.log($scope.analysisData.datagridConfig.datasources.tabledata.datum);
+      // console.log($scope.analysisData.graphConfig.datasources.graphdata.datum);
 
       // Somehow the graph and the table load the exact same data in the Service, it gets parsed.
       // Somewhere between parsing it and loading it into the above config objects, the table data gets reparsed to include extra attrs.

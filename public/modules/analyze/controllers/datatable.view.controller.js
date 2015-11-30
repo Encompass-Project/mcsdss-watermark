@@ -5,12 +5,12 @@
     .module('analyze')
     .controller('DatatableViewController', DatatableViewController);
 
-  DatatableViewController.$inject = ['$scope', 'Authentication', '$filter', 'ngTableParams', 'AnalysisDataFactory', 'datagridConfig'];
+  DatatableViewController.$inject = ['$scope', 'Authentication', '$filter', 'ngTableParams', 'AnalysisDataFactory', 'datagridConfig', 'graphConfig'];
 
-  function DatatableViewController($scope, Authentication, $filter, ngTableParams, AnalysisDataFactory, datagridConfig) {
+  function DatatableViewController($scope, Authentication, $filter, ngTableParams, AnalysisDataFactory, datagridConfig, graphConfig) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
-    // console.log(datagridConfig);
+    // console.log('datagridConfig: ', datagridConfig);
 
     // Private members.
     // $scope.headerdata = [];
@@ -21,16 +21,28 @@
     $scope.muf = 0;
 
     $scope.$on('analysisDataLoaded', function(event, args) {
-      console.log(args);
+      // console.log('analysisData event received by DatatableViewCTRL.');
+      // console.log('args: ', args);
+
+      // console.log('datagridConfig: ', datagridConfig);
+      // console.log('graphConfig: ', graphConfig);
+      // console.log('datagridConfig.tabledata.datum: ', datagridConfig.datasources.tabledata.datum);
+      // console.log('graphConfig.graphdata.datum: ', graphConfig.datasources.graphdata.datum);
+
       $scope.datagridConfig = datagridConfig;
+      // console.log('$scope.datagridConfig: ', $scope.datagridConfig);
+      // console.log('$scope.datagridConfig: ', $scope.datagridConfig.datasources.tabledata.datum);
 
       // NOTE: Table works with either config object or args.
       // Data strux is correct already due to whatever altered it in route.
       // Need to do the same for the graphdata config object.
 
-      $scope.tabledata = args;  // Using args.
-      // $scope.tabledata = $scope.datagridConfig.datasources.tabledata.datum;  // Using config object.
-      // console.log($scope.tabledata);
+      // $scope.tabledata = args;  // Using args.
+      // console.log('$scope.tabledata: ', $scope.tabledata);
+
+      $scope.tabledata = $scope.datagridConfig.datasources.tabledata.datum;  // Using config object.
+      // console.log('$scope.tabledata: ', $scope.tabledata);
+
       $scope.updateView($scope.tabledata);
     });
 
@@ -75,7 +87,7 @@
 
     function updateView(data) {
       // console.log('DatatableView updating with new data...');
-      // console.log(data);
+      // console.log('updateView data: ', data);
 
       // console.log(data.datasources);
       // console.log(data.datasources.tabledata);

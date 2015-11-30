@@ -13,7 +13,12 @@
         $scope.updateView = updateView;
 
         $scope.$on('analysisDataLoaded', function (event, args) {
+            // console.log('analysisData event received by FiltersViewCTRL. Using the following config data: ');
+            // console.log(args);
+
             $scope.maufConfig = maufConfig;
+            // console.log($scope.maufConfig);
+
             // $scope.updateView(args);
             // $scope.updateView($scope.maufConfig);
         });
