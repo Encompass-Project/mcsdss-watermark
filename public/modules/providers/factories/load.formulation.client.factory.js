@@ -26,9 +26,16 @@
         var promise = $http
           .get(target)
           .then(function (response) {
-            console.log('formulation data resolved to: ', response.data);
+            var d = new Date();
+            var t = d.getTime();
+            console.log('formulation data resolved at: ', d, t,' to: ', response.data);
             currentFormulation = FormulationRetrieval.configureFormulation(response.data);
             return currentFormulation;
+          })
+          .finally(function() {
+            var d = new Date();
+            var t = d.getTime();
+            console.log('Finished formulation retrieval at: ', d, t);
           });
         // console.log('formulationPromise current value: ', promise);
         return promise;
@@ -90,8 +97,16 @@
             // console.log('Finished loading data for file: ' + target.source + '. Now parsing the following data: ');
             // console.log(response.data);
             // console.log('-------------------------------------------------');
-            parseFormulationDatasource(response.data, target);
-            // return parseFormulationDatasource(response.data, target); // Adding return.
+            var d = new Date();
+            var t = d.getTime();
+            console.log('Finished parsing data source ' + target.source + ' at: ', d, t);
+            // parseFormulationDatasource(response.data, target);
+            return parseFormulationDatasource(response.data, target);
+          })
+          .finally(function() {
+            var d = new Date();
+            var t = d.getTime();
+            console.log('Finished loading data source ' + target.source + ' at: ', d, t);
           });
         return promise;
       }
@@ -107,7 +122,12 @@
             .get(value.source)
             .then(function (response) {
               value.datum = response.data;
-              // return value.datum;
+              return value.datum;
+            })
+            .finally(function() {
+              var d = new Date();
+              var t = d.getTime();
+              console.log('Finished loading GIS data source ' + target.source + ' at: ', d, t);
             });
           return promise;
         });

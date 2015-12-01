@@ -12,37 +12,52 @@
     $scope.authentication = Authentication;
     $scope.currentRoute = 'Analyze';
 
+    // Data objects returned from Service. All work as expected immediately.
+
+    // console.log(analysisData);
+    // console.log(analysisConfig);
+    // console.log(maufConfig);
+    // console.log(datagridConfig);
+    // console.log(graphConfig);
+    // console.log(mapConfig);
+
+    // Data in the config object is what is expected.
+    // Somehow the config object is getting parsed and new properties are being added.
+    // Not sure how - results from formulationRetrievalService are identical, even after parsing.
+    // Somehow the graph and the table load the exact same data in the Service, it gets parsed.
+    // Somewhere between parsing it and loading it into the  config objects, the table data gets reparsed to include extra attrs.
+    // These are what is missing from the graph data and causing it to fail when I try and populate with it.
+    // This is in addition to the fact that the promises are being resolved before the data is fully loaded and therefore not binding correctly.
+    // The data binding seems to be a result of a page reload/refresh versus a route resolve (on initial nav to view).
+    // I may need to trigger state resolves to update all views accordingly on state changes.
+    // Note: WIll need a mechanism to do this without actually doing a reload so the updated state can be retained and propgated to child views.
+
     $scope.$on('$stateChangeSuccess', function() {
+      var d = new Date();
+
       $scope.analysisData = analysisData;
       $scope.analysisConfig = analysisConfig;
 
-      // Data objects returned from Service. All work as expected immediately.
-      // Data in the config object is what is expected.
-      // Somehow the config object is getting parsed and new properties are being added.
-      // Not sure how - results from formulationRetrievalService are identical, even after parsing.
+      var t = d.getTime();
+      console.log('$scope.analysisData: ', d, t, $scope.analysisData);
 
-      console.log(analysisData);
-      // console.log(analysisConfig);
-
-      // console.log(maufConfig);
-      // console.log(datagridConfig);
-      // console.log(graphConfig);
-      // console.log(mapConfig);
-
-      // This also works every time.
-      console.log($scope.analysisData);
-
-      // Confusion starts here: These are both either properly defined or empty depending on how async times out.
-      // console.log($scope.analysisData.datagridConfig.datasources.tabledata.datum);
-      // console.log($scope.analysisData.graphConfig.datasources.graphdata.datum);
-
-      // Somehow the graph and the table load the exact same data in the Service, it gets parsed.
-      // Somewhere between parsing it and loading it into the above config objects, the table data gets reparsed to include extra attrs.
-      // These are what is missing from the graph data and causing it to fail when I try and populate with it.
-      // This is in addition to the fact tat the promises are being resolved before the data is fully loaded and therefore not binding correctly.
+      // If config objects are available directly via resolved resources, no need to pass around data, just trigger update sync.
+      // Currently using the broadcast to ensure graph populates correctly.
 
       $scope.$broadcast('analysisDataLoaded', $scope.analysisData.datagridConfig.datasources.tabledata.datum);
-      // $scope.$broadcast('analysisDataLoaded', {});             // If config objects are available directly via resolved resources, no need to pass around data, just trigger update sync.
+      // $scope.$broadcast('analysisDataLoaded', {});
+    });
+
+    // Pubsub between Filters and Datatable.
+    // Pending.
+
+    // PubSub between Datatable and Graph.
+    $scope.$on('currentDatatableTarget', function(event, args) {
+      $rootScope.$broadcast('newDatatableTarget', args[0]);       // console.log('you touched the datatable at row: ' + args[0]);
+    });
+
+    $scope.$on('clearDatatableTarget', function(event, args) {
+      $rootScope.$broadcast('removeDatatableTarget', args[0]);    // console.log('you stopped touching the datatable row: ' + args[0]);
     });
 
     // PubSub between Graph and Map.
@@ -54,15 +69,7 @@
       $rootScope.$broadcast('removeMapTarget', args);             // console.log('you stopped touching the graph record: ' + args[0]);
     });
 
-    // PubSub between Datatable and Graph.
-    $scope.$on('currentDatatableTarget', function(event, args) {
-      $rootScope.$broadcast('newDatatableTarget', args[0]);       // console.log('you touched the datatable at row: ' + args[0]);
-    });
-
-    $scope.$on('clearDatatableTarget', function(event, args) {
-      $rootScope.$broadcast('removeDatatableTarget', args[0]);    // console.log('you stopped touching the datatable row: ' + args[0]);
-    });
-
+    // Pubsub between Datatable and Map.
     // NOTE: There is no pubsub between Datatable and Map due to incongruous linkages (at this time).
   }
 })();

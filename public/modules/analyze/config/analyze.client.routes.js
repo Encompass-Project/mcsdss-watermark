@@ -13,7 +13,7 @@
     // Define states.
     var analyze_state = {
       abstract: true,
-      url: '/analyze',
+      url: '', // /analyze
       templateUrl: 'modules/analyze/views/analyze.client.view.html',
       controller: 'AnalyzeViewController',
       controllerAs: 'analyze',
@@ -44,7 +44,7 @@
 
     var analyze_layout_state = {
       abstract: false,
-      url: '',
+      url: '/analyze',
       views: {
         'graph': {
           templateUrl: 'modules/analyze/views/analyze.graph.client.view.html',
