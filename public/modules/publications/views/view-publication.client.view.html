@@ -12,16 +12,16 @@
 	</div>
 	<hr/>
 	<div data-ng-show="((authentication.user) && (authentication.user._id == publication.user._id))">
-		<button class="btn btn-default btn-publish" type="button" data-ui-sref="publications.list.publish" ng-click="clicked('publications.list.publish')">
+		<button class="btn btn-default btn-publish default-global-transform" type="button" data-ui-sref="publications.list.publish" ng-click="clicked('publications.list.publish')">
 			<span class="fa fa-bullhorn"></span><span class="btn-label">Publish</span>
 		</button>
 		<!-- <button class="btn btn-default btn-curate" type="button" data-ui-sref="publications.list.curate({publicationId: publication._id})" ng-click="clicked('publications.list.curate')">
 			<span class="fa fa-tags"></span><span class="btn-label">Curate</span>
 		</button> -->
-		<button class="btn btn-primary" data-ui-sref="publications.list.edit({publicationId: publication._id})">
+		<button class="btn btn-primary default-global-transform" data-ui-sref="publications.list.edit({publicationId: publication._id})">
 			<span class="fa fa-pencil-square-o"></span><span class="btn-label">Edit</span>
 		</button>
-		<button class="btn btn-danger" type="button" data-ng-click="remove();">
+		<button class="btn btn-danger default-global-transform" type="button" data-ng-click="remove();">
 			<span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
 		</button>
 	</div>

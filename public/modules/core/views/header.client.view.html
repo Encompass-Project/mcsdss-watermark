@@ -2,7 +2,7 @@
   <nav class="navbar-container" data-ng-controller="HeaderController">
     <!-- Navbar for RWD Mobile -->
     <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
+      <button class="navbar-toggle default-global-transform" type="button" data-ng-click="toggleCollapsibleMenu()">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -14,45 +14,45 @@
 
       <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
         <li class="dropdown">
-          <a ui-sref="home" class="dropdown-toggle navbar-toggle" role="button" aria-haspopup="true" aria-expanded="false">  <!-- href="#" -->
+          <a ui-sref="home" class="dropdown-toggle navbar-toggle default-global-transform" role="button" aria-haspopup="true" aria-expanded="false">  <!-- href="#" -->
           	<div class="drop-shadow">
   	          <span class="fa fa-globe fa-2x" aria-hidden="true"></span>
   	          <span class="navbar-toggle-label" data-ng-bind="$state.current.data.title">Nav</span>
             </div>
           </a>
           <ul class="dropdown-menu main-nav">
-            <a ui-sref="dashboard" ng-click="clicked('dashboard')">
-              <div class="dashboard-sidemenu-item drop-shadow">
+            <a class="" ui-sref="dashboard" ng-click="clicked('dashboard')">
+              <div class="dashboard-sidemenu-item drop-shadow default-global-transform">
                 <span class="dashboard-sidemenu-item-icon fa fa-desktop" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Dashboard</span>
               </div>
             </a>
             <a ui-sref="analyze.layout" ng-click="clicked('analyze')">
-              <div class="dashboard-sidemenu-item drop-shadow">
+              <div class="dashboard-sidemenu-item drop-shadow default-global-transform">
                 <span class="dashboard-sidemenu-item-icon fa fa-area-chart" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Analyze</span>
               </div>
             </a>
             <a ui-sref="formulations" ng-click="clicked('formulations')">
-              <div class="dashboard-sidemenu-item drop-shadow dashboard-sidemenu-item-disabled">
+              <div class="dashboard-sidemenu-item drop-shadow dashboard-sidemenu-item-disabled default-global-transform">
                 <span class="dashboard-sidemenu-item-icon fa fa-puzzle-piece" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Formulations</span>
               </div>
             </a>
             <a ui-sref="datasets" ng-click="clicked('datasets')">
-              <div class="dashboard-sidemenu-item drop-shadow dashboard-sidemenu-item-disabled">
+              <div class="dashboard-sidemenu-item drop-shadow dashboard-sidemenu-item-disabled default-global-transform">
                 <span class="dashboard-sidemenu-item-icon fa fa-database" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Data Sources</span>
               </div>
             </a>
             <a ui-sref="models" ng-click="clicked('models')">
-              <div class="dashboard-sidemenu-item drop-shadow dashboard-sidemenu-item-disabled">
+              <div class="dashboard-sidemenu-item drop-shadow dashboard-sidemenu-item-disabled default-global-transform">
                 <span class="dashboard-sidemenu-item-icon fa fa-cubes" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Models</span>
               </div>
             </a>
             <a ui-sref="publications" ng-click="clicked('publications')">
-              <div class="dashboard-sidemenu-item drop-shadow dashboard-sidemenu-item-disabled">
+              <div class="dashboard-sidemenu-item drop-shadow dashboard-sidemenu-item-disabled default-global-transform">
                 <span class="dashboard-sidemenu-item-icon fa fa-newspaper-o" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Publications</span>
               </div>
@@ -62,27 +62,27 @@
       </ul>
       <!-- Branding -->
       <div class="navbar-brand">
-        <a class="anon-home-link" ui-sref="home">
-          <img class="pull-left nav-icon" ng-src="{{ iconpath }}" alt="Conflux Icon" /><span class="drop-shadow">{{ appTitle }}</span> <span class="navbar-brand-subtitle">{{ versionNumber }}</span>
+        <a class="anon-home-link default-global-transform" ui-sref="home">
+          <img class="pull-left nav-icon default-global-transform" ng-src="{{ iconpath }}" alt="Conflux Icon" /><span class="drop-shadow">{{ appTitle }}</span> <span class="navbar-brand-subtitle">{{ versionNumber }}</span>
         </a>
       </div>
       <!-- Anonymous Navbar -->
       <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(!authentication.user);">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle navbar-toggle" role="button" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="dropdown-toggle navbar-toggle default-global-transform" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="drop-shadow">Welcome <span class="dashboard-sidemenu-item-icon fa fa-2x fa-navicon"></span></span>
           </a>
           <ul class="dropdown-menu user-nav">
             <li ui-route="/signup" ng-class="{active: $uiRoute}" class="drop-shadow">
-              <a ui-sref="signup">Sign Up<span class="dashboard-sidemenu-item-icon fa fa-user-plus" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="signup">Sign Up<span class="dashboard-sidemenu-item-icon fa fa-user-plus" aria-hidden="true"></span></a>
             </li>
             <li class="divider-vertical"></li>
             <li ui-route="/signin" ng-class="{active: $uiRoute}" class="drop-shadow">
-              <a ui-sref="signin">Sign In<span class="dashboard-sidemenu-item-icon fa fa-sign-in" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="signin">Sign In<span class="dashboard-sidemenu-item-icon fa fa-sign-in" aria-hidden="true"></span></a>
             </li>
             <li class="divider"></li>
             <li class="drop-shadow">
-              <a ui-sref="information.about">About Conflux<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="information.about">About Conflux<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
             </li>
           </ul>
         </li>
@@ -90,29 +90,29 @@
       <!-- Authenticated Navbar -->
       <ul class="nav navbar-nav navbar-right" data-ng-if="menu.shouldRender(authentication.user);">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle navbar-toggle user-nav" role="button" aria-haspopup="true" aria-expanded="false">
+          <a href="#" class="dropdown-toggle navbar-toggle user-nav-toggle default-global-transform" role="button" aria-haspopup="true" aria-expanded="false">
             <span class="drop-shadow">Hello, <span data-ng-bind="authentication.user.displayName"></span> <span class="dashboard-sidemenu-item-icon fa fa-2x fa-navicon"></span></span>
           </a>
           <ul class="dropdown-menu user-nav">
             <li class="drop-shadow">
-              <a ui-sref="profile">View Profile<span class="dashboard-sidemenu-item-icon fa fa-user" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="profile">View Profile<span class="dashboard-sidemenu-item-icon fa fa-user" aria-hidden="true"></span></a>
             </li>
             <li class="drop-shadow">
-              <a ui-sref="profile.accounts">Social Accounts<span class="dashboard-sidemenu-item-icon fa fa-bullhorn" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="profile.accounts">Social Accounts<span class="dashboard-sidemenu-item-icon fa fa-bullhorn" aria-hidden="true"></span></a>
             </li>
             <li class="drop-shadow" data-ng-show="authentication.user.provider === 'local'">
-              <a ui-sref="profile.password">Change Password<span class="dashboard-sidemenu-item-icon fa fa-key" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="profile.password">Change Password<span class="dashboard-sidemenu-item-icon fa fa-key" aria-hidden="true"></span></a>
             </li>
             <li class="divider"></li>
             <li class="drop-shadow">
-              <a ui-sref="documentation">Help | FAQ | Docs<span class="dashboard-sidemenu-item-icon fa fa-file-text" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="documentation">Help | FAQ | Docs<span class="dashboard-sidemenu-item-icon fa fa-file-text" aria-hidden="true"></span></a>
             </li>
             <li class="drop-shadow">
-              <a ui-sref="information.about">About Conflux<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="information.about">About Conflux<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
             </li>
             <li class="divider"></li>
             <li class="drop-shadow">
-              <a href="/auth/signout">Signout<span class="dashboard-sidemenu-item-icon fa fa-sign-out" aria-hidden="true"></span></a>
+              <a class="default-global-transform" href="/auth/signout">Signout<span class="dashboard-sidemenu-item-icon fa fa-sign-out" aria-hidden="true"></span></a>
             </li>
           </ul>
         </li>

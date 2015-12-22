@@ -1,3 +1,14 @@
+/* Dashboard General */
+.dashboard-header {
+    min-height: 7rem;
+}
+.dashboard-body  {
+    padding: 1rem;
+}
+.dashboard-panel {
+    padding: 0 0.5rem;
+}
+
 /* User Dashboard Sidebar */
 .dashboard-sidebar {
     z-index: 500;
@@ -31,8 +42,9 @@ a.dashboard-sidebar-link {
 }
 .dashboard-sidemenu-item {
     padding: 0.5rem 0;
+    padding-left: 1rem !important;
     color: #FFFFFF;
-    border-top: 1px solid #345;
+    /*border-top: 1px solid #345;*/
     vertical-align: text-top;
 }
 .dashboard-sidemenu-item:hover {
@@ -44,9 +56,9 @@ a.dashboard-sidebar-link {
 }
 .dashboard-sidemenu-item-label {
     text-align: left;
-    padding-left: 3rem;
+    padding-left: 1.5rem;
 }
 .dashboard-sidemenu-item-disabled {
-    background: #222;
-    color: #ccc;
+    background: #444;
+    color: #aaa;
 }

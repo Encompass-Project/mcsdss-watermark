@@ -12,16 +12,16 @@
   </div>
   <hr/>
   <div data-ng-show="((authentication.user) && (authentication.user._id == dataset.user._id))">
-    <button class="btn btn-default btn-transform" type="button" data-ui-sref="datasets.list.transform" ng-click="clicked('datasets.list.transform')">
+    <button class="btn btn-default btn-transform default-global-transform" type="button" data-ui-sref="datasets.list.transform" ng-click="clicked('datasets.list.transform')">
       <span class="fa fa-wrench"></span><span class="btn-label">ETL</span>
     </button>
-    <button class="btn btn-default btn-visualize" type="button" data-ui-sref="datasets.list.visualize" ng-click="clicked('datasets.list.visualize')">
+    <button class="btn btn-default btn-visualize default-global-transform" type="button" data-ui-sref="datasets.list.visualize" ng-click="clicked('datasets.list.visualize')">
       <span class="fa fa-eye"></span><span class="btn-label">Visualize</span>
     </button>
-    <button class="btn btn-primary" data-ui-sref="datasets.list.edit({datasetId: dataset._id})">
+    <button class="btn btn-primary default-global-transform" data-ui-sref="datasets.list.edit({datasetId: dataset._id})">
       <span class="fa fa-pencil-square-o"></span><span class="btn-label">Edit</span>
     </button>
-    <button class="btn btn-danger" data-ng-click="remove();">
+    <button class="btn btn-danger default-global-transform" data-ng-click="remove();">
       <span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
     </button>
   </div>

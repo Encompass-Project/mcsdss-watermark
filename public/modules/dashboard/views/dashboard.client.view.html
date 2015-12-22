@@ -1,22 +1,24 @@
 <section>
-    <div class="row">
+    <div class="row dashboard-header">
         <div class="col-xs-12">
-            <!-- <h3 class="text-warning float-left">Dashboard</h3> -->
-            <p>Further explanation and metrics forth coming...</p>
+            <div class="">
+                <!-- <h3 class="text-warning float-left">Dashboard</h3> -->
+                <p>Further explanation and metrics forth coming...</p>
+            </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row dashboard-body">
         <div class="col-xs-3">
             <div class="row dashboard-panel" data-ng-controller="FormulationsController" data-ng-init="find(currentUser)">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <a class="clickable panel-clickable" data-ui-sref="formulations">
-                            <span class="paneltitle-item-icon fa fa-2x fa-puzzle-piece" aria-hidden="true"></span><span class="panel-title"> My Formulations</span>
+                            <span class="paneltitle-item-icon fa fa-2x fa-puzzle-piece default-global-transform" aria-hidden="true"></span><span class="panel-title default-global-transform"> My Formulations</span>
                         </a>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a data-ng-repeat="formulation in formulations | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="formulations.list.details({formulationId: formulation._id})" class="list-group-item">
+                            <a class="list-group-item default-global-transform" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-repeat="formulation in formulations | limitTo:listDisplayLimit" data-ui-sref="formulations.list.details({formulationId: formulation._id})">
                                 <h4 class="list-group-item-heading" data-ng-bind="formulation.name"></h4>
                                 <small class="list-group-item-text">
                                     Posted on
@@ -40,12 +42,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <a class="clickable panel-clickable" data-ui-sref="datasets">
-                            <span class="paneltitle-item-icon fa fa-2x fa-database" aria-hidden="true"></span><span class="panel-title"> My Data Sources</span>
+                            <span class="paneltitle-item-icon fa fa-2x fa-database default-global-transform" aria-hidden="true"></span><span class="panel-title default-global-transform"> My Data Sources</span>
                         </a>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a data-ng-repeat="dataset in datasets | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="datasets.list.details({datasetId: dataset._id})" class="list-group-item">
+                            <a class="list-group-item default-global-transform" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-repeat="dataset in datasets | limitTo:listDisplayLimit" data-ui-sref="datasets.list.details({datasetId: dataset._id})">
                                 <h4 class="list-group-item-heading" data-ng-bind="dataset.name"></h4>
                                 <small class="list-group-item-text">
                                     Posted on <span data-ng-bind="dataset.created | date:'medium'"></span> by <span data-ng-bind="dataset.user.displayName"></span><!--  ( ID: <span data-ng-bind="dataset._id"></span> ) -->
@@ -64,12 +66,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <a class="clickable panel-clickable" data-ui-sref="models">
-                            <span class="paneltitle-item-icon fa fa-2x fa-cubes" aria-hidden="true"></span><span class="panel-title"> My Models</span>
+                            <span class="paneltitle-item-icon fa fa-2x fa-cubes default-global-transform" aria-hidden="true"></span><span class="panel-title default-global-transform"> My Models</span>
                         </a>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a data-ng-repeat="model in models | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="models.list.details({modelId: model._id})" class="list-group-item">
+                            <a class="list-group-item default-global-transform" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-repeat="model in models | limitTo:listDisplayLimit" data-ui-sref="models.list.details({modelId: model._id})">
                                 <h4 class="list-group-item-heading" data-ng-bind="model.name"></h4>
                                 <small class="list-group-item-text">
                                     Posted on
@@ -91,12 +93,12 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <a class="clickable panel-clickable" data-ui-sref="publications">
-                            <span class="paneltitle-item-icon fa fa-2x fa-newspaper-o" aria-hidden="true"></span><span class="panel-title"> My Publications</span>
+                            <span class="paneltitle-item-icon fa fa-2x fa-newspaper-o default-global-transform" aria-hidden="true"></span><span class="panel-title default-global-transform"> My Publications</span>
                         </a>
                     </div>
                     <div class="panel-body">
                         <div class="list-group">
-                            <a data-ng-repeat="publication in publications | limitTo:listDisplayLimit" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="publications.list.details({publicationId: publication._id})" class="list-group-item">
+                            <a class="list-group-item default-global-transform" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-repeat="publication in publications | limitTo:listDisplayLimit" data-ui-sref="publications.list.details({publicationId: publication._id})">
                                 <h4 class="list-group-item-heading" data-ng-bind="publication.name"></h4>
                                 <small class="list-group-item-text">
                                     Posted on

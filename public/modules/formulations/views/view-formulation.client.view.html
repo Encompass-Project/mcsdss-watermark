@@ -12,13 +12,13 @@
 	</div>
 	<hr/>
 	<div data-ng-show="((authentication.user) && (authentication.user._id == formulation.user._id))">
-		<button class="btn btn-default btn-publish" data-ui-sref="analyze.layout">
+		<button class="btn btn-default btn-publish default-global-transform" data-ui-sref="analyze.layout">
 			<span class="fa fa-line-chart"></span><span class="btn-label">Analyze</span>
 		</button>
-		<button class="btn btn-primary" data-ui-sref="formulations.list.edit({formulationId: formulation._id})">
+		<button class="btn btn-primary default-global-transform" data-ui-sref="formulations.list.edit({formulationId: formulation._id})">
 			<span class="fa fa-pencil-square-o"></span><span class="btn-label">Edit</span>
 		</button>
-		<button class="btn btn-danger" data-ng-click="remove();">
+		<button class="btn btn-danger default-global-transform" data-ng-click="remove();">
 			<span class="fa fa-trash-o"></span><span class="btn-label">Delete</span>
 		</button>
 	</div>

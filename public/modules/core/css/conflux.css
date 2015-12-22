@@ -113,6 +113,11 @@ button {
 .main-nav {
   width: 20rem;
   border: 1px solid #df691a;
+  background: #111;
+}
+
+.main-nav > a:hover > * {
+  padding-left: 3rem !important;
 }
 
 .user-nav {
@@ -121,6 +126,11 @@ button {
   width: 20rem;
   border: 1px solid #df691a;
   text-align: right;
+  background: #111;
+}
+
+.user-nav > li:hover > * {
+  padding-right: 4rem !important;
 }
 
 .navbar-toggle * {
@@ -146,6 +156,10 @@ button {
   font-style: italic;
 }
 
+.user-nav-toggle {
+  text-align: right;
+}
+
 .usernav-greeting {
   padding: 1.6rem 0.5rem 0 0;
 }
@@ -159,14 +173,6 @@ ul.dropdown-menu > li > a {
 div.navbar-header > a.navbar-brand:hover,
 ul.dropdown-menu > li > a:hover {
   background: #df691a;
-}
-
-.dashboard-sidemenu-item {
-  padding-left: 1rem !important;
-}
-
-.dashboard-sidemenu-item-label {
-  padding-left: 1rem !important;
 }
 
 /****************************************/
@@ -213,10 +219,20 @@ ul.dropdown-menu > li > a:hover {
   border: 1px solid #778899 !important;
 }
 
+.panel .panel-body {
+    background: #123 !important;
+}
+
 .panel-heading {
   margin: 0 !important;
   padding: 0.4rem 1rem !important;
   background: #223344 !important;
+}
+.panel-heading * {
+  color: #ffffff !important;
+}
+.panel-heading:hover * {
+  color: #df691a !important;
 }
 
 .panel-title {
@@ -228,16 +244,11 @@ ul.dropdown-menu > li > a:hover {
   line-height: normal !important;
   font-size: 2.2rem !important;
   font-weight: 600;
-  color: #ffffff !important;
+  /*color: #ffffff !important;*/
 }
 
 .paneltitle-item-icon {
   padding-right: 1rem;
-  color: #ffffff !important;
-}
-
-.panel-clickable:hover * {
-  color: #df691a !important;
 }
 
 .panel-body {
@@ -263,8 +274,9 @@ ul.dropdown-menu > li > a:hover {
   width: 15rem;
 }
 
-.list-group {
+.list-group * {
   margin: 0;
+  color: #111111 !important;
 }
 
 .goals-panel {
@@ -283,7 +295,6 @@ ul.dropdown-menu > li > a:hover {
 .list-group-item-heading {
   padding: 0.3rem 0 0 0;
   font-weight: 500;
-  color: #111111 !important;
 }
 
 .list-group-item-text {
@@ -292,16 +303,17 @@ ul.dropdown-menu > li > a:hover {
 
 .list-group-item.ng-scope.odd {
   background: #efefef !important;
-  color: #333333 !important;
 }
 
 .list-group-item.ng-scope.even {
   background: #dedede !important;
-  color: #333333 !important;
 }
 
-.list-group-item.ng-scope:hover, .list-group-item.ng-scope:hover > * {
+.list-group-item.ng-scope:hover {
   background: #df691a !important;
+}
+
+.list-group-item.ng-scope:hover * {
   color: #ffffff !important;
 }
 
@@ -368,6 +380,20 @@ ul.dropdown-menu > li > a:hover {
 .mauf-label {
   padding: 1rem 0 0 0;
   font-size: 1.2rem;
+}
+
+/****************************************/
+/* Animations */
+.default-global-transform {
+  -webkit-transition: 0.15s ease-in-out;
+  -moz-transition: 0.15s ease-in-out;
+  -o-transition: 0.15s ease-in-out;
+  transition: 0.15s ease-in-out;
+
+ /* -webkit-transition: 0.15s ease-out;
+  -moz-transition: 0.15s ease-out;
+  -o-transition: 0.15s ease-out;
+  transition: 0.15s ease-out;*/
 }
 
 /****************************************/

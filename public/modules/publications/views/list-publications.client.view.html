@@ -3,11 +3,11 @@
         <div class="col-xs-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <span class="paneltitle-item-icon fa fa-2x fa-newspaper-o" aria-hidden="true"></span><span class="panel-title"> My Publications</span>
+                    <span class="paneltitle-item-icon fa fa-2x fa-newspaper-o default-global-transform" aria-hidden="true"></span><span class="panel-title default-global-transform"> My Publications</span>
                 </div>
                 <div class="panel-body">
                     <div class="list-group">
-                        <a data-ng-repeat="publication in publications" ng-class-odd="'odd'" ng-class-even="'even'" data-ui-sref="publications.list.details({publicationId: publication._id})" class="list-group-item">
+                        <a class="list-group-item default-global-transform" ng-class-odd="'odd'" ng-class-even="'even'" data-ng-repeat="publication in publications" data-ui-sref="publications.list.details({publicationId: publication._id})">
                 			<small class="list-group-item-text">
                 				Posted on
                 				<span data-ng-bind="publication.created | date:'medium'"></span>
