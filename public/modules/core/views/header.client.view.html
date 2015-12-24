@@ -16,12 +16,12 @@
         <li class="dropdown">
           <a ui-sref="home" class="dropdown-toggle navbar-toggle default-global-transform" role="button" aria-haspopup="true" aria-expanded="false">  <!-- href="#" -->
           	<div class="drop-shadow">
-  	          <span class="fa fa-globe fa-2x" aria-hidden="true"></span>
+  	          <span class="fa fa-2x {{ current_icon }} dash-nav-icon default-global-transform" aria-hidden="true"></span>
   	          <span class="navbar-toggle-label" data-ng-bind="$state.current.data.title">Nav</span>
             </div>
           </a>
           <ul class="dropdown-menu main-nav">
-            <a class="" ui-sref="dashboard" ng-click="clicked('dashboard')">
+            <a ui-sref="dashboard" ng-click="clicked('dashboard')">
               <div class="dashboard-sidemenu-item drop-shadow default-global-transform">
                 <span class="dashboard-sidemenu-item-icon fa fa-desktop" aria-hidden="true"></span>
                 <span class="dashboard-sidemenu-item-label">Dashboard</span>
@@ -63,7 +63,7 @@
       <!-- Branding -->
       <div class="navbar-brand">
         <a class="anon-home-link default-global-transform" ui-sref="home">
-          <img class="pull-left nav-icon default-global-transform" ng-src="{{ iconpath }}" alt="Conflux Icon" /><span class="drop-shadow">{{ appTitle }}</span> <span class="navbar-brand-subtitle">{{ versionNumber }}</span>
+          <img class="pull-left nav-icon default-global-transform" ng-src="{{ iconpath }}" alt="Watermark Icon" /><span class="drop-shadow">{{ appTitle }}</span> <span class="navbar-brand-subtitle">{{ versionNumber }}</span>
         </a>
       </div>
       <!-- Anonymous Navbar -->
@@ -82,7 +82,7 @@
             </li>
             <li class="divider"></li>
             <li class="drop-shadow">
-              <a class="default-global-transform" ui-sref="information.about">About Conflux<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="information.about">About {{ appTitle }}<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
             </li>
           </ul>
         </li>
@@ -108,7 +108,7 @@
               <a class="default-global-transform" ui-sref="documentation">Help | FAQ | Docs<span class="dashboard-sidemenu-item-icon fa fa-file-text" aria-hidden="true"></span></a>
             </li>
             <li class="drop-shadow">
-              <a class="default-global-transform" ui-sref="information.about">About Conflux<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
+              <a class="default-global-transform" ui-sref="information.about">About {{ appTitle }}<span class="dashboard-sidemenu-item-icon fa fa-info-circle" aria-hidden="true"></span></a>
             </li>
             <li class="divider"></li>
             <li class="drop-shadow">

@@ -8,7 +8,12 @@
 .dashboard-panel {
     padding: 0 0.5rem;
 }
-
+/* Display Header */
+/*
+a:hover > div.drop-shadow > .dash-nav-icon {
+    color: #739BC3 !important;
+}
+*/
 /* User Dashboard Sidebar */
 .dashboard-sidebar {
     z-index: 500;

@@ -108,6 +108,11 @@ button {
 
 .nav-icon {
   margin: -1.4rem 1rem 0 0;
+  max-height: 48px !important;
+}
+
+.about-logo {
+  max-height: 512px !important;
 }
 
 .main-nav {
