@@ -29,7 +29,10 @@
 		$scope.appTitle = 'Watermark';
 		$scope.versionNumber = 'Alpha v0.23.314';
 		// $scope.iconpath = '/modules/core/img/brand/conflux-logo-v1-icon-white-nods.png';
-		$scope.iconpath = '/modules/core/img/brand/watermark_logo_20151223_v014c2_transparent.png';
+		// $scope.iconpath = '/modules/core/img/brand/watermark_logo_20151223_v014c0_transparent.png';
+		$scope.iconpath = '/modules/core/img/brand/watermark_logo_20151223_v014c1_transparent.png';
+		// $scope.iconpath = '/modules/core/img/brand/watermark_logo_20151223_v014c2_transparent.png';
+		// $scope.iconpath = '/modules/core/img/brand/watermark_logo_20151223_v005.png'; // 004, 005, 007, 008, 011,
 
 		function toggleCollapsibleMenu() {
 			$scope.isCollapsed = !$scope.isCollapsed;

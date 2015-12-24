@@ -9,6 +9,9 @@
     padding: 0 0.5rem;
 }
 /* Display Header */
+.dash-nav-icon {
+    padding: 0 1.5rem 0 0 !important;
+}
 /*
 a:hover > div.drop-shadow > .dash-nav-icon {
     color: #739BC3 !important;
