@@ -138,6 +138,9 @@ module.exports = function(grunt) {
 			}
 		},
 		env: {
+			all: {
+				LRPortOverride: 3001
+			},
 			test: {
 				NODE_ENV: 'test'
 			},
