@@ -3,7 +3,7 @@
   <div class="row">
     <div class="datatable table-responsive analysis-data-table" id="datatable">
       <table ng-table="dataTable" class="table table-striped">
-        <tr ng-repeat="dataitem in data" ng-if="$index > 0" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)">
+        <tr class="datatable-run" ng-repeat="dataitem in data" ng-if="$index > 0" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)">
           <td data-title="'Run'" sortable="'dataSource'" class="datatable-source">
             {{ dataitem[0] }}
           </td>

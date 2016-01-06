@@ -383,8 +383,8 @@ ul.dropdown-menu > li > a:hover {
 /* Datasets View */
 
 .utility-weighting {
-  margin: 1rem 0 0 0;
-  padding: 0.5rem 1rem;
+  margin: 1rem 1rem 0 0;
+  padding: 0.8rem;
   background: #111;
   /*border-top: 1px solid #f0ad4e;*/
   /*border-bottom: 1px solid #f0ad4e;*/
@@ -394,6 +394,12 @@ ul.dropdown-menu > li > a:hover {
 .mauf-label {
   padding: 1rem 0 0 0;
   font-size: 1.2rem;
+}
+
+.datatable-run:hover {
+  background: #bcd !important;
+  color: #000 !important;
+  font-weight: 900 !important;
 }
 
 /****************************************/
