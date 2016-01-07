@@ -2,35 +2,66 @@
   <div class="row">
     <div class="col-xs-2">
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle drop-shadow" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <!-- <button class="btn btn-primary default-global-transform drop-shadow" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
           <span>Select Data Set</span>
           <span class="caret"></span>
         </button>
-        <ul class="dropdown-menu" aria-labelledby="caseDataSelectionDropdown">
-          <li><a href="#" class="drop-shadow">Original</a></li>
-          <li><a href="#" class="drop-shadow">Modified</a></li>
+        <ul id="current-dataset-toggle" class="dropdown-menu" aria-labelledby="caseDataSelectionDropdown">
+          <li><a class="drop-shadow">Original</a></li>
+          <li><a class="drop-shadow">Modified</a></li>
         </ul>
+        <label for="dropdownMenu1" class="dataset-selection">Current Dataset: <span class="current-dataset">Original</span></label> -->
+        <bs-dropdown data-menu-type="button" select-val="selected_status = selectedVal" preselected-item="selected_status" data-dropdown-data="statuses"></bs-dropdown>
+        <div class="dataset-selection">Selected Dataset : <span class="text-primary filter-info-layout">{{ selected_status }}</span></div>
       </div>
     </div>
-    <div class="col-xs-2 mauf-label">
-      <p class="text-warning">Preference Weighting for Attribute Utility Scores</p>
+    <div class="col-xs-2 filter-division">
+      <div>Preference Weighting for Attribute Utility Scores</div><br/>
+      <div class="filter-info">
+        Weighting Value 0: <span class="filter-info-layout">no weighting applied</span><br/>
+        Weighting Value 100: <span class="filter-info-layout">max weighting applied</span>
+      </div>
     </div>
-    <div class="col-xs-2">
-      <label for="weight" class="text-warning">SUF 1 Weight</label>
-      <input type="range" id="suf-1" min="0" value="50" max="100" step="1">
+    <!--
+      Generic UX for input range sliders.
+      Need to think through how to best generalize this for handling unknown number of dimensions to filter on.
+      UX change to dimension display will help with real-estate presentation, but still need to generalize handling n dimensions for filtering.
+     -->
+    <!-- <div class="col-xs-2">
+      <label for="suf-weight" class="text-warning">SUF 1 Weight</label>
+      <input type="range" id="suf-weight" min="0" value="50" max="100" step="1" oninput="outputUpdate(value)">
+      <output for="suf-weight" id="suf-weight-value">50</output>
+    </div> -->
+
+    <div class="col-xs-1 suf-weight">
+      <label for="suf-weight-dim1" class="text-primary input-label">SUF 1 Weight</label>
+      <input type="range" id="suf-weight-dim1" min="0" value="50" max="100" step="1">
+      <output for="suf-weight-dim1" id="suf-weight-dim1-value" class="output-label">50</output>
     </div>
-    <div class="col-xs-2">
-      <label for="weight" class="text-warning">SUF 2 Weight</label>
-      <input type="range" id="suf-2" min="0" value="50" max="100" step="1">
+    <div class="col-xs-1 suf-weight">
+      <label for="suf-weight-dim2" class="text-primary input-label">SUF 2 Weight</label>
+      <input type="range" id="suf-weight-dim2" min="0" value="50" max="100" step="1">
+      <output for="suf-weight-dim2" id="suf-weight-dim2-value" class="output-label">50</output>
     </div>
-    <div class="col-xs-2">
-      <label for="weight" class="text-warning">SUF 3 Weight</label>
-      <input type="range" id="suf-3" min="0" value="50" max="100" step="1">
+    <div class="col-xs-1 suf-weight">
+      <label for="suf-weight-dim3" class="text-primary input-label">SUF 3 Weight</label>
+      <input type="range" id="suf-weight-dim3" min="0" value="50" max="100" step="1">
+      <output for="suf-weight-dim3" id="suf-weight-dim3-value" class="output-label">50</output>
     </div>
-    <div class="col-xs-offset-1 col-xs-1">
-      <label for="filter" class="text-primary">MUF Score Filter</label>
-      <input type="range" id="muf" min="0.0" value="0.0" max="1.0" step="0.01">
+    <div class="col-xs-offset-1 col-xs-2 filter-division">
+      <div>Ranking Filter for Candidate Solutions</div><br/>
+      <div class="filter-info">
+        Filter Value 0: <span class="filter-info-layout">no filtering applied</span><br/>
+        Fiilter Value 1: <span class="filter-info-layout">max filtering applied</span>
+      </div>
     </div>
+    <div class="col-xs-1">
+      <label for="muf-weight" class="text-primary input-label">MUF Filter</label>
+      <input type="range" id="muf-weight" min="0.0" value="0.0" max="1.0" step="0.01">
+      <output for="muf-weight" id="muf-weight-value" class="output-label">0 (minimal utility)</output>
+    </div>
+
+    <!-- Legacy - but for what?? -->
     <!-- <div ui-slider="" min="0" max="50" ng-model="demoVals.sliderExample1" class="ng-valid ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all ng-dirty" aria-disabled="false">
       <a class="ui-slider-handle ui-state-default ui-corner-all" href="#" style="left: 0%;"></a>
     </div> -->

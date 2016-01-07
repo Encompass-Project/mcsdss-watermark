@@ -45,16 +45,16 @@ tr:hover, tr.trOdd:hover, tr.trEven:hover {
   color: #ffcc55 !important;
 }
 tr > th.header {
-  /*padding: 0 -1px 0 -2px;*/
-  border-left: 1px solid #789;
-  border-right: 1px solid #789;
-}
-tr > th.header:hover {
   background: #234 !important;
   color: #fff !important;
   border-left: 1px solid #789;
   border-right: 1px solid #789;
-  /*padding: 0 -1px 0 -2px;*/
+}
+tr > th.header:hover {
+  background: #df691a !important;
+  color: #000000 !important;
+  border-left: 1px solid #789;
+  border-right: 1px solid #789;
 }
 
 .datatable-source {

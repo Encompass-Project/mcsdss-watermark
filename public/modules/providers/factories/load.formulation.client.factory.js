@@ -28,16 +28,16 @@
           .then(function (response) {
             var d = new Date();
             var t = d.getTime();
-            console.log('formulation data resolved at: ', d, t,' to: ', response.data);
+            // console.log('formulation data resolved at: ', d, t,' to: ', response.data);     // debug
             currentFormulation = FormulationRetrieval.configureFormulation(response.data);
             return currentFormulation;
           })
           .finally(function() {
             var d = new Date();
             var t = d.getTime();
-            console.log('Finished formulation retrieval at: ', d, t);
+            // console.log('Finished formulation retrieval at: ', d, t);    // debug
           });
-        // console.log('formulationPromise current value: ', promise);
+        // console.log('formulationPromise current value: ', promise);  // debug
         return promise;
       }
 
@@ -46,27 +46,27 @@
 
     // Populate various config objects.
     FormulationRetrieval.getAnalysisConfig = function (fc) {
-      // console.log('getAnalysis data resolved to: ', fc.analysisConfig);
+      // console.log('getAnalysis data resolved to: ', fc.analysisConfig);  // debug
       return FormulationRetrieval.setConfigurationData(fc.analysisConfig, analysisConfig);
     };
 
     FormulationRetrieval.getMaufConfig = function (fc) {
-      // console.log('getMaufConfig data resolved to: ', fc.maufConfig);
+      // console.log('getMaufConfig data resolved to: ', fc.maufConfig);  // debug
       return FormulationRetrieval.setConfigurationData(fc.maufConfig, maufConfig);
     };
 
     FormulationRetrieval.getGraphConfig = function (fc) {
-      // console.log('getGraphConfig data resolved to: ', fc.graphConfig);
+      // console.log('getGraphConfig data resolved to: ', fc.graphConfig);  // debug
       return FormulationRetrieval.setConfigurationData(fc.graphConfig, graphConfig);
     };
 
     FormulationRetrieval.getDatagridConfig = function (fc) {
-      // console.log('getDatagridConfig data resolved to: ', fc.datagridConfig);
+      // console.log('getDatagridConfig data resolved to: ', fc.datagridConfig);  // debug
       return FormulationRetrieval.setConfigurationData(fc.datagridConfig, datagridConfig);
     };
 
     FormulationRetrieval.getMapConfig = function (fc) {
-      // console.log('getMapConfig data resolved to: ', fc.mapConfig);
+      // console.log('getMapConfig data resolved to: ', fc.mapConfig);  // debug
       return FormulationRetrieval.setConfigurationData(fc.mapConfig, mapConfig);
     };
 
@@ -99,14 +99,14 @@
             // console.log('-------------------------------------------------');
             var d = new Date();
             var t = d.getTime();
-            console.log('Finished parsing data source ' + target.source + ' at: ', d, t);
+            // console.log('Finished parsing data source ' + target.source + ' at: ', d, t);   // debug
             // parseFormulationDatasource(response.data, target);
             return parseFormulationDatasource(response.data, target);
           })
           .finally(function() {
             var d = new Date();
             var t = d.getTime();
-            console.log('Finished loading data source ' + target.source + ' at: ', d, t);
+            // console.log('Finished loading data source ' + target.source + ' at: ', d, t);    // debug
           });
         return promise;
       }
@@ -127,7 +127,7 @@
             .finally(function() {
               var d = new Date();
               var t = d.getTime();
-              console.log('Finished loading GIS data source ' + target.source + ' at: ', d, t);
+              // console.log('Finished loading GIS data source ' + target.source + ' at: ', d, t);    // debug
             });
           return promise;
         });

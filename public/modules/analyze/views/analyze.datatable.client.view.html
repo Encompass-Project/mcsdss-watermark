@@ -4,28 +4,37 @@
     <div class="datatable table-responsive analysis-data-table" id="datatable">
       <table ng-table="dataTable" class="table table-striped">
         <tr class="datatable-run" ng-repeat="dataitem in data" ng-if="$index > 0" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)">
-          <td data-title="'Run'" sortable="'dataSource'" class="datatable-source">
+          <td data-title="'Datasource'" sortable="'dataSource'" class="datatable-source">
             {{ dataitem[0] }}
           </td>
-          <td data-title="'Attr 1 Value'" sortable="'value_O'" class="datatable-value">
+          <td data-title="'Wells Original (SUF 1)'" sortable="'value_O_wells'" class="datatable-value">
            {{ dataitem[1] }}
           </td>
-          <td data-title="'Attr 1 SUF'" class="datatable-suf">
+          <td data-title="'Wells Modified (SUF 1)'" sortable="'value_M_wells'" class="datatable-value">
+           {{ dataitem[2] }}
+          </td>
+          <td data-title="'Wells SUF'" class="datatable-suf">
            {{ suf01 }}
           </td>
-          <td data-title="'Attr 2 Value'" sortable="'attr_2'" class="datatable-value">
+          <td data-title="'Heads Original (SUF 2)'" sortable="'value_O_heads'" class="datatable-value">
+           {{ dataitem[4] }}
+          </td>
+          <td data-title="'Heads Modified (SUF 2)'" sortable="'value_M_heads'" class="datatable-value">
            {{ dataitem[5] }}
           </td>
-          <td data-title="'Attr 2 SUF'" class="datatable-suf">
+          <td data-title="'Heads SUF'" class="datatable-suf">
            {{ suf02 }}
           </td>
-          <td data-title="'Attr 3 Value'" sortable="'attr_3'" class="datatable-value">
+          <td data-title="'Drains Original (SUF 3)'" sortable="'value_O_drains'" class="datatable-value">
            {{ dataitem[7] }}
           </td>
-          <td data-title="'Attr 3 SUF'" class="datatable-suf">
+          <td data-title="'Drains Modified (SUF 3)'" sortable="'value_M_drains'" class="datatable-value">
+           {{ dataitem[8] }}
+          </td>
+          <td data-title="'Drains SUF'" class="datatable-suf">
            {{ suf03 }}
           </td>
-          <td data-title="'Run MUF'" class="datatable-muf">
+          <td data-title="'Datasource MUF'" class="datatable-muf">
            {{ muf }}
           </td>
         </tr>

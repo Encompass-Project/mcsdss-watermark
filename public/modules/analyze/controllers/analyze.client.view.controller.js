@@ -39,7 +39,7 @@
       $scope.analysisConfig = analysisConfig;
 
       var t = d.getTime();
-      console.log('$scope.analysisData: ', d, t, $scope.analysisData);
+      // console.log('$scope.analysisData: ', d, t, $scope.analysisData);   // debug
 
       // If config objects are available directly via resolved resources, no need to pass around data, just trigger update sync.
       // Currently using the broadcast to ensure graph populates correctly.
@@ -49,7 +49,26 @@
     });
 
     // Pubsub between Filters and Datatable.
-    // Pending.
+    // Need to rearchitect these once a better filter display and generalized method have been implemented.
+    $scope.$on('SUFWeightDim1Update', function(event, args) {
+      // console.log('SUFWeightDim1Update event received by AnalyzeViewCTRL.');
+      $rootScope.$broadcast('newSUF1Weight', args);
+    });
+
+    $scope.$on('SUFWeightDim2Update', function(event, args) {
+      // console.log('SUFWeightDim2Update event received by AnalyzeViewCTRL.');
+      $rootScope.$broadcast('newSUF2Weight', args);
+    });
+
+    $scope.$on('SUFWeightDim3Update', function(event, args) {
+      // console.log('SUFWeightDim3Update event received by AnalyzeViewCTRL.');
+      $rootScope.$broadcast('newSUF3Weight', args);
+    });
+
+    $scope.$on('MUFWeightUpdate', function(event, args) {
+      // console.log('MUFWeightUpdate event received by AnalyzeViewCTRL.');
+      $rootScope.$broadcast('newMUFWeight', args);
+    });
 
     // PubSub between Datatable and Graph.
     $scope.$on('currentDatatableTarget', function(event, args) {

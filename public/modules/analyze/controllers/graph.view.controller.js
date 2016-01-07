@@ -23,15 +23,20 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
     $scope.graphConfig = graphConfig;
     // console.log('$scope.graphConfig: ', $scope.graphConfig);
 
-    // NOTE: Using args works but using the configObject does not. This is due to the altered data struc the tabledata has when it makes it to the controller.
+    /*********************/
+
+    // NOTE: Using args works but using the configObject does not. This is due to the altered data structure the tabledata has when it makes it to the controller.
     // If I can determine where this is being introduced I can ensure the same alterations happen uniformly to the config objects.
+
     var t = d.getTime();
     $scope.graphdata = args;  // Using args.
-    console.log('$scope.graphdata: ', d, t, $scope.graphdata);
+    // console.log('$scope.graphdata: ', d, t, $scope.graphdata);
 
     var t = d.getTime();
     $scope.graphdata2 = $scope.graphConfig.datasources.graphdata.datum;   // Using config object.
-    console.log('$scope.graphdata2 :', d, t, $scope.graphdata2);
+    // console.log('$scope.graphdata2 :', d, t, $scope.graphdata2);
+
+    /*********************/
 
     $scope.updateView($scope.graphdata);
     // $scope.updateView($scope.graphdata2);

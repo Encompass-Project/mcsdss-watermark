@@ -10,6 +10,14 @@
   function DatatableViewController($scope, Authentication, $filter, ngTableParams, AnalysisDataFactory, datagridConfig, graphConfig) {
     // This provides Authentication context.
     $scope.authentication = Authentication;
+
+    // Public methods.
+    $scope.headerFilter = headerFilter;
+    $scope.datasetOrder = datasetOrder;
+    $scope.rowClicked = rowClicked;
+    $scope.decorateSiblings = decorateSiblings;
+    $scope.clearSiblings = clearSiblings;
+    $scope.updateView = updateView;
     // console.log('datagridConfig: ', datagridConfig);
 
     // Private members.
@@ -45,6 +53,33 @@
 
       $scope.updateView($scope.tabledata);
     });
+
+    // Filter Weighting.
+    $scope.$on('newSUF1Weight', function(event, args) {
+      console.log('newSUF1Weight event received by DatatableViewCTRL.', args);
+      // Update run SUF weight.
+      // Eval new MUF and update filters based on new weights.
+    });
+
+    $scope.$on('newSUF2Weight', function(event, args) {
+      console.log('newSUF2Weight event received by DatatableViewCTRL.', args);
+      // Update run SUF weight.
+      // Eval new MUF and update filters based on new weights.
+    });
+
+    $scope.$on('newSUF3Weight', function(event, args) {
+      console.log('newSUF3Weight event received by DatatableViewCTRL.', args);
+      // Update run SUF weight.
+      // Eval new MUF and update filters based on new weights.
+    });
+
+    $scope.$on('newMUFWeight', function(event, args) {
+      console.log('newMUFWeight event received by DatatableViewCTRL.', args);
+      // No changes to run SUF weight.
+      // Eval new MUF and update filters based on new weights.
+    });
+
+    // Private methods.
 
     function headerFilter(target) {
       return target.visible;
@@ -88,7 +123,6 @@
     function updateView(data) {
       // console.log('DatatableView updating with new data...');
       // console.log('updateView data: ', data);
-
       // console.log(data.datasources);
       // console.log(data.datasources.tabledata);
       // console.log(data.datasources.tabledata.datum);
@@ -107,7 +141,40 @@
           $scope.data = params.filter() ? $filter('filter')(data, params.filter()) : data;
           $scope.data = data.slice((params.page() - 1) * params.count(), params.page() * params.count());
           $defer.resolve($scope.data);
+
+          // Data we want to display is as follows:
+          // col 1: datasource
+          // col 2: value_O/M_
+          // col 3: suf (value * weight)
+          // col 4: value_O/M_
+          // col 5: suf (value * weight)
+          // col 6: value_O/M_
+          // col 7: suf (value * weight)
+          // col 8: muf (suf + suf + suf)
+
           // console.log($scope.data);
+          // console.log($scope.data[0]);      // data header row. All subsequent iterations are data runs.
+          // console.log($scope.data[0][0]);   // datasource
+          // console.log($scope.data[0][1]);   // value_O_wells
+          // console.log($scope.data[0][2]);   // value_M_wells
+          // console.log($scope.data[0][3]);   // units_wells
+          // console.log($scope.data[0][4]);   // value_O_heads
+          // console.log($scope.data[0][5]);   // value_M_heads
+          // console.log($scope.data[0][6]);   // units_heads
+          // console.log($scope.data[0][7]);   // value_O_drains
+          // console.log($scope.data[0][8]);   // value_M_drains
+          // console.log($scope.data[0][9]);   // units_drains
+          // console.log($scope.data[0][10]);  // Zone_1
+          // console.log($scope.data[0][11]);  // Zone_2
+          // console.log($scope.data[0][12]);  // Zone_3
+          // console.log($scope.data[0][13]);  // Zone_4
+          // console.log($scope.data[0][14]);  // Zone_5
+          // console.log($scope.data[0][15]);  // Zone_6
+          // console.log($scope.data[0][16]);  // Zone_7
+          // console.log($scope.data[0][17]);  // Zone_8
+          // console.log($scope.data[0][18]);  // Zone_9
+          // console.log($scope.data[0][19]);  // Zone_10
+          // console.log($scope.data[0][20]);  // Zone_11
         }
       });
 
@@ -144,14 +211,6 @@
       //   }
       // });
     }
-
-    // Expose public API.
-    $scope.headerFilter = headerFilter;
-    $scope.datasetOrder = datasetOrder;
-    $scope.rowClicked = rowClicked;
-    $scope.decorateSiblings = decorateSiblings;
-    $scope.clearSiblings = clearSiblings;
-    $scope.updateView = updateView;
 
   }
 })();

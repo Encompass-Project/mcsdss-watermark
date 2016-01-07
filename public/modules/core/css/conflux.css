@@ -73,6 +73,7 @@ button {
 /****************************************/
 /* Colors */
 /* Orange:  #C85E17 */
+/* Orange2: #df691a */
 
 /****************************************/
 /* Custom CSS for NavBar */
@@ -380,26 +381,54 @@ ul.dropdown-menu > li > a:hover {
 }
 
 /****************************************/
-/* Datasets View */
+/* Analysis: Filters & Weighting View */
 
 .utility-weighting {
   margin: 1rem 1rem 0 0;
   padding: 0.8rem;
   background: #111;
-  /*border-top: 1px solid #f0ad4e;*/
-  /*border-bottom: 1px solid #f0ad4e;*/
-  border: 1px solid #aaaaaa; /*#f0ad4e;*/
+  border: 1px solid #aaaaaa;
 }
 
-.mauf-label {
-  padding: 1rem 0 0 0;
-  font-size: 1.2rem;
+.filter-info {
+  font-size: 0.8rem;
 }
+
+.filter-info-layout {
+  padding: 0 0 0 1rem;
+  color: #f0ad4e; /*#f0ad4e; #df691a; */
+}
+
+.dataset-selection {
+  margin: 0.5rem 0 0;
+  padding: 0.2rem;
+}
+
+.caret.rotate {
+  /*transform: rotate(90deg);*/
+}
+
+.filter-division {
+  padding: 0 0 1rem 1rem;
+  border-left: 3px solid #bcd;
+}
+
+.input-label {
+  width: 100%;
+  text-align: center;
+}
+
+.output-label {
+  color: #ffffff;
+  text-align: center;
+}
+
+/****************************************/
+/* Analysis: Datatable View */
 
 .datatable-run:hover {
   background: #bcd !important;
   color: #000 !important;
-  font-weight: 900 !important;
 }
 
 /****************************************/
