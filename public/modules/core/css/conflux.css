@@ -41,8 +41,8 @@ a {
 }
 
 button {
-  min-width: 18rem;
-  margin: 0 0.2rem;
+  width: 18rem;
+  /*margin: 0 0.5rem;*/
 }
 
 /****************************************/
@@ -390,6 +390,9 @@ ul.dropdown-menu > li > a:hover {
   border: 1px solid #aaaaaa;
 }
 
+div.dropdown {
+  padding: 1rem 0 0 2rem;
+}
 .filter-info {
   font-size: 0.8rem;
 }
@@ -401,7 +404,9 @@ ul.dropdown-menu > li > a:hover {
 
 .dataset-selection {
   margin: 0.5rem 0 0;
-  padding: 0.2rem;
+  padding: 0.5rem 0 0 2rem;
+  font-size: 1.5rem !important;
+  font-weight: 900;
 }
 
 .caret.rotate {
@@ -409,18 +414,22 @@ ul.dropdown-menu > li > a:hover {
 }
 
 .filter-division {
-  padding: 0 0 1rem 1rem;
-  border-left: 3px solid #bcd;
+  margin-left: 4rem;
+  padding: 0 0 0 1rem;
+  border-left: 5px solid #bcd;
 }
 
 .input-label {
   width: 100%;
   text-align: center;
+  padding: 1rem 0 0 0;
 }
 
 .output-label {
-  color: #ffffff;
+  color: #f0ad4e !important;
   text-align: center;
+  font-weight: 900;
+  padding: 0 0 1rem 0;
 }
 
 /****************************************/

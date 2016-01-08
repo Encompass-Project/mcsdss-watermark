@@ -2,94 +2,89 @@
     /*margin: 0 1rem 1rem;*/
 }
 
-/*.analysis-data-table {
-  border-top: 1px solid #234 !important;
-  border-left: 1px solid #234 !important;
-  border-right: 1px solid #234 !important;
-  border-bottom: 1px solid #234 !important;
-}*/
-
 .datatable {
   margin: 0.5rem 0.5rem 0 0.3rem;
 }
 .datatable > table  {
-  font-size: 0.8rem;
-  font-align: center;
+  margin: 0 0 0.5rem 0;
+  /*font-size: 0.9rem;*/
 }
 
-tr {
-  width: 100%;
-  display: inline-table;
-}
-table{
-    height: 25rem; /* 30rem; */
+table {
+  height: 22rem; /* 2.5rem larger than tbody; */
 }
 thead {
-  border-bottom: 1px solid #789;
   background: #234;
-  height: 8rem;
+  /*height: 8rem;*/
 }
 thead > * {
   color: #fff;
 }
 tbody {
   overflow-y: scroll;
-  height: 23rem; /* 25.6rem; */
-  width: calc(100% - 1.2rem);
-  position: absolute;
+  height: 19.5rem;
 }
 /* data table interacion */
-tr:hover, tr.trOdd:hover, tr.trEven:hover {
-  background: #212121 !important;
-  color: #ffcc55 !important;
+#datatable > table > tbody > tr:hover {
+  border-top: 2px solid #000;
+  border-bottom: 2px solid #000;
+  background: #fdc !important; /* #df691a */
+  color: #000000 !important;
 }
 tr > th.header {
-  background: #234 !important;
-  color: #fff !important;
-  border-left: 1px solid #789;
-  border-right: 1px solid #789;
+  background: #234;
+  color: #fff;
 }
 tr > th.header:hover {
   background: #df691a !important;
   color: #000000 !important;
-  border-left: 1px solid #789;
-  border-right: 1px solid #789;
 }
 
-.datatable-source {
-  text-align: left;
-  /*width: 2rem !important;*/
-  width: auto !important;
-}
-.datatable-value {
-  /*text-align: left;*/
-  /*width: 5rem !important;*/
-}
-.datatable-muf, .datatable-suf {
-  /*text-align: left;*/
-  /*width: 3rem !important;*/
+tr > td {
+  text-align: center;
 }
 
 .ng-table-pager {
-  background: #234;
   z-index: 900;
-  height: 3.1rem;
+  height: 0;
   bottom: 0;
-  width: 99.2%;
+  width: 99.6%;
   position: absolute;
-  border-top: 1px solid #678;
 }
-.ng-table-pager > div > button {
+.ng-table-pager > div.ng-table-counts {
+  /*height: 2.5rem;*/
+}
+.ng-table-pager > div.ng-table-counts > button {
+  padding: 0;
+  font-size: 1rem;
+  color: #999;
+  /*max-width: 10rem !important;*/
+  height: 3rem; /* 2.5rem; */
+}
+
+#datatable > div > div > div > div > button {
+
+}
+/*
+#datatable > div  div  .ng-table-pager  div  button {
   top: 0;
   padding: 0;
   font-weight: 100;
   font-size: 1rem;
   font-style: normal;
-  width: 5rem;
-  height: 3rem;
+  width: 3rem !important;
+  height: 2.5rem;
 }
+#datatable > div > div > div > div > button > span {
+  width: auto !important;
+}*/
+
 .pagination > li > a {
   top: -2.1rem;
-  width: 5rem;
-  height: 3rem;
+  /*width: 5rem;*/
+  /*height: 2.5rem;*/
+}
+
+.pagination > li > a > span {
+  padding: 0;
 }

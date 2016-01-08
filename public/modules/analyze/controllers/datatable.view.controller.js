@@ -135,7 +135,7 @@
       }, {
         filterDelay: 0,
         total: $scope.tabledata.length,
-        counts: [10, 50, 100, 250],
+        counts: [10, 50, 100, 250, 500, 1000],
         defaultSort: 'asc',
         data: this.getData,
         getData: function($defer, params) {
