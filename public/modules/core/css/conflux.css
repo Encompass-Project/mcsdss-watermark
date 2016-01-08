@@ -213,7 +213,7 @@ ul.dropdown-menu > li > a:hover {
 /* Authenticated Views */
 
 .base-layout {
-  margin: 2rem 1.5rem 1rem 3rem;
+  margin: 1rem 1rem 1rem 1.5rem;
 }
 
 /****************************************/
@@ -384,8 +384,8 @@ ul.dropdown-menu > li > a:hover {
 /* Analysis: Filters & Weighting View */
 
 .utility-weighting {
-  margin: 1rem 1rem 0 0;
-  padding: 0.8rem;
+  margin: 0.5rem 0.5rem 0 0.3rem;
+  padding: 1rem 0.5rem 0.2rem;
   background: #111;
   border: 1px solid #aaaaaa;
 }
@@ -396,7 +396,7 @@ ul.dropdown-menu > li > a:hover {
 
 .filter-info-layout {
   padding: 0 0 0 1rem;
-  color: #f0ad4e; /*#f0ad4e; #df691a; */
+  color: #f0ad4e;         /*#f0ad4e; #df691a; */
 }
 
 .dataset-selection {

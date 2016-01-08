@@ -133,9 +133,11 @@
         page: 1,
         count: 10
       }, {
+        filterDelay: 0,
         total: $scope.tabledata.length,
-        counts: [10, 25, 50, 100, 250],
+        counts: [10, 50, 100, 250],
         defaultSort: 'asc',
+        data: this.getData,
         getData: function($defer, params) {
           $scope.data = params.sorting() ? $filter('orderBy')($scope.tabledata, params.orderBy()) : $scope.tabledata;
           $scope.data = params.filter() ? $filter('filter')(data, params.filter()) : data;

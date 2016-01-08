@@ -20,7 +20,7 @@ module.exports = {
 				'public/lib/bootstrap/dist/css/bootstrap-theme.css',
 				'public/lib/components-font-awesome/css/font-awesome.min.css',
 				'public/lib/leaflet/dist/leaflet.css',
-				'public/lib/ng-table/dist/ng-table.min.css',
+				'public/lib/ng-table/dist/ng-table.css',
 				'public/lib/bootstrap-slider/slider.css'
 			],
 			js: [
