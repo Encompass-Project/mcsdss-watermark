@@ -11,20 +11,31 @@
     // This provides Authentication context.
     $scope.authentication = Authentication;
 
-    // Public methods.
+    // Private methods.
     $scope.headerFilter = headerFilter;
     $scope.datasetOrder = datasetOrder;
     $scope.rowClicked = rowClicked;
     $scope.decorateSiblings = decorateSiblings;
     $scope.clearSiblings = clearSiblings;
     $scope.updateView = updateView;
+    $scope.updateSelectedDataset = updateSelectedDataset;
+    $scope.updateDimensionWeight = updateDimensionWeight;
+    $scope.updateCurrentDatasetValues = updateCurrentDatasetValues;
+    $scope.updateDimensionScore = updateDimensionScore;
+    $scope.updateUtilityScores = updateUtilityScores;
     // console.log('datagridConfig: ', datagridConfig);
 
     // Private members.
     // $scope.headerdata = [];
     // $scope.tabledata = [];
+    // $scope.selectedDataset ='';
+    $scope.weightedDataset = 'Original';
+    $scope.currentDimension = 'All';
+    $scope.suf01Weight = 50;
     $scope.suf01 = 0;
+    $scope.suf02Weight = 50;
     $scope.suf02 = 0;
+    $scope.suf03Weight = 50;
     $scope.suf03 = 0;
     $scope.muf = 0;
 
@@ -54,29 +65,42 @@
       $scope.updateView($scope.tabledata);
     });
 
+    $scope.$on('newDatasetSelected', function(event, args) {
+      console.log('Selected Dataset Updated.');
+      console.log('Current Selected Dataset: ', args);
+      updateSelectedDataset(args);
+    });
+
     // Filter Weighting.
     $scope.$on('newSUF1Weight', function(event, args) {
       console.log('newSUF1Weight event received by DatatableViewCTRL.', args);
+      $scope.suf01Weight = args;
       // Update run SUF weight.
       // Eval new MUF and update filters based on new weights.
+      updateDimensionWeight('SUF1', args);
     });
 
     $scope.$on('newSUF2Weight', function(event, args) {
       console.log('newSUF2Weight event received by DatatableViewCTRL.', args);
+      $scope.suf02Weight = args;
       // Update run SUF weight.
       // Eval new MUF and update filters based on new weights.
+      updateDimensionWeight('SUF2', args);
     });
 
     $scope.$on('newSUF3Weight', function(event, args) {
       console.log('newSUF3Weight event received by DatatableViewCTRL.', args);
+      $scope.suf03Weight = args;
       // Update run SUF weight.
       // Eval new MUF and update filters based on new weights.
+      updateDimensionWeight('SUF3', args);
     });
 
     $scope.$on('newMUFWeight', function(event, args) {
       console.log('newMUFWeight event received by DatatableViewCTRL.', args);
       // No changes to run SUF weight.
       // Eval new MUF and update filters based on new weights.
+      $scope.updateUtilityScores();
     });
 
     // Private methods.
@@ -179,39 +203,89 @@
           // console.log($scope.data[0][20]);  // Zone_11
         }
       });
+    }
 
-      // ngTable Demo for Ref.
+    function updateSelectedDataset(target) {
+      console.log('New Dataset for Weighitng: ', target);
+      $scope.weightedDataset = target;
 
-      // this.tableParams = new ngTableParams({}, {
-      //   getData: function (params) {
-      //     return AnalysisDataFactory.query({
-      //       page: params.page(),
-      //       per_page: params.count(),
-
-      //       state: 'all',
-      //       username: 'taoteg',
-      //       repo: 'estes'
-      //     }, function (data, headersGetter) {
-      //       var headers = headersGetter(),
-      //         pages = headers['link'].split(', '),
-      //         totalPages = 1;
-
-      //       // get total pages count
-      //       angular.forEach(pages, function (page) {
-      //         var parts = page.split(' rel=');
-      //         if (parts[1] == '"last"') {
-      //           totalPages = parseInt(parts[0].match(/page=(\d+)/)[1], 10);
-      //         }
-      //         if (totalPages == 1 && parts[1] == '"prev"') { // if last page
-      //           totalPages = parseInt(parts[0].match(/page=(\d+)/)[1], 10) + 1;
-      //         }
-      //       });
-      //       params.total(totalPages * params.count());
-      //       console.log(data);
-      //       return data;
-      //     }).$promise;
-      //   }
+      $scope.currentDimension = 'All';
+      // Call update on dimensions.
+      // $scope.tabledata.forEach(function(d, i) {
+      //   $scope.updateCurrentDatasetValues(d);
       // });
+    }
+
+    function updateDimensionWeight(dimension, dimensionWeight) {
+      console.log('Datable updated with new Dimension & Value: ', dimension, dimensionWeight);
+      console.log('Current Dataset:', $scope.weightedDataset);
+
+      $scope.currentDimension = dimension;
+      console.log($scope.currentDimension);
+
+      switch ($scope.currentDimension) {
+        case 'All':
+          // console.log('Current Dimension: ', $scope.currentDimension);
+          break;
+        case 'SUF1':
+          // console.log('Current Dimension: ', $scope.currentDimension);
+          // generate the new SUF value and apply to table element.
+          break;
+        case 'SUF2':
+          // console.log('Current Dimension: ', $scope.currentDimension);
+          // generate the new SUF value and apply to table element.
+          break;
+        case 'SUF3':
+          // console.log('Current Dimension: ', $scope.currentDimension);
+          // generate the new SUF value and apply to table element.
+          break;
+      }
+
+      $scope.tabledata.forEach(function(d, i) {
+        $scope.updateCurrentDatasetValues(d);
+      });
+
+      $scope.updateUtilityScores();
+    }
+
+    function updateCurrentDatasetValues(d) {
+      if ($scope.weightedDataset == 'Original') {
+        // Update original dataset dimension.
+        console.log('Original Dataset');
+        console.log('Dataset: ',d[0],d[1],d[3],d[4],d[6],d[7],d[9]);
+        updateDimensionScore(d);
+      } else if ($scope.weightedDataset == 'Modified') {
+        // Update modified dataset dimension.
+        console.log('Modified Dataset');
+        console.log('Dataset: ',d[0],d[2],d[3],d[5],d[6],d[8],d[9]);
+        updateDimensionScore(d);
+      }
+    }
+
+    function updateDimensionScore(d) {
+
+      switch ($scope.currentDimension) {
+        case 'SUF1':
+          $scope.currentDimension = 'SUF1';
+          console.log('Current Dimension: ', $scope.currentDimension);
+          // generate the new SUF value and apply to table element.
+          // var newDimensionValue = d[1] *
+          break;
+        case 'SUF2':
+          $scope.currentDimension = 'SUF2';
+          console.log('Current Dimension: ', $scope.currentDimension);
+          // generate the new SUF value and apply to table element.
+          break;
+        case 'SUF3':
+          $scope.currentDimension = 'SUF3';
+          console.log('Current Dimension: ', $scope.currentDimension);
+          // generate the new SUF value and apply to table element.
+          break;
+      }
+    }
+
+    function updateUtilityScores() {
+      console.log('Datatable updating MUF Scores.');
     }
 
   }

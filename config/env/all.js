@@ -44,6 +44,7 @@ module.exports = {
 				'public/lib/angular-papaparse/dist/js/angular-PapaParse.js',
 				'public/lib/leaflet/dist/leaflet.js',
 				'public/lib/d3/d3.min.js',
+				'public/lib/lodash/lodash.min.js',
 				'public/lib/ng-table/dist/ng-table.js',
 				'public/lib/bootstrap/dist/js/bootstrap.min.js',
 				'public/lib/bootstrap-slider/bootstrap-slider.js'

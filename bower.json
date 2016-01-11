@@ -27,7 +27,8 @@
     "ng-table": "~0.8.3",
     "components-font-awesome": "~4.4.0",
     "mocha": "~2.3.3",
-    "mongoose": "~4.2.3"
+    "mongoose": "~4.2.3",
+    "lodash": "~3.10.1"
   },
   "devDependencies": {
     "jasmine-core": "jasmine#~2.3.4",

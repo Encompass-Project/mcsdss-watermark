@@ -11,8 +11,8 @@
           <li><a class="drop-shadow">Modified</a></li>
         </ul>
         <label for="dropdownMenu1" class="dataset-selection">Current Dataset: <span class="current-dataset">Original</span></label> -->
-        <bs-dropdown data-menu-type="button" select-val="selected_status = selectedVal" preselected-item="selected_status" data-dropdown-data="statuses"></bs-dropdown>
-        <span class="dataset-selection">Selected Dataset : <span class="filter-info-layout">{{ selected_status }}</span></span>
+        <bs-dropdown data-menu-type="button" select-val="selected_status = selectedVal" preselected-item="selected_status" data-dropdown-data="statuses" ng-click="setCurrentDataset()"></bs-dropdown>
+        <p class="dataset-selection">Selected Dataset : <span class="filter-info-layout">{{ selected_status }}</span></p>
       </div>
     </div>
     <div class="col-xs-2 filter-division">

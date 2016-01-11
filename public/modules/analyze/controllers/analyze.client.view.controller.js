@@ -49,7 +49,12 @@
     });
 
     // Pubsub between Filters and Datatable.
+    $scope.$on('CurrentDatasetUpdated', function(event, args) {
+      $rootScope.$broadcast('newDatasetSelected', args);
+    });
+
     // Need to rearchitect these once a better filter display and generalized method have been implemented.
+    // Event should indicate the dimension being changed so it is generalized.
     $scope.$on('SUFWeightDim1Update', function(event, args) {
       // console.log('SUFWeightDim1Update event received by AnalyzeViewCTRL.');
       $rootScope.$broadcast('newSUF1Weight', args);
