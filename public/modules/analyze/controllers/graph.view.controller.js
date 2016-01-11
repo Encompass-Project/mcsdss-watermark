@@ -45,7 +45,7 @@ function GraphViewController($rootScope, $scope, $state, $location, Authenticati
   $scope.updateView = function(data) {
     var d = new Date();
     var t = d.getTime();
-    console.log('updateView data: ', d, t, data);
+    // console.log('updateView data: ', d, t, data);
     $scope.visualization(data);
   };
 

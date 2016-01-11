@@ -1,39 +1,50 @@
 <section>
   <div class="row">
     <div class="table-responsive datatable" id="datatable">
-      <table ng-table="dataTable" class="table table-condensed table-bordered table-striped" show-filter="false">
-        <tr class="datatable-run" ng-repeat="dataitem in data track by dataitem" ng-if="$index != 0" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)">
-            <td data-title="'Datasource'" filter="{dataitem: 'text'}" class="datatable-source">
+      <table ng-table="dataTable" class="table table-condensed table-bordered table-striped" show-filter="false"> <!-- filters still not working for dimensions. -->
+          <tr class="datatable-run" ng-repeat="dataitem in data track by dataitem[0]" ng-if="$index != 0" ng-click="rowClicked(dataitem)" ng-mouseenter="decorateSiblings(dataitem)" ng-mouseleave="clearSiblings(dataitem)"><!-- ng-model="mufRange" ng-if="$index != 0 && (mufRange >= mufRange[0] && mufRange <= mufRange[1])"  -->
+            <td data-title="'Datasource'" filter="{dataitem.datasource: 'text'}" class="datatable-source">
               {{ dataitem[0] }}
             </td>
-            <td data-title="'Wells Original (SUF 1)'" class="datatable-attr1-O">
+            <td data-title="'Wells (SUF 1)'" class="datatable-attr1-O" ng-model="weightedDataset" ng-if="weightedDataset == 'Original'">
              {{ dataitem[1] }}
             </td>
-            <td data-title="'Wells Modified (SUF 1)'" class="data-attr1-M">
+            <td data-title="'Wells (SUF 1)'" class="data-attr1-M" ng-model="weightedDataset" ng-if="weightedDataset == 'Modified'">
              {{ dataitem[2] }}
             </td>
-            <td data-title="'Wells SUF'" class="datatable-suf1">
+            <td data-title="'Wells Metric'" class="">
+             {{ dataitem[3] }}
+            </td>
+            <td data-title="'Wells Weight'" class="datatable-suf1">
              {{ suf01 }}
             </td>
-            <td data-title="'Heads Original (SUF 2)'" class="datatable-attr2-O">
+            <td data-title="'Heads (SUF 2)'" class="datatable-attr2-O" ng-model="weightedDataset" ng-if="weightedDataset == 'Original'">
              {{ dataitem[4] }}
             </td>
-            <td data-title="'Heads Modified (SUF 2)'" class="datatable-attr2-M">
+            <td data-title="'Heads (SUF 2)'" class="datatable-attr2-M" ng-model="weightedDataset" ng-if="weightedDataset == 'Modified'">
              {{ dataitem[5] }}
             </td>
-            <td data-title="'Heads SUF'" class="datatable-suf2">
+            <td data-title="'Heads Metric'" class="">
+             {{ dataitem[6] }}
+            </td>
+            <td data-title="'Heads Weight'" class="datatable-suf2">
              {{ suf02 }}
             </td>
-            <td data-title="'Drains Original (SUF 3)'" class="datatable-attr3-O">
+            <td data-title="'Drains (SUF 3)'" class="datatable-attr3-O" ng-model="weightedDataset" ng-if="weightedDataset == 'Original'">
              {{ dataitem[7] }}
             </td>
-            <td data-title="'Drains Modified (SUF 3)'" class="datatable-attr3-M">
+            <td data-title="'Drains (SUF 3)'" class="datatable-attr3-M" ng-model="weightedDataset" ng-if="weightedDataset == 'Modified'">
              {{ dataitem[8] }}
             </td>
-            <td data-title="'Drains SUF'" class="datatable-suf3">
-             {{ suf03 }}
+            <td data-title="'Drains Metric'" class="">
+             {{ dataitem[9] }}
             </td>
-            <td data-title="'Datasource MUF'" class="datatable-muf">
+            <eight>
+              <td data-title="'Drains Weight'" class="datatable-suf3">
+               {{ suf03 }}
+              </td>
+            </eight>
+            <td data-title="'Run Score'" class="datatable-muf">
              {{ muf }}
             </td>
           </tr>

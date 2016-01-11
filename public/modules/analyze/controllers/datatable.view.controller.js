@@ -23,21 +23,20 @@
     $scope.updateCurrentDatasetValues = updateCurrentDatasetValues;
     $scope.updateDimensionScore = updateDimensionScore;
     $scope.updateUtilityScores = updateUtilityScores;
-    // console.log('datagridConfig: ', datagridConfig);
 
     // Private members.
-    // $scope.headerdata = [];
-    // $scope.tabledata = [];
-    // $scope.selectedDataset ='';
     $scope.weightedDataset = 'Original';
     $scope.currentDimension = 'All';
     $scope.suf01Weight = 50;
-    $scope.suf01 = 0;
     $scope.suf02Weight = 50;
-    $scope.suf02 = 0;
     $scope.suf03Weight = 50;
+    $scope.mufRange = [0,100];
+    $scope.suf01 = 0;
+    $scope.suf02 = 0;
     $scope.suf03 = 0;
     $scope.muf = 0;
+
+    // console.log('datagridConfig: ', datagridConfig);
 
     $scope.$on('analysisDataLoaded', function(event, args) {
       // console.log('analysisData event received by DatatableViewCTRL.');
@@ -144,6 +143,8 @@
       $scope.$emit('clearDatatableTarget', target);
     }
 
+    // Need to calculate initial SUF/MUF values based on defaults.
+
     function updateView(data) {
       // console.log('DatatableView updating with new data...');
       // console.log('updateView data: ', data);
@@ -152,7 +153,6 @@
       // console.log(data.datasources.tabledata.datum);
 
       // ngTable
-
       $scope.dataTable = new ngTableParams({
         page: 1,
         count: 10
@@ -171,12 +171,15 @@
           // Data we want to display is as follows:
           // col 1: datasource
           // col 2: value_O/M_
-          // col 3: suf (value * weight)
-          // col 4: value_O/M_
-          // col 5: suf (value * weight)
-          // col 6: value_O/M_
+          // col 3: measure
+          // col 4: suf (value * weight)
+          // col 5: value_O/M_
+          // col 6: measure
           // col 7: suf (value * weight)
-          // col 8: muf (suf + suf + suf)
+          // col 8: value_O/M_
+          // col 9: measure
+          // col 10: suf (value * weight)
+          // col 11: muf (suf + suf + suf)
 
           // console.log($scope.data);
           // console.log($scope.data[0]);      // data header row. All subsequent iterations are data runs.
@@ -205,6 +208,9 @@
       });
     }
 
+    // TODO:
+    // Need to trigger update on all dimensions and MUF when changed.
+    // Need to normalize data ranges within set for SUF and MUF calculations.
     function updateSelectedDataset(target) {
       console.log('New Dataset for Weighitng: ', target);
       $scope.weightedDataset = target;
@@ -223,23 +229,23 @@
       $scope.currentDimension = dimension;
       console.log($scope.currentDimension);
 
-      switch ($scope.currentDimension) {
-        case 'All':
-          // console.log('Current Dimension: ', $scope.currentDimension);
-          break;
-        case 'SUF1':
-          // console.log('Current Dimension: ', $scope.currentDimension);
-          // generate the new SUF value and apply to table element.
-          break;
-        case 'SUF2':
-          // console.log('Current Dimension: ', $scope.currentDimension);
-          // generate the new SUF value and apply to table element.
-          break;
-        case 'SUF3':
-          // console.log('Current Dimension: ', $scope.currentDimension);
-          // generate the new SUF value and apply to table element.
-          break;
-      }
+      // switch ($scope.currentDimension) {
+      //   case 'All':
+      //     // console.log('Current Dimension: ', $scope.currentDimension);
+      //     break;
+      //   case 'SUF1':
+      //     // console.log('Current Dimension: ', $scope.currentDimension);
+      //     // generate the new SUF value and apply to table element.
+      //     break;
+      //   case 'SUF2':
+      //     // console.log('Current Dimension: ', $scope.currentDimension);
+      //     // generate the new SUF value and apply to table element.
+      //     break;
+      //   case 'SUF3':
+      //     // console.log('Current Dimension: ', $scope.currentDimension);
+      //     // generate the new SUF value and apply to table element.
+      //     break;
+      // }
 
       $scope.tabledata.forEach(function(d, i) {
         $scope.updateCurrentDatasetValues(d);
@@ -247,6 +253,10 @@
 
       $scope.updateUtilityScores();
     }
+
+    // TODO:
+    // Can this be offloaded to a web worker?
+    // At least do this async so UI doesn't frezze while crunching new values.
 
     function updateCurrentDatasetValues(d) {
       if ($scope.weightedDataset == 'Original') {
@@ -262,31 +272,64 @@
       }
     }
 
-    function updateDimensionScore(d) {
+    // TODO:
+    // Currently applying a global value to all runs.
+    // Need to ensure this is populating with a unique value per run.
+    // use of $scope.suf01 as a binding element *should* work BUT...
+    // need to review how angular binds to this and updates.
 
+    function updateDimensionScore(d) {
       switch ($scope.currentDimension) {
         case 'SUF1':
           $scope.currentDimension = 'SUF1';
           console.log('Current Dimension: ', $scope.currentDimension);
           // generate the new SUF value and apply to table element.
-          // var newDimensionValue = d[1] *
+          console.log(d[1], $scope.suf01Weight);
+          var newDimensionValue = d[1] * $scope.suf01Weight;
+          console.log(newDimensionValue);
+          $scope.suf01 = newDimensionValue;
+          $scope.$apply();
           break;
         case 'SUF2':
           $scope.currentDimension = 'SUF2';
           console.log('Current Dimension: ', $scope.currentDimension);
           // generate the new SUF value and apply to table element.
+          console.log(d[4], $scope.suf02Weight);
+          var newDimensionValue = d[4] * $scope.suf02Weight;
+          console.log(newDimensionValue);
+          $scope.suf02 = newDimensionValue;
+          $scope.$apply();
           break;
         case 'SUF3':
           $scope.currentDimension = 'SUF3';
           console.log('Current Dimension: ', $scope.currentDimension);
           // generate the new SUF value and apply to table element.
+          console.log(d[7], $scope.suf03Weight);
+          var newDimensionValue = d[7] * $scope.suf03Weight;
+          console.log(newDimensionValue);
+          $scope.suf03 = newDimensionValue;
+          $scope.$apply();
           break;
       }
     }
 
+    // TODO:
+    // Need to ensure that runs with muf value below threshold/outside range get removed from table display.
+    //
+    // Also in D3:
+    // Need to notify graph of runs that should be updated in view.
+    // If still valid - no change to display.
+    // If out of range - reduce alpha to almost invisible and remove listeners.
+    // If returning to range - increase alpha to norml and add listener back to element.
+
     function updateUtilityScores() {
       console.log('Datatable updating MUF Scores.');
+      var currentMuf = $scope.suf01 + $scope.suf02 + $scope.suf03;
+      $scope.muf = currentMuf;
     }
 
+    // TODO:
+    // Need to add a spinner to datatable view when it is calculating new SUF/MUF scores.
+    // Could display programmaticlly in update methods or use boolean and ng-if in view.
   }
 })();
