@@ -8,7 +8,7 @@ module.exports = {
 		// keywords: 'MongoDB, Express, AngularJS, Node.js'
 		keywords: 'Decision Support System, Multi-criteria, Spatial, GIS, Decision Theory, Decision Analysis, AHP, Analytical Hierarchy Process'
 	},
-	port: process.env.PORT || 9000, //3000,
+	port: process.env.PORT || 3000,
 	templateEngine: 'swig',
 	sessionSecret: 'MEAN',
 	sessionCollection: 'sessions',

@@ -12,8 +12,8 @@
     var goodbyeFactory = 'goodbye TestFactory!';
 
     return {
-      helloFactory,
-      goodbyeFactory
+      helloFactory: helloFactory,
+      goodbyeFactory: goodbyeFactory
     };
   }
 

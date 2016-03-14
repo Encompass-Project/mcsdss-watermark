@@ -8,7 +8,7 @@
             angular.modules.push(arguments[0]);
         }
         return orig.apply(null, arguments);
-    }
+    };
 })(angular.module);
 
 //Start by defining the main module and adding the module dependencies
