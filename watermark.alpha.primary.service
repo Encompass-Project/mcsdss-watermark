@@ -1,0 +1,12 @@
+[Service]
+ExecStart=/usr/bin/node /opt/watermark-alpha/server.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=watermark-alpha-primary
+User=jgentle
+Group=jgentle
+Environment=NODE_ENV=production PORT=3000
+
+[Install]
+WantedBy=multi-user.target
